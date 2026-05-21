@@ -1,0 +1,145 @@
+    \chapter{Vector Algebra and Analytic Geometry}
+    \section{Lines and Planes}
+    \begin{remarkenv}
+        We shall use the words ``point'' and ``vector''(a vector with initial point at the origin $O=(0,0,\ldots,0)$ and ending point at the point $P$) interchangeably to denote an element $P = (p_1, p_2, \cdots, p_n) \in \R^n$.
+    \end{remarkenv}
+    \begin{definitionenv}
+        Suppose $P$ is a given point and $A$ is a given nonzero vector in $\R^n(n\ge 2)$. The set of all points of the form $P+tA$ where $t\in \R$ is called the \textbf{line} passing through $P$ and parallel to $A$. We denote this line by $L(P,A)$ and write $L(P,A) = \{ P+tA : t\in \R\}$. A point $Q$ is said to be \textbf{on the line} $L(P,A)$ if $Q\in L(P,A)$. We often call $A$ a \textbf{direction vector} of line $L(P,A)$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Two lines $L(P,A)$ and $L(P,B)$ through the same point $P$ are equal sets if and only if the dirction vectors $A$ and $B$ are parallel, i.e. there is some $\lambda \in \R$ such that $A = \lambda B$ for some $\lambda \in \R_{\neq 0}$.
+    \end{theoremenv}
+    % \begin{proof}
+    %     $(\Rightarrow)$ Suppose $L(P,A) = L(P,B)$, then $P+A \in L(P,B)$ and there is some $\lambda \in \R$ such that $P+A = P+\lambda B$. Thus $A = \lambda B$ for some $\lambda \in \R_{\neq 0}$. 
+
+    %     $(\Leftarrow)$ Suppose $A = \lambda B$ for some $\lambda \in \R_{\neq 0}$. We need to show $L(P,A) \subseteqq L(P,B)$ and $L(P,B) \subseteqq L(P,A)$. Let $\tilde{P}\in L(P,A)$, then $\tilde{P} = P + tA$ for some $t\in \R$. Note $\tilde{P} = P + t \lambda B \in L(P,B)$. Thus $L(P,A) \subseteqq L(P,B)$. Similarly we can show $L(P,B) \subseteqq L(P,A)$ and thus $L(P,A) = L(P,B)$.
+    % \end{proof}
+    \begin{theoremenv}
+        Two lines $L(P,A)$ and $L(Q,A)$ with the same direction vector $A$ are equal if and only if $Q\in L(P,A)$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        Given a line $L_1$ and a point $Q$ not on $L_1$, there is one and only one line $L_2$ containing $Q$ and parallel to $L_1$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        If $P\neq Q$ are two points, then there is one and only one line containing both $P$ and $Q$. And this line is simply the set $\{ P+t(Q-P) : t\in \R\}$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        We call a function $X: \R \to \R^n$ (with $n\ge 2$) a \textbf{vector-valued function} (of a real variable). If $P$ is a point and $A$ is a nonzero vector in $\R^n$, then $X(t) = P+tA$ is a vector-valued function whose image is the line $L(P,A)$. Here $t$ is often called a parameter and $X$ is called a \textbf{vector/parametric equation} of the line $L(P,A)$.
+    \end{theoremenv}
+    \begin{definitionenv}
+        Note that distinct values of the parameter $t$ correspond to distinct points on the line. If $t_1<t_2<t_3$, then we say $X(t_2)$ is \textbf{between} $X(t_1)$ and $X(t_3)$ on the line $L(P,A)$. A pair of points $P,Q$ are called \textbf{congruent} to another pair of points $P',Q'$ if $|P-Q| = |P'-Q'|$ where $|\cdot|$ is the Euclidean distance in $\R^n$. We also call $|P-Q|$ the \textbf{distance between} $P$ and $Q$.
+    \end{definitionenv}
+    \begin{remarkenv}
+        If $P=(p_1,p_2,\cdots,p_n)$ and $A = (a_1,a_2,\cdots,a_n)\ne 0$, then the vector equation $X=(x_1,x_2,\cdots,x_n)$ of the line $L(P,A)$ is equivalent to (a set of) $n$ \textbf{scalar parametric equations} of the line $L(P,A)$:
+        \[
+        \begin{cases}
+            x_1 = p_1 + t a_1 \\
+            x_2 = p_2 + t a_2 \\
+            \cdots \\
+            x_n = p_n + t a_n
+        \end{cases}
+        \]
+        Particularly in $\R^2$, solving the scalar parametric equations gives us
+        \[
+        a_2 (x_1(t) - p_1) = a_1 (x_2(t) - p_2) \Leftrightarrow N \cdot (X(t) - P) = 0 \quad \text{where } N := (a_2,-a_1).
+        \]
+        Here $N$ is called a \textbf{normal vector} of the line $L(P,A)$ since it is perpendicular to the direction vector $A$. Furthermore, if $a_1 \ne 0$, we can rewrite the scalar parametric equations as
+        \[
+        (x_2(t) - p_2) = \frac{a_2}{a_1} (x_1(t) - p_1) 
+        \]
+        The value $\dfrac{a_2}{a_1}$ is called the \textbf{slope} of the line.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $L$ is a line in $\R^2$ consisting of all points $x$ satisfying $x \cdot N = P \cdot N$ where $P$ is a given point on $L$ and $N$ is a given nonzero vector for $L$. Let
+        $$ d:= \frac{|P\cdot N|}{|N|}.$$
+        Then $|x| \ge d$ and $|x| = d$ if and only if $x$ is the projection of $P$ onto $N$, i.e. $x = \dfrac{P\cdot N}{|N|^2} N$.
+    \end{theoremenv}
+    \begin{definitionenv}
+        Suppose $P$ is a given point and $A$ and $B$ are two \textbf{linearly independent} vectors in $\R^n(n\ge 3)$. The set $M:=\{ P + sA + tB : s,t\in \R\}$ is called the \textbf{plane} passing through $P$ and parallel to $A$ and $B$. A point $Q$ is said to be \textbf{on the plane} $M$ if $Q\in M$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Two planes $M_1 = \{ P + sA + tB\} $ and $M_2 = \{ P + sC + tD\}$ through the same point $P$ are equal sets if and only if $\operatorname{span} \{A,B\} = \operatorname{span} \{C,D\}$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        Two planes $M_1 = \{ P + sA + tB\}$ and $M_2 = \{ Q + sA + tB\}$ with the same direction vectors $A$ and $B$ are equal if and only if $Q\in M_1$.
+    \end{theoremenv}
+    \begin{definitionenv}
+        Two planes $M_1 = \{ P + sA + tB\}$ and $M_2 = \{ Q + sC + tD\}$ are called \textbf{parallel} if $\operatorname{span} \{A,B\} = \operatorname{span} \{C,D\}$ but $Q\notin M_1$. We also say that a vector $X$ is \textbf{parallel} to a plane $M$ if $X\in \operatorname{span} \{A,B\}$.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Similarly, a line is parallel to a plane if a direction vector of the line is parallel to the plane. Note a line parallel to a plane may be on the plane.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Given a plane $M$ and a point $Q$ not on $M$, there is one and only one plane $M'$ containing $Q$ and parallel to $M$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        If $P,Q$ and $R$ are three non-collinear points, i.e., not on the same line, then there is one and only one plane containing all three points. And this plane is simply the set $\{ P + s(Q-P) + t(R-P) : s,t\in \R\}$.
+    \end{theoremenv}
+    \begin{definitionenv}
+        A function $X: \R^2 \to \R^n$ (with $n\ge 3$) is called a \textbf{vector-valued function} of two real variables. If $P$ is a point and $A$ and $B$ are two linearly independent vectors in $\R^n$, then $X(s,t) = P + sA + tB$ is a vector-valued function whose image is the plane $M = \{ P + sA + tB : s,t\in \R\}$. Here $(s,t)$ is often called parameters and $X$ is called a \textbf{vector/parametric equation} of the plane $M$.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Similarly a plane can also be described by a \textbf{scalar equation} of the form $X\cdot N = P\cdot N$ where $P$ is a given point on the plane and $N$ is a given nonzero vector perpendicular to the plane, i.e. $N$ is a normal vector of the plane. Suppose $N=(a,b,c)$, then $N\cdot (X(s,t)-P) = 0$ is equivalent to
+        \[
+        d = ap_1 + bp_2 + cp_3, \quad ax_1(s,t) + bx_2(s,t) + cx_3(s,t) = d.
+        \]
+    \end{remarkenv}
+    \section{Cross Product}
+    \begin{definitionenv}
+        Let $A=(a_1,a_2,a_3)$ and $B=(b_1,b_2,b_3) \in \R^3$. Their \textbf{cross product} $A \times B$ is defined to be
+        $$ A \times B = (a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1). $$
+    \end{definitionenv}
+    \begin{theoremenv}
+        For $A,B,C\in \R^3$ and $k \in \R$, we have
+        \begin{enumerate}[label=(\arabic*)]
+            \item $A \times B = - B \times A$;
+            \item $A \times (B+C) = A \times B + A \times C$ and $(B+C)\times A = B\times A + C\times A$;
+            \item $(kA) \times B = k (A\times B)$ and $A\times (kB) = k (A\times B)$;
+            \item $A\cdot (A\times B) = 0, B \cdot (A\times B) = 0$;
+            \item $\| A \times B\| ^2 = \|A\|^2 \|B\|^2 - (A\cdot B)^2$;
+            \item $A\times B = 0$ if and only if $A$ and $B$ are linearly dependent;
+            \item $\|A\times B\| = \|A\|\|B\|\sin\theta$ where $\theta$ is the angle between $A$ and $B$.
+            
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{theoremenv}
+        Suppose $A$ and $B$ are two linearly independent vectors in $\R^3$. Then
+        \begin{enumerate}
+            \item $A$, $B$ and $A\times B$ are linearly independent;
+            \item Any $N\in \R^3$ such that $N\cdot A = 0$ and $N\cdot B = 0$ must be parallel to $A\times B$, i.e. $ N \in \operatorname{span} \{A\times B\}$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{remarkenv}
+        The direction of $A\times B$ is determined by the right-hand rule, which corresponds to the common 3D-coordinate system. 
+    \end{remarkenv}
+    \begin{definitionenv}
+        Let $A,B,C\in \R^3$. $A\cdot B \times C := A\cdot (B\times C)$ is called the \textbf{scalar triple product} of $A,B$ and $C$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Suppose $A,B,C\in \R^3$. Then
+        \begin{enumerate}[label=(\arabic*)]
+            \item $A,B$ and $C$ are linearly dependent if and only if $A\cdot B \times C = 0$;
+            \item $A \cdot B \times C = B \cdot C \times A = C \cdot A \times B$.
+            \item $A \times B \cdot C = A \cdot B \times C$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{definitionenv}
+        Let $M = \{ P + sA + tB : s,t\in \R\} \in \R^3$ be the plane through $P$ and spanned by linearly independent vectors $A$ and $B$. A vector $N \in \R^3$ is said to be perpendicular to the plane $M$ if $N$ is perpendicular to both $A$ and $B$, i.e. $N\cdot A = 0$ and $N\cdot B = 0$. If, additionally, $N\ne 0$, then $N$ is called a \textbf{normal vector} of the plane $M$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Given a plane $M = \{ P + sA + tB : s,t\in \R\}$ in $\R^3$ where $P$ is a point and $A$ and $B$ are linearly independent vectors. Let $N=A\times B$, then $N \ne 0 $ and $N$ is a normal vector of the plane $M$. Let $M' := \{ X\in \R^3 : N\cdot (X-P) = 0\}$, then $M' = M$.
+    \end{theoremenv}
+    \begin{remarkenv}
+        If $N=(a,b,c) \ne 0$, $P=(x_1,x_2,x_3)$ and $X=(x,y,z)$, then the scalar equation $N\cdot (X-P) = 0$ of the plane $M$ can be rewritten as
+        \[
+        ax + by + cz = ax_1 + bx_2 + cx_3 \quad \text{or} \quad a(x-x_1) + b(y-y_2) + c(z-z_3) = 0.
+        \]
+    \end{remarkenv}
+    \begin{theoremenv}
+        Given a plane $M$ through a point $P$ and with a normal vector $N$, let $d:= \dfrac{\|P\cdot N\|}{\|N\|}$. Then for any $X\in M$, we have $|X| \ge d$ and $|X| = d$ if and only if $X$ is the projection of $P$ onto $N$, i.e. $X = \dfrac{P\cdot N}{\|N\|^2} N$.
+    \end{theoremenv}
+    \begin{remarkenv}
+        Suppose point $Q$ is not on $M$, then for any $X\in M$, the minimum value of $\| X-Q\|$ is $\dfrac{\| (Q-P)\cdot N \|}{\|N\|}$ and is achieved when $(X-Q)$ is the projection of $(Q-P)$ onto $N$. We call $\dfrac{\| (Q-P)\cdot N \|}{\|N\|}$ the \textbf{distance} from point $Q$ to the plane $M$.
+    \end{remarkenv}
+
+    \newpage

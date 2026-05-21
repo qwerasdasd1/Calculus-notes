@@ -1,0 +1,687 @@
+	\chapter{Limits and Continuity of functions}
+	\section{Basic Concepts}
+	\begin{definitionenv}
+		Any open interval containing $p\in \mathbb{R}$ as the midpoint is called a \textbf{neighborhood} of $p$. Suppose $r>0$, then
+		\[
+		N(p)=(p-r,p+r)=\{ x\in \mathbb{R} : |x-p|<r \}
+		\]
+		is a neighborhood of $p$ with \textbf{radius} $r$. Moreover, a \textbf{punctured neighborhood} is the deleted neighborhood given by removing its midpoint.
+	\end{definitionenv}
+	\begin{notationenv}
+		We can also denote $N(p)$ as $N(p\,;r)$.
+	\end{notationenv}
+	\begin{definitionenv}
+		Let $f$ be a function defined in some neighborhood of $p$ except possibly not defined at $x=p$. Suppose $A\in \mathbb{R}$. The symbol
+		\[
+		\lim_{x\to p} f(x)=A \quad \left[\text{or} \quad f(x)\rightarrow A\quad \text{as}\quad x\to p\right] 
+		\]
+		reads ``the limit of $f(x)$ as $x$ approaches $p$ is equal to $A$". The symbol means that for every neighborhood $N_1(A)$, there exists some neighborhood $N_2(p)$ such that
+		\[
+		f(x)\in N_1(A)\quad \text{whenever}\quad x\in N_2(p)\quad \text{and}\quad x\neq p.
+		\]
+	\end{definitionenv}
+	\begin{remarkenv}
+		In this definition, we only consider $A$ to be a real number and $f$ to be a real-valued function. Besides, the limit has nothing to do with what happens at $x=p$. 
+	\end{remarkenv}
+	\begin{definitionenv}
+		Equivalently, the limit can be defined as
+		\[
+		\forall \varepsilon >0,\ \exists \delta>0,\ |f(x)-A|<\varepsilon\ \text{whenever}\ 0<|x-p|<\delta,
+		\]
+		which is called the ``$\varepsilon-\delta$ definition of limit".
+	\end{definitionenv}
+	\begin{remarkenv}
+		Actually you've seen and you will see infinitely many ``whenever" which all mean the same thing: ``for all ...".
+	\end{remarkenv}
+	\begin{remarkenv}
+		The following symbols are all equivalent:
+		\begin{align*}
+			&\lim_{x\to p} f(x)=A, \\
+			&\lim_{x\to p} \left[ f(x)-A\right]=0, \\
+			&\lim_{x\to p} |f(x)-A|=0,\\
+			&\lim_{h\to 0} f(p+h)=A, \\
+			&\lim_{h\to 0} f(p-h)=A.
+		\end{align*}
+	\end{remarkenv}
+	\begin{definitionenv}
+		Let $f$ be a function defined on $(p,b)$ for some $b>p$ and $A\in \mathbb{R}$. The symbol
+		\[
+		\lim_{x\to p^+}f(x)=A
+		\]
+		means that for every neighborhood $N_1(A)$, there exists some neighborhood $N_2(p)$ such that
+		\[
+		f(x)\in N_1(A)\quad \text{whenever}\quad x\in N_2(p)\quad \text{and}\quad x>p,
+		\]
+		which is called the \textbf{right-side limit}.
+		
+		Similarly we can define what is called the \textbf{left-side limit}.
+		Let $f$ be a function defined on $(a,p)$ for some $a<p$ and $A\in \mathbb{R}$. The symbol
+		\[
+		\lim_{x\to p^-}f(x)=A
+		\]
+		means that for every neighborhood $N_1(A)$, there exists some neighborhood $N_2(p)$ such that
+		\[
+		f(x)\in N_1(A)\quad \text{whenever}\quad x\in N_2(p)\quad \text{and}\quad x<p.
+		\]
+	\end{definitionenv}
+	\begin{remarkenv}
+		If we have
+		\[
+		\lim_{x\to p}f(x)=A,
+		\]
+		then it's easy to verify that both
+		\[
+		\lim_{x\to p^+}f(x)=A\quad \text{and}\quad \lim_{x\to p^-}f(x)=A
+		\]
+		hold. Furthermore, the converse still holds.
+	\end{remarkenv}
+	
+	
+	\begin{definitionenv}
+		A function $f$ is said to be \textbf{continuous} at $p\in \mathbb{R}$ if it satisfies two conditions:
+		\begin{enumerate}
+			\item $f$ is defined at $p$.
+			\item $\lim\limits_{x\to p}f(x)=f(p).$
+		\end{enumerate}
+	\end{definitionenv}
+	
+	\begin{definitionenv}
+		Let $f$ be a function and $a\in\mathbb{R}$. We say that $f$ has a \textbf{removable discontinuity} at $a$ if the two-sided limit
+		\[
+		\lim_{x\to a} f(x)=L\in\mathbb{R}
+		\]
+		exists and is finite, but either $f(a)$ is not defined or $f(a)\neq L$. Equivalently, redefining $f(a):=L$ makes $f$ continuous at $a$.
+	\end{definitionenv}
+	
+	\begin{exampleenv}
+		Let
+		\[
+		f(x):=
+		\begin{cases}
+			1, & x \neq 0,\\
+			0,  & x = 0.
+		\end{cases}
+		\]
+		Then $f$ has a removable discontinuity at $x=0$.
+	\end{exampleenv}
+	
+	\begin{definitionenv}
+		Let $f$ be a function and $a\in\mathbb{R}$. We say that $f$ has a \textbf{jump discontinuity} at $a$ if both one-sided limits exist and are finite,
+		\[
+		\lim_{x\to a^-} f(x)=L_- \in \mathbb{R},\qquad
+		\lim_{x\to a^+} f(x)=L_+ \in \mathbb{R},
+		\]
+		but $L_- \neq L_+$. The jump size is $|L_+-L_-|$.
+	\end{definitionenv}
+	
+	\begin{exampleenv}
+		Let
+		\[
+		f(x)=x-\left[ x\right],
+		\]
+		then $f$ has a jump discontinuity at every $x=k$ where $k$ is an integer.
+	\end{exampleenv}
+	
+	\begin{definitionenv}
+		Let $f$ be a function and $a\in\mathbb{R}$. We say that $f$ has an \textbf{infinite discontinuity} at $a$ if either
+		\[
+		\lim_{x\to a^-} f(x)=\pm\infty \quad \text{or} \quad
+		\lim_{x\to a^+} f(x)=\pm\infty
+		\]
+		holds. Equivalently, $f$ is unbounded on every punctured neighborhood of $a$.
+	\end{definitionenv}
+	
+	\begin{exampleenv}
+		Let
+		\[
+		f(x):=
+		\begin{cases}
+			\dfrac{1}{x^2}, & x \neq 0,\\[6pt]
+			0,  & x = 0.
+		\end{cases}
+		\]
+		Then $\lim\limits_{x\to p}f(x)$ \textbf{does not exist} and so for the left-side and right-side limit. Though we haven't define what ``$\infty$" is, we should learn it intuitively yet.
+	\end{exampleenv}
+
+	\begin{definitionenv}
+		Let $f$ be a function and $a\in\mathbb{R}$. 
+		We say that $f$ has an \textbf{oscillatory discontinuity} at $a$ if at least one of the one-sided limits
+		\[
+		\lim_{x\to a^-} f(x), \qquad \lim_{x\to a^+} f(x)
+		\]
+		fails to exist, and the failure is \emph{not} because the limit diverges to 
+		$+\infty$ or $-\infty$. Equivalently, $f$ oscillates without approaching any 
+		finite limit on every punctured neighborhood of $a$.
+	\end{definitionenv}
+
+	\begin{exampleenv}
+		Let 
+		\[
+		f(x)=
+		\begin{cases}
+			\sin\left(\dfrac{1}{x}\right), & x\neq 0,\\[4pt]
+			0, & x=0.
+		\end{cases}
+		\]
+		Then $f$ has an oscillatory discontinuity at $x=0$. Indeed,
+		neither one-sided limit 
+		\[
+		\lim_{x\to0^-}\sin\left(\dfrac{1}{x}\right), \qquad 
+		\lim_{x\to0^+}\sin\left(\dfrac{1}{x}\right)
+		\]
+		exists, because the function oscillates infinitely often between $-1$ and $1$
+		as $x\to 0$ without approaching any limiting value.
+	\end{exampleenv}
+
+	\begin{theoremenv}
+		Let $f$ and $g$ be functions such that 
+		\[
+		\lim_{x\to p} f(x)=A,\quad \lim_{x\to p} g(x)=B,
+		\]
+		Then we have the following properties:
+		\begin{enumerate}
+			\item $\displaystyle \lim_{x\to p} [f(x)+g(x)]=A+B$,
+			\item $\displaystyle \lim_{x\to p} [f(x)-g(x)]=A-B$,
+			\item $\displaystyle \lim_{x\to p} [f(x)\cdot g(x)]=A\cdot B$,
+			\item If $B\neq 0$, then $\displaystyle \lim_{x\to p} \frac{f(x)}{g(x)}=\frac{A}{B}$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{theoremenv}
+		Let $f$ and $g$ be continuous at $p$. Then \[f+g,\, f-g,\, fg \] are also continuous at $p$. If we know $g(p)\neq 0$, then $\dfrac{f}{g}$ is also continuous at $p$.
+	\end{theoremenv}
+	\begin{theoremenv}
+		Suppose that $f(x)\le g(x)\le h(x)$ for all $x\neq p$ in some neighborhood $N(p)$ and additionally
+		\[
+		\lim_{x\to p} f(x)=\lim_{x\to p} h(x)=A,
+		\]
+		then
+		\[
+		\lim_{x\to p} g(x)=A.
+		\]
+		This is called the \textbf{squeeze theorem}.
+	\end{theoremenv}
+	\begin{proofenv}
+		For every $\varepsilon>0$, there exists some neighborhood $N_1(p)$ such that
+		\[
+		f(x)\in N(A\,;\varepsilon),\quad h(x)\in N(A\,;\varepsilon)
+		\]
+		whenever $x\in N_1(p)$ and $x\neq p$. Let $N_2(p)$ be the neighborhood such that
+		\[
+		f(x)\le g(x)\le h(x)
+		\]
+		holds whenever $x\in N_2(p)$ and $x\neq p$. Now let $N_3(p)=N_1(p)\cap N_2(p)$, then for every $x\in N_3(p)$ and $x\neq p$, we have
+		\[
+		A-\varepsilon < f(x) \le g(x) \le h(x) < A+\varepsilon,
+		\]
+		i.e., $g(x)\in N(A\,;\varepsilon)$. Thus by definition we have
+		\[
+		\lim_{x\to p} g(x)=A.
+		\]
+	\end{proofenv}
+	\begin{remarkenv}
+		When you choose $f$ and $h$ to apply the squeeze theorem, they're usually not unique as long as they work well.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Assume $f$ is integrable on $[a,x]$ for every $x\in [a,b]$ and define
+		\[
+		F(x)=\int_a^x f(t)\,\mathrm{d}t,\quad x\in[a,b].
+		\]
+		Then $F$ is continuous at every $x\in(a,b)$.
+	\end{theoremenv}
+	\begin{remarkenv}
+		This theorem provides us a way to prove the continuity of some complicated functions constructed by integrals.
+
+		We can replace ``continuous at every $x\in(a,b)$'' in the conclusion by ``continuous at every $x\in[a,b]$'' with the following definition of one-sided continuity.
+	\end{remarkenv}
+	\begin{definitionenv}
+		A function $f$ is said to be \textbf{right-side continuous} or \textbf{continuous from the right} at $p$ if it satisfies two conditions:
+		\begin{enumerate}
+			\item $f$ is defined at $p$.
+			\item $\lim\limits_{x\to p^+}f(x)=f(p).$
+		\end{enumerate}
+		
+		Similarly, a function $f$ is said to be \textbf{left-side continuous} or \textbf{continuous from the left} at $p$ if it satisfies two conditions:
+		\begin{enumerate}
+			\item $f$ is defined at $p$.
+			\item $\lim\limits_{x\to p^-}f(x)=f(p).$
+		\end{enumerate}
+	\end{definitionenv}
+	\begin{remarkenv}
+		Moreover, the above theorems all hold for one-sided limits and one-sided continuity.
+	\end{remarkenv}
+	\begin{exampleenv}
+		Here are some basic examples.
+		\begin{enumerate}
+			\item Note that
+			\[
+			\sin x = \int_0^x \cos t\,\mathrm{d}t,\quad
+			\cos x = 1 - \int_0^x \sin t\,\mathrm{d}t,
+			\]
+			we can conclude that both $\sin x$ and $\cos x$ are continuous on $\mathbb{R}$.
+			\item Define
+			\[
+			f(x):=
+			\begin{cases}
+				\dfrac{\sin x}{x}, & x \neq 0,\\[6pt]
+				1,  & x = 0.
+			\end{cases}
+			\]
+			Then $f$ is continuous at $x=0$ since
+			\[
+			0<\cos x<\frac{\sin x}{x}<\frac{1}{\cos x}\quad \text{for}\quad 0<|x-0|<\frac{\pi}{2}.
+			\]
+			and by squeeze theorem we have
+			\[
+			\lim_{x\to 0} \frac{\sin x}{x}=1=f(0).
+			\]
+			Moreover, $f$ is continuous on $\mathbb{R}$.
+		\end{enumerate}
+	\end{exampleenv}
+	\section{Major Theorems for Continuous functions}
+	\begin{theoremenv}
+		Assume $v$ is continuous at $p$ and $u$ is continuous at $q=v(p)$. Then the composite function $f=u\circ v$ is continuous at $p$.
+	\end{theoremenv}
+	\begin{lemmaenv}
+		Let $f$ be continuous at $c$ and suppose that $f(c)\neq 0$.
+		Then there exists $\delta>0$ such that for the neighborhood $N(c\,;\delta)$ we have
+		\[
+		\forall x\in N(c\,;\delta),\ f(x)\,f(c)>0 .
+		\]
+	\end{lemmaenv}
+	\begin{proofenv}
+		Since $f$ is continuous at $c$, for $\varepsilon = \dfrac{|f(c)|}{2}>0$, there exists some $\delta>0$ such that
+		\[
+		|f(x)-f(c)|<\varepsilon = \frac{|f(c)|}{2}
+		\]
+		holds whenever $x\in N(c\,;\delta)$. Thus we have
+		\[
+		-\frac{|f(c)|}{2} < f(x)-f(c) < \frac{|f(c)|}{2},
+		\]
+		i.e.,
+		\[
+		f(c)-\frac{|f(c)|}{2} < f(x) < f(c)+\frac{|f(c)|}{2}.
+		\]
+		If $f(c)>0$, then we have
+		\[
+		\frac{f(c)}{2} < f(x) < \frac{3f(c)}{2},
+		\]
+		which implies $f(x)>0$. If $f(c)<0$, then we have
+		\[
+		\frac{3f(c)}{2} < f(x) < \frac{f(c)}{2},
+		\]
+		which implies $f(x)<0$. In both cases, we have $f(x)f(c)>0$.
+	\end{proofenv}
+	\begin{theoremenv}
+		Let $f$ be a function continuous on the closed interval $[a,b]$. If $f(a)$ and $f(b)$ have opposite signs, then there exists some $c\in (a,b)$ such that
+		\[
+		f(c)=0.
+		\]
+		This is called the \textbf{Bolzano's Theorem}.
+	\end{theoremenv}
+	\begin{proofenv}
+		Without loss of generality, we assume $f(a)<0$ and $f(b)>0$. Let
+		\[
+		S=\{ x\in [a,b] : f(x)\le 0 \}.
+		\]
+		Since $a\in S$, $S$ is nonempty. And since $S\subseteq [a,b]$, $S$ is bounded above by $b$. By the completeness axiom of real numbers, let
+		\[
+		c=\sup S.
+		\]
+		We shall prove that $f(c)=0$. Suppose on the contrary that $f(c)\neq 0$. Then by the above lemma, there exists some $\delta>0$ such that for every $x\in N(c\,;\delta)$, we have
+		\[
+		f(x)f(c)>0.
+		\]
+		If $f(c)>0$, then for every $x\in N(c\,;\delta)$, we have $f(x)>0$. Note that there exists some $x_1\in S$ such that
+		\[
+		c-\delta < x_1 < c\quad \text{and} \quad f(x_1) > 0,
+		\]
+		since $c=\sup S$. But we know $x_1\in S$ and thus $f(x_1) \le 0$, which leads to a contradiction.
+		
+		If $f(c)<0$, then for every $x\in N(c\,;\delta)$, we have $f(x)<0$. Note that there exists some $x_3\in [a,b]\setminus S$ such that
+		\[
+		c < x_3 < c+\delta, \quad \text{and} \quad f(x_3) < 0,
+		\]
+		since $c=\sup S$. But we know $x_3\notin S$ and thus $f(x_3) > 0$, which leads to a contradiction.
+
+		Hence we must have $f(c)=0$.
+	\end{proofenv}
+	\begin{remarkenv}
+		One-sided continuity should be considered at the endpoints $a$ and $b$ when applying Bolzano's Theorem. Otherwise, the conclusion might not hold.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Let $f$ be continuous at each point of a closed interval $[a,b]$. For two arbitrary points $x_1,x_2\in[a,b]$ with $f(x_1)\neq f(x_2)$ and any number $L$ between $f(x_1)$ and $f(x_2)$, there exists some $c$ between $x_1$ and $x_2$ such that
+		\[
+		f(c)=L.
+		\]
+		This is called the \textbf{Intermediate Value Theorem (IVT)}.
+	\end{theoremenv}
+	\begin{remarkenv}
+		The Intermediate Value Theorem is a immediate consequence of Bolzano's Theorem. And such $c$ above might not be unique.
+	\end{remarkenv}
+	\begin{propositionenv}
+		If $n$ is a positive integer and if $a>0$, then there is exactly one positive real number $x$ such that
+		\[
+		x^n = a.
+		\]
+	\end{propositionenv}
+	\begin{remarkenv}
+		Of course we can derive the existence and uniqueness of $n$th root of any real number by using the completeness axiom of real numbers. But here using the Intermediate Value Theorem is more efficient.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Assume $f$ is strictly increasing and continuous on an interval $[a,b]$. Let $c=f(a)$ and $d=f(b)$ and let $g$ be the inverse function of $f$ defined on $[c,d]$. Then
+		\begin{enumerate}
+			\item $g$ is strictly increasing on $[c,d]$,
+			\item $g$ is continuous on $[c,d]$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{proofenv}
+		\begin{enumerate}
+			\item For any $y_1,y_2\in [c,d]$ with $y_1<y_2$, let
+			\[
+			x_1=g(y_1),\quad x_2=g(y_2).
+			\]
+			Since $f$ is strictly increasing, we have
+			\[
+			y_1=f(x_1)<f(x_2)=y_2,
+			\]
+			which implies that $x_1<x_2$. Thus $g$ is strictly increasing on $[c,d]$.
+			\item Choose arbitrary $y_0\in (c,d)$. To prove $g$ is continuous at $y_0$, we need to show that for every $\varepsilon>0$, there exists some $\delta>0$ such that
+			\[
+			|g(y)-g(y_0)|<\varepsilon\quad \text{whenever}\quad |y-y_0|<\delta.
+			\]
+			Let 
+			\[
+			x_0=g(y_0),\quad f(x_0)=y_0.
+			\]
+			Suppose $\varepsilon>0$ is given. Since $f$ is increasing, we let \[\delta=\min\{f(x_0+\varepsilon)-f(x_0), f(x_0)-f(x_0-\varepsilon)\}>0.\] Then we have
+			\[
+			f(x_0 - \varepsilon) < y < f(x_0 + \varepsilon) \quad \text{whenever}\quad |y-y_0|<\delta.
+			\]
+			Since $g$ is strictly increasing, we have
+			\[
+			x_0 - \varepsilon < g(y) < x_0 + \varepsilon,
+			\]
+			which implies that
+			\[
+			|g(y)-g(y_0)|<\varepsilon.
+			\]
+
+		\end{enumerate}
+	\end{proofenv}
+	\begin{remarkenv}
+		Suppose $f(x)=x^2$ on $[-a,a]$ where $a>0$ is not invertible, but $f(x)$ is invertible on $[-a,0]$ or on $[0,a]$. In some textbooks, we express ``the inverse'' of $f(x)$ on $[0,a^2]$ as ``double function''.
+	\end{remarkenv}
+
+	\begin{definitionenv}
+		Suppose $f$ is a real-valued function on a set $S\subseteq \mathbb{R}$. Then $f$ is said to have an \textbf{absolute maximum} on $S$ if
+		\[
+		\exists c \in S\ \forall x\in S,\ f(x)\le f(c).
+		\]
+		And $f(c)$ is calle the \textbf{absolute maximum value} of $f$ on $S$. Similarly, $f$ is said to have an \textbf{absolute minimum} on $S$ if
+		\[
+		\exists d \in S\ \forall x\in S,\ f(x)\ge f(d).
+		\]
+		And $f(d)$ is calle the \textbf{absolute minimum value} of $f$ on $S$.
+	\end{definitionenv}
+	\begin{lemmaenv}
+		Suppose $f$ is continuous on $[a,b]$, then $f$ is bounded on $[a,b]$.
+	\end{lemmaenv}
+	\begin{proofenv}
+		We shall prove by contradiction and using the method of \textbf{successive bisection}. Suppose $f$ is unbounded on $[a,b]$. Let
+		\[ c= \frac{a+b}{2},\]
+		then we know among the two subintervals $[a,c]$ and $[c,b]$, at least on one of the two we know $f$ is unbounded. Pick the subinterval on which $f$ is unbounded (if $f$ is unbounded on both, then we pick the left one, i.e., $[a,c]$) and denote it by $[a_1,b_1]$. We continue this process and keep bisecting the chosen subintervals to get a sequence of subintervals:
+		\[
+		[a_1,b_1]\supseteq [a_2,b_2]\supseteq \cdots [a_n,b_n] \supseteq \cdots
+		\]
+		where $n$ is any positive integer and on which $f$ is unbounded. Note that the length of $[a_n,b_n]$ is given by
+		\[
+		b_n - a_n = \frac{b-a}{2^n}
+		\]
+		Let
+		\[
+		A:=\{a,a_1,a_2,\cdots,a_n,\cdots\}\neq \varnothing
+		\]
+		and $A$ is bounded above by $b$. Then we let $\alpha=\sup A$. Since $\alpha \in [a,b]$ and $f$ is continuous at $\alpha$, there exists some $\delta>0$ such that given $\varepsilon = 1$, we have
+		\[
+		|f(x)-f(\alpha)|<1\quad \text{whenever}\ 
+		\begin{cases}
+		x\in (\alpha-\delta, \alpha + \delta),\ &\text{if}\ \alpha\in [a,b]\\[4pt]
+		x \in [\alpha, \alpha + \delta),\ &\text{if}\ \alpha=a\\[4pt]
+		x \in (\alpha - \delta, \alpha],\ &\text{if}\ \alpha=b
+		\end{cases}
+		\]
+		By triangle inequality we have
+		\[
+		|f(x)|-|f(\alpha)| \le |f(x)-f(\alpha)|<1.
+		\]
+		So we know $f$ is bounded on
+		\(
+		\begin{cases}
+			(\alpha-\delta, \alpha + \delta), & \text{if}\ \alpha\in (a,b)\\[4pt]
+			[\alpha, \alpha + \delta), & \text{if}\ \alpha=a\\[4pt]
+			(\alpha - \delta, \alpha], & \text{if}\ \alpha=b
+		\end{cases}
+		\)
+		
+		\noindent Since
+		\[
+		a\le a_1 \le a_2 \le \cdots \le a_n \le \cdots,
+		\]
+		we know there exists some $k$ larger enough such that
+		\[
+		\begin{cases}
+			[a_k,b_k] \subseteq (\alpha-\delta, \alpha + \delta), & \text{if}\ \alpha\in (a,b)\\[4pt]
+			[a_k,b_k] \subseteq [\alpha, \alpha + \delta), & \text{if}\ \alpha=a\\[4pt]
+			[a_k,b_k] \subseteq (\alpha - \delta, \alpha], & \text{if}\ \alpha=b
+		\end{cases}
+		\]
+		This means $f$ unbounded on $[a_k,b_k]$ but
+		\[
+		|f(x)| \le 1+|f(\alpha)|,\quad \forall x\in [a_k,b_k],
+		\]
+		which is a contradiction. Thus $f$ is bounded on $[a,b]$.
+	\end{proofenv}
+
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$, then there exists $c\in [a,b]$ and $d\in [a,b]$ such that
+		\[
+		\forall x \in [a,b] \quad f(d)\le f(x)\le f(c).
+		\]
+		This is called the \textbf{Extreme Value Theorem (EVT)}.
+	\end{theoremenv}
+	\begin{proofenv}
+	By the above lemma, since $f$ is continuous on $[a,b]$, it is bounded on $[a,b]$.
+	Thus the set 
+	\[
+	S := \{f(x): x\in[a,b]\}
+	\]
+	is a nonempty bounded subset of $\mathbb{R}$, and therefore has a supremum
+	\[
+	M := \sup S.
+	\]
+
+	We first prove that $f$ attains the value $M$. Suppose, towards a contradiction,
+	that $f(x)<M$ for every $x\in[a,b]$. Then for all $x\in[a,b]$ the quantity
+	$M-f(x)$ is positive. Define a new function
+	\[
+	g(x):=\frac{1}{M-f(x)},\qquad x\in[a,b].
+	\]
+	Because $f$ is continuous and $M-f(x)>0$ everywhere, the function $g$ is also continuous and bounded on $[a,b]$; that is,
+	there exists $K>0$ such that
+	\[
+	g(x)\le K,\qquad \forall x\in[a,b].
+	\]
+	Substituting the definition of $g$, we obtain
+	\[
+	\frac{1}{M-f(x)}\le K
+	\qquad\Longrightarrow\qquad
+	f(x)\le M-\frac{1}{K},\qquad \forall x\in[a,b].
+	\]
+	Thus $M-\dfrac{1}{K}$ is an upper bound for $S$, but 
+	\[
+	M-\frac{1}{K}<M,
+	\]
+	which contradicts the definition of $M=\sup S$. Therefore our assumption was 
+	false, and there must exist $c\in[a,b]$ such that $f(c)=M$.
+
+	To obtain the minimum, apply the same argument to the continuous function 
+	$-f$ on $[a,b]$. There exists $d\in[a,b]$ such that
+	\[
+	-f(d)=\sup\{-f(x):x\in[a,b]\}
+	\quad\Longrightarrow\quad
+	f(d)=\min\{f(x):x\in[a,b]\}.
+	\]
+
+	Thus $f$ attains both its maximum and minimum on $[a,b]$, completing the proof.
+	\end{proofenv}
+	\begin{remarkenv}
+		Actually if we define 
+		\[
+		\sup f:=\sup \{f(x):x\in [a,b]\}\quad \text{and} \quad
+		\inf f:=\inf \{f(x):x\in [a,b]\}
+		\]
+		then in the above theorem we have
+		\[
+		c=\sup f,\quad d=\inf f.
+		\]
+	\end{remarkenv}
+	\begin{propositionenv}
+		Combining \textbf{EVT} and \textbf{IVT}, we have the following : If $f$ is continuous on $[a,b]$, then the range of $f$ on $[a,b]$ is $[\inf f, \sup f]$.
+	\end{propositionenv}
+	\begin{definitionenv}
+		Suppose $f$ is continuous on $[a,b]$, we call $(\sup f - \inf f)$ the \textbf{leap} or \textbf{span} of $f$ on $[a,b]$.
+	\end{definitionenv}
+	\begin{propositionenv}
+		If $f$ is continuous on $[a,b]$ and $[c,d]\subseteq [a,b]$, then the leap on $[c,d]$ cannot exceed the leap of $f$ on $[a,b]$.
+	\end{propositionenv}
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$. Then for any $\varepsilon>0$, there exists a partition $P=\{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ such that the leap of $f$ in every closed interval $[x_{k-1},x_k]$ is less than $\varepsilon$.
+
+		This is called the \textbf{the Theorem of uniform continuity} or \textbf{the small leap/span Theorem}.
+	\end{theoremenv}
+	\begin{proofenv}
+		We shall prove by contradiction. Recall how we use the method of successive bisection to prove that a continuous function on a closed interval is bounded. Now we do similarly to choose a sequence of subintervals:
+		\[
+		[a_1,b_1]\supseteq [a_2,b_2]\supseteq \cdots [a_n,b_n] \supseteq \cdots
+		\]
+		where $n$ is any positive integer and on which the leap of $f$ is at least $\varepsilon_0$. Let 
+		\[
+		\alpha = \sup \{a,a_1,a_2,\cdots,a_n,\cdots\} \in [a,b]
+		\]
+		with
+		\[
+		a\le a_1 \le a_2 \le \cdots \le a_n \le \cdots.
+		\]
+		By continuity, there exists some $\delta>0$ such that in an interval
+		\[
+		\begin{cases}
+		(\alpha-\delta, \alpha + \delta), & \text{if}\ \alpha\in (a,b)\\[4pt]
+		[\alpha, \alpha + \delta), & \text{if}\ \alpha=a\\[4pt]
+		(\alpha - \delta, \alpha], & \text{if}\ \alpha=b
+		\end{cases}
+		\]
+		the leap of $f$ is less than $\varepsilon_0$. Note that the length of $[a_n,b_n]$ is given by
+		\[
+		b_n - a_n = \frac{b-a}{2^n}.
+		\]
+		So there exists some $k$ larger enough such that
+		\[
+		\begin{cases}
+			[a_k,b_k] \subseteq (\alpha-\delta, \alpha + \delta), & \text{if}\ \alpha\in (a,b)\\[4pt]
+			[a_k,b_k] \subseteq [\alpha, \alpha + \delta), & \text{if}\ \alpha=a\\[4pt]
+			[a_k,b_k] \subseteq (\alpha - \delta, \alpha], & \text{if}\ \alpha=b
+		\end{cases}
+		\]
+		This means the leap of $f$ on $[a_k,b_k]$ is less than $\varepsilon_0$, which is a contradiction. Thus we can keep bisecting until the leap of $f$ on every subinterval is less than $\varepsilon_0$.
+	\end{proofenv}
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$, then $f$ is integrable on $[a,b]$.
+	\end{theoremenv}
+	\begin{proofenv}
+	Obviously $f$ is bounded on $[a,b]$, so $f$ has both an upper integral $\overline{I}(f)$ and a lower integral $\underline{I}(f)$. We shall prove that
+	\[
+	\overline{I}(f)=\underline{I}(f),
+	\]
+	which implies that $f$ is integrable on $[a,b]$.
+
+	Choose an integer $N\ge 1$ and let $\varepsilon=1/N$. By the small--span theorem for continuous functions, for this $\varepsilon$ there exists a partition
+	\[
+	P=\{x_0, x_1,\dots,x_n\}
+	\]
+	of $[a,b]$ into $n$ subintervals such that the span of $f$ in every subinterval	is less than $\varepsilon$. Denote by $M_k(f)$ and $m_k(f)$ the absolute maximum
+	and minimum values of $f$ on the $k$th subinterval $[x_{k-1},x_k]$. Then
+	\[
+	M_k(f)-m_k(f) < \varepsilon
+	\qquad \text{for each } k=1,\dots,n.
+	\]
+	Now define two step functions $s_n$ and $t_n$ on $[a,b]$ by
+	\[
+	s_n(x)=
+	\begin{cases}
+	m_k(f), & \text{if } x_{k-1}<x\le x_k,\\[4pt]
+	m_1(f), & x=a,
+	\end{cases}
+	\ 
+	t_n(x)=
+	\begin{cases}
+	M_k(f), & \text{if } x_{k-1}\le x < x_k,\\[4pt]
+	M_n(f), & x=b.
+	\end{cases}
+	\]
+	Then clearly
+	\[
+	s_n(x)\le f(x)\le t_n(x), \qquad \forall\, x\in[a,b].
+	\]
+	Moreover,
+	\[
+	\int_a^b s_n
+	= \sum_{k=1}^n m_k(f)(x_k-x_{k-1}), 
+	\qquad
+	\int_a^b t_n
+	= \sum_{k=1}^n M_k(f)(x_k-x_{k-1}).
+	\]
+	The difference of these two integrals is
+	\[
+	\int_a^b t_n - \int_a^b s_n
+	< \varepsilon \sum_{k=1}^n (x_k-x_{k-1})
+	= \varepsilon(b-a)
+	= \frac{b-a}{N}.
+	\]
+	On the other hand, the upper and lower integrals of $f$ satisfy
+	\[
+	\int_a^b s_n \le \underline{I}(f) \le \overline{I}(f) 
+	\le \int_a^b t_n.
+	\]
+	Hence we obtain
+	\[
+	0 \le \overline{I}(f) - \underline{I}(f)
+	\le \int_a^b t_n - \int_a^b s_n
+	< \frac{b-a}{N}.
+	\]
+	Since this holds for every integer $N\ge 1$, we must have
+	\[
+	\overline{I}(f)=\underline{I}(f).
+	\]
+	Thus $f$ is integrable on $[a,b]$.
+	\end{proofenv}
+	\begin{theoremenv}
+		If $f$ is continuous on $[a,b]$, then
+		\[
+		\int_a^b f(x)\, \dd x= f(c)(b-a) \quad \text{for some}\quad c\in [a,b],
+		\]
+		i.e., there exists $c\in [a,b]$ such that
+		\[
+		f(c)=\operatorname{avg}(f)=\frac{1}{b-a}\int_a^b f(x)\, \dd x.
+		\]
+	\end{theoremenv}
+	\begin{proofenv}
+		Let $m=\inf f$ and $M=\sup f$. Since $m\le f(x) \le M$ for all $x\in [a,b]$, we have
+		\[
+		m=\frac{1}{b-a}\int_a^b m\, \dd x \le \frac{1}{b-a}\int_a^b f(x)\, \dd x \le \frac{1}{b-a}\int_a^b M\, \dd x = M.
+		\]
+		By \textbf{EVT} and \textbf{IVT}, we know there exists $c\in [a,b]$ such that $f(c)=\operatorname{avg}(f)$.
+	\end{proofenv}
+    \begin{remarkenv}
+        You can also expand the above theorem to what is so-called \textbf{Weighted Mean Value Theorem for Integrals} mentioned in Chapter 3. The proof is left to you as an exercise (since it's quite analogous to the above proof).
+    \end{remarkenv}
+	\newpage

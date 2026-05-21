@@ -1,0 +1,33 @@
+    \chapter{Line Integrals}
+    \section{Basic Definitions and Properties}
+    \begin{definitionenv}
+        A function $\vec r : [a,b] \to \R^n$ that is continuous on $[a,b]$ is also called a \textbf{path} in $\R^n$. If $\vec r \, '$ exists and is continuous on $(a,b)$, then we say $\vec r$ is a \textbf{smooth path}. If there is a partition of $[a,b]$ such that $\vec r$ is smooth on each subinterval of this partition, then we say $\vec r$ is a \textbf{piecewise smooth path}.
+    \end{definitionenv}
+    \begin{definitionenv}
+        Let $\vec r:[a,b] \to \R^n$ be a piecewise smooth path and $\vec f$ be a vector field defined and bounded on the image of $\vec r$. The line integral of $\vec f$ along $\vec r$ is defined as
+        $$ \int_{\vec r} \vec f \cdot \dd\vec r := \int_a^b \vec f(\vec r(t)) \cdot \vec r\,'(t) \dd t $$
+        provided the limit on the right-hand side exists.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Suppose curve $C$ is described by $\vec r(t)$ for $t\in [a,b]$ and $\vec r$ is a piecewise smooth path, then we can also write $\displaystyle \int \vec f \cdot \dd \vec r$ as
+        \begin{enumerate}
+            \item $\displaystyle \int_C \vec f \cdot \dd \vec r$;
+            \item $\displaystyle \int_{\vec a}^{\vec b} \vec f \cdot \dd \vec r$ where $\vec a = \vec r(a)$ and $\vec b = \vec r(b)$;
+            \item $\displaystyle \oint \vec f \cdot \dd \vec r$ or $\displaystyle \oint_C \vec f \cdot \dd \vec r$ if $C$ is a closed curve, i.e., $\vec r(a) = \vec r(b)$;
+            \item $\displaystyle \int_{C} f_1(x,y) \dd x + f_2(x,y) \dd y$ if $\vec f = (f_1(x,y), f_2(x,y))$ with $x=r_1(t)$ and $y=r_2(t)$.
+        \end{enumerate}
+    \end{remarkenv}
+    \begin{remarkenv}
+        Since we define line integrals in terms of regular integrals of a scalar function on $[a,b]$, line integrals have the following basic properties of regular integral.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $\vec f$ and $\vec g$ are vector fields defined and bounded on the image of a piecewise smooth path $\vec r$. Then
+        \begin{enumerate}[label=(\arabic*)]
+            \item Linearity: $$ \int (\alpha \vec f + \beta \vec g) \cdot \dd \vec r = \alpha \int \vec f \cdot \dd \vec r + \beta \int \vec g \cdot \dd \vec r$$ for any scalar $\alpha, \beta$;
+            \item Additivity: if curve $C$ can be regarded as two pieces $C_1$ and $C_2$ joined together, then $$ \int_C \vec f \cdot \dd \vec r = \int_{C_1} \vec f \cdot \dd \vec r + \int_{C_2} \vec f \cdot \dd \vec r; $$
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{definitionenv}
+        Suppose $\vec \beta:[a,b] \to \R^n$ is a continuous path and $u:\R \to \R$ is differentiable on $[c,d]$ with $\left\{ u(s) : s\in [c,d] \right\} = [a,b]$ and $u'(s) \ne 0$ for any $s\in [c,d]$. Then $\vec \gamma: [c,d] \to \R^n$ defined as $\vec \gamma(s) := \vec \beta [u(s)]$ for $s\in [c,d]$ is also a continuous path with the same image as $\vec \beta$. We call $\vec \beta$ and $\vec \gamma$ \textbf{equivalent paths} and $u$ a \textbf{change of parameter function}. Namely, $\vec \gamma$ and $\vec \beta$ describe the same curve but with different parametrizations. If $u'(s) >0$ for $s\in [c,d]$, then we say $\vec \gamma$ and $\vec \beta$ trace out $C$ in the same direction.
+    \end{definitionenv}
+\end{document}

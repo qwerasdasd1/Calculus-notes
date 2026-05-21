@@ -1,0 +1,209 @@
+	\chapter{Integration and Differentiation}
+	\section{Two Fundamental Theorems for Calculus}
+	\begin{theoremenv}
+		Suppose $f$ is a function that is integrable on $[a,x]$ for every $x\in [a,b]$. Let $c\in [a,b]$ and define function $F$ on $[a,b]$ by
+		\[
+		F(x) = \int_c^x f(t)\, \dd t.
+		\]
+		Then for any $x\in (a,b)$, if $f$ is continuous at $x$, then $F'(x)$ exists and
+		\[
+		F'(x) = f(x)\quad\text{or}\quad \frac{\dd}{\dd x} \left( \int_c^x f(t)\, \dd t \right) = f(x).
+		\]
+		This is called the \textbf{First Fundamental Theorem of Calculus (FTC1)}.
+	\end{theoremenv}
+	\begin{proofenv}
+		Let $x\in (a,b)$ be fixed. Consider the quotient in the definition of $F'(x)$:
+		\[
+		\begin{aligned}
+			\frac{F(x+h)-F(x)}{h} 
+			&= \frac{1}{h} \left( \int_c^{x+h} f(t)\, \dd t - \int_c^x f(t)\, \dd t \right) \\
+			&= \frac{1}{h} \int_x^{x+h} f(t)\, \dd t\\
+			&= \frac{1}{h} \int_x^{x+h} \left[ f(x)+\left(f(t)-f(x)\right)\right] \dd t\\
+			&= f(x) + \frac{1}{h} \int_x^{x+h} \left( f(t)-f(x) \right) \dd t
+		\end{aligned}
+		\]
+		Note it suffices to show 
+		\[
+		G(h):= \frac{1}{h} \int_x^{x+h} \left( f(t)-f(x) \right) \dd t \to 0 \quad \text{as}\quad h\to 0.
+		\]
+		Given any $\varepsilon>0$, since $f$ is continuous at $x$, there exists some $\delta>0$ such that
+		\[
+		|f(t)-f(x)| < \frac{\varepsilon}{2}, \quad \forall t\in (x-\delta, x+\delta)\subseteq (a,b).
+		\]
+		\textbf{Claim:} Suppose $f$ is a function integrable on $[a,b]$, then we have
+		\[
+		\int_a^b |f(t)| \dd t \geq \left| \int_a^b f(t) \dd t \right|.
+		\]
+		\begin{proofenv}
+			Note that
+			\[
+			|f(x)| \ge \max\left\{ f(x), -f(x) \right\}.
+			\]
+			So we have
+			\[
+			\int_a^b |f(t)| \dd t \ge \max\left\{\int_a^b f(x)\dd t, -\int_a^b f(x)\dd t\right\} = \left|\int_a^b f(t) \dd t\right|.
+			\]
+			Thus the claim holds.
+		\end{proofenv}
+		\medskip
+
+		\textbf{Case 1:} Suppose $0<h<\delta$, then $[x-h, x+h] \subseteq (x-\delta, x+\delta)$. Thus we have
+		\[
+		|G(h)| = \left| \frac{1}{h} \int_x^{x+h} \left( f(t)-f(x) \right) \dd t \right| \leq \frac{1}{h} \int_x^{x+h} |f(t)-f(x)| \dd t < \frac{\varepsilon}{2} < \varepsilon.
+		\]
+		So $G(h)\to 0$ as $h\to 0^+$.
+
+		\textbf{Case 2:} Suppose $-\delta < h < 0$, then analogously we have
+		\[
+		\lim _{h\to 0^-} G(h) = 0.
+		\]
+		Together we have $G(h)\to 0$ as $h\to 0$. Thus we complete the proof.
+	\end{proofenv}
+	\begin{definitionenv}
+		A function $P$ is called a \textbf{primitive} (or an \textbf{antiderivative}) on a function $f$ on an open interval $I$ if $P'(x)=f(x)$ for any $x\in I$. 
+	\end{definitionenv}
+	\begin{theoremenv}
+		Assume $f$ is continuous on an open interval $I$ and let $P$ be a primitive of $f$ on $I$. Then for each $x,c \in I$, we have
+		\[
+		\int_c^x f(t)\, \dd t = P(x) - P(c).
+		\]
+		This is called the \textbf{Second Fundamental Theorem of Calculus (FTC2)}.
+	\end{theoremenv}
+	\begin{remarkenv}
+		We have 
+		\[
+		\int_a^b f(x)\, \dd x = P(b) - P(a)
+		\]
+		provided that $P$ is a primitive of $f$ on some open interval containing $[a,b]$.
+	\end{remarkenv}
+	\begin{notationenv}
+		Leibniz introduced the notation \textbf{indefinite integral} to denote a general primitive of $f$ or the common format shared by all primitive of $f$:
+		\[
+		\int f(x)\, \dd x := \int_c^x f(t)\, \dd t + C
+		\]
+		where $C$ is an arbitrary constant. In practice, we often just write
+		\[
+		\int f(x)\, \dd x = P(x) + C
+		\]
+		where $P(x)$ it self \emph{does not} have any constant term.
+	\end{notationenv}
+	\begin{remarkenv}
+		In some textbooks, since we often write
+		\[
+		C=\int_d^c f(t)\, \dd t
+		\]
+		and then 
+		\[
+		\int f(x)\, \dd x =\int_c^x f(t)\, \dd t + C = \int_d^x f(t)\, \dd t,
+		\]
+		the defintion of indefinite integral is generalized so that Leibniz's notation is also called an indefinite integral.
+	\end{remarkenv}
+
+	\section{Integration Techniques}
+	\begin{methodenv}
+		Suppose $u=g(x)$ is a differentiable function whose range is an interval $I$ and $f$ is continuous on $I$. Then
+		\[
+		\int f(g(x)) g'(x)\, \dd x = \int f(u)\, \dd u.
+		\]
+		This is called \textbf{integration by substitution}.
+	\end{methodenv}
+	\begin{theoremenv}
+		Suppose $g$ has a continuous derivative $g'$ on an open interval $I$. Let $J$ be the set of values taken by $g$ on $I$ and assume that $f$ is continuous on $J$. Then for any $x,c\in I$, we have
+		\[
+		\int_c^x f(g(t)) g'(t)\, \dd t = \int_{g(c)}^{g(x)} f(u)\, \dd u.
+		\]
+	\end{theoremenv}
+
+    \begin{proofenv}
+        Since $g$ is continuous, by \textbf{IVT} we know $J=g(I)$ is a well-defined interval. Thus we can define
+        \[
+        F(u)=\int _{g(c)}^u f(w)\, \dd w,\quad u \in J.
+        \]
+        Note that $f$ is continuous on $J$, we know $F$ is differentiable on $J$. By \textbf{FTC1}, we have $F'(u)=f(u)$. Define
+        \[
+        H(t) = F(g(t)),\quad t\in I
+        \]
+        with
+        \[
+        H'(t)=F'(g(t))\,g'(t)=f(g(t))\,g'(t),\quad t\in I.
+        \]
+        By \textbf{FTC2}, we know
+        \[
+        \begin{aligned}
+            \int_c^x f(g(t))g'(t)\,\dd t &= \int_c^x H'(t)\,\dd t = H(x)-H(c)=F(g(x))-F(g(c)) \\ &= \int_{g(c)}^{g(x)} f(w)\,\mathrm{d}w - \int_{g(c)}^{g(c)} f(w)\,\mathrm{d}w = \int_{g(c)}^{g(x)} f(w)\,\mathrm{d}w.
+        \end{aligned}
+        \]
+        Note that the integral value is independent of integral variable. Hence, we complete the proof.
+    \end{proofenv}
+	\begin{methodenv}
+		Suppose $u=u(x)$ and $v=v(x)$ are two differentiable functions on an open interval $I$. Then
+		\[
+		\int u(x) v'(x)\, \dd x = u(x) v(x) - \int v(x) u'(x)\, \dd x.
+		\]
+		For definite integrals, we have
+		\[
+		\int_a^b u(x) v'(x)\, \dd x = \left[ u(x) v(x) \right]_a^b - \int_a^b v(x) u'(x)\, \dd x.
+		\]
+		This is called \textbf{integration by parts}.
+	\end{methodenv}
+	\begin{remarkenv}
+		With Leibniz's notation, since equivalently (in a sense of notation but it's rigorous by defining what is so called differential later) we have
+		\[
+		\dd u = u'(x)\, \dd x \quad \text{and}\quad \dd v = v'(x)\, \dd x,
+		\]
+		we can write integration by parts as
+		\[
+		\int u\, \dd v = uv - \int v\, \dd u.
+		\]
+		Leibniz's notation is often more convenient and aesthetically pleasing.
+	\end{remarkenv}
+	\begin{exampleenv}
+		Recall
+		\[
+		\int x^n\, \dd x = \frac{1}{n+1} x^{n+1} + C,\quad \text{does not hold when}\ n=-1.
+		\]
+		Now we use integration by parts to try solve the case $n=-1$:
+		\[
+		\begin{aligned}
+			\int \frac{1}{x}\, \dd x &= \int 1 \cdot \frac{1}{x}\, \dd x\\[6pt]
+			&= x \cdot \frac{1}{x} - \int x \cdot \left( -\frac{1}{x^2} \right) \dd x + C\\[6pt]
+			&= 1 + \int \frac{1}{x}\, \dd x + C.
+		\end{aligned}
+		\]
+		Now we see that the constant term $C$ is actually important, otherwise we would derive something nonsense. And we know it's not a wise choice to use integration by parts here. 
+	\end{exampleenv}
+	\begin{theoremenv}
+		Suppose $g$ is continuous on $[a,b]$ and $f$ has a continuous derivative $f'$ on $[a,b]$.  If $f'$ does not change sign on $[a,b]$, then there exists some $c\in [a,b]$ such that
+		\[
+		\int_a^b f(x) g(x)\, \dd x = f(a) \int_a^c g(x)\, \dd x + f(b) \int_c^b g(x)\, \dd x.
+		\]
+	\end{theoremenv}
+	\begin{proofenv}
+		Let
+		\[
+		G(x) = \int_a^x g(t)\, \dd t.
+		\]
+		Since $g$ is continuous on $[a,b]$, by the \textbf{First Fundamental Theorem of Calculus}, we know $G'(x)=g(x)$ for any $x\in (a,b)$. By \textbf{integration by parts}, we have
+		\[
+		\begin{aligned}
+			\int_a^b f(x) g(x)\, \dd x &= \int_a^b f(x) G'(x)\, \dd x\\[6pt]
+			&= \left[ f(x) G(x) \right]_a^b - \int_a^b G(x) f'(x)\, \dd x\\[6pt]
+			&= f(b) G(b) - f(a) \cdot 0 - \int_a^b G(x) f'(x)\, \dd x\\[6pt]
+			&= f(b) \int_a^b g(t)\, \dd t - \int_a^b G(x) f'(x)\, \dd x\\[6pt]
+			% &= f(b) \int_a^b g(t)\, \dd t - \int_a^b G(x) f'(x)\, \dd x. 
+		\end{aligned}
+		\]
+		Using the \textbf{Mean Value Theorem}, since $f'$ does not change sign on $[a,b]$, there exists some $c\in [a,b]$ such that
+		\[
+		\int_a^b G(x) f'(x)\, \dd x = G(c) \int_a^b f'(x)\, \dd x =  \left( \int_a^c g(t)\, \dd t \right) [f(b)-f(a)].
+		\]
+		Thus we have
+		\[
+		\begin{aligned}
+			\int_a^b f(x) g(x)\, \dd x &= f(b) \int_a^b g(t)\, \dd t - \left( \int_a^c g(t)\, \dd t \right) [f(b)-f(a)]\\[6pt]
+			&= f(b) \int_c^b g(t)\, \dd t + f(a) \int_a^c g(t)\, \dd t.
+		\end{aligned}
+		\]
+	\end{proofenv}
+
+	\newpage

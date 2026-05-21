@@ -1,0 +1,752 @@
+    \chapter{Sequences and Series}
+    \section{Sequences and Partial Sums}
+    \begin{definitionenv}
+        A function $f:\N \to \R$ is called a \textbf{sequence}. The function value $f(n)$ is called the $n$-th term of the sequence. We often denote such a sequence by $\{a_n\}$ or $f(n)$ where $a_n := f(n)$ for any $n\in \N$.
+    \end{definitionenv}
+    \begin{definitionenv}
+        A sequence $\{f(n)\}$ is said to have a limit $L\in \R$, or converges to $L$, if for every $\varepsilon > 0$, there exists some $N\in \N$ such that $|f(n) - L| < \varepsilon$ for any $n > N$ and in this case we say the sequence is \textbf{convergent}. If a sequence is not convergent, then we say it is \textbf{divergent}.
+    \end{definitionenv}
+    \begin{definitionenv}
+        A sequence $\{f(n)\}$ is \textbf{increasing} if $f(n) \le f(n+1)$ for all $n\in \N$. A sequence $\{f(n)\}$ is \textbf{decreasing} if $f(n) \ge f(n+1)$ for all $n\in \N$. A sequence is \textbf{monotonic} if it is either increasing or decreasing. A sequence $\{f(n)\}$ is \textbf{bounded} if there exists some $M>0$ such that $|f(n)| \le M$ for any $n\in \N$. A sequence is \textbf{unbounded} if it is not bounded.
+    \end{definitionenv}
+    \begin{theoremenv}
+        A monotonic sequence converges if and only if it is bounded.
+    \end{theoremenv}
+    \begin{proofenv}
+        If $\{f(n)\}$ is increasing, then it converges. Additionally, if $S = \{f(n):n\in \N\}$, then $f(n) \to \sup S = L$. For any $\varepsilon > 0$, $L-\varepsilon$ is not an upper bound of $S$, so there exists some $N\in \N$ such that $f(N) > L-\varepsilon$. For any $n\ge N$, we have $f(n) \ge f(N) > L-\varepsilon$ and $f(n) \le L$, so $|f(n) - L| < \varepsilon$. Thus $\{f(n)\}$ converges to $L$. The case for decreasing sequence is analogous.
+    \end{proofenv}
+    \begin{definitionenv}
+        For any sequence $\{a_n\}$, we can generate another sequence $\{S_n\}$ by defining
+        \[
+        S_n = a_1 + a_2 + \cdots + a_n = \sum_{k=1}^n a_k \quad \text{for any } n\in \N.
+        \]
+        We call $S_n$ the partial sums of the first $n$ terms of $\{a_n\}$ and $\{S_n\}$ is called an \textbf{(infinite) series}.
+    \end{definitionenv}
+    \begin{notationenv}
+        The following notations are often used for series:
+        \[
+        \sum a_n = a_1 + a_2 + \cdots = \sum_{n=1}^\infty a_n.
+        \]
+        If $S_n \to S$ as $n\to \infty$, then we say the series $\{S_n\}$ converges and has the sum $S$. In this case, we often write $\displaystyle \sum_{n=1}^\infty a_n = S$ instead of $S_n \to S$. A series that does not converge is divergent and it has no sum.
+    \end{notationenv}
+    \begin{exampleenv}
+        We list some typical examples of series here:
+        \begin{enumerate}
+            \item If $\displaystyle a_n = \frac{1}{n}$, then
+            \[
+            S_n = \sum_{k=1}^n \frac{1}{k} > \int_1^{n+1} \frac{1}{t} \dd t = \ln(n+1) \to +\infty \quad \text{as } n\to +\infty.
+            \]
+            This divergent series is called the \textbf{harmonic series}.
+            \item If $\displaystyle a_n = \frac{1}{2^{n-1}}$, then
+            \[
+            S_n = \sum_{k=1}^n \frac{1}{2^{k-1}} = 2\left( 1 - \frac{1}{2^n} \right) \to 2 \quad \text{as } n\to +\infty.
+            \]
+            This kind of series that the ratio of two adjacent terms is a constant is called a \textbf{geometric series}.
+        \end{enumerate}
+    \end{exampleenv}
+    \begin{theoremenv}
+        Let $\sum a_n$ and $\sum b_n$ be two convergent series and $\alpha,\beta \in \R$. Then the series $\sum (\alpha a_n + \beta b_n)$ converges and its sum is given by
+        \[
+        \sum_{n=1}^\infty (\alpha a_n + \beta b_n) = \alpha \sum_{n=1}^\infty a_n + \beta \sum_{n=1}^\infty b_n.
+        \]
+    \end{theoremenv}
+    \begin{theoremenv}
+        If $\{b_n\}$ is a sequence and another sequence $\{a_n\}$ satisfies $a_n = b_n - b_{n+1}$ for any $n\in \N$, then we call the series $\sum a_n$ a \textbf{telescoping series} and $\sum a_n$ converges if and only if $\{b_n\}$ converges. Furthermore, if $\{b_n\}$ converges to $L$ as $n\to \infty$, then we have
+        \[
+        \sum_{n=1}^\infty a_n = \sum_{n=1}^\infty (b_n - b_{n+1}) =  b_1 - L.
+        \]
+    \end{theoremenv}
+    \begin{theoremenv}
+        Let $a_n = x^n$ for $n\in \N$, then the partial sum $\displaystyle S_n = \sum_{k=1}^n x^k$ satisfies
+        \[
+        S_n = \begin{cases}
+            n+1 & \text{if } x=1\\
+            \dfrac{1-x^{n}}{1-x} & \text{if } x\neq 1
+        \end{cases}
+        \]
+        We call $\{S_n\}$ the \textbf{geometric series} and $\{S_n\}$ converges if and only if $|x|<1$. When $\{S_n\}$ converges, we have $\displaystyle \sum_{n=1}^\infty x^n = \frac{1}{1-x}$.
+    \end{theoremenv}
+    \begin{exampleenv}
+        We can do some replacement to get some typical examples of geometric series:
+        \begin{enumerate}[label=(\arabic*)]
+            \item Replace $x$ by $x^2$ in the geometric series, we have
+            \[
+            1+ x^2 + x^4 + \cdots = \frac{1}{1-x^2} \quad \text{for } |x|<1.
+            \]
+            \item For $|x|<1$, we multiply both sides by $x$:
+            \[
+            x + x^3 + x^5 + \cdots = \frac{x}{1-x^2}.
+            \]
+            \item Replace $x$ by $-x$:
+            \[
+            1 - x + x^2 - x^3 + \cdots = \frac{1}{1+x} \quad \text{for } |x|<1.
+            \]
+        \end{enumerate}
+    \end{exampleenv}
+    \begin{definitionenv}\label{def:power-series}
+        We call a series of the form
+        \[
+        \sum_{n=0}^\infty a_n x^n
+        \]
+        a \textbf{power series} in $x$ and the number $a_n$ is called the coefficient of $x^n$ in the power series.
+    \end{definitionenv}
+    \begin{exampleenv}
+        Suppose $f$ is a function with derivatives of arbitrary order in a neighborhood of $x=0$. Let $a_n = \dfrac{f^{(n)}(0)}{n!}$ for $n\in \N$, then the power series with coefficients $a_n$ is called the \textbf{Taylor series} of $f$ at $x=0$. Since
+        \[
+        f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n + E_n(x),
+        \]
+        Thus if $E_n(x) \to 0$ as $n\to \infty$ for any $x$ in some neighborhood of $0$, then the Taylor series converges to $f(x)$.
+    \end{exampleenv}
+
+    \section{Convergence Tests for Series}
+    In this subsection we introduce three tests for convergence of series.
+    \begin{theoremenv}
+        If $\sum a_n$ converges, then $\displaystyle \lim_{n\to \infty} a_n = 0$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $\displaystyle S_n = \sum_{k=1}^n a_k$. Then $a_n = S_n - S_{n-1}$. Since $\{S_n\}$ converges, we have $\displaystyle \lim_{n\to \infty} a_n = \displaystyle \lim_{n\to \infty} S_n - \displaystyle \lim_{n\to \infty} S_{n-1} = 0$.
+    \end{proofenv}
+    \begin{remarkenv}
+        This is a necessary condition for convergence of series but not a sufficient condition. For example, the harmonic series $\displaystyle \sum_{n=1}^\infty \frac{1}{n}$ diverges but $\displaystyle \lim_{n\to \infty} \frac{1}{n} = 0$.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $a_n \ge 0$ for any $n\in \N$. Then the series $\sum a_n$ converges if and only if the sequence of partial sums $\{S_n\}$ is bounded.
+    \end{theoremenv}
+    \begin{proofenv}
+        We know $\{S_n\} $ is increasing and by the monotone convergence theorem, $\{S_n\}$ converges if and only if $\{S_n\}$ is bounded.
+    \end{proofenv}
+    \begin{remarkenv}
+        This is a necessary and sufficient condition for convergence test.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $a_n\ge 0$ and $b_n\ge 0$ for any $n\in \N$. If there exists some $c>0$ such that $a_n \le c b_n$ for all $n$, then the convergence of $\sum b_n$ implies the convergence of $\sum a_n$. (or equivalently, the divergence of $\sum a_n$ implies the divergence of $\sum b_n$).
+        
+        This is called the \textbf{comparison test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $\displaystyle S_n = \sum_{k=1}^n a_k$ and $\displaystyle T_n = \sum_{k=1}^n b_k$. Then we have $S_n \le c T_n$ for any $n\in \N$. If $\{T_n\}$ converges, then $\{S_n\}$ is bounded and thus $\{S_n\}$ converges.
+    \end{proofenv}
+    \begin{exampleenv}
+        Recall that we already have $\displaystyle \sum \frac{1}{n^2+n}$ convergent. Note that we have
+        \[
+        \lim_{n\to \infty} \frac{1/n^2}{1/(n^2+n)} = \lim_{n\to \infty} \left( 1+\frac1n \right) = 1 >0
+        \]
+        Thus $\displaystyle \sum \frac1{n^2}$ converges. We define \textbf{Riemann zeta function} by
+        \[
+        \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}.
+        \]
+        We have $\zeta(2) = \displaystyle \sum_{n=1}^\infty \frac{1}{n^2}$ converges. We define the domain $\operatorname{Dom} \left( \zeta \right)$ to be the set of all $s\in \R$ such that $\zeta(s)$ converges.
+    \end{exampleenv}
+    \begin{theoremenv}
+        Suppose $f$ is a positive decreasing function defined for all $x\ge 1$. For each positive integer $n$, let $S_n = \displaystyle \sum_{k=1}^n f(k)$ and $\displaystyle t_n = \int_1^n f(x)\dd x$. Then the two sequences $\{S_n\}$ and $\{t_n\}$ both converge or both diverge.
+
+        This is called the \textbf{integral test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        Geometrically, we have
+        \[
+        S_n - f(1) = \sum_{k=2}^n f(k) \le \int_1^n f(x)\dd x = t_n \le \sum_{k=1}^{n-1} f(k) = S_{n-1}.
+        \]
+        Equivalently, we have
+        \[
+        t_n + f(n) \le S_n \le t_n + f(1).
+        \]
+    \end{proofenv} 
+    \begin{exampleenv}
+        Let $f(x) = x^{-s}$, then
+        \[
+        t_n = \int_1^n x^{-s} \dd x = \begin{cases}
+        \dfrac{n^{1-s} - 1}{1-s} & \text{if } s\neq 1\\[6pt]
+        \ln n & \text{if } s=1
+        \end{cases}
+        \]
+
+        If $s>1$, then $n^{1-s} \to 0$ as $n\to +\infty$, so $t_n \to \dfrac{1}{s-1}$.
+
+        If $s\le 1$, then $t_n$ diverges. 
+
+        Recall the definition of Riemann zeta function $\zeta(s) = \displaystyle \sum_{n=1}^\infty \frac{1}{n^s}$, we have $\zeta(s)$ converges if and only if $s>1$ and $\zeta(s)$ diverges if $s\le 1$.
+    \end{exampleenv}
+    \begin{remarkenv}
+        The integral test only tells us about the convergence or divergence of the series but does not give us the value of the sum when the series converges (they are not necessarily equal)
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $a_n \ge 0$ for any $n\in \N$ and additionally, $a_n^{1/n} \to r$ as $n\to \infty$ for some $r\in \R$. Then
+        \begin{enumerate}[label=(\arabic*)]
+            \item If $r<1$, then $\displaystyle \sum a_n$ converges.
+            \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
+            \item If $r=1$, then the test is inconclusive/fails.
+        \end{enumerate}
+        This is called the \textbf{root test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        If $r<1$, then there exists some $x$ such that $r<x<1$. Since $a_n^{1/n} \to r$, there exists some $N\in \N$ such that $a_n^{1/n} < x$ for any $n > N$. Thus we have $a_n < x^n$ for any $n > N$. By the comparison test, we have $\displaystyle \sum a_n$ converges.
+
+        If $r>1$, then there exists $\tilde{N}$ such that $a_n^{1/n} >1$ for all $n\ge \sqrt{\tilde{N}}$. Then $a_n>1$ for all $n\ge \tilde{N}$ and thus $\displaystyle \lim_{n\to \infty} a_n$ cannot be $0$ and $\displaystyle \sum a_n$ diverges.
+
+        If $r=1$, it suffices to give two examples.
+
+        \textbf{Example 1:} Suppose $\displaystyle a_n = \left( \frac{1}{n^2} \right) ^{1/n}$, then
+        \[
+        \lim_{n\to \infty} \left( \frac{1}{n^2} \right) ^{1/n} = \lim_{x\to 0} \left( x^x \right)^2 = 1.
+        \]
+        However, we know $\displaystyle \sum a_n = \zeta(2)$ is convergent.
+
+        \textbf{Example 2:} Simply letting $b_n=1$ gives a valid example.
+        
+    \end{proofenv}
+    \begin{theoremenv}
+        Suppose $a_n>0$ for all $n\ge 1$ and additionally $\dfrac{a_{n+1}}{a_n} \to r$ as $n\to \infty$. Then
+        \begin{enumerate}[label=(\arabic*)]
+            \item If $r<1$, then $\displaystyle \sum a_n$ converges.
+            \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
+            \item If $r=1$, then the test is inconclusive/fails.
+        \end{enumerate}
+        This is called the \textbf{ratio test}.
+    \end{theoremenv}
+    \begin{definitionenv}
+        A series of the form $\displaystyle \sum_{n=1}^\infty (-1)^{n-1} a_n$ or $\displaystyle \sum_{n=1}^\infty (-1)^{n} a_n$ where $a_n > 0$ is called an \textbf{alternating} series.
+    \end{definitionenv}
+    \begin{theoremenv}
+        If $\{a_n\}$ is a decreasing positive sequence with $\displaystyle \lim_{n\to \infty} a_n = 0$, then the alternating series $\displaystyle \sum_{n=1}^\infty (-1)^{n-1} a_n$ converges. In the case where it does converge, let $S$ to denote the sum and $S_n$ denote the partial sum, then
+        \[
+        0 \le (-1)^n (S-S_n) = a_{n+1} - a_{n+2} + a_{n+3} + \cdots \le a_{n+1} \quad \text{for all } n\ge 1.
+        \] 
+        This is called the \textbf{Leibniz test} or the \textbf{alternating series test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        Note $$S_{2n+2} - S_{2n} = a_{2n+1} - a_{2n+2} \ge 0$$
+        and $$ S_{2n+1} - S_{2n-1} = a_{2n+1} - a_{2n} \le 0$$.
+        For $\left\{ S_{2n} \right\}$,
+        \[
+        S_2 \le S_{2n} = a_1 - a_2 + a_3 - \cdots - a_{2n-2} + a_{2n-1} - a_{2n} \le a_1.
+        \]
+        For $\left\{ S_{2n-1} \right\}$,
+        \[
+        S_2 \le S_2 + (a_3 - a_4) + \cdots+ (a_{2n-3} - a_{2n-2}) + a_{2n-1} = S_{2n-1} \le S_1.
+        \]
+        By the monotone convergence theorem, we know $S_{2n} \to S_e$ and $S_{2n-1} \to S_o$ where $S_e, S_o\in \R$ as $n\to \infty$. Since
+        \[
+        S_e -  S_o = \lim_{n\to \infty} (S_{2n} - S_{2n-1}) = \lim (-1)^{2n-1} a_{2n} = 0,
+        \]
+        we find $S_e = S_o := S$. And $S_{2n} \to S, S_{2n-1} \to S$ as $n\to \infty$ tells us $S_n\to S$ as $n\to \infty$. Then $\displaystyle \sum_{n=1}^\infty (-1)^{n-1} a_n$ converges.
+
+        Since $\left\{ S_{2n} \right\}$ increases and $\left\{ S_{2n-1} \right\}$ decreases, we have
+        \[
+        S_{2n} \le S_{2n+2} \le S \le S_{2n+1} \le S_{2n-1}.
+        \]
+        Thus,
+        \[
+        0 \le S-S_{2n} \le S_{2n+1} -S_{2n} = a_{2n+1}
+        \]
+        \[
+        0 \le S_{2n-1} - S \le S_{2n-1} - S_{2n} = a_{2n}
+        \]
+        Conbining the two sets of inequalities we get
+        $$ 0 \le (-1)^k (S-S_k) \le a_{k+1}.$$
+    \end{proofenv}
+    \begin{exampleenv}
+        The harmonic series
+        $$ 1+\frac12 +\frac13 + \cdots \to \infty.$$
+        However the alternating harmonic series
+        $$ 1-\frac12+\frac13-\cdots $$ converges. This motivates to think about the relationship between $\sum |a_n|$ and $\big|\sum a_n\big|$.
+    \end{exampleenv}
+    \begin{definitionenv}
+        $\sum a_n$ is called \textbf{absolutely convergent} if $\big|\sum a_n\big|$ converges. $\sum a_n$ is called \textbf{conditionally convergent} if $\sum a_n$ converges but  $\big|\sum a_n\big|$ diverges.
+    \end{definitionenv}
+    \begin{theoremenv}
+        If $\sum |a_n|$ converges, then $\sum a_n$ also converges with
+        \[
+        \Big|\sum_{n=1}^\infty a_n\Big| \le \sum_{n=1}^\infty |a_n|
+        \]
+    \end{theoremenv}
+    \begin{proofenv}
+        Let $b_n = a_n + |a_n| \ge 0$. We will show $\sum b_n$ converges. Note that
+        \[
+        b_n = \begin{cases}
+            0 \quad & \text{if } a_n < 0\\
+            2a_n \quad & \text{if } a_n \ge 0
+        \end{cases}
+        \]
+        and thus $0\le b_n \le 2|a_n|$. Thus using the comparison test, we have $\sum b_n$ converges. Since $\sum a_n = \sum b_n - \sum |a_n|$, we have $\sum a_n$ congerges.
+
+        Since $\displaystyle \Big|\sum_{k=1}^n a_k \Big| \le \sum_{k=1}^n |a_k|$ for all $n$, taking the limit as $n \to \infty$ (provided that they both exist), we get
+        \[
+        \Big|\sum_{n=1}^\infty a_n\Big| \le \sum_{n=1}^\infty |a_n|.
+        \]
+    \end{proofenv}
+    \begin{exampleenv}
+        The alternating harmonic series converges conditionally. The series $\displaystyle \sum_{n=1}^\infty  \frac{(-1)^{n-1}}{n^2}$ converges absolutely.
+    \end{exampleenv}
+    \begin{propositionenv}
+        If $\sum a_n$ and $\sum b_n$ both are absolutely convergent, then $\sum (\alpha a_n + \beta b_n)$ is also absolutely convergent for any $\alpha,\beta \in \R$.
+        $$ \sum_{k=1}^n|\alpha a_n + \beta b_n| \le \alpha \left( \sum_{k=1}^n |a_n| \right) + \beta \left( \sum_{k=1}^n |b_n| \right) \le \alpha \sum_{k=1}^{\infty} |a_n| + \beta \sum_{k=1}^\infty |b_n| =: S.$$
+        Since all partial sum are bounded above by $S$, we have $\sum |\alpha a_n + \beta b_n|$ converges and thus $\sum (\alpha a_n + \beta b_n)$ is absolutely convergent.
+    \end{propositionenv}
+    \begin{lemmaenv}
+        Suppose two sequences $\{a_n\}$ and $\{b_n\}$. Let $\displaystyle A_n = \sum_{k=1}^n a_k$. Then
+        \[
+        \sum_{k=1}^{n} a_k b_k = A_n b_{n+1} + \sum_{k=1}^n A_k (b_k - b_{k+1}).
+        \]
+        This is called \textbf{Abel's partial sum formula}. 
+    \end{lemmaenv}
+    \begin{proofenv}
+        Let $A_0=0$, then $a_k = A_k - A_{k-1}$ and 
+        \[
+        \begin{aligned}
+            \sum_{k=1}^n a_k b_k = \sum_{k=1}^n A_k b_k - \sum_{k=1}^n A_{k-1} b_k &= \sum_{k=1}^n A_k b_k - \left[ \sum_{k=1}^n A_kb_{k+1} - A_nb_{n+1} \right]\\ &= A_n b_{n+1} + \sum_{k=1}^n A_k (b_k - b_{k+1}).
+        \end{aligned}
+        \]
+    \end{proofenv}
+    \begin{remarkenv}
+        If both $\{A_nb_{n+1}\}$ and $\displaystyle \sum_{k=1}^n A_k (b_k - b_{k+1})$ converge, then $\displaystyle \sum_{k=1}^n a_k b_k$ converges.
+    \end{remarkenv}
+    
+    \begin{theoremenv}
+        Suppose $\sum a_n$ is a series whose partial sum $\{A_n\}$ is bounded. Suppose $\{b_n\}$ is a decreasing sequence with $b_n \to 0$ as $n\to \infty$. Then the series $ \sum a_n b_n$ converges.
+
+        This  is called the \textbf{Dirichlet's test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        Let $M>0$ be such that $|A_n| \le M$ for any $n\in \N$. We tackle the convergence pf $\{A_n b_{n+1}\}$ and $\displaystyle \sum_{k=1}^n A_k (b_k - b_{k+1}) $ seperately. 
+        
+        \begin{itemize}
+            \item Note that $\{A_nb_{n+1}\}$ converges becuase $0 \le |A_n b_{n+1} | \le M |b_{n+1}| \to 0$ as $n\to \infty$. 
+            \item For the convergence $\sum A_k(b_k - b_{k+1})$, we have
+            \[
+            0 \le |A_k(b_k - b_{k+1})| \le M|b_k - b_{k+1}| = M(b_k - b_{k+1}).
+            \]
+            $\sum (b_k - b_{k+1})$ converges since it is a telescoping series with $\displaystyle \lim_{n\to \infty} b_n$ exists. Thus $\sum A_k(b_k - b_{k+1})$ converges by the comparison test.
+        \end{itemize}
+        By Abel's partial sum formula, we have $\sum a_n b_n$ converges.
+    \end{proofenv}
+    \begin{theoremenv}
+        If $\sum a_n$ converges and $\{b_n\}$ is monotonic and convergent, then $\sum a_n b_n$ converges.
+
+        This is called the \textbf{Abel's test}.
+    \end{theoremenv}
+    \begin{remarkenv}
+        If $\{b_n\}$ is decreasing and $b_n \to 0$ as $n\to \infty$. Taking $a_n = x^n$, we know the partial sum $\displaystyle A_n = \sum_{k=1}^n x^k$ is bounded for any $x\in [-1,1)$. Particularly, when $x=-1$, Dirichlet's test  says that $\displaystyle \sum_{n=1}^\infty a_nb_n = \sum_{n=1}^\infty (-1)^n b_n$ converges, which is simply the alternating series test or the Leibniz test.
+    \end{remarkenv}
+
+    \section{Improper Integrals}
+    \begin{definitionenv}
+        The symbol $\displaystyle \int_a^\infty f(x) \dd x$ means $\displaystyle \lim_{b\to \infty} \int_a^b f(x) \dd x$ and the symbol $\displaystyle \int_{-\infty}^b f(x) \dd x$ means $\displaystyle \lim_{a\to -\infty} \int_a^b f(x) \dd x$. They are referred to as \textbf{improper integrals of the first kind}. We say the improper integral $\displaystyle \int_a^\infty f(x) \dd x$ converges if the limit exists and diverges otherwise. If the limit does exist and equal to $A$, then we call $A$ the value of the improper integral and write $\displaystyle \int_a^\infty f(x) \dd x=A$.
+
+        If $\displaystyle \int_{-\infty}^c f(x) \dd x$ and $\displaystyle \int_c^\infty f(x) \dd x$ both converge for some $c\in \R$, then we say the improper integral $\displaystyle \int_{-\infty}^\infty f(x) \dd x$ also converges. And we say $\displaystyle \int_{-\infty}^\infty f(x) \dd x$ diverges if at least one of $\displaystyle \int_{-\infty}^c f(x) \dd x$ and $\displaystyle \int_c^\infty f(x) \dd x$ diverges.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Note that
+        \[
+        \int_{-\infty}^\infty f(x) \dd x = \int_{-\infty}^c f(x) \dd x + \int_c^d f(x) \dd x + \int_d^\infty f(x) \dd x \quad \left( \forall c<d\in \R \right).
+        \]
+        Combining the first two terms and last two terms gives us
+        \[
+        \int_{-\infty}^c f(x) \dd x + \int_c^\infty f(x) \dd x = \int_{-\infty}^d f(x) \dd x + \int_d^\infty f(x) \dd x.
+        \]
+        Thus we just need to find one point $c\in \R$ such that $\displaystyle \int_{-\infty}^c f(x) \dd x$ and $\displaystyle \int_c^\infty f(x) \dd x$ both converge to determine the convergence of $\displaystyle \int_{-\infty}^\infty f(x) \dd x$.
+    \end{remarkenv}
+    \begin{exampleenv}
+        We introduces some typical examples of improper integrals:
+        \begin{enumerate}[label=(\arabic*)]
+            \item For a real $s$,
+            \[
+            \int_1^\infty x^{-s} \dd x = \begin{cases}
+            \dfrac{x^{1-s}}{1-s} \Big|_1^\infty = \dfrac{1}{s-1} & \text{if } s>1\\[6pt]
+            \ln x \Big|_1^\infty = +\infty & \text{if } s=1\\[6pt]
+            \dfrac{x^{1-s}}{1-s} \Big|_1^\infty = +\infty & \text{if } s<1
+            \end{cases}.
+            \]
+            \item For a real positive $a$,
+            \[
+            \int_{-\infty}^\infty e^{-a|x|} \dd x = \frac{2}{a}
+            \]
+            \item $\displaystyle \int_{-\infty}^\infty x \dd x$ diverges since $\displaystyle \int_c^\infty x \dd x$ and $\displaystyle \int_{-\infty}^c x \dd x$ diverges for any $c\in \R$.
+            
+            In this case, we cannot cancel the two divergent integrals like
+            \[
+            \lim_{b\to \infty} (\int_{-b}^0 x \dd x + \int_0^b x \dd x) = \lim_{b\to \infty} \int_{-b}^b x \dd x = 0.
+            \]
+            
+            \end{enumerate}
+    \end{exampleenv}
+    \begin{theoremenv}
+        Suppose $f(x)\ge 0$ for all $x\ge a$ and the proper integral $\displaystyle \int_a^b f(x) \dd x$ exists for any $b\ge a$. Then the improper integral $\displaystyle \int_a^\infty f(x) \dd x$ converges if and only if there is an $M>0$ such that $\displaystyle \int_a^b f(x) \dd x \le M$ for any $b\ge a$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        Suppose $f(x)\ge 0$ and $g(x)\ge 0$ for all $x\ge a$ and the proper integrals $\displaystyle \int_a^b f(x) \dd x$ and $\displaystyle \int_a^b g(x) \dd x$ exist for any $b\ge a$. If there exists some $c>0$ such that $f(x) \le c g(x)$ for all $x\ge a$, then the convergence of $\displaystyle \int_a^\infty g(x) \dd x$ implies the convergence of $\displaystyle \int_a^\infty f(x) \dd x$. (or equivalently, the divergence of $\displaystyle \int_a^\infty f(x) \dd x$ implies the divergence of $\displaystyle \int_a^\infty g(x) \dd x$). Particularly, if $\displaystyle \int_a^\infty g(x) \dd x$ converges, then $\displaystyle \int_a^\infty f(x) \dd x \le c \int_a^\infty g(x) \dd x$.
+    \end{theoremenv}
+    \begin{theoremenv}\label{limit_test_int}
+        Suppose that $f(x)>0$ and $g(x)>0$ for all $x\ge a$ and the proper integrals $\displaystyle \int_a^b f(x) \dd x$ and $\displaystyle \int_a^b g(x) \dd x$ exist for any $b\ge a$. If $\displaystyle \lim_{x\to \infty} \frac{f(x)}{g(x)} = c>0$, then $\displaystyle \int_a^\infty f(x) \dd x$ converges if and only if $\displaystyle \int_a^\infty g(x) \dd x$ converges.
+    \end{theoremenv}
+    \begin{remarkenv}
+        Consider the same set-up in Theorem ~\ref{limit_test_int} but with $f(x)\ge 0$ and $\displaystyle \lim_{x\to +\infty} \frac{f(x)}{g(x)} = c = 0$. Intuitively the conclusion should be weaker: the convergence of $\displaystyle \int_a^\infty g(x) \dd x$ implies the convergence of $\displaystyle \int_a^\infty f(x) \dd x$ but the converse may not hold. A trivial example is $f(x)=0$ and $g(x)=x$.
+    \end{remarkenv}
+    \begin{definitionenv}
+        Suppose $f$ is defined on $(a,b]$ where $b>a$ and the proper integral $\displaystyle \int_x^b f(t) \dd t$ exists for any $x\in (a,b]$. Then the symbol $\displaystyle \int_{a^+}^b f(t) \dd t$ means $\displaystyle \lim_{x\to a^+} \int_x^b f(t) \dd t$ and is referred to as an \textbf{improper integral of the second kind}. We say the improper integral $\displaystyle \int_{a^+}^b f(t) \dd t$ converges if the limit exists and diverges otherwise. If the limit does exist and equal to $A$, then we call $A$ the value of the improper integral and write $\displaystyle \int_{a^+}^b f(t) \dd t = A$.
+    \end{definitionenv}
+    \begin{definitionenv}
+        The symbol $\displaystyle \int_{a}^{b^-} f(t) \dd t$ is defined similarly. If both $\displaystyle \int_{a^+}^c f(t) \dd t$ and $\displaystyle \int_c^{b^-} f(t) \dd t$ converge, then we say $\displaystyle \int_{a^+}^{b^-} f(t) \dd t$ also converges and write
+        \[
+        \int_{a^+}^{b^-} f(t) \dd t = \int_{a^+}^c f(t) \dd t + \int_c^{b^-} f(t) \dd t.
+        \]
+    \end{definitionenv}
+    
+    \section{Sequences and series of functions}
+    \begin{definitionenv}
+        Suppose for each positive integer $n$, $f_n$ is a function. We then call $\{f_n\}$ a \textbf{sequence of functions}. If there exists a function $f$ and a set $S\subseteq \R$ such that
+        \[
+        f(x) = \lim_{n\to \infty} f_n(x) \quad \text{for all } x\in S,
+        \]
+        then we say $f$ \textbf{the limit function of $\{f_n\}$ on $S$} and we say that $\{f_n\}$ \textbf{converges pointwise to $f$ on $S$}. We often simply write
+        \[
+        f_n \to f \text{ pointwise on } S.
+        \]
+    \end{definitionenv}
+    \begin{remarkenv}
+        Here we introduce the ``$\varepsilon -N$'' definition for the pointwise convergence of sequence of functions:
+        \[
+        \forall x\in S, \forall \varepsilon >0, \exists N\in \N \text{ such that } |f_n(x) - f(x)| < \varepsilon \text{ for all } n > N.
+        \]
+        Note that the choice of $N$ depends on $x$ and $\varepsilon$ because when $x$ takes different values, we actually have different sequences $\{f_n(x)\}$.(it's a sequence of real numbers now!!)
+    \end{remarkenv}
+    \begin{exampleenv}
+        Let $f_n(x) = x^n$ for $x\in [0,1]$ and all $n\in \N$. Then $\{f_n\}$ converges pointwise to the function
+        \[
+        f(x) = \begin{cases}
+        0 & \text{if } x\in [0,1)\\
+        1 & \text{if } x=1
+        \end{cases}.
+        \]
+        Note $f_n$ is continuous on $[0,1]$ but the limit function $f$ is not continuous on $[0,1]$. Thus $f$ doesn't preserve the continuity of $f_n$, which implies that the pointwise definition is not strong enough. This is because there exists a particular $x=1$ such that $f_n(1) = 1$ for all $n\in \N$ and thus the convergence is not uniform. However, our definition treats all $x\in [0,1]$ equally. This motivates us to introduce the concept of uniform convergence.
+    \end{exampleenv}
+    \begin{definitionenv}
+        A sequence of functions $\{f_n\}$ is said to \textbf{converge uniformly} to a function $f$ on a set $S$ if
+        \[
+        \forall \varepsilon >0, \exists N\in \N \text{ such that } \forall x\in S, |f_n(x) - f(x)| < \varepsilon \text{ for all } n > N.
+        \]
+        We often simply write
+        \[
+        f_n \to f \text{ uniformly on } S.
+        \]
+    \end{definitionenv}
+    \begin{remarkenv}
+        Note that the choice of $N$ only depends on $\varepsilon$ but not on $x$. Thus we can choose a single $N$ for all $x\in S$ to make sure $|f_n(x) - f(x)| < \varepsilon$ for all $n > N$. In other words, the convergence is uniform in the sense that it is uniform across all $x\in S$.
+    \end{remarkenv}
+    \begin{theoremenv}
+        If $f_n \to f$ uniformly on $S\subseteq \R$ and for each $n\ge 1$, $f_n$ is continuous at $x=a \in S$, then then limit function $f$ is also continuous at $x=a$.
+    \end{theoremenv}
+    \begin{proofenv}
+        We need to show that $\displaystyle \lim_{x\to a} f(x) = f(a)$. 
+
+        Given $\varepsilon >0$, since $f_n \to f$ uniformly on $S$, there exists an $N\in \N$ such that $|f_n(x) - f(x)| < \varepsilon/3$ for all $x\in S$ and all $n \ge N$.
+
+        Since $f_N$ is continuous at $x=a$, there exists some $\delta >0$ such that $|f_N(x) - f_N(a)| < \varepsilon/3$ for all $x\in S$ with $|x-a| < \delta$. Note we've chosen fixed $N$ first and then $\delta$ is also fixed. 
+
+        For such $x$ and $n\ge N$, we have
+        \[
+        |f(x) - f(a)| \le |f(x) - f_N(x)| + |f_N(x) - f_N(a)| + |f_N(a) - f(a)| < \varepsilon/3 \times 3 = \varepsilon.
+        \]
+    \end{proofenv}
+    \begin{propositionenv}
+        Particularly, if $f_n=\displaystyle \sum_{k=1}^n u_k$ is the sequence of partial sums of another function sequence $\{u_n\}$, then the above theorem can be written as:
+
+        If a series of function $\displaystyle \sum u_n$ converges uniformly to a sum function $f$ on $S\subseteq \R$ and for each $n\ge 1$, $u_n$ is continuous at $x=a \in S$, then the sum function $f$ is also continuous at $x=a$.
+
+        We often just write the conclusion as
+        \[
+        \lim_{x\to a} \sum_{n=1}^\infty u_n(x) = \lim_{x\to a} f(x) = f(a)= \sum_{n=1}^\infty u_n(a) = \sum_{n=1}^\infty \lim_{x\to a} u_n(x).
+        \]
+    \end{propositionenv}
+    \begin{theoremenv}
+        Suppose $f_n \to f$ uniformly on $[a,b]$ and for each $n\ge 1$, $f_n$ is continuous on $[a,b]$. Define another function $\{g\}$ as $g_n(x) = \displaystyle \int _a^x f_n(t) \dd t$ for $x\in [a,b]$ and function $g$ as $g(x) = \displaystyle \int_a^x f(t) \dd t$ for $x\in [a,b]$. Then $g_n \to g$ uniformly on $[a,b]$ we have
+        \[
+        \lim_{n\to \infty} \int_a^x f_n(t) \dd t = \int_a^x \lim_{n\to \infty} f_n(t) \dd t.
+        \]
+    \end{theoremenv}
+    \begin{proofenv}
+        Given $\varepsilon >0$, there is an $N$ such that $|f_n(x) - f(x)| < \varepsilon/(b-a)$ for all $x\in [a,b]$ whenever $n\ge N$. Then for any $x\in [a,b]$ we have
+        \[\begin{aligned}
+            |g_n(x) - g(x)| &= \left| \int_a^x f_n(t) \dd t - \int_a^x f(t) \dd t \right|\\
+            &\le \int_a^x |f_n(t) - f(t)| \dd t\\
+            &< \int_a^x \frac{\varepsilon}{b-a} \dd t = \frac{\varepsilon}{b-a} (x-a) \le \varepsilon.
+        \end{aligned}\]
+    \end{proofenv}
+    \begin{propositionenv}
+        Particularly, if $f_n=\displaystyle \sum_{k=1}^n u_k$ where $\{u_n\}$ is another function sequence, then the above theorem can be written as:
+
+        Suppose a series of functions $\sum u_n$ converges uniformly to a sum function $f$ on $[a,b]$ and for each $k\ge 1$, $u_k$ is continuous on $[a,b]$. Then we have
+        \[
+        g_n(x) = \int_a^x \sum_{k=1}^n u_k(t) \dd t,\qquad g(x) = \int_a^x \sum_{k=1}^\infty u_k(t) \dd t
+        \]
+        Then $g_n \to g$ uniformly on $[a,b]$ and
+        \[
+        \lim_{n\to \infty} \int_a^x f_n(t) \dd t = \int_a^x \lim_{n\to \infty} f_n(t) \dd t.
+        \]
+        Note we have the left hand side as
+        \[
+        \lim_{n\to \infty} \int_a^x f_n(t) \dd t = \lim_{n\to \infty} \int_a^x \sum_{k=1}^n u_k(t) \dd t = \lim_{n\to \infty} \sum_{k=1}^n \int_a^x u_k(t) \dd t = \sum_{k=1}^\infty \int_a^x u_k(t) \dd t,
+        \]
+        while the right hand side is
+        \[
+        \int_a^x \lim_{n\to \infty} f_n(t) \dd t = \int_a^x \sum_{k=1}^\infty u_k(t) \dd t.
+        \]
+        This also suggests that we can integrate term-by-term for a uniformly convergent series of functions, i.e.
+        \[
+        \sum_{k=1}^\infty \int_a^x u_k(t) \dd t = \int _a^x\sum_{k=1}^\infty u_k(t) \dd t.
+        \]
+
+    \end{propositionenv}
+    \begin{remarkenv}
+        We do not have such nice property (i.e. differentiating term-by-term) for general uniformly convergent series. For example, let $f_n(x) = \displaystyle \frac{\sin nx}{n^2}$. Note that $\sum f_n$ is convergent since $\displaystyle 0\le |f_n(x)| \le \frac{1}{n^2}$ and $\displaystyle \sum \frac{1}{n^2}$ converges. Then by the Weierstrass M-test (which will be introduced later), we have $\sum f_n$ converges uniformly.
+
+        Term-by-term differentiation gives us $\displaystyle \sum f_n'(x) = \sum \frac{\cos nx}{n}$, which diverges at $x=0$ since $\displaystyle \sum \frac{1}{n}$ diverges.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Given a series of functions $\sum u_n$ that converges pointwise to a function $f$ on $S\subseteq \R$. If there is a convergent series of positive numbers $\sum M_n$ such that $|u_n(x)| \le M_n$ for all $x\in S$ and all $n\in \N$, then $\sum u_n$ converges uniformly to $f$ on $S$.
+        
+        This is called the \textbf{Weierstrass M-test}.
+    \end{theoremenv}
+    \begin{proofenv}
+        Given $\varepsilon >0$, we need to show that there is an $N\in \N$ such that $\Big|\displaystyle \sum_{k=1}^n u_k(x) - f(x)\Big| < \varepsilon$ for all $x\in S$ whenever $n \ge N$.
+
+        Suppose $\displaystyle \sum_{k=1}^\infty M_k=A$, then for the given $\varepsilon >0$, there is an $N\in \N$ such that $\displaystyle \Big| \sum_{k=1}^n M_k - A \Big| < \varepsilon$ for all $n \ge N$.
+
+        $$ \Big|f(x) - \sum_{k=1}^n u_k(x)\Big| = \Big|\sum_{k=n+1}^\infty u_k(x)\Big| \le \sum_{k=n+1}^\infty |u_k(x)| \le \Big|\sum_{k=n+1}^\infty M_k \Big| = \Big| A - \sum_{k=1}^n M_k \Big| < \varepsilon. $$
+        holds for any $x\in S$ and all $n \ge N$. Thus $\sum u_n$ converges uniformly to $f$ on $S$.
+    \end{proofenv}
+
+    \section{Power Series}
+    Recall in Definition~\ref{def:power-series}, we have defined the power series $\displaystyle \sum_{n=0}^\infty a_n x^n$. Now we will discuss the convergence of power series.
+    \begin{definitionenv}
+        In general, a series of the form $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ is also called a \textbf{power series} in $(x-a)$ or a \textbf{power series centered at} $x=a$. We call the $a$ the center and $a_n$ the coefficient of the power series.
+    \end{definitionenv}
+    \begin{exampleenv}
+        \begin{enumerate}
+            \item For the power series $\displaystyle \sum_{n=0}^\infty \frac{x^n}{n!}$, ratio test gives us
+            $$ \big| \frac{x^{n+1}}{(n+1)!} \cdot \frac{n!}{x^n} \big| = \frac{|x|}{n+1} \to 0 < 1\quad \text{for } x\neq 0$$
+            as $n\to \infty$. The case where $x=0$ is trivial. Thus $\displaystyle \sum_{n=0}^\infty \frac{x^n}{n!}$ converges for all $x\in \R$.
+            \item For the power series $\displaystyle \sum_{n=0}^\infty n^23^n x^n$, root test gives us
+            $$ \sqrt[n]{|n^23^n x^n|} = 3|x| \quad \text{for } x\in \R \text{ as } n\to \infty$$
+            Thus $\displaystyle \sum_{n=0}^\infty n^23^n x^n$ converges for $|x| < \frac{1}{3}$ and diverges for $|x| > \dfrac{1}{3}$. The case where $|x| = \dfrac{1}{3}$ is inconclusive and we need to check it manually. When $x=\dfrac{1}{3}$, we have $\displaystyle \sum_{n=0}^\infty n^2$ which diverges. When $x=-\dfrac{1}{3}$, we have $\displaystyle \sum_{n=0}^\infty (-1)^n n^2$ also diverges.
+        \end{enumerate}
+    \end{exampleenv}
+    \begin{theoremenv}\label{convergence_power_series}
+        If a power series $\sum a_n x^n$ converges for a particular $x_1 \neq 0$, then
+        \begin{enumerate}[label=(\alph*)]
+            \item the power series converges absolutely for every $x$ with $|x| < |x_1|$;
+            \item the power series converges uniformly on every interval $[-R,R]$ with $0<R<|x_1|$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{proofenv}
+        We first prove (b). Note the necessary condition for the convergence of $\sum a_n x^n$ is that $a_n x^n \to 0$ as $n\to \infty$. Particularly, there is an $N\in \N$ such that $|a_n x_1^n| < 1$ whenever $n\ge N$. Then for $x\in [-R,R]$ with $0<R<|x_1|$, we have
+        $$ 0\le |a_n x^n| = |a_n||x|^n = |a_n x_1^n| \cdot \left|\frac{x}{x_1}\right|^n < \left|\frac{x}{x_1}\right|^n\le \Big| \frac{R}{x_1}\Big|^n < 1 \quad \text{for } n\ge N. $$
+        Then by the comparison test, we have $\sum a_n x^n$ converges absolutely on $[-R,R]$. Also by the Weierstrass M-test(in this case, $M_n = \displaystyle\Big| \frac{R}{x_1}\Big|^n$), we have $\sum a_n x^n$ converges uniformly on $[-R,R]$.
+
+        Now we prove (a). For any $|x|<|x_1|$, we can find some $R$ such that $|x| < R < |x_1|$. Then by (b), we have $\sum a_n x^n$ converges absolutely for every $x$ with $|x| < R$. In particular, $\sum a_n x^n$ converges absolutely for every $x$ with $|x| < |x_1|$.
+    \end{proofenv}
+    \begin{theoremenv}\label{radius_of_convergence}
+        If a power series $\sum a_n x^n$ converges for a particular $x_1 \neq 0$ and diverges for a particular $x_2 \neq 0$, then there is a unique $r$ such that
+        \begin{enumerate}[label=(\alph*),start=3]
+            \item the power series converges absolutely for every $x$ with $|x| < r$;
+            \item the power series diverges for every $x$ with $|x| > r$.
+        \end{enumerate}
+        We call $r$ the \textbf{radius of convergence} of the power series since this $r$ is unique.
+    \end{theoremenv}
+    \begin{proofenv}
+        We prove (d) first. Let $A=\{ |x| : \displaystyle \sum a_n x^n \text{ converges at } x\}$. Note $|x_1|\in A$ and $|x_2|\notin A$. By (a) we know $|x_2|$ is an upper bound of $A$. Let $r = \sup A$, then $r$ is the unique number. Note $0<|x_1| \le r \le |x_2|$. Then for any $|x|>r$, $|x|\notin A$ and thus $\sum a_n x^n$ diverges at such $x$.
+
+        Now we prove (c). For $0<|x|<r$, $|x|$ is not an upper bound of $A$ and there exists $|z| \in A$ such that $0<|x| < |z| < r$. By (a), we have $\sum a_n x^n$ converges absolutely for every $x$ with $|x| < |z|$. In particular, $\sum a_n x^n$ converges absolutely for every $x$ with $|x| < r$.
+    \end{proofenv}
+    \begin{remarkenv}
+        \leavevmode
+        \begin{itemize}
+            \item If the power series $\sum a_n x^n$ converges for all $x\in \R$, then we say the radius of convergence is $r = +\infty$.
+            \item If the power series $\sum a_n x^n$ diverges for all $x\neq 0$, then we say the radius of convergence is $r=0$.
+        \end{itemize}
+    \end{remarkenv}
+    \begin{remarkenv}
+        Theorem~\ref{convergence_power_series} and Theorem~\ref{radius_of_convergence} also hold for power series of the form $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ by simply replacing $x$ with $x-a$ in the proofs so the power series centers at $x=a$ instead of $x=0$. Let $r$ be the \textbf{radius of convergence}, we often call $(a-r,a+r)$ the \textbf{interval of convergence} of the power series $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$. Note the convergence at the endpoints $x=a\pm r$ is inconclusive and we need to check it manually.
+    \end{remarkenv}
+    \begin{definitionenv}
+        On the interval of convergence of the power series $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$, we write $f(x) = \displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ and call $f$ the \textbf{sum function}. We also say that the power series \textbf{represent the function $f$} in its interval of convergence and we call it the \textbf{power series expansion} of $f$ at $x=a$. 
+    \end{definitionenv}
+    \begin{remarkenv}
+        By Theorem~\ref{convergence_power_series} and Theorem~\ref{radius_of_convergence}, given a power series $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$, let $r$ be the radius of convergence, we know the power series
+        \begin{itemize}
+            \item converges absolutely on $(a-r,a+r)$;
+            \item converges uniformly on $[a-R,a+R]$ for any $0<R<r$;
+        \end{itemize}
+        Thus the sum function $f$ is continuous on $(a-r,a+r)$. We also know we can integrate the power series term-by-term on $[a-r,a+r]$ to obtain the integral of the sum function $f$. For any $x\in(a-r,a+r)$ we have
+        \[
+        \int_a^x f(t) \dd t = \int_a^x \sum_{n=0}^\infty a_n (t-a)^n \dd t = \sum_{n=0}^\infty a_n \int_a^x (t-a)^n \dd t = \sum_{n=0}^\infty a_n \frac{(x-a)^{n+1}}{n+1}.
+        \]
+    \end{remarkenv}
+    \begin{theoremenv}\label{diff_power_series}
+        Suppose $f(x) = \displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ on $(a-r,a+r)$ where $r$ is the radius of convergence. Then 
+        \begin{enumerate}[label=(\alph*)]
+            \item $\displaystyle \sum_{n=1}^\infty n a_n (x-a)^{n-1}$ also has the same interval convergence $(a-r,a+r)$
+            \item The derivative $f'(x) $ exists for each $x\in (a-r,a+r)$ and $f'(x) = \displaystyle \sum_{n=1}^\infty n a_n (x-a)^{n-1}$ for each $x\in (a-r,a+r)$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $a=0$. We start with (a). For any $x\in (0,r)$, we know for any $h>0$ with $0<x<x+h<r$,
+        \[
+        f(x+h) = \sum_{n=0}^\infty a_n (x+h)^n, \quad \frac{f(x+h)-f(x)}{h} = \sum_{n=0}^\infty a_n \frac{(x+h)^n - x^n}{h}.
+        \]
+        Let $g_n(x) = x^n$, by the \textbf{MVT} to $g_n$ on $[x,x+h]$ (note $g_n$ is continuous on $[x,x+h]$ and differentiable on $(x,x+h)$), there is some $c_n \in (x,x+h)$ such that
+        \[
+        g_n(x+h) - g_n(x) = h g'(c_n) \quad \text{where } x<c_n<x+h.
+        \]
+        Thus we have
+        \[
+        \frac{f(x+h)-f(x)}{h} = \sum_{n=0}^\infty a_n \frac{(x+h)^n - x^n}{h} = \sum_{n=0}^\infty a_n g'(c_n) = \sum_{n=1}^\infty n a_n c_n^{n-1}\quad \text{converges absolutely}.
+        \]
+        Note that $\displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$ satisfies
+        \[
+        0 \le | n a_n x^{n-1}| < |n a_n c_n^{n-1}| \quad \text{for all } n\ge 1.
+        \]
+        Thus $\displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$ converges absolutely for any $x\in (-r,r)$. Similarly, we know it actually converges absolutely for any $x\in (-r,0)$ and thus for any $x\in (-r,r)$.
+
+        Now we prove $\displaystyle \sum_{n=1}^\infty n a_n (x-a)^{n-1}$ diverges for any $x$ with $|x| > r$. Suppose $\displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$ converges absolutely on $(-r_2,r_2)$ where $r_2 > r$ and $0\le |a_n x^n| < |n a_n x^{n-1}|$ when $n>r_2$. For any $x\in (r,r_2)$, we have $\displaystyle \sum_{n=0}^\infty a_n x^n$ diverges and thus $\displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$ also diverges. Thus the differentiated series $\displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$ share the same interval of convergence as the orginal series $\displaystyle \sum_{n=0}^\infty a_n x^n$.
+
+        Now we prove (b). Let $D(x) = \displaystyle \sum_{n=1}^\infty n a_n x^{n-1}$, then for any $x\in (-r,r)$,
+        \[
+        \int_0^x D(t) \dd t = \sum_{n=1}^{\infty} a_n \int_0^x n t^{n-1} \dd t = \sum_{n=1}^\infty a_n x^n = f(x)-a_0.
+        \]
+        Note $D(x)$ is continuous on $(-r,r)$. By the \textbf{FTC1}, we have $D(x) = f'(x)$ for any $x\in (-r,r)$.
+    \end{proofenv}
+    \begin{exampleenv}
+        Recall
+        \begin{equation}
+            1+x+x^2 + \cdots = \frac{1}{1-x} \quad r=1. \tag{1}
+        \end{equation}
+        Differentiating (1) term-by-term gives us
+        \begin{equation}
+            1 + 2x + 3x^2 + \cdots = \frac{1}{(1-x)^2} \quad r=1. \tag{2}
+        \end{equation}
+        Replace $x$ by $-x$ in (1) gives us
+        \begin{equation}
+            1-x+x^2 - \cdots = \frac{1}{1+x} \quad r=1. \tag{3}
+        \end{equation}
+        Integrating (3) term-by-term gives us
+        \begin{equation}
+            x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots = \ln(1+x) \quad r=1. \tag{4}
+        \end{equation}
+        Replace $x$ by $x^2$ in (3) gives us
+        \begin{equation}
+            1-x^2+x^4 - \cdots = \frac{1}{1+x^2} \quad r=1. \tag{5}
+        \end{equation}
+        Integrating (5) term-by-term gives us
+        \begin{equation}
+            x - \frac{x^3}{3} + \frac{x^5}{5} - \cdots = \arctan x \quad r=1. \tag{6}
+        \end{equation}
+        For (4), when $x=1$, we have
+        \[
+            1 - \frac{1}{2} + \frac{1}{3} - \cdots = \ln 2.
+        \]
+        For (6), when $x=1$, we have
+        \[
+            1 - \frac{1}{3} + \frac{1}{5} - \cdots = \frac{\pi}{4}.
+        \]
+    \end{exampleenv}
+    \begin{remarkenv}
+        Suppose $f(x) = \displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ on its interval of convergence $(a-r,a+r)$. For any $x\in (a-r,a+r)$, $f'(x), f''(x), \cdots, f^{(k)}(x)$ are all well-defined (and can be obtained by keeping differentiating the power series) for any positive integer $k$. We say that $f$ is infinitely differentiable on $(a-r,a+r)$. Note
+        $$ f^{(k)}(x) = \sum_{n=k}^\infty n(n-1)\cdots (n-k+1) a_n (x-a)^{n-k} \quad \text{for any } k\ge 1. $$
+        In particular,
+        $$ f^{(k)}(a) = k! a_k \Rightarrow a_k = \frac{f^{(k)}(a)}{k!} \quad \text{for any } k\ge 0. $$
+        Then $f(x) = \displaystyle \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!} (x-a)^n$ for any $x\in (a-r,a+r)$. In other words, the power series expansion of $f$ at $x=a$ is actually the Taylor series expansion of $f$ at $x=a$ and thus unique.
+    \end{remarkenv}
+    \begin{theoremenv}
+        If two power series $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ and $\displaystyle \sum_{n=0}^\infty b_n (x-a)^n$ have the same sum function $f$ in some neighbourhood of $x=a$, then two series are equal (term by term); in fact, we have $a_n = b_n= \displaystyle \frac{f^{(n)}(a)}{n!}$ for all $n\ge 0$.
+    \end{theoremenv}
+    \begin{propositionenv}
+        If we know a function $f$ can be represented by a power series $\displaystyle \sum_{n=0}^\infty a_n (x-a)^n$ in $(a-r,a+r)$, then its sequence of Taylor polynomial $T_n f(x;a)$ converges absolutely on $(a-r,a+r)$ and converges uniformly on $[a-R,a+R]$ for any $0<R<r$.
+    \end{propositionenv}
+    \begin{remarkenv}
+        Suppose $f$ is infinitely differentiable in some open neighbourhood of $x=a$ and consider the power series (Taylor series) $\displaystyle \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!} (x-a)^n$. Note
+        \begin{itemize}
+            \item the taylor series does not necessarily converge:
+            $\displaystyle
+            f(x) = \frac1{1-x}  
+            $ is infinitely differentiable and it's Taylor series at $x=0$ is $\displaystyle \sum_{n=0}^\infty x^n$, which diverges for $|x|\ge 1$.
+
+            \item if the taylor series converges, it does not necessarily converge to $f$:
+            $$
+            f(x) = \begin{cases}
+            \exp{-\dfrac{1}{x^2}} & \text{if } x\neq 0\\[6pt]
+            0 & \text{if } x=0
+            \end{cases}
+            $$Note $f$ is infinitely differentiable at $x=0$ and $T_n f(x)\equiv 0$ for all $n\in \N$. Thus the Taylor series of $f$ at $x=0$ converges to the zero function, which is not equal to $f$ itself except for $x=0$.
+        \end{itemize}
+        Combining with the Taylor formula with error terms, we know
+        $$ \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!} (x-a)^n \to f(x) \Leftrightarrow E_n(x) \to 0 \text{ as } n\to \infty. $$
+    \end{remarkenv}
+    
+    \begin{theoremenv}
+        Suppose $f$ is infinitely differentiable in an open interval $I = (a-r,a+r)$ and there is a constant $A>0$ such that $|f^{(n)}(x)| \le A^n$ for $n\ge 1$ and for any $x\in I$. Then the Taylor series generated by $f$ at $x=a$ converges to $f$ for any $x\in I$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Recall that if $f$ has continous derivative of order $n+1$ in some interval containing $a$, then the Taylor formula is the following
+        $$
+        f(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} (x-a)^k + E_n(x) \quad \text{where } E_n(x) = \frac1{n!} \int_a^x (x-t)^n f^{(n+1)}(t) \dd t.
+        $$
+        We do a change of variable $t=x+(a-x)u$. Then $\displaystyle \begin{cases}
+            t=a \Leftrightarrow u=1 \\
+            t=x \Leftrightarrow u=0 \\
+            \dd t = (a-x) \dd u
+        \end{cases}
+        $
+        Thus the error term can be written as
+        \[
+        E_n(x) = \frac1{n!} (x-a)^{n+1} \int_0^1 u^n f^{(n+1)}(x+(a-x)u) \dd u.
+        \]
+        Note 
+        $$
+        \begin{aligned}
+            0 \le |E_n(x)| &\le \frac{1}{n!}|x-a|^{n+1} \Big|\int_0^1 u^n f^{(n+1)}(x+(a-x)u) \dd u \Big|\\
+            &\le \frac{1}{n!} |x-a|^{n+1}\int_0^1 u^n |f^{(n+1)}(x+(a-x)u)| \dd u\\
+            &\le \frac{1}{n!}|x-a|^{n+1} A^{n+1} \int_0^1 u^n \dd u = \frac{(A|x-a|)^{n+1}}{(n+1)!} \to 0 \text{ as } n\to \infty.
+        \end{aligned}
+        $$
+        By the squeeze theorem, we know $E_n(x) \to 0$ as $n\to \infty$ and thus the Taylor series generated by $f$ at $x=a$ converges to $f$ for any $x\in I$.
+    \end{proofenv}
+    \begin{exampleenv}
+        \leavevmode
+        \begin{enumerate}
+            \item For $f(x) = e^x$,  $|f^{(n)}(x)| = |e^x|\le A^n$ when $x\in (-r,r)$ and let $A=e^r$. Since $r$ can be any positive real number, actually
+            $$
+            1+x+\frac{x^2}{2!}+\cdots + \frac{x^n}{n!} + \cdots = e^x \quad \text{ for } x \in \R.
+            $$
+            \item For $f(x) = \sin x$, $|f^{(n)}(x)| \le 1$ for any $n\ge 1$ and any $x\in \R$. Thus
+            $$
+            \sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots + (-1)^n \frac{x^{2n+1}}{(2n+1)!} + \cdots \quad \text{ for } x\in \R.
+            $$
+            \item For $f(x) = \cos x$, $|f^{(n)}(x)| \le 1$ for any $n\ge 1$ and any $x\in \R$. Thus
+            $$
+            \cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots + (-1)^n \frac{x^{2n}}{(2n)!} + \cdots \quad \text{ for } x\in \R.
+            $$
+        \end{enumerate}
+    \end{exampleenv}
+    \begin{exampleenv}
+        Power series may be used to solve differential equations. For example, consider the following second order ordinary differential equation $y=y(x)$:
+        $$ (1-x) y'' = -2y.$$
+        We can try to find a power series solution of the form $\displaystyle y = \sum_{n=0}^\infty a_n x^n$. Then we have
+        \[
+        (1-x) \sum_{n=2}^\infty n(n-1) a_n x^{n-2} = \sum_{n=0}^{\infty}\left[ (n+1)(n+2) a_{n+2} - n(n-1) a_n \right] x^n = \sum_{n=0}^\infty -2 a_n x^n.
+        \]
+        Thus we have the following recursive relation for the coefficients $a_n$:
+        $$ a_{n+2} = \frac{n-2}{n+2} a_n \quad \text{for } n\ge 0. $$
+        Comparing the coefficients of $x^n$ on both sides, we have 
+        $$ \begin{cases}
+            a_2 = -a_0 \\
+            a_{2n} =  0 \cdot a_2 = 0 \quad &\text{for } n\ge 2 \\
+            a_{2n+1} = \displaystyle \frac{-1}{(2n+1)(2n-1)} a_1 \quad &\text{for } n\ge 1
+        \end{cases}
+        $$
+        Thus we have
+        $$ y = a_0 (1-x^2) + a_1 \sum_{n=0}^\infty \frac{-1}{(2n+1)(2n-1)} x^{2n+1} \quad \text{for } x\in (-1,1). $$
+        Thus the series gives a family of solutions to the differential equation. However, this is not necessarily all the solutions to the differential equation since we only consider power series solutions. In other words, can we have some solutions not infinitely differentiable but still satisfying the differential equation? We'll introduce several basic theorems about differential equations here.
+    \end{exampleenv}
+
+    \newpage

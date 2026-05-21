@@ -1,0 +1,373 @@
+	\chapter{Differential Calculus}
+	\section{Basic Concepts}
+	\begin{definitionenv}
+		Let $f$ be a function. If
+		\[
+		\lim _{h\to 0} \frac{f(x+h)-f(x)}{h}=L \in \mathbb{R},
+		\]
+		then we call it the \textbf{derivative} of $f$ and denote it by	$f'(x)$. Furthermore, the $n$-th derivative of $f$ is defined by
+		\[
+		f^{(n)}(x)= \left[f^{(n-1)}(x)\right]' \quad \text{for}\quad n=1,2,3,\cdots
+		\]
+		and $f^{(0)}(x)=f(x)$.
+	\end{definitionenv}
+
+	\begin{exampleenv}
+		We're going to prove some basic derivatives using the definition.
+		\begin{enumerate}
+			\item Suppose $n$ is a positive integer and $x\ge 0$. Consider $f(x)=x^n$, then
+			\[
+			\begin{aligned}
+				f'(x) &= \lim_{h\to 0} \frac{(x+h)^n - x^n}{h}\\ &= \lim_{h\to 0} \sum_{k=0}^{n-1} (x+h)^k x^{n-1-k}\\ &= \sum_{k=0}^{n-1} x^k x^{n-1-k}\\ &= n x^{n-1}.
+			\end{aligned}
+			\]
+			\item Consider $f(x)=\sin x$, then
+			\[
+			\begin{aligned}
+				f'(x) &= \lim_{h\to 0} \frac{\sin(x+h) - \sin x}{h}\\[6pt] 
+				&= \lim_{h\to 0} \dfrac{2\sin\left(\dfrac{h}{2}\right)\cos\left(x+\dfrac{h}{2}\right)}{h}\\[6pt] 
+				&= \left[ \lim_{h \to 0} \dfrac{\sin\left(\dfrac{h}{2}\right)}{\dfrac{h}{2}}\right] \left[\lim_{h \to 0} \cos\left(x+\dfrac{h}{2}\right)\right]  \\ 
+				&= \cos x.
+			\end{aligned}
+			\]
+			\item Consider $f(x)=\cos x$, then
+			\[
+			\begin{aligned}
+				f'(x) &= \lim_{h\to 0} \frac{\cos(x+h) - \cos x}{h}\\[6pt] 
+				&= \lim_{h\to 0} \dfrac{-2\sin\left(\dfrac{h}{2}\right)\sin\left(x+\dfrac{h}{2}\right)}{h}\\[6pt] 
+				&= -\left[ \lim_{h \to 0} \dfrac{\sin\left(\dfrac{h}{2}\right)}{\dfrac{h}{2}}\right] \left[\lim_{h \to 0} \sin\left(x+\dfrac{h}{2}\right)\right]  \\ 
+				&= -\sin x.
+			\end{aligned}
+			\]
+			\item Suppose $n$ is a positive integer and $x>0$. Consider $f(x)=x^{\frac{1}{n}}$ and for convenience let 
+			\[
+			u=\left( x+h \right)^{\frac{1}{n}} \quad\text{and}\quad v=x^{\frac{1}{n}}.
+			\]
+			Hence we have
+			\[
+			\begin{aligned}
+				f'(x) &= \lim_{h\to 0} \frac{(x+h)^{\frac{1}{n}} - x^{\frac{1}{n}}}{h}\\[6pt] 
+				&= \lim_{h\to 0} \dfrac{u - v}{u^n - v^n} \\[6pt] 
+				&= \lim_{u\to v} \dfrac{1}{u^{n-1} + u^{n-2}v + \cdots + uv^{n-2} + v^{n-1}} \\[6pt]
+				&= \dfrac{1}{n x^{\frac{n-1}{n}}}\\[6pt]
+				&= \dfrac{1}{n} x^{\frac{1}{n}-1}.
+			\end{aligned}
+			\]
+			For the case $x=0$, we can see $f(x)$ is defined at $x=0$ but $f'(x)$ is not defined.
+		\end{enumerate}
+	\end{exampleenv}
+	\begin{theoremenv}
+		If function $f$ has a derivative at $x$, then $f$ is continuous at $x$.
+	\end{theoremenv}
+	\begin{proofenv}
+		Let
+		\[
+		f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}.
+		\]
+		So
+		\[
+		\lim_{h\to 0} f(x+h) = \lim_{h\to 0} \left[ \frac{f(x+h)-f(x)}{h} \cdot h + f(x) \right] = f'(x)\cdot 0 + f(x) = f(x).
+		\]
+	\end{proofenv}
+	\begin{theoremenv}
+		Suppose $f$ and $g$ are two functions defined on a common interval. If both $f$ adn $g$ have derivatives at $x=a$, then so do the following functions:
+		\[
+		f+g,f-g,fg, \frac{f}{g}\ \text{(provided that $g(a)\neq 0$)}.
+		\]
+		Additionally, their derivatives satisfy the following:
+		\begin{enumerate}
+			\item[(1)] $(f+g)'=f'+g'$,
+			\item[(2)] $(f-g)'=f'-g'$,
+			\item[(3)] $(fg)'=f'g+fg'$,
+			\item[(4)] $\left(\dfrac{f}{g}\right)'=\dfrac{f'g-fg'}{g^2}$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{proofenv}
+		We only prove (3) and (4) here.
+		\begin{enumerate}
+			\item[(3)] We have
+			\[
+			\begin{aligned}
+				(fg)'(a) &= \lim_{h\to 0} \frac{f(a+h)g(a+h) - f(a)g(a)}{h}\\[6pt]
+				&= \lim_{h\to 0} \left[ g(a+h)\cdot \frac{f(a+h)-f(a)}{h} + f(a)\cdot \frac{g(a+h)-g(a)}{h} \right]\\[6pt]
+				&= g(a)\cdot f'(a) + f(a)\cdot g'(a).
+			\end{aligned}
+			\]
+			\item[(4)] We have
+			\[
+			\begin{aligned}
+				\left(\frac{f}{g}\right)'(a) &= \lim_{h\to 0} \frac{\dfrac{f(a+h)}{g(a+h)} - \dfrac{f(a)}{g(a)}}{h}\\[6pt]
+				&= \lim_{h\to 0} \frac{f(a+h)g(a) - f(a)g(a+h)}{h g(a+h) g(a)}\\[6pt]
+				&= \lim_{h\to 0} \left[ \frac{g(a)\cdot [f(a+h)-f(a)]}{h g(a+h) g(a)} - \frac{f(a)\cdot [g(a+h)-g(a)]}{h g(a+h) g(a)} \right]\\[6pt]
+				&= \frac{g(a)\cdot f'(a)}{g^2(a)} - \frac{f(a)\cdot g'(a)}{g^2(a)}\\[6pt]
+				&= \frac{f'g - fg'}{g^2}\bigg|_{x=a}.
+			\end{aligned}
+			\]
+		\end{enumerate}
+	\end{proofenv}
+	\begin{remarkenv}
+		Using these properties and induction, we can expand
+		\[
+		\left( x^n\right)' = n x^{n-1}
+		\]
+		for all rational numbers $n$.
+	\end{remarkenv}
+	\begin{notationenv}
+		Actually the following notations are also commonly used for derivatives:
+		\begin{enumerate}
+			\item Leibniz's notation:
+			\[
+			\frac{\dd y}{\dd x},\ \frac{\dd^2 y}{\dd x^2},\ \frac{\dd^3 y}{\dd x^3},\ \cdots,\ \frac{\dd^n y}{\dd x^n},
+			\]
+			where $\dd x$ and $\dd y$ are called \textbf{differentials}.
+			\item Lagrange's notation:
+			\[
+			f',\ f'',\ f''',\cdots,\ f^{(n)};
+			\]
+			\item Newton's notation (mainly used in physics):
+			\[
+			\dot{y},\ \ddot{y},\ \dddot{y},\ \cdots;
+			\]
+			\item Arbogast's notation:
+			\[
+			Df,\ D^2f,\ D^3f,\ \cdots,\ D^n f,
+			\]
+			where $D$ is called the \textbf{differential operator}. It's easy to verify that $D$ is linear.
+		\end{enumerate}
+	\end{notationenv}
+
+	\section{Chain Rule for Differentiation}
+	\begin{theoremenv}
+		Suppose $u$ and $v$ are functions and the function $f$ is given by
+		$f=u\circ v$. Suppose $v'(x)$ and $u'(y)$ where $y=v(x)$ both exist. Then $f'(x)$ exists and is given by
+		\[
+		f'(x) = u'(v(x)) \cdot v'(x).
+		\]
+	\end{theoremenv}
+	\begin{proofenv}
+		For convenience, let
+		\[
+		y=v(x),\quad \Delta y = v(x+h) - v(x).
+		\]
+		% Then if we assume $\Delta y\neq 0$,  we have
+		% \[
+		% \begin{aligned}
+		% 	f'(x) &= \lim_{h\to 0} \frac{u(v(x+h)) - u(v(x))}{h}\\[6pt]
+		% 	&= \lim_{h\to 0} \frac{u(y + \Delta y) - u(y)}{h}\\[6pt]
+		% 	&= \lim_{h\to 0} \left[ \frac{u(y + \Delta y) - u(y)}{\Delta y} \cdot \frac{\Delta y}{h} \right]\\[6pt]
+		% 	&= \left[ \lim_{\Delta y \to 0} \frac{u(y + \Delta y) - u(y)}{\Delta y} \right] \cdot \left[ \lim_{h\to 0} \frac{\Delta y}{h} \right]\\[6pt]
+		% 	&= u'(v(x)) \cdot v'(x).
+		% \end{aligned}
+		% \]
+		Let
+		\[
+		g(t)= 
+		\begin{cases}
+		0, & \text{if}\ t=0,\\[6pt]
+		\dfrac{u(y+t) - u(y)}{t}-u'(y), & \text{if}\ t\neq 0,
+		\end{cases}
+		\]
+		since we know for sure
+		\[
+		\lim_{t\to 0} g(t) = \lim_{t\to 0} \left[ \frac{u(y+t) - u(y)}{t} - u'(y) \right]=0.
+		\]
+		Then we have
+		\[
+		u(y+t)-u(y)=
+		\begin{cases}
+		0\left[u'(y) + g(t)\right], & \text{if}\ t=0\\[6pt]
+		t\left[u'(y) + g(t)\right], & \text{if}\ t\neq 0
+		\end{cases}
+		= t\left[u'(y) + g(t)\right]
+		\]
+		no matter $t=0$ or not. Thus plugging in $t=\Delta y$, we know
+		\[
+		f'(x)=\lim_{h\to 0} \frac{u(y + \Delta y) - u(y)}{h} = \lim_{h\to 0} \frac{\Delta y}{h} \left[u'(y) + g(\Delta y)\right].
+		\]
+		Note that
+		\[
+		\lim_{h\to 0} \frac{\Delta y}{h}=v'(x)
+		\]
+		as discussed before. Also we know $g$ is continuous at $0$, so
+		\[
+		\lim_{h\to 0} \left[g(\Delta y)+ u'(y)\right] = g(0) + u'(y) = u'(y).
+		\]
+		Hence we have
+		\[
+		f'(x) = u'(v(x)) \cdot v'(x).
+		\]
+	\end{proofenv}
+	\begin{remarkenv}
+		In Leibniz's notation, suppose $y=v(x)$ and $z=u(y)$, then we write
+		\[
+		\frac{\dd y}{\dd x}:=v'(x)
+		\quad \text{and}\quad
+		\frac{\dd z}{\dd y}:=u'(y).
+		\]
+		We also write
+		\[
+		\frac{\dd z}{\dd x} := f'(x)
+		\quad \text{where}\quad f=u \circ v.
+		\]
+		Then the chain rule can be written as
+		\[
+		\frac{\dd z}{\dd x} = \frac{\dd z}{\dd y} \cdot \frac{\dd y}{\dd x} \not\equiv \frac{\dd z}{\bcancel{\dd y}}\cdot \frac{\bcancel{\dd y}}{\dd x}.
+		\]
+		Here, $\not \equiv$ means ``not identically equal to", which indicates that the differentials $\dd y$ are \emph{not} actually quantities that can be cancelled out.
+	\end{remarkenv}
+
+	\section{Theorems of Derivatives}
+	\begin{definitionenv}
+		A function $f$ defined on a set $S \subseteq \mathbb{R}$ is said to have a \textbf{relative maximum} at $c\in S$ if there exists some open interval $I$ containing $c$ such that
+		\[
+		\forall x \in I \cap S,\ f(x) \le f(c).
+		\]
+		Similarly, we can define \textbf{relative minimum} of $f$ at $d\in S$.
+	\end{definitionenv}
+	\begin{remarkenv}
+		We also say $f$ has an \textbf{extremum} at $c$ if it has either a relative maximum or a relative minimum at $c$.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Suppose function $f$ is defined on an open interval $(a,b)$ containing $c$. If $f$ has a relative extremum at $c$ and if $f'(c)$ exists, then
+		\[
+		f'(c)=0.
+		\]
+	\end{theoremenv}
+	\begin{proofenv}
+		Let
+		\[
+		g(x)=\begin{cases}
+		\dfrac{f(x)-f(c)}{x-c}, & \text{if}\ x \in (a,b), x\neq c,\\[6pt]
+		f'(c), & \text{if}\ x=c.
+		\end{cases}
+		\]
+		It suffices to show that $g(c)=0$. Note
+		\[
+		\lim_{x \to c} \frac{f(x)-f(c)}{x-c}=f'(c)
+		\]
+		since $f'(c)$ exists, thus $g$ is continuous at $c$. Now suppose $g(c)>0$, then there exists some $\delta>0$ such that
+		\[
+		g(x)>0,\quad \forall x\in (c-\delta, c+\delta) \subseteq (a,b).
+		\]
+		If $x\in(c, c+\delta)$, then from $g(x)>0$ we derive $f(x)>f(c)$. If $x\in(c-\delta, c)$, then from $g(x)>0$ we derive $f(x)<f(c)$. Note this contradicts to $f$ having an extremum at $c$. Similarly, we can prove that $g(c)<0$ also leads to a contradiction. Thus we must have $g(c)=0$, i.e., $f'(c)=0$.
+	\end{proofenv}
+	\begin{theoremenv}
+		Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. If $f(a)=f(b)$, then there exists some $c\in (a,b)$ such that
+		\[
+		f'(c)=0.
+		\]
+		This is called \textbf{Rolle's Theorem}.
+	\end{theoremenv}
+	\begin{proofenv}
+		Suppose $f'(x)\neq 0$ for all $x\in (a,b)$. By \textbf{EVT}, we know
+		\[
+		\sup f = f(\alpha) \quad \text{and}\quad \inf f = f(\beta)\quad \text{for some}\quad \alpha, \beta \in [a,b].
+		\]
+		Note we know $f$ have extremum at $\alpha$ and $\beta$. If $\alpha, \beta \in (a,b)$, then by the above theorem we have
+		\[
+		f'(\alpha)=f'(\beta)=0,
+		\]
+		which contradicts our assumption. Thus $\alpha,\beta\in \{a,b\}$ and $f(\alpha)=f(\beta)$. Thus we know $f$ is constant on $[a,b]$, which implies
+		\[
+		f'(x)= 0,\quad \forall x\in (a,b),
+		\]
+		contradicting our assumption again. Then we complete the proof.
+	\end{proofenv}
+	\begin{theoremenv}
+		Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. Then there exists some $c\in (a,b)$ such that
+		\[
+		f'(c)=\frac{f(b)-f(a)}{b-a}.
+		\]
+		This is called \textbf{Lagrange's Mean Value Theorem} or \textbf{the Mean Value Theorem (MVT)} for derivatives.
+	\end{theoremenv}
+	\begin{proofenv}
+		Define a new function
+		\[
+		g(x) = f(x) - \left[ \frac{f(b)-f(a)}{b-a} (x - a) + f(a) \right].
+		\]
+		Clearly $g$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Note that
+		\[
+		\begin{cases}
+			g(a)=f(a)-f(a)=0 ,\\[6pt]
+			g(b)=f(b)-\left[ \dfrac{f(b)-f(a)}{b-a} (b - a) + f(a) \right]=0.
+		\end{cases}
+		\]
+		By \textbf{Rolle's Theorem}, there exists some $c\in (a,b)$ such that
+		\[
+		g'(c) = f'(c) - \frac{f(b)-f(a)}{b-a} = 0,
+		\]
+		which implies
+		\[
+		f'(c) = \frac{f(b)-f(a)}{b-a}.
+		\]
+	\end{proofenv}
+	\begin{theoremenv}
+		Suppose $f$ and $g$ are both continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists some $c\in (a,b)$ such that
+		\[
+		f'(c)\left[ g(b)-g(a) \right] = g'(c) \left[ f(b)-f(a) \right].
+		\]
+		This is called \textbf{Cauchy's Mean Value Theorem}.
+	\end{theoremenv}
+	\begin{proofenv}
+		Define a new function
+		\[
+		h(x) = f(x) \left[ g(b)-g(a) \right] - g(x) \left[ f(b)-f(a) \right].
+		\]
+		Clearly $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Note that
+		\[
+		\begin{cases}
+			h(a)=f(a)\left[ g(b)-g(a) \right] - g(a)\left[ f(b)-f(a) \right],\\[6pt]
+			h(b)=f(b)\left[ g(b)-g(a) \right] - g(b)\left[ f(b)-f(a) \right].
+		\end{cases}
+		\Rightarrow h(b)-h(a)=0.
+		\]
+		By \textbf{Rolle's Theorem}, there exists some $c\in (a,b)$ such that
+		\[
+		h'(c) = f'(c)\left[ g(b)-g(a) \right] - g'(c)\left[ f(b)-f(a) \right] = 0,
+		\]
+		which implies
+		\[
+		f'(c)\left[ g(b)-g(a) \right] = g'(c)\left[ f(b)-f(a) \right].
+		\]
+	\end{proofenv}
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then:
+		\begin{enumerate}
+			\item [(1)] If $f'(x)=0$ for all $x\in (a,b)$, then $f$ is constant on $[a,b]$;
+			\item [(2)] If $f'(x)>0$ for all $x\in (a,b)$, then $f$ is strictly increasing on $[a,b]$;
+			\item [(3)] If $f'(x)<0$ for all $x\in (a,b)$, then $f$ is strictly decreasing on $[a,b]$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$ and $c\in (a,b)$. Then:
+		\begin{enumerate}
+			\item [(1)] If $f'(x)>0$ for all $x\in (a,c)$ and $f'(x)<0$ for all $x\in (c,b)$, then $f$ has a relative maximum at $c$;
+			\item [(2)] If $f'(x)<0$ for all $x\in (a,c)$ and $f'(x)>0$ for all $x\in (c,b)$, then $f$ has a relative minimum at $c$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{remarkenv}
+		The above two cases still hold even if $f'(c)$ is not well-defined. (We still require $f$ to be continuous at $c$.)
+	\end{remarkenv}
+	\begin{definitionenv}
+		Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$ and $c\in (a,b)$. If $f'(c)=0$, then we call $c$ a \textbf{critical point} of $f$.
+	\end{definitionenv}
+	\begin{theoremenv}
+		Suppose $f$ has a second-derivative $f''$ defined on $(a,b)$ and $c\in (a,b)$ is a critical point of $f$. Then:
+		\begin{enumerate}
+			\item [(1)] If $f''(c)>0$, then $f$ has a relative minimum at $c$;
+			\item [(2)] If $f''(c)<0$, then $f$ has a relative maximum at $c$;
+			\item [(3)] If $f''(c)=0$, then the test is inconclusive, i.e., $f$ may have a relative maximum, a relative minimum or neither at $c$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{theoremenv}
+		Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then:
+		\begin{enumerate}
+			\item If $f'$ is increasing on $(a,b)$, or equivalently $f''(x) \geq 0$ for all $x \in (a,b)$ provided that $f''$ is well-defined, then $f$ is convex on $[a,b]$.
+			\item If $f'$ is decreasing on $(a,b)$, or equivalently $f''(x) \leq 0$ for all $x \in (a,b)$ provided that $f''$ is well-defined, then $f$ is concave on $[a,b]$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{remarkenv}
+		Note that a flat line is both convex and concave (in our text book's definition).
+	\end{remarkenv}
+
+	\newpage

@@ -1,0 +1,515 @@
+	\chapter{Integral Calculus}
+	\section{Basic Concepts}
+	\begin{definitionenv}
+		Let $f$ be a correspondence. If each element of $\mathscr{D}_f$ has at most one image under $f$, we say that $f$ is a function.
+	\end{definitionenv}
+	\begin{remarkenv}
+		If you're confused about the definition of function above, you should refer to the Fundamental Algebra and Analysis.
+	\end{remarkenv}
+%	\begin{mydef}
+%		Let f be a function. If the domain of f is a collection of sets and function values are real numbers, we call f a set function.
+%	\end{mydef}
+	\begin{definitionenv}
+		Suppose $f$ is a function (from $\mathbb{R}$ to $\mathbb{R}$) and $f(x)\ge 0$ for any $x\in \left[ a,b\right] $ where $a<b$. We define the set
+		\begin{align*}
+			S:=\left\{ (x,y)\in \mathbb{R}^2\ |\ a\le x \le b\text{ and } 0\le y\le f(x)\right\}
+		\end{align*}
+		to be the ordinate set of $f$.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Definitely $S$ defined above is a plane region. Thus, we can naturally raise these questions: can we compute the area of $S$, or more fundamentally, what is the area of $S$, does it even make sense to talk about the area of $S$? These questions motivate the axiomatic definition of area and measurable sets in $\mathbb{R}^2$. (Here a measurable set is a set that we can assign an area to.)
+	\end{remarkenv}
+	\begin{definitionenv}
+		We assume that there exists $\mathscr{M}$ a collection of subsets of $\mathbb{R}^2$ and a function $A$ with $\mathrm{Dom}(A)=\mathscr{M}$ and $\mathrm{Im}(A)\in \mathbb{R}$ such that the following properties all hold:
+		\begin{enumerate}
+			\item Nonnegative property: For any $S\in \mathscr{M}$, $A(S)\ge 0$.
+			\item Additive property: If $S,T \in \mathscr{M}$, then $S\cap T,S\cup T \in \mathscr{M}$. Additionally, $A(S\cup T)=A(S)+A(T)-A(S\cap T)$.
+			\item Difference property: If $S,T \in \mathscr{M}$ and $S \subseteq T$, then $T-S$ (also $T\backslash S$) $\in \mathscr{M}$. Additionally, $A(T-S)=A(T)-A(S)$.
+			\item Invariance under congruence: If $S\in \mathscr{M}$ and if $T\in \mathbb{R}^2$ is congruent to $S$, then $T \in \mathscr{M}$ and $A(T)=A(S)$.
+			\item Choice of scale: Every rectangle $R$ is in $\mathscr{M}$. If the adjecent edges of $R$ are of length $w$ and $h$, then $A(R)=wh$.
+			\item Exhaustion Property: Suppose $Q\subseteq \mathbb{R}^2$. If there exists a unique $c\in \mathbb{R}$ such that $A(S)\le c \le A(T)$ for all step regions $S$ and $T$ with $S\subseteq Q \subseteq T$, then $Q\in \mathscr{M}$ and $A(Q)=c$.
+		\end{enumerate}
+		We call such $A$ an area function and each $S\in \mathscr{M}$ a measurable set.
+	\end{definitionenv}
+	\begin{definitionenv}[Additional] Some definitions are lost above and here we add it.
+		\begin{enumerate}
+			\item Two sets $S$ and $T$ in $\mathbb{R}^2$ are called \textbf{congruent} if there exists a \textbf{one-to-one correspondence} (or a \textbf{bijection}) between $S$ and $T$ such that the distance between points are preserved, i.e., if the two points 
+			$s_1 = (a,b), \; s_2 = (c,d)$ in $S$ are mapped to the two points 
+			$t_1 = (x,y), \; t_2 = (p,q)$ in $T$ under such a bijection, then we must have
+			\[
+			\sqrt{(a - c)^2 + (b - d)^2} = \sqrt{(x - p)^2 + (y - q)^2}.
+			\]
+			\item A set $R \subseteq \mathbb{R}^2$ is called a \textbf{rectangle} if it is congruent to a set of the form
+			\[
+			\{ (x,y) \in \mathbb{R}^2 \mid 0 \le x \le w \text{ and } 0 \le y \le h \},
+			\]
+			where $w \ge 0$ and $h \ge 0$.
+			\item A set $S \subseteq \mathbb{R}^2$ is called a \textbf{step region} if it is the union of a finite collection of 
+			adjacent rectangles whose bases all rest on the $x$-axis.
+		\end{enumerate}
+	\end{definitionenv}
+	\begin{theoremenv} Here are some theorems about some basic cases.
+		\begin{enumerate}
+			\item $S_1:=\left\{ (a,b)\right\} $ where $a,b\in \mathbb{R}$ is measurable and $A(S_1)=0$.
+			\item $S_2:=\left\{ (a_1,b_1),(a_2,b_2),\cdots,(a_n,b_n)\right\}$ where $n\in \mathbb{Z}^+$ and $a_i,b_i\in \mathbb{R}$ for $i=1,2,\cdots, n$ is measurable with $A(S_2)=0$.
+			\item If $S_3$ is the union of a finite collection of line segments in $\mathbb{R}^2$, then $S_3$ is measurable with $A(S_3)=0$.
+			\item Suppose $S_4$ is the triangle with vertices $(0,0),(w,0),(\frac{w}{2},h)$ where $w,h>0$, $S_4$ is measurable and $A(S_4)=\frac{1}{2}wh$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{definitionenv}
+		A \textbf{partition} $P$ of a given closed interval $[a,b]$ is a collection of points $x_0,x_1,x_2,\cdots,x_{n}$ satisfying:
+		\[
+		a=x_0<x_1<x_2<\cdots<x_n=b
+		\]
+		and we use the symbol
+		\[
+		P=\{x_0,x_1,x_2,\cdots,x_{n}\}
+		\]
+		to designate this partition. We call $[x_{k-1},x_k]$ the $k$th closed subinterval and $(x_{k-1},x_k)$ the $k$th open interval.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Though we use set notation to designate a partition, the order \textbf{does} matter.
+	\end{remarkenv}
+	\begin{definitionenv}
+		A function $s$, whose domain is a closed interval $[a,b]$, is called a \textbf{step function} if there is a partition $P=\{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ such that for each $k=1,2,\cdots,n$, there is a real number $s_k$ satisfying
+		\[
+		s(x)=s_k \quad \text{if} \quad x_{k-1}<x<x_k.
+		\]
+	\end{definitionenv}
+	\begin{exampleenv}
+		We define a function $D(x)$ on $\mathbb{R}$:
+		\[
+		D(x):=
+		\begin{cases}
+			1, & \text{if } x \in \mathbb{Q}, \\[4pt]
+			0, & \text{if } x \in \mathbb{R} \setminus \mathbb{Q}.
+		\end{cases}
+		\]
+		which is called the Dirichlet Function. It's easy to verify that $D(x)$ is not a step function. Even if we confine Dirichlet Function on $[0,1]$, it is not a step function.
+	\end{exampleenv}
+	\begin{remarkenv}
+		At each of the endpoints $x_{k-1}$ and $x_k$ the function must have some well-defined value, but this need not be the same as $s_k$.
+	\end{remarkenv}
+	\begin{definitionenv}
+		For a given partition $P$ of $[a,b]$, a \textbf{refinement} is a new partition $P'$ satisfying $P\subseteq P'$ (order should be ensured). Then $P'$ is said to be finer than P.
+	\end{definitionenv}
+	\begin{definitionenv}
+		For two partitions $P_1,P_2$ of $[a,b]$, the union of $P_1$ and $P_2$ is called the \textbf{common refinement} of $P_1$ and $P_2$.
+	\end{definitionenv}
+	\begin{theoremenv}
+		The sum and product of two given step functions are also step functions.
+	\end{theoremenv}
+	
+	\section{Integral for Step Functions}
+	\begin{definitionenv}
+		Let $s$ be a step function defined on $[a,b]$, and let $P={x_0,x_1,\cdots,x_n}$ be a partition of $[a,b]$ such that:
+		\[
+		s(x)=s_k \quad \text{if}\quad x_{k-1}<x<x_k,\quad k=1,2,\cdots,n
+		\]
+		The integral of $s$ from $a$ to $b$, is defined as:
+		\[
+		\int_{a}^{b}s(x)\,\mathrm{d}x=\sum_{k=1}^{n}s_k\cdot (x_k - x_{k-1})
+		\]
+	\end{definitionenv}
+	\begin{remarkenv}
+		The definition is constructed so that the integral of a nonnegative step function is equal to the area of its ordinate set.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Here are some properties of the integral of a step function. If not stated, $s(x)$ and $t(x)$ are step functions well defined on $[a,b]$.
+		\begin{enumerate}
+			\item Additive Property:
+			\[
+			\int_{a}^{b}\left[s(x)+t(x)\right]\,\mathrm{d}x=\int_{a}^{b}s(x)\,\mathrm{d}x+\int_{a}^{b}t(x)\,\mathrm{d}x.
+			\]
+			\item Homogeneous Property: 
+			\[
+			\int_a^b c \cdot s(x) \, \mathrm{d}x = c \int_a^b s(x) \, \mathrm{d}x \quad \text{for every real } c.
+			\]
+			\item Linearity Property: Combining Additive Property and Homogeneous Property, we have
+			\[
+			\int_a^b \left[ c_1 s(x) + c_2 t(x) \right] \, \mathrm{d}x
+			= c_1 \int_a^b s(x) \, \mathrm{d}x + c_2 \int_a^b t(x) \, \mathrm{d}x.
+			\]
+			for every real $c_1$ and $c_2$.
+			\item Comparison Theorem: If $s(x)<t(x)$ for every $x$ in $[a,b]$, then
+			\[
+			\int_a^b s(x) \, \mathrm{d}x < \int_a^b t(x) \, \mathrm{d}x.
+			\]
+			\item Additivity with respect to the interval of integration:
+			\[
+			\int_a^c s(x) \, \mathrm{d}x + \int_c^b s(x) \, \mathrm{d}x = \int_a^b s(x) \, \mathrm{d}x 
+			\quad \text{if} \quad a < c < b.
+			\]
+			\item  Invariance under translation:
+			\[
+			\int_a^b s(x) \, \mathrm{d}x = \int_{a+c}^{b+c} s(x - c) \, \mathrm{d}x 
+			\quad \text{for every real } c.
+			\]
+			\item Expansion or Contraction of the interval of integration:
+			\[
+			\int_{ka}^{kb} s\!\left(\frac{x}{k}\right) \, \mathrm{d}x = 
+			k \int_a^b s(x) \, \mathrm{d}x 
+			\quad \text{for every } k > 0.
+			\]
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{remarkenv}
+		Since the proofs of properties above are quite similar, we shall only prove Property 2 and 7 here as examples.
+	\end{remarkenv}
+	\begin{proofenv}[Property 2]
+		Let \( P = \{x_0, x_1, \ldots, x_n\} \) be a partition of \([a, b]\) such that
+		\[
+		s(x) = s_k \quad \text{if}\quad x_{k-1} < x < x_k\ (k = 1, 2, \ldots, n). 
+		\]
+		Then
+		\[
+		\int_a^b c \cdot s(x) \, \mathrm{d}x
+		= \sum_{k=1}^{n} c \cdot s_k \cdot (x_k - x_{k-1})
+		= c \sum_{k=1}^{n} s_k \cdot (x_k - x_{k-1})
+		= c \int_a^b s(x) \, \mathrm{d}x.
+		\]
+	\end{proofenv}
+	\begin{proofenv}[Property 7]
+	Let \( P = \{x_0, x_1, \ldots, x_n\} \) be a partition of \([a, b]\) such that
+	\[
+	s(x) = s_k \quad \text{if}\quad x_{k-1} < x < x_k\ (k = 1, 2, \ldots, n). 
+	\]
+	Let \[ t(x) = s\left(\frac x k\right) \quad  \text{if}\quad  ka \le x \le kb. \]  
+	Then \[ t(x) = s_i \quad \text{if} \quad k x_{i-1} < x< k x_i.\]
+	Hence \( P' = \{k x_0, k x_1, \ldots, k x_n\} \) is a partition of \([ka, kb]\), and \(t\) is a step function whose integral is  
+	\[
+	\int_{ka}^{kb} t(x) \, \mathrm{d}x
+	= \sum_{i=1}^{n} s_i \cdot (k x_i - k x_{i-1})
+	= k \sum_{i=1}^{n} s_i \cdot (x_i - x_{i-1})
+	= k \int_a^b s(x) \, \mathrm{d}x.
+	\]		
+	\end{proofenv}
+	\begin{definitionenv}
+		If $a>b$, then
+		\[
+		\int_a^b s(x) \, \mathrm{d}x := -\int_b^a s(x)\, \mathrm{d}x.
+		\]
+	\end{definitionenv}
+	\section{Integral for More General Functions}
+	\begin{definitionenv}
+		If $f$ is a real function, we say $f$ is bounded on $[a,b]$ if there exists a number $M>0$ such that  
+		\[
+		|f(x)|\le M \quad \text{for every}\ x\in [a,b].
+		\]
+	\end{definitionenv}
+	\begin{definitionenv}
+		If $f$ is a function defined and bounded on $[a,b]$, and $s,t$ are arbitrary step functions satisfying
+		\[ s(x)\le f(x)\le t(x) \quad \text{for every}\ x\in[a,b].\]
+		And for every pair of $s$ and $t$, there exists one and only one number $I$ such that
+		\[\int_a^b s(x)\,\mathrm{d}x\le I \le \int_a^b t(x)\,\mathrm{d}x \quad \text{for every}\ x\in[a,b],\]
+		then $I$ is defined as the integral of $f$ and denoted by
+		\[ I=\int_a^b f(x)\,\mathrm{d}x.\]
+		When such $I$ exists, we say $f$ is integrable on $[a,b]$.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Note that this definition is quite similar to exhaustion property. We will see they work together in the following text.
+	\end{remarkenv}
+	\begin{definitionenv}
+		Let $f$ be a real function bounded on $[a,b]$ and $s,t$ be two step functions satisfying $s\le f\le t$, we define
+		\[
+		S:=\left\{\int_a^b s(x)\,\mathrm{d}x\, \middle|\, s\le f\right\},
+		\quad
+		T:=\left\{\int_a^b t(x)\,\mathrm{d}x\, \middle|\, f\le t\right\}.
+		\]
+		Since $f$ is bounded, $S$ and $T$ are nonempty sets. By $s\le t$, we have 
+		\[
+		\int_a^b s(x)\,\mathrm{d}x \le \sup S\le \inf T\le \int_a^b t(x)\,\mathrm{d}x.
+		\]
+		We say $\sup S$ the lower integral of $f$ and $\inf T$ the upper integral of $f$ denoted by
+		\[
+		\underline{I}(f) = \sup \left\{ \int_a^b s(x) \, \mathrm{d}x \,\middle|\, s \le f \right\}, 
+		\qquad 
+		\overline{I}(f) = \inf \left\{ \int_a^b t(x) \, \mathrm{d}x \,\middle|\, f \le t \right\}.
+		\]
+	\end{definitionenv}
+	\begin{theoremenv}
+		Every function $f$ which is bounded on $[a,b]$ has a lower integral and a upper integral satisfying
+		\[
+		\int_a^b s(x) \, \mathrm{d}x 
+		\le \underline{I}(f) 
+		\le \overline{I}(f) 
+		\le \int_a^b t(x) \, \mathrm{d}x.
+		\]
+		for all step functions $s$ and $t$ with $s\le f\le t$. The function $f$ is integrable if and only if when
+		\[
+		\int_a^b f(x) \, \mathrm{d}x = \underline{I}(f) = \overline{I}(f).
+		\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		Seemingly, all bounded functions are integrable. But actually this is not true, otherwise we won't introduce such complex notations above. Here's a counter example showing bounded functions can also be non-integrable.
+	\end{remarkenv}
+	\begin{exampleenv}
+		Recall the definition of Dirichlet Function. We shall confine it on $[0,1]$. By the dense property of rational numbers and irrational numbers, it's easy to prove
+		\[
+		\underline{I}(f) = 0 < 1 = \overline{I}(f) \quad \text{so} \quad \underline{I}(f) \neq \overline{I}(f).
+		\]
+		Hence, the Dirichlet Function is non-integrable.
+	\end{exampleenv}
+	\begin{theoremenv}
+	Let $f$ be a nonnegative function, integrable on an interval $[a,b]$, and let $Q$ denote the ordinate set of $f$ over $[a,b]$. Then $Q$ is measurable and
+	\[
+	A(Q)=\int_a^b f(x)\,\mathrm{d}x.
+	\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		Note that we only say ordinate sets of some particular functions are measurable, but at this stage we don't know what kind of ordinate sets are not measurable.
+	\end{remarkenv}
+	\begin{propositionenv}
+		Let
+		\[
+		\widetilde{Q}:=\left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b\ and\ 0\le y< f(x)\right\},
+		\]
+		then $\widetilde{Q}$ is also measurable and $A\!\left(\widetilde{Q}\right)=A(Q)$.
+	\end{propositionenv}
+	\begin{propositionenv}
+		Let 
+		\[
+		S:= \left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b\ and\ y=f(x)\right\},
+		\]
+		then $S$ is also measurable and $A(S)=0$.
+	\end{propositionenv}
+	
+	\begin{remarkenv}
+		After we define the integral of more general functions, there comes two questions naturally: which bounded functions are integrable, and given that a function $f$ is integrable, how do we compute the integral of $f$? 
+		
+		For the first question, we will only give partial answers requiring only elementary ideas because a complete answer needs more prerequisites. For the second question, we'll introduce some techniques. 
+		
+	\end{remarkenv}
+	\begin{definitionenv}
+		A function $f$ is said to be increasing on a set $S$ if $f(x)\le f(y)$ for every pair of points $x$ and $y$ in $S$ with $x<y$. If the strict equality $f(x)<f(y)$ holds for all $x<y$ in $S$, then the function $f$ is said to be strictly increasing on $S$. Similarly, we can define decreasing functions and strictly decreasing functions. 
+	\end{definitionenv}
+	\begin{definitionenv}
+		A function is called monotonic if it's increasing or decreasing. Similarly, a function is calle strictly monotonic if it's strictly increasing or decreasing. Furthermore, a function $f$ is called piecewise monotonic if there is a partition $P$ on $[a,b]$ such that $f$ is monotonic on every open subintervals of $P$.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Note that a monotonic function needn't to be ``continuous" intuitively.
+	\end{remarkenv}
+	\begin{theoremenv}
+		If a function $f$ is monotonic on $[a,b]$, then $f$ is integrable.
+	\end{theoremenv}
+	\begin{proofenv}
+		We shall prove the theorem for increasing functions. Assume $f$ is increasing on $[a,b]$ and let $P=\left\{x_0,x_1,\cdots,x_n\right\}$ be a partition satisfying
+		\[
+		x_k - x_{k-1} = \frac{b-a}{n}, \quad k=1,2,\cdots,n.
+		\]
+		and $s,t$ be step functions satisfying:
+		\[
+		s(x)=f(x_{k-1})\quad \text{and}\quad t(x)=f(x_k),\quad \text{if}\quad x_{k-1}<x<x_k,\quad k=1,2,\cdots,n.
+		\]
+		At the subdivision points, we define $s_n$ and $t_n$ so as to preserve the relation $s_n(x)\le f(x)\le t_n(x)$ throughout $[a,b]$. 
+		It suffices to prove
+		\[
+		\underline{I}(f) = \overline{I}(f).
+		\]
+		First we compute
+		\begin{align*}
+			\int_a^b t(x)\, \mathrm{d}x - \int_a^b s(x)\,\mathrm{d}x
+			&= \sum_{k=1}^n f(x_k)(x_k-x_{k-1}) - \sum_{k=1}^n f(x_{k-1})(x_k-x_{k-1})\\[4pt]
+			&= \frac{b-a}{n}\left(f(b)-f(a)\right) \\[4pt]
+			&= \frac{C}{n}, \quad \text{where} \quad C:=(b-a)(f(b)-f(a))>0
+		\end{align*}
+		Since we have
+		\[
+		\int_a^b s(x)\,\mathrm{d}x \le \underline{I}(f)\le 
+		\overline{I}(f) \le \int_a^b t(x)\, \mathrm{d}x,
+		\]
+		thus
+		\[
+		0 \le \overline{I}(f) - \underline{I}(f) 
+		\le \int_a^b t(x)\, \mathrm{d}x - \int_a^b s(x)\,\mathrm{d}x
+		= \frac{C}{n}
+		\]
+		holds for a positive $C$ and every positive integer $n$. Hence we deduce
+		\[
+		\underline{I}(f) = \overline{I}(f).
+		\]
+	\end{proofenv}
+	\begin{remarkenv}
+		Note that the proof for decreasing functions is analogous because it suffices to exchange $s(x)$ and $t(x)$. Here we see the magic power of Archimedian properties of real numbers again.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Assume $f$ is increasing on $[a,b]$. Let
+		\[
+		x_k = a + \frac{b-a}{n}\cdot k,\quad k=0,1,\cdots,n.
+		\]
+		If $I$ is any number satisfying the inequalities
+		\[
+		\frac{b-a}{n}\sum_{k=0}^{n-1}f(x_k) \le I \le
+		\frac{b-a}{n}\sum_{k=1}^{n}f(x_k),
+		\]
+		for every integer $n\ge 1$,	then
+		\[
+		I = \int_a^b f(x)\,\mathrm{d}x.
+		\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		This inspires us to compute the integral of a general function by approaching from above and below.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Here are some properties of integrals of general functions. If not stated, $f$ and $g$ are functions integrable on $[a,b]$.
+		\begin{enumerate}
+			\item Linearity: Suppose $c_1,c_2$ constants, then
+			\[
+			\int_a^b \left[ c_1 f(x) + c_2 g(x) \right] \, \mathrm{d}x
+			= c_1 \int_a^b f(x) \, \mathrm{d}x
+			+ c_2 \int_a^b g(x) \, \mathrm{d}x.
+			\]
+			\item Additivity:
+			\[
+			\int_a^b f(x) \, \mathrm{d}x
+			+ \int_b^c f(x) \, \mathrm{d}x
+			= \int_a^c f(x) \, \mathrm{d}x.
+			\]
+			\item Invariance under translation: For every real $c$,
+			\[
+			\int_a^b f(x) \, \mathrm{d}x
+			= \int_{a+c}^{b+c} f(x - c) \, \mathrm{d}x.
+			\]
+			\item Expansion or Contraction: If $k\neq 0$,
+			\[
+			\int_a^b f(x) \, \mathrm{d}x
+			= \frac{1}{k} \int_{ka}^{kb} f\!\left( \frac{x}{k} \right) \, \mathrm{d}x.
+			\]
+			\item Comparison: If $g(x)\le f(x)$ for every $x$ in $[a,b]$,
+			\[
+			\int_a^b g(x) \, \mathrm{d}x
+			\le \int_a^b f(x) \, \mathrm{d}x.
+			\]
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{proofenv}
+		We shall prove linearity only, since proofs of other properties are analogous. We decompose the linearity into two parts:
+		\begin{enumerate}
+			\item[(A)] \[ \int_a^b\left[f(x)+g(x)\right]\,\mathrm{d}x=\int_a^b f(x)\,\mathrm{d}x + \int_a^b g(x)\,\mathrm{d}x
+			\]
+			\item[(B)] \[\int_a^b cf(x)\,\mathrm{d}x=c\int_a^b f(x)\,\mathrm{d}x\]
+		\end{enumerate}
+		To prove (A), let
+		\[
+		I(f)=\int_a^b f(x)\,\mathrm{d}x,\quad 
+		I(g)=\int_a^b g(x)\,\mathrm{d}x
+		\].
+		We shall prove
+		\[
+		\underline{I}(f+g) = \overline{I}(f+g) = I(f)+I(g).
+		\]
+		Let $s_1,s_2$ be arbitrary step functions below $f,g$ respectively, then
+		\[
+		I(f)=\sup \left\{ \int_a^b s_1(x)\,\mathrm{d}x \,\middle|\, s_1\le f\right\},\quad
+		I(g)=\sup \left\{ \int_a^b s_2(x)\, \mathrm{d}x \,\middle|\, s_2\le g\right\}.
+		\]
+		So
+		\[
+		\begin{aligned}
+			I(f)+I(g)
+			&=\sup \left\{ \int_a^b s_1(x)\,\mathrm{d}x \,\middle|\, s_1\le f\right\} +
+			\sup \left\{ \int_a^b s_2(x)\, \mathrm{d}x \,\middle|\, s_2\le g\right\}\\[6pt]
+			&=\sup \left\{\int_a^b \left[s_1(x)+s_2(x)\right]\,\mathrm{d}x\,\middle|\,s_1\le f,s_2\le g \right\}
+		\end{aligned}
+		\]
+		Since $s_1\le f, s_2\le g$, we have $s_1(x)+s_2(x) \le f(x)+g(x)$. Thus
+		\[
+		\underline{I}(f+g)\ \text{is an upper bound of }\ 
+		\left\{\int_a^b \left[s_1(x)+s_2(x)\right]\,\mathrm{d}x\,\middle|\,s_1\le f,s_2\le g \right\}.
+		\]
+		And an upper bound cannot be less than the least upper bound, i.e. the supremum, so
+		\[
+		I(f)+I(g) \le \underline{I}(f+g).
+		\]
+		Similarly we can deduce that
+		\[
+		I(f)+I(g) \ge \overline{I}(f+g).
+		\]
+		Together with 
+		\[
+		\underline{I}(f+g) \le \overline{I}(f+g),
+		\]
+		we reach the equality
+		\[
+		\underline{I}(f+g) = \overline{I}(f+g) = I(f+g).
+		\]
+		To prove (B), it's trivial when $c=0$. Now we focus on the case when $c>0$. First we shall prove one property of supremum and infemum: if $c$ is a positive real number, then we have
+		\[
+		\sup\left\{cx\,|\,x\in A \right\} = c\cdot\sup\left\{ x\,|\,x\in A\right\},
+		\quad \inf \left\{cx\,|\,x\in A \right\} = c\cdot\inf \left\{ x\,|\,x\in A\right\}.
+		\]
+		By definition,
+		\[
+		\forall x \in A,\ x\le \sup A \Rightarrow cx\le c\cdot \sup A.
+		\]
+		Assume $c\cdot \sup A$ is not the supremum of the set $\left\{cx\,|\,x\in A \right\}$, since it's a nonempty set and bounded above, there exists a positive $h$ such that $c\cdot \sup A-h$ is the supremum, then
+		\[
+		\forall x\in A, cx \le c\cdot \sup A-h 
+		\Rightarrow x \le \sup A-\frac{h}{c}.
+		\]
+		Then the right-hand side of the inequality should be the new supremum of $A$, which leads to a contradiction. Thus we prove
+		\[
+		\sup\left\{cx\,|\,x\in A \right\} = c\cdot\sup\left\{ x\,|\,x\in A\right\}.
+		\]
+		It's similar to prove infimum's property. Back to our proof, let $s,s_1,t,t_1$ be step functions with $s_1=cs,t_1=ct$. Then
+		\[
+		\begin{aligned}
+			\underline{I}(cf) &= \sup \left\{ \int_a^b s_1(x) \, \mathrm{d}x \,\middle|\, s_1 \le cf \right\}
+			=\sup \left\{ c\int_a^b s(x) \, \mathrm{d}x \,\middle|\, s \le f \right\}
+			=cI(f)\\[6pt]
+			\overline{I}(cf) &= \inf \left\{ \int_a^b t_1(x) \, \mathrm{d}x \,\middle|\, t_1 \le cf \right\}
+			=\inf \left\{ c\int_a^b t(x) \, \mathrm{d}x \,\middle|\, t \le f \right\}
+			=cI(f).
+		\end{aligned}
+		\]
+		Therefore, $\underline{I}(cf)=\overline{I}(cf)=cI(f)$. For the case when $c<0$, by using
+		\[
+		\sup\left\{cx\,|\,x\in A \right\} = c\cdot\inf\left\{ x\,|\,x\in A\right\},
+		\quad \inf \left\{cx\,|\,x\in A \right\} = c\cdot\sup \left\{ x\,|\,x\in A\right\},
+		\]
+		it's analogous to finish the proof.
+	\end{proofenv}
+	
+	\begin{theoremenv}
+		If $p$ is a positive integer and $b>0$, we have
+		\[
+		\int_0^b x^p \, \mathrm{d}x = \frac{b^{p+1}}{p + 1}.
+		\]
+		Moreover, we can deduce the equality also holds for $b\le 0$. Therefore, it can be generalized that
+		\[
+		\int_a^b x^p \, \mathrm{d}x = \frac{b^{p+1} - a^{p+1}}{p + 1},\qquad a,b\in \mathbb{R},\ p\in \mathbb{Z}^+.
+		\]
+		We can also use the special symbol
+		\[
+		P(x)\Big|_a^b :=P(b)-P(a).
+		\]
+		Then the integral could be rewritten as
+		\[
+		\int_a^b x^p \, \mathrm{d}x
+		= \frac{x^{p+1}}{p + 1} \Big|_a^b
+		= \frac{b^{p+1} - a^{p+1}}{p + 1}.
+		\]
+	\end{theoremenv}
+	\begin{definitionenv}
+		Let $f,g$ be two functions and $f\le g$ on $[a,b]$. We call such set $S$ the region between two graphs if $S$ is defined as
+		\[
+		S:=\left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b,f(x)\le y\le g(x) \right\}.
+		\]
+	\end{definitionenv}
+	\begin{theoremenv}
+		Assume two functions $f,g$ are integrable with $f\le g$ on $[a,b]$. Then the region $S$ between their graphs is measurable and its area $A(S)$ is given by the integral
+		\[
+		A(S)=\int_a^b [g(x)-f(x)]\,\mathrm{d}x.
+		\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		This theorem didn't require $f,g$ to be nonnegative.
+	\end{remarkenv}
+	\begin{theoremenv}
+		 If $p$ is a positive integer and $a,b>0$, then we have
+		 \[
+		 \int_a^b x^{\frac{1}{p}} \, \mathrm{d}x = 
+		 \left(\frac{p}{p+1} \right)\left(b^{\frac{p+1}{p}}- a^{\frac{p+1}{p}}\right).
+		 \]
+	\end{theoremenv}
+	\newpage

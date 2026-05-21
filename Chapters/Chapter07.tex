@@ -1,0 +1,371 @@
+	\chapter{Transcendental Functions}
+	\section{The Logarithm}
+	\begin{definitionenv}
+		If $x$ is a positive real number, then the \textbf{natural logarithm} of $x$ is defined by
+		\[
+		\ln x = \int_1^x \frac{1}{t}\, \dd t.
+		\]
+	\end{definitionenv}
+	\begin{theoremenv}
+		The logarithm function has the following properties:
+		\begin{enumerate}
+			\item [(1)] $\ln 1 = 0$;
+			\item [(2)] $(\ln x)' = \dfrac{1}{x}$ for all $x>0$;
+			\item [(3)] $\ln (xy) = \ln x + \ln y$ for all $x,y>0$;
+			\item [(4)] $\ln x^r = r \ln x$ for all $x>0$ and all positive integers $r$;
+			\item [(5)] $\ln \dfrac{1}{x} = - \ln x$ for all $x>0$;
+			\item [(6)] $f(x)=\ln x$ is strictly increasing and unbounded on $(0,\infty)$;
+			\item [(7)] $f(x)=\ln x$ is concave on $(0,\infty)$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{theoremenv}
+		For every real number $b$, there exists a unique positive real number $a$ such that $\ln a = b$.
+	\end{theoremenv}
+	\begin{proofenv}
+		Suppose $b>0$ and pick positive integer $n$ so that $\ln 2^n = n \ln 2 > b$. Since $f(x) = \ln x$ is continuous and strictly increasing on $[1, 2^n]$, by the \textbf{IVT}, there exists some unique $a\in (1, 2^n)$ such that $\ln a = b$.
+
+		The case $b=0$ is trivial since $\ln 1 = 0$ and the case $b<0$ can be proved similarly.
+	\end{proofenv}
+	\begin{definitionenv}
+		Particularly, we denote the unique positive real number $e$ such that
+		\[
+		\ln e = 1,
+		\]
+		which is called Euler's number or the natural number.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Suppose $f(x)=c \ln x$ for some fixed constant $c$. We know it preserves all properties of $\ln x$. Now we know there exists a unique positive real number $\alpha$ such that
+		\[
+		c \ln \alpha = 1,\quad (\text{or }f(\alpha)=1,\alpha \neq 1) \implies c = \frac{1}{\ln \alpha}.
+		\]
+		With this $\alpha$ notation, we can rewrite
+		\[
+		f(x) = c \ln x = \frac{\ln x}{\ln \alpha},
+		\]
+		which motivates us to define logarithm with base $\alpha$.
+	\end{remarkenv}
+	\begin{definitionenv}
+		Suppose $b>0$ and $b\neq 1$. For any $x>0$, the \textbf{logarithm with base $b$} is defined by
+		\[
+		\log_b x = \frac{\ln x}{\ln b}.
+		\]
+		We usually call $b$ the \textbf{base} of the logarithm.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Note that $\log_e x = \ln x$.
+	\end{remarkenv}
+	\begin{remarkenv}
+		By injectivity of logarithm function, we know for any $b>0, u\in \mathbb{R}$ and $b\neq 1$, there exists a unique $x>0$ such that $\log_b x = u$. We denote this unique $x$ by
+		\[
+		b^u.
+		\]
+		If we adopt the convention that $1^u := 1$, then the power $b^u$ is well-defined for any $b>0$ and $u\in \mathbb{R}$.
+	\end{remarkenv}
+	\begin{exampleenv}
+		Here we see how logarithm helps us to integrate some functions.
+		\begin{enumerate}
+			\item \[
+			I = \int \tan x\, \dd x = \int \frac{\sin x}{\cos x}\, \dd x = -\int \frac{(\cos x)'}{\cos x} \, \dd x = -\ln |\cos x| + C.
+			\]
+			\item \[
+			I = \int \ln x \, \dd x = \int 1 \cdot \ln x\, \dd x = x \ln x - \int x \cdot \frac{1}{x}\, \dd x = x \ln x - x + C.
+			\]
+			\item \[
+			I_1 = \int \sin(\ln x)\, \dd x = \int \sin(\ln x) \cdot 1\, \dd x = x \sin(\ln x) - \int x \cdot \frac{1}{x} \cos(\ln x)\, \dd x.
+			\]
+			Now we need to calculate $\int \cos(\ln x)\, \dd x$:
+			\[
+			I_2 = \int \cos(\ln x)\, \dd x = \int \cos(\ln x) \cdot 1\, \dd x = x \cos(\ln x) + \int x \cdot \frac{1}{x} \sin(\ln x)\, \dd x.
+			\]
+			Thus we have
+			\[
+			\begin{aligned}
+				\int \sin(\ln x)\, \dd x = \frac12 \left[ x \sin(\ln x) - x \cos(\ln x) \right] + C.\\
+				\int \cos(\ln x)\, \dd x = \frac12 \left[ x \cos(\ln x) + x \sin(\ln x) \right] + C.
+			\end{aligned}
+			\]
+		\end{enumerate}
+	\end{exampleenv}
+	\begin{remarkenv}
+		Since
+		\[
+		\ln x = \int_1^x \frac{1}{t}\, \dd t\quad \text{for all}\ x>0,
+		\]
+		using substitution $u = 1-t$ we have
+		\[
+		\ln (1-x) = \int_1^{1-x} \frac{1}{t}\, \dd t = -\int_0^x \frac{1}{1-u}\, \dd u \quad \text{for all}\ x<1.
+		\]
+		We use a polynomial series to approximate $\dfrac{1}{1-u}$:
+		\[
+		-\ln (1-x) = \int_0^x \left( 1 + u + \frac{u^2}{1-u} \right) \dd u = x + \frac{x^2}{2} + \int_0^x \frac{u^2}{1-u}\, \dd u.
+		\]
+		Note when $x$ is near $0$, the polynomial $P(x)=x + \dfrac{x^2}{2}$ is a good approximation of $-\ln(1-x)$. This motivates us to introduce the following theorem.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Let
+		\[
+		P_n(x) = x + \frac{x^2}{2} + \frac{x^3}{3} + \cdots + \frac{x^n}{n} = \sum_{k=1}^n \frac{x^k}{k}
+		\]
+		denote the polynomial of degree $n$. Then for any $x<1$ and any positive integer $n$, we have
+		\[
+		-\ln(1-x) = P_n(x) + \int_0^x \frac{t^n}{1-t}\, \dd t.
+		\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		We denote the last term by
+		\[
+		E_n(x) := \int_0^x \frac{t^n}{1-t}\, \dd t
+		\]
+		and call it the \textbf{error term}. Now we study the error term and see how good the approximation is.
+	\end{remarkenv}
+	\begin{theoremenv}
+		With the same setup as above, we have the following:
+		\begin{enumerate}
+			\item [(1)] If $0<x<1$, then
+			\[
+			\frac{x^{n+1}}{n+1} \leq E_n(x) \leq \frac{1}{(1-x)}\cdot\frac{x^{n+1}}{(n+1)}.
+			\]
+			\item [(2)] If $x<0$, then
+			\[
+			0 < (-1)^{n+1} E_n(x) \leq \frac{|x|^{n+1}}{n+1}.
+			\]
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{remarkenv}
+		\begin{enumerate}
+			\item [(1)] If $|x|$ is ``very small'', then $E_n(x)$ is also ``very small'' (no matter what $n$ is).
+			\item [(2)] If $|x|$ is fixed and $n$ is ``very large'', then $E_n(x)$ is also ``very small'' and thus $P_n(x)$ is a good approximation of $-\ln(1-x)$.
+		\end{enumerate}
+	\end{remarkenv}
+	
+	\section{Exponential function}
+	\begin{definitionenv}
+		For any real number $x$, the \textbf{exponential function} or the \textbf{antilogorithm} is defined by
+		\[
+		y = e^x = \text{the unique positive real number such that}\ \ln y = x.
+		\]
+	\end{definitionenv}
+	\begin{notationenv}
+		We use the notation $\exp(x)$ to denote $e^x$ sometimes.
+	\end{notationenv}
+	\begin{remarkenv}
+		Note that
+		\[
+		\operatorname{Dom} (\exp) = \mathbb{R}, \quad \operatorname{Im} (\exp) = (0, +\infty).
+		\]
+		Since $\ln x$ is continuous and strictly increasing on $(0, +\infty)$, we know $\exp(x)$ is also continuous and strictly increasing on $\mathbb{R}$.
+	\end{remarkenv}
+	\begin{theoremenv}
+		The exponential function has the following properties:
+		\begin{enumerate}
+			\item [(1)] $e^0 = 1$;
+			\item [(2)] $(e^x)' = e^x$ for all $x\in \mathbb{R}$;
+			\item [(3)] $e^{x+y} = e^x \cdot e^y$ for all $x,y\in \mathbb{R}$;
+			% \item [(4)] $e^{-x} = \dfrac{1}{e^x}$ for all $x\in \mathbb{R}$;
+			% \item [(5)] $f(x)=e^x$ is unbounded on $\mathbb{R}$;
+			% \item [(6)] $f(x)=e^x$ is convex on $\mathbb{R}$.
+		\end{enumerate}
+	\end{theoremenv}
+	\begin{proofenv}
+		We only prove (2) here. By the definition of derivative, we have
+		\[
+		(e^x)' = \lim_{h\to 0} \frac{e^{x+h} - e^x}{h} = e^x \lim_{h\to 0} \frac{e^h - 1}{h}.
+		\]
+		It suffices to show the limit is $1$. Note that
+		\[
+		k := e^h - 1 \implies h = \ln (k+1).
+		\]
+		Thus we have
+		\[
+		\lim_{h\to 0} \frac{e^h - 1}{h} = \lim_{k\to 0} \frac{k}{\ln (k+1)} = \lim_{k\to 0} \frac{k}{\ln (1+k) - \ln 1} = \frac{1}{\left( \ln (1+k) \right)'}\Big|_{k=0} = 1.
+		\]
+	\end{proofenv}
+	\begin{definitionenv}
+		For any $a>0$ and $x\in \mathbb{R}$, we also define $a^x := e^{x \ln a}$.
+	\end{definitionenv}
+	\begin{methodenv}
+		Using exponential function, we can rewrite integration by substitution as
+		\[
+		\int e^{f(x)} f'(x)\, \dd x = e^{f(x)} + C.
+		\]
+	\end{methodenv}
+	\begin{definitionenv}
+		The \textbf{hyperbolic sine} and \textbf{hyperbolic cosine} functions are defined by
+		\[
+		\sinh x = \frac{e^x - e^{-x}}{2}, \quad \cosh x = \frac{e^x + e^{-x}}{2}.
+		\]
+		Similarly, we define the \textbf{hyperbolic tangent} function by
+		\[
+		\tanh x = \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}}.
+		\]
+	\end{definitionenv}
+    \begin{theoremenv}
+        Suppose $f$ is strictly increasing and continuous on $[a,b]$ and let $g$ be the inverse of $f$. If the derivative $f'(x)$ exists and is non-zero on $(a,b)$, then the derivative $g'(y)$ also exists and is non-zero at the corresponding $y=f(x)$. Moreover, we have
+        \[
+        g'(y) = \frac{1}{f'(g(y))} \quad \text{or}\quad \frac{\dd}{\dd y} f^{-1}(y) = \frac{1}{f'(f^{-1}(y))}.
+        \]
+    \end{theoremenv}
+    \section{Inverse of Trigometric Functions}
+    Note that the usual trigonometric functions are not invertible on their entire domains (due to periodicity).  So to define their ``inverses'', we consider them restricted to some interval on which they are monotonic.
+    \begin{definitionenv}
+        Here are the definitions of the three most common inverse trigonometric functions:
+        \begin{enumerate}
+            \item To define the \textbf{inverse sine function}, we consider $f(x)=\sin x$ for $x \in \left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]$, we denote the inverse function by $g(y)=\arcsin y$ for $y \in [-1,1]$.
+            \item To define the \textbf{inverse cosine function}, we consider $f(x)=\cos x$ for $x \in [0, \pi]$, we denote the inverse function by $g(y)=\arccos y$ for $y \in [-1,1]$.
+            \item To define the \textbf{inverse tangent function}, we consider $f(x)=\tan x$ for $x \in \left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)$, we denote the inverse function by $g(y)=\arctan y$ for $y \in \mathbb{R}$.
+        \end{enumerate}
+    \end{definitionenv}
+    \begin{theoremenv}
+        The derivatives of the inverse trigonometric functions are given by:
+        \begin{enumerate}
+            \item [(1)]
+            \[
+            g'(y) = \dfrac{1}{f'(g(y))} = \frac{1}{\cos(\arcsin y)} = \frac{1}{\sqrt{1-\sin^2(\arcsin y)}} = \frac{1}{\sqrt{1-y^2}}.
+            \]
+            \item [(2)]
+            \[
+            g'(y) = \dfrac{1}{f'(g(y))} = \frac{-1}{\sin(\arccos y)} = \frac{-1}{\sqrt{1-\cos^2(\arccos y)}} = \frac{-1}{\sqrt{1-y^2}}.
+            \]
+            \item [(3)]
+            \[
+            g'(y) = \dfrac{1}{f'(g(y))} = \frac{1}{\sec^2(\arctan y)} = \frac{1}{1+\tan^2(\arctan y)} = \frac{1}{1+y^2}.
+            \]
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{theoremenv}
+        The integrals involving inverse trigonometric functions are given by:
+        \begin{enumerate}
+            \item [(1)]
+            \[
+            \int \arcsin x\, \dd x = x \arcsin x + \int \frac{x^2}{\sqrt{1-x^2}}\, \dd x = x \arcsin x + \sqrt{1-x^2} + C.
+            \]
+            \item [(2)]
+            \[
+            \int \arccos x\, \dd x = x \arccos x - \int \frac{x^2}{\sqrt{1-x^2}}\, \dd x = x \arccos x - \sqrt{1-x^2} + C.
+            \]
+            \item [(3)]
+            \[
+            \int \arctan x\, \dd x = x \arctan x - \int \frac{x^2}{1+x^2}\, \dd x = x \arctan x - x + \ln(1+x^2) + C.
+            \]
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{remarkenv}
+        As for $\arcsec x$, $\arccsc x$ and $\arccot x$, we define them to be:
+        \begin{enumerate}
+            \item $$ \arcsec x := \arccos \dfrac{1}{x},\quad |x| \geq 1; $$
+            \item $$ \arccsc x := \arcsin \dfrac{1}{x},\quad |x| \geq 1; $$
+            \item $$ \arccot x := \dfrac{\pi}{2}-\arctan x,\quad x\in\mathbb{R}$$
+        \end{enumerate}
+    \end{remarkenv}
+
+    \section{Integration by Partial Fractions}
+    % \begin{myex}
+    %     Try to calculate
+    %     \[
+    %     I = \int \frac{2x+5}{x^2+2x-3}\, \dd x.
+    %     \]
+    %     Note that
+    %     \[
+    %     \begin{aligned}
+    %         I &= \int \frac{2x+5}{(x+3)(x-1)}\, \dd x\\
+    %         &= \int \left( \frac{A}{x+3} + \frac{B}{x-1} \right) \dd x\quad (A,B\text{ are constants})\\
+    %         &= \int \left( \frac{A(x-1) + B(x+3)}{(x+3)(x-1)} \right) \dd x\\
+    %         &= \int \frac{(A+B)x + (3B - A)}{(x+3)(x-1)}\, \dd x.
+    %     \end{aligned}
+    %     \]
+    %     By comparing coefficients, we have
+    %     \[
+    %     \begin{cases}
+    %         A + B = 2,\\
+    %         3B - A = 5.
+    %     \end{cases}
+    %     \implies
+    %     \begin{cases}
+    %         A = \dfrac74,\\[6pt]
+    %         B = \dfrac14.
+    %     \end{cases}
+    %     \]
+    %     Thus we have
+    %     \[
+    %     \begin{aligned}
+    %         I &= \int \left( \frac{7/4}{x+3} + \frac{1/4}{x-1} \right) \dd x\\
+    %         &= \frac74 \ln |x+3| + \frac14 \ln |x-1| + C.
+    %     \end{aligned}
+    %     \]
+    % \end{myex}
+    % \begin{myex}
+    %     Try to calculate
+    %     \[
+    %     I = \int \frac{x^3+3x}{x^2-2x-3} \, \dd x.
+    %     \]
+    %     Note that since the degree of the numerator is greater than that of the denominator, we first use polynomial division:
+    %     \[
+    %     \begin{aligned}
+    %         I &= \int \left( x + 2 + \frac{10x + 6}{x^2 - 2x - 3} \right) \dd x\\
+    %         &= \int (x + 2)\, \dd x + \int \frac{10x + 6}{(x+1)(x-3)}\, \dd x.
+    %     \end{aligned}
+    %     \]
+    %     Then we do similarly as before.
+    % \end{myex}
+    \begin{definitionenv}
+        We call a rational function $r(x)=\dfrac{f(x)}{g(x)}$ \textbf{proper} if the degree of $f(x)$ is strictly less than that of $g(x)$. Otherwise, we call it \textbf{improper}.
+    \end{definitionenv}
+    \begin{remarkenv}
+        For an improper rational function, we can always use polynomial division to find polynomial $Q(x)$ and $R(x)$:
+        \[
+        \frac{f(x)}{g(x)} = Q(x) + \frac{R(x)}{g(x)}
+        \]
+        where $\dfrac{R(x)}{g(x)}$ is a proper rational function. Here $Q(x)$ is called the \textbf{quotient} and $R(x)$ is called the \textbf{remainder}.
+    \end{remarkenv}
+    \begin{definitionenv}
+        A quadratic function/factor of the form $x^2+bx+c$ is called \textbf{irreducible} over $\mathbb{R}$ if it cannot be further factored as $(x+x_1)(x+x_2)$ where $x_1,x_2\in \mathbb{R}$, i.e. its discriminant $b^2-4c<0$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Every proper rational function can be expressed as a finite sum of a collection of terms each of which takes the form
+        \[
+        \frac{A}{(x+a)^k}, \quad \frac{Bx + C}{(x^2 + bx + c)^m}
+        \]
+        where $A,B,C,a,b,c$ are real numbers, $k,m$ are positive integers, and $x^2 + bx + c$ is irreducible over $\mathbb{R}$.
+    \end{theoremenv}
+    \begin{methodenv}
+        Suppose $r(x)=\dfrac{f(x)}{g(x)}$ is proper.
+
+        \textbf{Case 1:}
+        $g(x)$ can be factorized into a collection of distinct linear factors. For example, suppose
+        \[
+        g(x)=(x-x_1)(x-x_2)\cdots (x-x_n) \quad \text{where } x_i \neq x_j \text{ for } i\neq j \in \left\{ 1, 2, \ldots, n \right\}
+        \]
+        Then
+        \[
+        \frac{f(x)}{g(x)}=\frac{A_1}{x-x_1} + \frac{A_2}{x-x_2} + \cdots + \frac{A_n}{x-x_n}\quad \text{for some } A_1, A_2, \ldots, A_n \in \mathbb{R}.
+        \]
+        and
+        \[
+        \int \frac{f(x)}{g(x)} \dd x = A_1 \ln |x-x_1| + A_2 \ln |x-x_2| + \cdots + A_n \ln |x-x_n| + C.
+        \]
+        \indent
+        \textbf{Case 2:}
+        $g(x)$ can still be factorized into a collection of linear terms, but some of these linear terms are repeated. For example, suppose $(x-a)$ is repeated $p$ times where $p\ge 2$ is an integer, then the corresponding term in the partial fraction decomposition becomes the following sum
+        \[
+        \frac{B_1}{(x-a)} + \frac{B_2}{(x-a)^2} + \cdots + \frac{B_p}{(x-a)^p}\quad \text{for some } B_1, B_2, \ldots, B_p \in \mathbb{R}.
+        \]
+        \indent
+        \textbf{Case 3:}
+        $g(x)$ contains non-repeated irreducible quadratic factors (in addition to linear factors) $x^2 + bx + c$ where $b^2 - 4c < 0$. Then in the partial fraction decomposition, we will have the term
+        \[
+        \frac{Ax+B}{x^2 + bx + c}\quad \text{for some } A,B \in \mathbb{R}.
+        \]
+        Now we integrate this term:
+        \[
+        \int \frac{Ax+B}{x^2 + bx + c}\, \dd x = \frac{A}{2} \ln |x^2 + bx + c| + \frac{2B - Ab}{\sqrt{4c - b^2}} \arctan \left( \frac{2x + b}{\sqrt{4c - b^2}} \right) + C.
+        \]
+        \indent
+        \textbf{Case 4:}
+        $g(x)$ contains repeated irreducible quadratic factors of the form $(x^2 + bx + c)^p$ where $p\ge 2$ is an integer. Then in the partial fraction decomposition, we will have the term
+        \[
+        \frac{A_1 x + B_1}{x^2 + bx + c} + \frac{A_2 x + B_2}{(x^2 + bx + c)^2} + \cdots + \frac{A_p x + B_p}{(x^2 + bx + c)^p}\quad \text{for some } A_i, B_i \in \mathbb{R}.
+        \]
+        And we do similarly as Case 3 to integrate each term.
+    \end{methodenv}
+
+    \newpage

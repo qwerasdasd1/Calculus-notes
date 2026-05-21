@@ -1,0 +1,110 @@
+    \chapter{Applications of Differential Calculus}
+    \section{Applications to Geometry}
+    \begin{definitionenv}
+        Suppose $f$ is a scalar field on $S\subseteq \R^n$ and $c\in \R$ is a constant. We call the set $L(c) := \{\vec x \in S: f(\vec x) = c\}$ a \textbf{level set} of $f$. In particular, if $n=2$, we call $L(c)$ a \textbf{level curve} of $f$; if $n=3$, we call $L(c)$ a \textbf{level surface} of $f$.
+    \end{definitionenv}
+    \begin{exampleenv}
+        Suppose $f:\R^2 \to \R$. For any curve $\vec r(t) $ in $\R^2$, if we let $g$ be defined as $g(t) = f[\vec r(t)]$, then $$g'(t) = \nabla f(\vec r(t)) \cdot \vec r\,'(t) = \| \vec r\,'(t)\| \left( \nabla f(\vec r(t)) \cdot T(t) \right).$$
+        Particularly, if this curve happens to be the level curve given by $f(x,y)  = c$. Suppose level curve $L(c) := \{ (x,y) : f(x,y) = c\}$ is also described by $\vec r_c(t)$. Then $g(t) = f[\vec r_c(t)] = c$ for any $t$, which means $g'(t) = 0$ for any $t$. Thus
+        $$
+        \| \vec r_c\,'(t)\| \left( \nabla f(\vec r_c(t)) \cdot T(t) \right) = 0.
+        $$
+        On this level curve, $\nabla f \cdot T = 0$, and we say: the gradient vector is always normal to the curve $C$; the directional derivative of $f$ along any level curve of $f$ is zero. By Cauchy-Schwarz inequality, we have
+        $$ |\nabla f(x,y) \cdot \vec y | \le \|\nabla f(x,y)\| \|\vec y\|, $$
+        maximized when $\vec y$ is parallel to $\nabla f(x,y)$, i.e., $\vec y$ is perpendicular to the tangent vector of a level curve.
+    \end{exampleenv}
+    \begin{exampleenv}
+        Suppose $f:\R^3 \to \R$ differentiable. Suppose $L(c)$ is a level surface and $\vec a$ is a point on the level surface. Let $\vec r (t)$ describes a curve that passes through $\vec a$ and lies completely with in $L(c)$. If we consider all curves passing through $\vec a $ and living within $L(c)$, then the tangent vectors of all therse curves at $\vec a$ determin/live in a plane that passes throught $\vec a$ and has a normal vector equal to $\nabla f(\vec a)$ provided that $\nabla f(\vec a) \ne \vec 0$. This plane is can be described by the equation
+        $$ \nabla f(\vec a) \cdot (\vec x - \vec a) = 0. $$
+    \end{exampleenv}
+
+    \section{Applications to Optimization Problems}
+    \begin{definitionenv}
+        A scalar field is said to
+        \begin{itemize}
+            \item have an \textbf{absolute (or global maximum)} at $\vec a \in S \subseteq \R^n$ if $f(\vec a) \ge f(\vec x)$ for any $\vec x \in S$, in which case we also call $f(\vec a)$ the \textbf{absolute maximum value} of $f$ on $S$;
+            \item have an \textbf{absolute (or global minimum)} at $\vec a \in S$ if $f(\vec a) \le f(\vec x)$ for any $\vec x \in S$, in which case we also call $f(\vec a)$ the \textbf{absolute minimum value} of $f$ on $S$;
+            \item have a \textbf{relative (or local maximum)} at $\vec a \in S$ if there exists $r>0$ such that $f(\vec a) \ge f(\vec x)$ for any $\vec x \in B(\vec a; r)\subseteq S$, in which case we also call $f(\vec a)$ the \textbf{local maximum value} of $f$ at $\vec a$;
+            \item have a \textbf{relative (or local minimum)} at $\vec a \in S$ if there exists $r>0$ such that $f(\vec a) \le f(\vec x)$ for any $\vec x \in B(\vec a; r)\subseteq S$, in which case we also call $f(\vec a)$ the \textbf{local minimum value} of $f$ at $\vec a$.
+        \end{itemize}
+        If $f$ has either a relative maximum or a relative minimum at $\vec a$, then we say $f$ has an \textbf{extremum} at $\vec a$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        If $f$ has an extremum at $\vec a\in \int S$ and $f$ is differentiable at $\vec a$, then $\nabla f(\vec a) = \vec 0$.
+    \end{theoremenv}
+    \begin{remarkenv}
+        If $f$ is differentiable at $\vec a$ and $\nabla f(\vec a) = \vec 0$, then $f$ does not necessarily have an extremum at $\vec a$. Assume $z=f(x,y) = x^2 - y^2$, then $\nabla f(0,0) = \vec 0$ but $f$ does not have an extremum at $(0,0)$ since $f$ can be positive or negative in any neighborhood of $(0,0)$.
+    \end{remarkenv}
+    \begin{definitionenv}
+        Suppose scalar field $f$ is differentiable at $\vec a$. If $\nabla f(\vec a) = \vec 0$, then we say $\vec a$ is a \textbf{stationary point} of $f$. A stationary point is called a \textbf{saddle point} if every open $n$-ball $B(\vec a)$ contains both points $\vec x$ with $f(\vec x) > f(\vec a)$ and points $\vec y$ with $f(\vec y) < f(\vec a)$.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Suppose $f$ has a stationary point at $\vec a$, then the nature of this stationary point is determined by the sign of $f(\vec x) - f(\vec a)$ for $\vec x$ close to $\vec a$. Suppose $\vec x = \vec a + \vec y$, then
+        $$ f(\vec a + \vec y) - f(\vec a) = \nabla f(\vec a) \cdot \vec y + \| \vec y\| E(\vec a, \vec y),$$
+        where $E(\vec a, \vec y) \to 0$ as $\vec y \to \vec 0$.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $f$ is a scalar field with continuous second-order partial derivatives $D_{ij} f$ in an open $n$-ball $B(\vec a)$. Then for all $\vec y \in \R^n$ such that $(\vec a + \vec y) \in B(\vec a)$, we have
+        $$ 
+        f(\vec a + \vec y) - f(\vec a ) = \nabla f(\vec a) \cdot \vec y + \frac{1}{2!} \vec y H(\vec a + c \vec y) \vec y^T,
+        $$
+        where $c\in (0,1)$ and $H(\vec x)$ is called the \textbf{Hessian matrix} whose $ij$-th entry is given by $D_{ij} f(\vec x) = \displaystyle \frac{\partial^2 f}{\partial x_i \partial x_j}(\vec x)$. Note that here $\vec y$ is treated as a row vector. We can also write the second-order Taylor expansion as
+        $$
+        f(\vec a + \vec y) = f(\vec a) + \nabla f(\vec a) \cdot \vec y + \frac{1}{2!} \vec y H(\vec a) \vec y^T + \| \vec y \|^2 E_2(\vec a, \vec y),
+        $$
+        where $E_2(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$.
+    \end{theoremenv}
+    \begin{remarkenv}
+        Since the Hessian matrix is symmetric, we know it has an orthonormal eigenbasis and $\vec y H(\vec a + c \vec y) \vec y^T$ is a quadratic form associated with a unique symmetric matrix. If we know all the eigenvalues of $H(\vec a)$ are positive, then
+        $$ f(\vec a + \vec y) - f(\vec a) = \frac{1}{2} \vec y H(\vec a) \vec y^T + \| \vec y\|^2 E_2(\vec a, \vec y) > 0 $$
+        for $\vec y$ close enough to $\vec 0$.
+    \end{remarkenv}
+    \begin{proofenv}
+        Fix $\vec y$ and define $g(u) = f(\vec a + u\vec y)$ for $u \in [-1,1]$. Then
+        $$ f(\vec a + \vec y ) = g(1) - g(0) = g'(0) + \frac{1}{2} g''(c)$$
+        where $c\in (0,1)$ by the second-order Taylor formula for $g$ on $[0,1]$ with the Lagrange form of the remainder.
+
+        Let $\vec r = \vec a + u \vec y$, then $\vec r\,'(u) = \vec y$ and
+        $$ g'(u) = \nabla f(\vec r) \cdot \vec r\,'(u) = \sum_{j=1} D_j f(\vec r) y_j. $$
+        Thus
+        $$ g'(0) = \sum_{j=1}^{n=1} D_j f(\vec a) y_j = \nabla f(\vec a) \cdot \vec y = 0. $$
+
+    \end{proofenv}
+    \begin{lemmaenv}
+        Suppose $f$ is a scalar field on $\R^2$ with $D_1 f, D_2 f, D_{12} f, D_{21} f$ exist on an open set $S$. If $(a,b) \in S$ and $D_{12} f$ and $D_{21} f$ are both continuous at $(a,b)$, then $D_{12} f(a,b) = D_{21} f(a,b)$.
+    \end{lemmaenv}
+    \begin{lemmaenv}
+        Suppose $A\in \mathbf M_{n\times n}(\R)$ is a symmetric matrix and $\vec y $ is a row vector in $\R^n$. Let $Q(\vec y) = \vec y A \vec y^T$. Then
+        \begin{enumerate}
+            \item $Q(\vec y) > 0$ for any $\vec y \ne \vec 0$ if and only if all the eigenvalues of $A$ are positive;
+            \item $Q(\vec y) < 0$ for any $\vec y \ne \vec 0$ if and only if all the eigenvalues of $A$ are negative;
+            \item $Q(\vec y)$ takes both positive and negative values for $\vec y \ne \vec 0$ if and only if $A$ has both positive and negative eigenvalues.
+        \end{enumerate}
+    \end{lemmaenv}
+    \begin{theoremenv}
+        Suppose $f$ is a scalar field with continuous second-order partial derivatives $D_{ij} f$ in an open $n$-ball $B(\vec a)$ and Let $H(\vec a)$ denote the Hessian matrix of $f$ at $\vec a$, which is a stationary point of $f$. Then
+        \begin{enumerate}
+            \item If all the eigenvalues of $H(\vec a)$ are positive, i.e., $H(\vec a)$ is positive definite, then $f$ has a local minimum at $\vec a$;
+            \item If all the eigenvalues of $H(\vec a)$ are negative, i.e., $H(\vec a)$ is negative definite, then $f$ has a local maximum at $\vec a$;
+            \item If $H(\vec a)$ has both positive and negative eigenvalues, then $f$ has a saddle point at $\vec a$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{theoremenv}
+        Given $\vec a = (a_1, \ldots, a_n), \vec b = (b_1, \ldots, b_n) \in \R^n$ with $a_i < b_i$ for $i=1, \ldots, n$. We define $\left[ \vec a, \vec b \right] := [a_1, b_1] \times \cdots \times [a_n, b_n]$. If a scalar field $f$ is continuous at every $\vec x \in [\vec a, \vec b]$, then
+        \begin{itemize}
+            \item $f$ is bounded on $[\vec a, \vec b]$, i.e., there exists $M>0$ such that $|f(\vec x)| \le M$ for any $\vec x \in [\vec a, \vec b]$;
+            \item There exists $\vec c$ and $\vec d$ such that
+            $$ f(\vec c) = \sup_{\vec x \in [\vec a, \vec b]} f(\vec x),\quad f(\vec d) = \inf_{\vec x \in [\vec a, \vec b]} f(\vec x). $$
+        \end{itemize}
+    \end{theoremenv}
+    \begin{definitionenv}
+        Suppose $\left[ \vec a, \vec b \right]$ and $P_k$ is a partition of $[a_k, b_k]$ for $k=1, \ldots, n$. We call $P := P_1 \times \cdots \times P_n$ a \textbf{partition} of $[\vec a, \vec b]$. 
+    \end{definitionenv}
+    \begin{definitionenv}
+        Let $f$ be a continuous scalar field on $[\vec a, \vec b] \subseteq \R^n$ and let $M(f)$ and $m(f)$ denote the absolute maximum and minimum values of $f$ on $[\vec a, \vec b]$, respectively. We call $M(f) - m(f)$ the \textbf{span} of $f$ on $[\vec a, \vec b]$.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Suppose $f$ is a scalar field continuous on $[\vec a, \vec b]$. Then, for every $\varepsilon > 0$, there is a partition of $[\vec a, \vec b]$ such that the span of $f$ on every subinterval of this partition is less than $\varepsilon$.
+    \end{theoremenv}
+
+    \newpage

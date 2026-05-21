@@ -1,0 +1,171 @@
+    \chapter{Multivariable Calculus}
+    \section{Vector-valued functions}
+    \begin{definitionenv}
+        Suppose $f_1,\cdots,f_n$ are functions fron $\R$ to $\R$. We call $$F(t) = (f_1(t), f_2(t), \cdots, f_n(t))$$ a \textbf{vector-valued function} and we define the \textbf{limits,derivatives} and \textbf{integrals} by the following:
+        $$ \begin{aligned}
+            \lim_{t\to p} F(t) &= \left( \lim_{t\to p} f_1(t), \cdots, \lim_{t\to p} f_n(t) \right),\\
+            F'(t) &= (f_1'(t), \cdots, f_n'(t)),\\
+            \int_a^b F(t) \dd t &= \left( \int_a^b f_1(t) \dd t, \cdots, \int_a^b f_n(t) \dd t \right).
+        \end{aligned} $$
+    \end{definitionenv}
+    \begin{theoremenv}
+        Suppose $F$ and $G$ are vector-valued functions from $\R$ to $\R^n$ and $u$ is a real-valued function from $\R$ to $\R$. If $F,G$ and $u$ are differentiable on in interval, then so are $F+G$, $uF$ and $F\cdot G$ and we have
+        \begin{enumerate}[label=(\arabic*)]
+            \item $(F+G)' = F' + G'$;
+            \item $(uF)' = u' F + u F'$;
+            \item $(F\cdot G)' = F'\cdot G + F\cdot G'$.
+        \end{enumerate}
+        For the case $n=3$, then $F\times G$ is also differentiable with $(F\times G)' = F'\times G + F \times G'$.
+    \end{theoremenv}
+    \begin{propositionenv}
+        Suppose $F$ is a vector-valued function from $\R$ to $\R^n$. If $F$ is differentiable and be constant length/norm on an open interval $I$, i.e., $\| F(t)\| = c$ for any $t\in I$, then $F \cdot F' = 0$ on $I$. Namely, $F'(t)$ is always perpendicular to $F(t)$ for any $t\in I$.
+    \end{propositionenv}
+    \begin{proofenv}
+        Let $g(t) := F(t)\cdot F(t) = \| F(t)\|^2 = c^2$ for any $t\in I$. Then $g'(t) = 2 F(t)\cdot F'(t) = 0$ for any $t\in I$. Thus $F(t)\cdot F'(t) = 0$ for any $t\in I$.
+    \end{proofenv}
+    \begin{theoremenv}
+        Suppose $F:\R \to \R^n$ and $u:\R \to \R$. Let $G:=F \circ u$. Then:
+        \begin{enumerate}[label=(\arabic*)]
+            \item If $u$ is continuous at $t$ and $F$ is continuous at $u(t)$, then $G$ is continuous at $t$.
+            \item If the derivative $u'(t)$ and $F'(u(t))$ exist, then $G'(t)$ exists and $G'(t) = u'(t) F'(u(t))$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{theoremenv}
+        Suppose $F:\R \to \R^n$ is continuous on $[a,b]$, then:
+        \begin{enumerate}[label=(\arabic*)]
+            \item $F$ is integrable on $[a,b]$;
+            \item For any $c\in [a,b]$, we can define the primitive or indefinite integral function $A(x) := \displaystyle \int_c^x F(t) \dd t$ for any $x\in [a,b]$. Then $A$ is differentiable on $(a,b)$ and $A'(x) = F(x)$ for any $x\in (a,b)$.
+            \item If the derivative $F'(t)$ is continuous on some open interval $I$, then for every $c$ and $x$ in $I$, we have
+            $$ F(x) = F(c) + \int_c^x F'(t) \dd t. $$
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{theoremenv}
+        Suppose $F$ and $G$ are from $\R$ to $\R^n$ and are integrable on $[a,b]$. Then :
+        \begin{enumerate}[label=(\arabic*)]
+            \item for any $\alpha , \beta \in \R$, $\alpha F + \beta G$ is also integrable on $[a,b]$ with
+            $$ \int_a^b (\alpha F + \beta G)(t) \dd t = \alpha \int_a^b F(t) \dd t + \beta \int_a^b G(t) \dd t; $$
+            \item Let $C \in \R^n$, then the dot product $C \cdot F$ is also integrable on $[a,b]$ with
+            $$ \int_a^b (C\cdot F)(t) \dd t = C \cdot \int_a^b F(t) \dd t. $$
+            \item If $\| F \|$ is also integrable on $[a,b]$, then 
+            $$ \left\| \int_a^b F(t) \dd t \right\| \le \int_a^b \| F(t)\| \dd t. $$
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{proofenv}
+        We only prove (3) here. Let $A:= \displaystyle \int_a^b F(t) \dd t$. The case where $\left\|A\right\| = 0 $ is trivial. Suppose $\left\|A\right\| > 0$. Then
+        $$ \| A\|^2 = A \cdot A = \int_a^b F(t) \cdot A \dd t \le \int_a^b \| F(t)\| \| A\| \dd t = \| A\| \int_a^b \| F(t)\| \dd t. $$
+        Thus $\displaystyle \left\|\int_a^b F(t) \dd t\right\| = \| A\| \le \int_a^b \| F(t)\| \dd t$.
+    \end{proofenv}
+    \section{Curves}
+    \begin{definitionenv}
+        Suppose $X$ is a vector-valued function from $\R$ to $\R^n$ with $n=2$ or $n=3$. Suppose the domain of $X$ is an interval $D\subseteq \R$. If $X$ is continuous on $D$, then we call the range/image of $X$ a \textbf{curve} in $\R^n$. We also say that the curve is described (parametrically) by the function $X$ with parameter $t\in D$. We also call $D$ a parameter interval.
+    \end{definitionenv}
+    \begin{remarkenv}
+        The curve described by $X$ is invarient under the change of parameter. For example, if $u:\R \to \R$ and $I = \{u(t) :t \in J\}$ for some interval $J$, then $Y := X\circ u$ also describes the same curve as $X$. We say $X$ and $Y$ are equivalent in describing the curve $C$.
+    \end{remarkenv}
+    \begin{definitionenv}
+        Let $C$ be a curve described by $X$ (note $X$ is continuous). If the derivative $X'(t)$ exists and $X'(t) \ne 0$, then the line through point $X(t)$ with direction vector $X'(t)$ is called the \textbf{tangent line} of the curve $C$ at point $X(t)$.
+    \end{definitionenv}
+    \begin{remarkenv}
+        Though the derivative of $X$ and $Y=X\circ u$ are different, the tangent lines of the curve $C$ at point $X(t) = Y(s)$ are the same since $Y'(s) = u'(s) X'(u(s))$ is parallel to $X'(u(s))$. Thus the tangent line of a curve at a point is well-defined and does not depend on the choice of parameter.
+    \end{remarkenv}
+    \begin{definitionenv}
+        Consider a motion (of a particle) described by a vector-valued function $X: \R \to \R^n$ with $n=2$ or $n=3$. The derivative $X'(t)$ is called the \textbf{velocity} at time $t$. $\| X'(t)\|$ is called the \textbf{speed} at time $t$. The second derivative $X''(t)$ is called the \textbf{acceleration} at time $t$. In some textbooks, we use $\vec{r}(t)$ for $X(t)$, $\vec{v}(t)$ for $X'(t)$, $v(t)$ for $\| X'(t)\|$ and $\vec{a}(t)$ for $X''(t)$.
+    \end{definitionenv}
+    \begin{exampleenv}
+        Suppose $\vec{r}(t) = (r \cos(f(t)), r \sin(f(t)), bf(t))$ with $r>0$ and $b\ne 0$ fixed. This is called a \textbf{helix/helical curve} in $\R^3$. Note a helix is not contained in any plane in $\R^3$ but it is contained fully in a cylinder/cylindrical surface in $\R^3$.
+    \end{exampleenv}
+    \begin{definitionenv}
+        Consider a curve described by $X(t)$. We define the \textbf{unit tangent vector} $T$ as $$T(t) := \dfrac{X'(t)}{\| X'(t)\|} \quad \text{whenever } X'(t) \ne 0. $$ Note that $\| T(t) \| = 1$ and thus $T(t) \cdot T'(t) = 0$. We define the \textbf{principal normal vetor} $N$ as
+        $$ N(t) := \frac{T'(t)}{\| T'(t)\|} \quad \text{whenever } T'(t) \ne 0. $$
+        Note $\left\|N(t)\right\| =1$ and $N(t) \cdot T(t) = 0$. Furthermore, we call the plane through the point $X(t)$ and spanned by $T(t)$ and $N(t)$ the \textbf{osculating plane} of the curve at point $X(t)$. 
+    \end{definitionenv}
+    \begin{remarkenv}
+        Consider three points $X(t_1), X(t_2)$ and $X(t_3)$ on the curve. As $t_2 $ and $t_3$ approach $t_1$, the plane determined by $X(t_1), X(t_2)$ and $X(t_3)$, supposing the three points are not collinear, approaches the osculating plane at point $X(t_1)$. Note if the curve is a planar curve, then the osculating plane is the fixed plane containing the curve.
+    \end{remarkenv}
+    \begin{theoremenv}
+        For a motion described by $\vec r(t)$, the acceleration $\vec a(t) := \vec r\,''(t)$ is a linear combination of $T(t)$ and $T'(t)$ given by $$ \vec a(t) = v'(t) T(t) + v(t) T'(t). $$
+        If, additionally $T'(t) \ne 0$, then
+        $$ \vec a(t) = v'(t) T(t) + v(t) \| T'(t)\| N(t). $$
+    \end{theoremenv}
+    \begin{remarkenv}
+        We call $v'(t)$ and $v(t) \| T'(t)\|$ the tangential and normal components of the acceleration $\vec a(t)$, respectively. In some textbook, the \textbf{binormal vector} $B$ is also introduced as $B(T) := T(t) \times N(t)$. Note $\left\| B(t) \right\|=1$ and $T(t), N(t)$ and $B(t)$ together provide a moving reference frame for $\R^3$ along the curve.
+    \end{remarkenv}
+    \begin{definitionenv}
+        For a curve in $\R^2$ and $\R^3$ described by $\vec r(t)$ for $t\in [a,b]$ (Note $\vec r$ is required to be continuous on $[a,b]$). Let $P=\{t_0, t_1, \ldots, t_n\}$ be a partition of $[a,b]$. We denote the polygon whose vertices are $\vec r(t_0), \vec r(t_1), \ldots, \vec r(t_n)$ by $\Pi (P)$ and denote the \textbf{length of polygon} by $\| \Pi (P)\|$. Then
+        $$ \| \Pi (P)\| = \sum_{i=1}^n \| \vec r(t_i) - \vec r(t_{i-1})\|. $$
+        If there exists an $M>0$ such that $\| \Pi (P)\| \le M$ for any partition $P$ of $[a,b]$, then we say the curve is said to be \textbf{rectifiable} and its arc length, denoted by $\Lambda(a,b)$, is defined as
+        $$ \Lambda(a,b) := \sup \{ \| \Pi (P)\| : P \text{ is a partition of } [a,b]\}. $$
+        If there's no such $M$, then the curve is said to be \textbf{non-rectifiable}.
+    \end{definitionenv}
+    \begin{theoremenv}
+        For a curve in $\R^2$ or $\R^3$ described by $\vec r(t)$ for $t\in [a,b]$. If $\vec v(t) := \vec r\,'(t)$ is continuous on $[a,b]$, then the curve is rectifiable and its arc length satisfies
+        $$ \Lambda(a,b) \le \int_a^b \| \vec v(t)\| \dd t. $$
+
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $P = \{t_0, t_1, \ldots, t_n\}$ is a partition of $[a,b]$. Then
+        $$ \| \Pi (P)\| = \sum_{i=1}^n \| \vec r(t_i) - \vec r(t_{i-1})\| = \sum_{i=1}^n \left\| \int_{t_{i-1}}^{t_i} \vec v(t) \dd t \right\| \le \sum_{i=1}^n \int_{t_{i-1}}^{t_i} \| \vec v(t)\| \dd t = \int_a^b \| \vec v(t)\| \dd t. $$
+        Since $\Lambda (a,b) $ is the least upper bound, we have $\Lambda(a,b)\displaystyle \le \int_a^b \| \vec v(t)\| \dd t$.
+    \end{proofenv}
+    \begin{theoremenv}
+        For a rectifiable curve in $\R^2$ or $\R^3$ described by $\vec r(t)$ for $t\in [a,b]$. If $a<c<b$ and $C_1$ and $C_2$ are the curves corresponding to $\vec r(t)$ on $[a,c]$ and $[c,b]$, respectively, then $C_1$ and $C_2$ are both rectifiable and $\Lambda(a,b) = \Lambda(a,c) + \Lambda(c,b)$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $P_1$ and $P_2$ are partitions of $[a,c]$ and $[c,b]$, respectively. Let $P = P_1 \cup P_2$ be the joint partition. Then $ \| \Pi (P_1)\| + \| \Pi (P_2)\| = \| \Pi (P)\| \le \Lambda(a,b)$. Thus $\| \Pi (P_1)\|$ and $\| \Pi (P_2)\|$ are both bounded above by $\Lambda(a,b)$ for any partitions $P_1$ and $P_2$. Thus $C_1$ and $C_2$ are both rectifiable.
+        \begin{itemize}
+            \item For a fixed $P_2$, $\| \Pi (P_1)\|  \le \Lambda(a,b) - \| \Pi (P_2)\|$ holds for any partition $P_1$ of $[a,c]$ and there by $$\Lambda(a,c) \le \Lambda(a,b) - \| \Pi (P_2)\| \implies \| \Pi (P_2) \| \le \Lambda(a,b) - \Lambda(a,c).$$
+            \item since the above inequality holds for any partition $P_2$ of $[c,b]$, we have $\Lambda(a,b) \ge \Lambda(a,c) + \Lambda(c,b)$.
+        \end{itemize}
+        We still need to show $\Lambda(a,b) \le \Lambda(a,c) + \Lambda(c,b)$. Suppose $P$ is a partition of $[a,b]$. Adding in $c$ into $P$, we obtain a partition $P_1$ of $[a,c]$ and a partition $P_2$ of $[c,b]$ such that
+        $$ \| \Pi (P)\| \le \| \Pi (P_1)\| + \| \Pi (P_2)\| \le \Lambda(a,c) + \Lambda(c,b). $$
+        Thus $\Lambda(a,b) \le \Lambda(a,c) + \Lambda(c,b)$. Combining the two inequalities, we have $\Lambda(a,b) = \Lambda(a,c) + \Lambda(c,b)$.
+    \end{proofenv}
+    \begin{definitionenv}
+        Suppose a curve in $\R^2$ or $\R^3$ is described by $\vec r(t)$ for $t\in [a,b]$. We define the \textbf{arc-length function} $s$ as
+        $$ s(t) := \begin{cases}
+            0, & t=a; \\
+            \Lambda(a,t), & t\in (a,b].
+        \end{cases}
+        $$
+    \end{definitionenv}
+    \begin{theoremenv}
+        For any rectifiable curve, the arc-length function $s$ is monotonically increasing on $[a,b]$.
+    \end{theoremenv}
+    \begin{theoremenv}
+        Suppose a rectifiable curve described by $\vec r(t)$ for $t\in [a,b]$. Let $s$ denote the arc-length function. If the speed $v(t) = \| \vec r\,'(t)\|$ is continuous on $[a,b]$, then the derivative $s'(t)$ exists and is given by $s'(t) = v(t)$ for any $t\in [a,b]$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $h>0$, then
+        $$ \frac{s(t+h) - s(t)}{h} \le \frac1h \int_t^{t+h} v(u) \dd u \to v(t) \quad \text{as } h\to 0^+. $$
+        We also have
+        $$ \frac{s(t+h) - s(t)}{h} \ge \left\|\frac{\vec r(t+h) - \vec r(t)}{h}\right\| \to v(t) \quad \text{as } h\to 0^+. $$
+        By the squeeze theorem, we know $\displaystyle \lim_{h\to 0^+} \frac{s(t+h) - s(t)}{h} = v(t)$ and thus $s'(t) = v(t)$. The case where $h<0$ can be proved similarly.
+    \end{proofenv}
+    \begin{remarkenv}
+        Note
+        $$ s(t_2) - s(t_1) = \int_{t_1}^{t_2} v(t) \dd t,$$
+        provided that $v(t)$ is continuous on $[a,b]$. Particularly, $$\Lambda(a,b) = s(b) - s(a) = \int_a^b v(t) \dd t.$$
+    \end{remarkenv}
+    \begin{exampleenv}
+        Consider the curve in $\R^2$ given by $\vec r(t) = (t, f(t))$ for $t\in [a,b]$ where $f$ is a scalar-valued function differentiable on $[a,b]$. Then the arc-length function is given by
+        $$ s(t) = \int_a^t v(u) \dd u = \int_a^t \sqrt{1 + (f'(u))^2} \dd u. $$
+    \end{exampleenv}
+    \begin{definitionenv}
+        Let $T$ denote the unit tangent vector and $s$ denote the arc-length function of a rectifiable curve described by $\vec r(t)$ for $t\in [a,b]$. We call $\dfrac{\dd T}{\dd s}$ the \textbf{curvature vector} of the curve provided it's well-defined. Note
+        $$ \frac{\dd T}{\dd s} = \frac{\dd T}{\dd t} \cdot \frac{\dd t}{\dd s} = \frac{T'(t)}{v(t)} = \frac{\left\|T'(t)\right\| N(t)}{v(t)}. $$
+        This means that the curvature vector is parallel to the principal normal vector $N$. We call $$\kappa(t) := \left\| \dfrac{\dd T}{\dd s}\right\| = \dfrac{\left\|T'(t)\right\|}{v(t)}$$ the \textbf{curvature number} of the curve at point $\vec r(t)$.
+    \end{definitionenv}
+    \begin{definitionenv}
+        When $\kappa(t) \ne 0$, we call $\rho(t) := \dfrac{1}{\kappa(t)}$ the \textbf{radius of curvature}. Then then circle in the osculating plane with radius $\rho(t)$ and centered at $\vec r(t) + \dfrac{1}{\kappa(t)} N(t)$ is called the \textbf{osculating circle}. Note the osculating circle is tangent to the curve at point $\vec r(t)$ and has the same curvature as the curve at point $\vec r(t)$.
+    \end{definitionenv}
+
+    \begin{theoremenv}
+        For motion along a curve in $\R^2$ or $\R^3$ with velocity $\vec v(t)$, speed $v(t)$, acceleration $\vec a(t)$ and curvature $\kappa$. Then we have
+        $$ \vec a(t) = v'(t) T(t) + \kappa (t) v^2(t) N(t). $$
+        and
+        $$ \kappa (t) = \frac{\left\|\vec a (t) \times \vec v (t)\right\|}{v^3 (t)}
+        $$
+    \end{theoremenv}
+    \section{Curves in Polar Coordinates}
+    
+    \newpage

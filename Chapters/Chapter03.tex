@@ -1,0 +1,306 @@
+	\chapter{Applications of Integration}
+	Every time before we do the integration, we should ask one thing: is the to-be-integrated function integrable?
+	\section{More about Area}
+	\begin{definitionenv}
+		A circular disk of radius $r$ is the set of all points inside or on the boundary of a circle of radius $r$.
+	\end{definitionenv}
+	\begin{theoremenv}
+		A circular disk is measurable and its area $A(r)$ is given by the integral
+		\[
+		A(r) = 2\int_{-r}^r \sqrt{r^2-x^2}\,\mathrm{d}x.
+		\]
+	\end{theoremenv}
+	\begin{definitionenv}
+		We define the number $\pi$ to be the area of a unit disk, i.e., the radius of which is exactly $1$. Symbolically: 
+		\[
+		\pi := 2\int_{-1}^1 \sqrt{1-x^2}\,\mathrm{d}x.
+		\]
+	\end{definitionenv}
+	\begin{propositionenv}
+		The area of a circular disk with radius $r$ is given by
+		\[
+		A(r)=\pi r^2.
+		\] 
+	\end{propositionenv}
+	\begin{theoremenv}
+		Let $f$ be nonnegative and integrable on $[a,b]$ and let $S$ be its ordinate set. We define a new function $g$ denoted by
+		\[
+		g(x):=kf\left( \frac{x}{k}\right) \qquad \text{with}\ x\in[ka,kb],\, k>0
+		\]
+		and its ordinate set $kS$. Then the area of $kS$ is given by
+		\[
+		A(kS)=k^2A(S).
+		\]
+	\end{theoremenv}
+	\begin{remarkenv}
+		Actually this new $g$ is ``similar" to $f$ so we call this definition a similarity transformation.
+	\end{remarkenv}
+	\section{Integration formulas for the sine and cosine}
+	We omit deriving properties of sine and cosine in this lecture note since I'm lazy and I'm pretty sure you know them very well during your study in high school. I shall only introduce one property as you might know but cannot come up with due to less usage.
+	\begin{theoremenv}
+		For $0<x<\frac{1}{2}\pi$, we have
+		\[
+		0<\cos x< \frac{\sin x}{x} < \frac{1}{\cos x}.
+		\]
+	\end{theoremenv}
+	\begin{propositionenv}
+		Here are several inequalities important in deriving integral formulas
+		for sine and cosine.
+		\begin{enumerate}
+			\item For any $x\in\mathbb R$,
+			\begin{align*}
+				2\sin\frac{x}{2}\sum_{k=1}^{n}\cos(kx)=\sin\!\left(\Big(n+\frac12\Big)x\right)-\sin\frac{x}{2}.
+			\end{align*}
+			
+			\item For any $\theta\in\mathbb R$,
+			\begin{align*}
+				2\sin\theta\sum_{k=1}^{n}\cos(2k\theta)=\sin(2n+1)\theta-\sin\theta
+				\\
+				2\sin\theta\sum_{k=0}^{n-1}\cos(2k\theta)=\sin(2n-1)\theta+\sin\theta.
+			\end{align*}
+			
+			\item Suppose $\theta$ satisfies $0<2n\theta<\tfrac12\pi$, we have
+			\begin{align*}
+				\sin(2n+1)\theta-\sin\theta<\frac{\sin\theta}{\theta}\sin(2n\theta).
+			\end{align*}
+			
+			\item Suppose $\theta$ satisfies $0<2n\theta<\tfrac12\pi$. First we have
+			\begin{align*}
+				\frac{\cos(n-1)\theta}{\cos(n\theta)}>\frac{\sin\theta}{\theta}
+			\end{align*}
+			and then we can deduce
+			\begin{align*}
+				\frac{\sin\theta}{\theta}\sin(2n\theta)<\sin(2n-1)\theta+\sin\theta.
+			\end{align*}
+		\end{enumerate}
+	\end{propositionenv}
+	\begin{theoremenv}
+		For any $0<a\le \tfrac12\pi$, we have
+		\begin{align*}
+			\frac{a}{n}\sum_{k=1}^{n}\cos\frac{ka}{n}<\sin a
+			<
+			\frac{a}{n}\sum_{k=0}^{n-1}\cos\frac{ka}{n}.
+		\end{align*}
+	\end{theoremenv}
+	\begin{theoremenv}
+		For every real $a$ we have
+		\begin{align*}
+			\int_0^a \cos x\,\mathrm{d}x = \sin a,\qquad
+			\int_0^a \sin x\, \mathrm{d}x = 1-\cos a.
+		\end{align*}
+		More generally, for every real $a,b$, we have
+		\begin{align*}
+			\int_a^b \cos x\,\mathrm{d}x = \sin x\,\Big|^b_a\, ,\qquad
+			\int_a^b \sin x\, \mathrm{d}x = (-\cos x)\, \Big|^b_a\, .
+		\end{align*}
+	\end{theoremenv}
+
+	\section{Polar Coordinates}
+	\begin{definitionenv}
+		The polar coordinates of a point $P$ in the plane are an ordered pair $(r,\theta)$ where $r$ is the distance from $P$ to the origin $O$ and $\theta$ is the angle formed by the line segment $OP$ and the positive $x$-axis. Here $r\ge 0$ and $\theta\in \mathbb{R}$. They are related to the rectangular coordinates $(x,y)$ of $P$ by the equations
+		\[
+		x=r\cos \theta,\quad y=r\sin \theta.
+		\]
+		Here we call $r$ the radial distance of $P$ and $\theta$ a polar angle.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Note that we call $\theta$ ``a'' polar angle instead of ``the'' polar angle because $\theta+2n\pi$ also represents the same angle for any integer $n$. But the radial distance $r$ is uniquely determined. 
+		
+		If $r=0$, then by convention $\theta$ can be any real number.
+	\end{remarkenv}
+	\begin{definitionenv}
+		A curve is said to be given in polar coordinates if there is a nonnegative function $f$ defined on an interval $I$ such that every point $P$ on the curve has polar coordinates $(r,\theta)$ satisfying
+		\[
+		r=f(\theta),\quad \theta\in I.
+		\]
+		And this equation is called the polar equation of the curve. Similarly, the graph of $f$ in polar coordinates is the set of all points $P$ with polar coordinates $(r,\theta)$ satisfying the above equation.
+	\end{definitionenv}
+
+	\begin{remarkenv}
+		In some textbooks, the variable $r$ in polar coordinates is allowed to be negative: when $r<0$, the point $(r,\theta)$ is identified with the point $(-r,\theta+\pi)$.  Note that the points $(r,\theta)$ and $(-r,\theta)$ are symmetric with respect to the origin. The additional definition allows the existence of inner loops in the graph of a polar equation. But in this lecture note, we only consider nonnegative functions in polar coordinates.
+	\end{remarkenv}
+	\begin{exampleenv}
+		Sketch the curves for
+		\[
+		f(\theta)=1+c\sin\theta\quad \text{where}\quad\theta\in[0,2\pi],\ c\in\{-2,2\}
+		\]
+		under two different defintion and compare them.
+	\end{exampleenv}
+	\begin{definitionenv}
+		Let $f$ be a nonnegative function defined on an interval $[a,b]$, where $0\le b-a\le 2\pi$. The set of all points $P$ in the plane with polar coordinates $(r,\theta)$ satisfying
+		\[
+		0\le r \le f(\theta),\quad \theta\in [a,b]
+		\]
+		is called the radial set determined by $f$.
+	\end{definitionenv}
+	\begin{definitionenv}
+		Similarly as in rectangular coordinates, a nonnegative function $s$ defined on $[a,b]$ is called a step function in polar coordinates if there exists a partition $P=\left\{\theta_0,\theta_1,\cdots,\theta_n\right\}$ of $[a,b]$ such that
+		\[
+		s(\theta)=s_k\quad\text{where}\quad \theta \in (\theta_{k-1},\theta_k),\quad k=1,2,\cdots,n.
+		\]
+		And the area of this sector is given by
+		\[
+		A=\frac12 s_k^2(\theta_k-\theta_{k-1}).
+		\]
+		Since $b-a<2\pi$, there is no overlapping between different sectors. The area of the radial set determined by $s$ is given by
+		\[
+		A(S)=\frac12 \sum_{k=1}^n s_k^2(\theta_k-\theta_{k-1})=\frac12 \int_a^b s^2(\theta)\,\mathrm{d}\theta.
+		\]
+	\end{definitionenv}
+	\begin{theoremenv}
+		Let $f$ be a nonnegative function on $[a,b]$, where $0\le b-a\le 2\pi$. Assume the radial set $S$ determined by $f$ is measurable. If $f^2$ is integrable, then the area $A(S)$ is given by the integral
+		\[
+		A(S)=\frac12 \int_a^b f^2(\theta)\,\mathrm{d}\theta.
+		\]
+	\end{theoremenv}
+
+	\section{Volume}
+	Similarly, we can use axiomatic definitions to define volume like we did for area.
+
+	\begin{definitionenv}
+		We assume there exists a class $\mathcal{A}$ of solids and a set function $V$, whose domain is $\mathcal{A}$, with the following properties:
+		\begin{enumerate}
+			\item Nonnegative property: For each set $S$ in $\mathcal{A}$ we have $V(S) \ge 0$.
+			
+			\item Additive property: If $S$ and $T$ are in $\mathcal{A}$, then 
+			$S \cup T$ and $S \cap T$ are in $\mathcal{A}$, and we have
+			\[
+				V(S \cup T) = V(S) + V(T) - V(S \cap T).
+			\]
+			
+			\item Difference property: If $S$ and $T$ are in $\mathcal{A}$ with $S \subseteq T$, 
+			then $T - S$ is in $\mathcal{A}$, and we have 
+			\[
+				V(T - S) = V(T) - V(S).
+			\]
+			
+			\item Cavalieri's principle.: If $S$ and $T$ are two Cavalieri solids in $\mathcal{A}$ 
+			with $A(S \cap F) \le A(T \cap F)$ for every plane $F$ perpendicular to a given line, 
+			then $V(S) \le V(T)$.
+			
+			\item Choice of scale.: Every box $B$ is in $\mathcal{A}$. 
+			If the edges of $B$ have lengths $a, b,$ and $c$, then 
+			\[
+				V(B) = abc.
+			\]
+			
+			\item Every convex set is in $\mathcal{A}$.
+		\end{enumerate}
+	\end{definitionenv}
+	\begin{definitionenv}[Additional]
+		Some definitions are lost above and here we add it.
+		\begin{enumerate}
+			\item A solid $S$ in $\mathcal{A}$ is called a \textbf{Cavalieri solid} if for every plane $F$ perpendicular to a given line $L$, the area $A(S\cap F)$ of the cross section of $S$ by $F$ is well-defined, i.e., the cross section is measurable.
+			\item A \textbf{box} or \textbf{rectangular parallelepiped} is any set congruent to a set of the form
+			\[
+			\{(x,y,z)\in \mathbb{R}^3\ |\ 0\le x \le a,\ 0\le y \le b,\ 0\le z \le c \},
+			\]
+			where nonnegative real numbers $a,b,c$ are called the lengths of the edges of the box.
+			\item A solid $S$ in $\mathcal{A}$ is called a \textbf{convex set} if for every two points $P,Q\in S$, the line segment $PQ$ is also contained in $S$.
+			\item A plane set is call \textbf{bounded} if it is a subset of some square in the plane.
+		\end{enumerate}
+	\end{definitionenv}
+	\begin{propositionenv}
+		Here's some propositions for some basic cases.
+		\begin{enumerate}
+			\item The empty set $\varnothing$ is in $\mathcal{A}$ and $V(\varnothing)=0$.
+			\item Monotonicity property: If $S$ and $T$ are in $\mathcal{A}$ with $S\subseteq T$, then $V(S)\le V(T)$.
+			\item Every bounded plane set $S$ in $\mathcal{A}$ has volume zero, i.e., $V(S)=0$.
+		\end{enumerate}
+	\end{propositionenv}
+	\begin{remarkenv}
+		Note that the Cavalieri's principle can be applied twice: if $A(S\cap F)=A(T\cap F)$ for every plane $F$ perpendicular to a given line, then $V(S)=V(T)$. In Chinese, we call this property Zu Geng's principle.
+	\end{remarkenv}
+	\begin{definitionenv}
+		A \textbf{right cylindrical solid} is a set congruent to a set $S$ of the form
+		\[
+		S=\left\{(x,y,z)\in \mathbb{R}^3\ |\ (x,y)\in B,\, a\le z \le b \right\},
+		\]
+		where $B$ is a bounded plane set and $a,b$ are real numbers with $a\le b$. The base of the right cylindrical solid is the set $B$, and its height is $b-a$.
+	\end{definitionenv}
+	\begin{theoremenv}
+		Let $S$ be a right cylindrical solid with base $B$ and height $h$. Then $S$ is in $\mathcal{A}$ and its volume is given by
+		\[
+		V(S)=A(B)\cdot h=\int_a^b A_S(z)\,\mathrm{d}z
+		\]
+		More generally, let $R$ be a Cavalieri solid in $\mathcal{A}$ with a cross-sectional area function $A_R$ which is integrable on an interval $[a,b]$ and zero outside $[a,b]$. Then the volume of $R$ is given by
+		\[
+		V(R)=\int_a^b A_R(z)\,\mathrm{d}z.
+		\]
+	\end{theoremenv}
+	
+	\begin{theoremenv}
+	Let $f$ and $g$ be nonnegative integrable functions on $[a,b]$ satisfying $g(x) \le f(x)$ for all $x \in [a,b]$. If the region bounded by $y = f(x)$ and $y = g(x)$ is revolved about the $x$-axis, then the resulting solid of revolution (if it belongs to $\mathcal{A}$) has volume
+	\[
+		V = \pi \int_a^b \bigl[f^2(x) - g^2(x)\bigr] \, \mathrm{d}x .
+	\]
+	In particular, if $g(x) = 0$, the volume is
+	\[
+		V = \pi \int_a^b f^2(x) \, \mathrm{d}x .
+	\]
+	\end{theoremenv}
+	\begin{exampleenv}
+		 Let $f(x) = \sqrt{r^2 - x^2}$ on $[-r,r]$, the solid is a sphere of radius $r$, and
+		\[
+		V = \pi \int_{-r}^{r} (r^2 - x^2)\, \mathrm{d}x = \frac{4}{3}\pi r^3.
+		\]
+	\end{exampleenv}
+
+	\section{Indefinite Integral}
+	\begin{definitionenv}
+		Let $f$ be a real-valued function integrable on $[a,b]$. The \textbf{average value} of $f$, denoted by $\operatorname{avg}(f)$, on $[a,b]$ is defined to be
+		\[
+		\operatorname{avg}(f)=\frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x.
+		\]
+	\end{definitionenv}
+    \begin{remarkenv}
+		Note that the definition of average value of a function is consistent with the definition of average value of a finite set of numbers. You might not see how this definition works in this section, but it will be useful in later section.
+	\end{remarkenv}
+    \begin{theoremenv}
+        Assume $f$ and $g$ are continuous on $[a,b]$. If $g$ never changes sign on $[a,b]$, then for some $c\in[a,b]$, we have
+        \[
+        \int_a^b f(x)g(x)\,\mathrm{d}x = f(c)\int_a^b g(x)\,\mathrm{d}x.
+        \]
+        This is called the \textbf{Weighted Mean Value Theorem for Integrals}.
+        Let $g(x)\equiv 1$, we have the \textbf{Mean Value Theorem for Integrals}:
+        \[
+        \int_a^b f(x)\,\mathrm{d}x = f(c)(b-a).
+        \]
+    \end{theoremenv}
+    \begin{remarkenv}
+        The proof is in Chapter 4.
+    \end{remarkenv}
+	\begin{definitionenv}
+		Let $f$ be a real-valued function integrable on every closed interval contained in an open interval $I$. An \textbf{indefinite integral} of $f$ on $I$ is the function $F$ defined by
+		\[
+		F(x)=\int_a^x f(t)\,\mathrm{d}t,\quad x\in I,
+		\]
+		where $a$ is an arbitrary point in $I$.
+	\end{definitionenv}
+	\begin{remarkenv}
+		Actually a different choice of $a$ will only lead to a different indefinite integral by a constant, since
+		\[
+		\int_b^x f(t)\,\mathrm{d}t = \int_a^x f(t)\,\mathrm{d}t - \int_a^b f(t)\,\mathrm{d}t.
+		\]
+	\end{remarkenv}
+	\begin{theoremenv}
+		Suppose $f$ integrable and nonnegative on $[a,b]$, then the indefinite integral $A(f)$ is increasing.
+	\end{theoremenv}
+	\begin{definitionenv}
+		A function $g$ is said to be \textbf{convex} on an interval $[a,b]$ if for every $x_1,x_2\in [a,b]$ and $0\le \lambda \le 1$, we have
+		\[
+		g\left(\lambda x_1 + (1-\lambda)x_2\right) \le \lambda g(x_1) + (1-\lambda)g(x_2).
+		\]
+		Similarly, $g$ is said to be \textbf{concave} on $[a,b]$ if the above inequality is reversed, i.e.,
+		\[
+		g\left(\lambda x_1 + (1-\lambda)x_2\right) \ge \lambda g(x_1) + (1-\lambda)g(x_2).
+		\]
+	\end{definitionenv}
+	\begin{remarkenv}
+		Geometrically, a function $g$ is convex on $[a,b]$ if the line segment joining any two points on the graph of $g$ lies above or on the graph between these two points. Similarly, $g$ is concave on $[a,b]$ if the line segment joining any two points on the graph of $g$ lies below or on the graph between these two points.
+	\end{remarkenv}
+	\begin{theoremenv}
+		Let $f$ be integrable on $[a,b]$ and let $F$ be an indefinite integral of $f$ on $[a,b]$. If $f$ is increasing on $[a,b]$, then $F$ is convex on $[a,b]$. If $f$ is decreasing on $[a,b]$, then $F$ is concave on $[a,b]$.
+	\end{theoremenv}
+
+	\newpage
