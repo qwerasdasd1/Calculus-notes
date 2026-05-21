@@ -6,6 +6,20 @@
 % ===== Base: Chinese book class (provides \chapter) =====
 \LoadClass[UTF8,a4paper,14pt]{ctexbook}
 
+% ===== English headings (override ctex Chinese defaults) =====
+\ctexset{
+    chapter/name = {Chapter\space},
+    contentsname = {Contents},
+    indexname = {Index},
+    figurename = {Figure},
+    tablename = {Table},
+    abstractname = {Abstract},
+    appendixname = {Appendix},
+    bibname = {References},
+}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+
 % ===== Typography (FAA) =====
 \RequirePackage{fix-cm}
 \RequirePackage{lmodern}
