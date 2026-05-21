@@ -6,9 +6,14 @@
 % ===== Base: Chinese book class (provides \chapter) =====
 \LoadClass[UTF8,a4paper,14pt]{ctexbook}
 
+% ===== Pass options to packages loaded later =====
+\PassOptionsToPackage{table}{xcolor}
+
 % ===== English headings (override ctex Chinese defaults) =====
 \ctexset{
     chapter/name = {Chapter\space},
+    chapter/number = {\arabic{chapter}},
+    section/number = {\arabic{section}},
     contentsname = {Contents},
     indexname = {Index},
     figurename = {Figure},
@@ -37,6 +42,9 @@
 \RequirePackage{enumitem}
 \RequirePackage{float}
 \RequirePackage{adjustbox}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{centernot}
 
 % ===== Graphics & drawing =====
 \RequirePackage{graphicx}
