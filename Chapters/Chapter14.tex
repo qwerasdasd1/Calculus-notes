@@ -30,4 +30,83 @@
     \begin{definitionenv}
         Suppose $\vec \beta:[a,b] \to \R^n$ is a continuous path and $u:\R \to \R$ is differentiable on $[c,d]$ with $\left\{ u(s) : s\in [c,d] \right\} = [a,b]$ and $u'(s) \ne 0$ for any $s\in [c,d]$. Then $\vec \gamma: [c,d] \to \R^n$ defined as $\vec \gamma(s) := \vec \beta [u(s)]$ for $s\in [c,d]$ is also a continuous path with the same image as $\vec \beta$. We call $\vec \beta$ and $\vec \gamma$ \textbf{equivalent paths} and $u$ a \textbf{change of parameter function}. Namely, $\vec \gamma$ and $\vec \beta$ describe the same curve but with different parametrizations. If $u'(s) >0$ for $s\in [c,d]$, then we say $\vec \gamma$ and $\vec \beta$ trace out $C$ in the same direction.
     \end{definitionenv}
+
+    \begin{definitionenv}
+        Suppose $\vv{\alpha}$ is a path with $\vv{\alpha}'$ continuous on $[a,b]$. Then $\vv{\alpha}$ describes a \textbf{rectifiable curve} whose arc-length function is given by
+        $$ s(t) = \int_a^t \|\vv{\alpha}'(\tau)\| \dd \tau, \quad t\in [a,b]. $$
+        We also know $s'(t) = \|\vv{\alpha}'(t)\|$. Suppose $f$ is a scalar function defined and bounded on $C$. The line integral of $f$ with respect to arc-length along $C$ is defined as
+        $$ \int_C f \dd s := \int_a^b f(\vv{\alpha}(t)) s'(t) \dd t. $$ 
+    \end{definitionenv}
+    \begin{exampleenv}
+        Let $\vv g$ be a vector field (e.g. velocity filed of the fluid) defined on a curve $C$ described by $\vv \alpha(t)$ on $[a,b]$. Then $\varphi[\vv \alpha (t)] := \vv g[\vv \alpha(t)] \cdot T(t)$ is a scalar field defined on $C$ and
+        $$ \int_C \varphi \dd s = \int_a^b \vv \varphi[\vv \alpha(t)] s'(t) \dd t = \int_a^b \vv g[\vv \alpha(t)] \cdot T(t) s'(t) \dd t = \int_a^b \vv g[\vv \alpha(t)] \cdot \vv \alpha'(t) \dd t = \int_C \vv g \cdot \dd\vv r. $$
+        Then $\displaystyle \int_C \varphi \dd s=\int_C \vv g \cdot T \dd s$ is called the \textbf{flow integral} of $\vv g$ along $C$. Particularly, when $C$ is a closed curve, it is also called the \textbf{circulation} of $\vv g$ along $C$.
+    \end{exampleenv}
+
+    \section{Fundamental Theorems of Calculus for Line Integrals}
+    \begin{definitionenv}
+        Let $S$ be an open set in $\R^n$. We say $S$ is \textbf{connected} if every pair of points in $S$ can be joined by a piecewise smooth path whose image is totally contained in $S$. 
+    \end{definitionenv}
+    \begin{theoremenv}[Second Fundamental Theorem of Calculus for Line Integrals]\label{thm:fundamental-theorem-line-integrals}
+        Let $f$ be a differentiable scalar field with continuous gradient $\nabla f$ on an open, connected set $S \subseteq \R^n$. Then for points $\vv a, \vv b \in S$ that are joined by a piecewise smooth path $\vv \alpha$ in $S$, we have
+        $$ \int_{\vv \alpha}^{\vv \beta} \nabla f \cdot \dd \vv \alpha = f(\vv b) - f(\vv a). $$
+    \end{theoremenv}
+    \begin{proofenv}
+        Let $\vv a, \vv b \in S$ and $\vv \alpha$ be a path with $\vv \alpha(a) = \vv a$ and $\vv \alpha(b) = \vv b$ and $\vv \alpha(t) \in S$ for $t\in [a,b]$.
+
+        \textbf{Special Case:} $\vv \alpha$ is smooth on $[a,b]$. We pick $g(t) := f[\vv \alpha(t)]$ for $t\in [a,b]$. Then $g$ is differentiable on $[a,b]$ and
+        $$ g'(t) = \nabla f[\vv \alpha(t)] \cdot \vv \alpha'(t) $$
+        for $t\in [a,b]$. By the \textbf{FTC2} for regular integrals, we have
+        $$\int \nabla f \cdot \dd \vv \alpha = \int_a^b \nabla f[\vv \alpha(t)] \cdot \vv \alpha'(t) \dd t = g(b) - g(a) = f(\vv b) - f(\vv a). $$
+
+        \textbf{General Case:} $\vv \alpha$ is piecewise smooth on $[a,b]$ with partition $P=\{ t_0, t_1, \dots, t_r \}$ where $a=t_0 < t_1 < \dots < t_r = b$ such that $\vv \alpha$ is smooth on each subinterval $[t_{i-1}, t_i]$ for $i=1,2,\dots,r$. Then by the additive property
+        $$ \int_{\vv \alpha( a)}^{\vv \alpha(b)} \nabla f \cdot \dd \vv \alpha = \sum_{i=1}^r \int_{\vv \alpha(t_{i-1})}^{\vv \alpha(t_i)} \nabla f \cdot \dd \vv \alpha = \sum_{i=1}^r [f(\vv \alpha(t_i)) - f(\vv \alpha(t_{i-1}))] = f(\vv b) - f(\vv a). $$
+    \end{proofenv}
+    \begin{remarkenv}
+        The result of Theorem~\ref{thm:fundamental-theorem-line-integrals} can be interpreted as follows: 
+        \begin{itemize}
+            \item the line integral's value of a gradient field only depends on the endpoints $\vv a$ and $\vv b$, i.e., \textbf{independent of path from $\vv a$ to $\vv b$};
+            \item $\displaystyle \oint \nabla f \cdot \dd \vv r = 0$ for any closed curve in $S$.
+        \end{itemize}
+    \end{remarkenv}
+    \begin{theoremenv}[First Fundamental Theorem of Calculus for Line Integrals]\label{thm:fundamental-theorem-line-integrals-1}
+        Let $f$ be a vector field that is continuous on an open connected set $S \subseteq \R^n$ and assume that the line integral of $f$ is independent of path in $S$. Let $\vv a\in S$ and define a scalar field $\varphi$ on S by
+        $$ \varphi(\vv x) := \int_{\vv a}^{\vv x} \vec f \cdot \dd \vv \alpha, \quad \vv x \in S $$
+        where $\vv \alpha$ is any piecewise smooth path in $S$ from $\vv a$ to $\vv x$. Then the gradient of $\varphi$ exists and $\nabla \varphi (\vv x)= \vec f(\vv x)$ on $S$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Suppose $\vv f (\vv x) = (f_1(\vv x), f_2(\vv x), \dots, f_n(\vv x))$. We will prove $D_k \varphi(\vv x) = f_k(\vv x)$ for $k=1,2,\dots,n$ and any $\vv x \in S$. Suppose $B(\vv x; r) \subseteq S$ and $\vv y$ is a unit vector. Then $\vv x + h \vv y \in B(\vv x; r)$ for any $0<|h| < r$.
+        $$ \frac{\varphi(\vv x + h \vv y) - \varphi(\vv x)}{h} = \frac1h \left[ \int_{\vv a}^{\vv x + h \vv y} \vec f \cdot \dd \vv \alpha  - \int_{\vv a}^{\vv x} \vec f \cdot \dd \vv \alpha \right]  = \frac1h \int_{\vv x} ^{\vv x + h \vv y} \vec f \cdot \dd \vv \alpha. $$
+        Particularly, consider the path $\vv \alpha(t) = \vv x + t h \vv y$ for $t\in [0,1]$. Then $\vv \alpha '(t) = h \vv y$ and
+        $$ \frac1h \int_{\vv x} ^{\vv x + h \vv y} \vec f \cdot \dd \vv \alpha = \int_0^1 \vec f(\vv x + t h \vv y) \cdot \vv y \dd t = \int_0^1 f_k(\vv x + t h \vv e_k) \dd t,$$
+        where $\vv y = \vv e_k$ is the $k$-th standard unit vector. We do a change of variable $u = t h$ and get
+        $$ \int_0^1 f_k(\vv x + t h \vv e_k) \dd t = \frac1h \int_0^h f_k(\vv x + u \vv e_k) \dd u = \frac{\displaystyle \int_0^h f_k(\vv x + u \vv e_k) \dd u - \int_0^0 f_k(\vv x + u \vv e_k) \dd u}{h-0} $$
+        which converges to $f_k(\vv x)$ as $h\to 0$ by the \textbf{FTC1} for regular integrals. Hence,
+        $$ \lim_{h\to 0} \frac{\varphi(\vv x + h \vv y) - \varphi(\vv x)}{h} = f_k(\vv x) = D_k \varphi(\vv x). $$
+    \end{proofenv}
+    \begin{remarkenv}
+        Suppose $\vv g$ is a continuous vector field on an open connected set $S \subseteq \R^n$. Then by Theorem~\ref{thm:fundamental-theorem-line-integrals-1}, if the line integral of $\vv g$ is independent of path in $S$, then there exists a scalar field $\varphi$ such that $\nabla \varphi = \vv g$. Conbining with Theorem~\ref{thm:fundamental-theorem-line-integrals}, we have the necessary and sufficient condition for a vector field to be a gradient field, which is stated in the following theorem.
+    \end{remarkenv}
+    \begin{theoremenv}
+        Suppose $\vv g$ is a continuous vector field on an open connected set $S \subseteq \R^n$. Then the following statements are equivalent:
+        \begin{enumerate}[label=(\arabic*)]
+            \item $\vv g$ is the gradient of some scalar field $\varphi$ in $S$, i.e., $\vv g = \nabla \varphi$, where $\varphi$ is called a \textbf{potential function} of $\vv g$;
+            \item the line integral of $\vv g$ is independent of path in $S$;
+            \item $\displaystyle \oint_C \vv g \cdot \dd \vv r = 0$ for any piecewise smooth closed curve $C$ in $S$.
+        \end{enumerate}
+    \end{theoremenv}
+    \begin{proofenv}
+        By Theorem~\ref{thm:fundamental-theorem-line-integrals}, we have (2) $\Rightarrow$ (1). By Theorem~\ref{thm:fundamental-theorem-line-integrals-1}, we have (1) $\Rightarrow$ (2) and (1) $\Rightarrow$ (3). 
+        
+        We will only show (3) $\Rightarrow$ (2). Suppose $C_1$ and $C_2$ are any two piecewise smooth paths in $S$ sharing the same endpoints. Let $C_1$ be described by $\vv \alpha$ on $[a,b]$ and $C_2$ be described by $\vv \beta$ on $[c,d]$ with $\vv \alpha(a) = \vv \beta(c)$ and $\vv \alpha(b) = \vv \beta(d)$.
+
+        Define $\vv \gamma$ as
+        $$ \vv \gamma(t) = \begin{cases}
+            \vv \alpha(t), & t\in [a,b]; \\
+            \vv \beta(b + d - t), & t\in [b, b + d - c].
+        \end{cases} $$
+        Note $\vv \gamma(a) = \vv \alpha(a) = \vv \beta(c) = \vv \gamma(b + d - c)$. Then $\vv \gamma$ is a piecewise smooth path describing a closed curve in $S$. Then by (3), we know 
+        $$ 0 = \oint_{\vv \gamma(a)}^{\vv \gamma(b + d - c)} \vv g \cdot \dd \vv r = \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r + \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot (-\dd \vv r) = \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r - \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot  \dd \vv r. $$
+        Hence, $\displaystyle \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r = \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot  \dd \vv r$, which means the line integral of $\vv g$ is independent of path in $S$.
+    \end{proofenv}
 \end{document}
