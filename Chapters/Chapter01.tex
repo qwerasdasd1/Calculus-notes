@@ -1,30 +1,37 @@
 	\chapter{Preparations: Ten Axioms}
+    There are many ways to introduce the real-number system. One popular method is to begin with the positive integers \(1, 2, 3, \ldots\) and use them as building blocks to construct a more comprehensive system having the properties desired. Briefly, the idea of this method is to take the positive integers as undefined concepts, state some axioms concerning them, and then use the positive integers to build a larger system consisting of the positive rational numbers (quotients of positive integers). The positive rational numbers, in turn, may then be used as a basis for constructing the positive irrational numbers (real numbers like \(\sqrt{2}\) and \(\pi\) that are not rational). The final step is the introduction of the negative real numbers and zero. The most difficult part of the whole process is the transition from the rational numbers to the irrational numbers.
+
+    The point of view we shall adopt here is nonconstructive. We shall start rather far out in the process, taking the real numbers themselves as undefined objects satisfying a number of properties that we use as axioms. That is to say, we shall assume there exists a set \(\mathbb{R}\) of objects, called real numbers, which satisfy the 10 axioms listed in the next few sections. All the properties of real numbers can be deduced from the axioms in the list. When the real numbers are defined by a constructive process, the properties we list as axioms must be proved as theorems.
+
 	\section{Fields and the Field Axioms}
-	\begin{definitionenv}
-		A field $\mathcal{K}$ is a set equipped with addition and multiplication, denoted by $(\mathcal{K},+,\cdot)$, satisfying the following axioms(also known as the $\mathbf{Field\ Axioms}$):
+	\begin{definitionenv}[Field Axioms]
+		A \textbf{field} $\mathcal{K}$ is a set equipped with addition and multiplication, denoted by $(\mathcal{K},+,\cdot)$, satisfying the following axioms:
 		\begin{enumerate}
-			\item Associative Laws: let $a,b,c \in \mathcal{K}$, $a+b+c=a+(b+c) \quad a\cdot b\cdot c=a\cdot (b\cdot c) $
-			\item Existence of Identity Elements: let $a\in K$, $a+0_{\mathcal{K}}=a\quad a\cdot 1_{\mathcal{K}}=a$, where $0_{\mathcal{K}}$ and $1_\mathcal{K}$ is called the additive identity and multiplicative identity.
-			\item Existence of Negatives: for any $a\in \mathcal{K}$, there exists one element in $\mathcal{K}$ denoted by $(-a)$ such that $a+(-a)=0_\mathcal{K}$.
-			\item Existence of Reciprocal: for any $a\in \mathcal{K}$ and $a\neq 0_\mathcal{K}$, there exists one element in $\mathcal{K}$ denoted by $a^{-1}$ such that $a\cdot a^{-1} = 1_\mathcal{K}$. 
-			\item Commutative Laws: let $ a,b\in \mathcal{K}$, $a+b=b+a \quad a\cdot b=b\cdot a$
-			\item Attributive Law: let $a,b,c \in \mathcal{K}$, $a\cdot (b+c)=a\cdot b + a\cdot c$
+			\item Associative Laws: let $a,b,c \in \mathcal{K}$, $$a+b+c=a+(b+c), \qquad a\cdot b\cdot c=a\cdot (b\cdot c).$$
+			\item Existence of Identity Elements: let $a\in \mathcal K$, $$a+0_{\mathcal{K}}=a,\qquad a\cdot 1_{\mathcal{K}}=a,$$ where $0_{\mathcal{K}}$ and $1_\mathcal{K}$ is called the additive identity and multiplicative identity.
+			\item Existence of Negative: for any $a\in \mathcal{K}$, there exists one element in $\mathcal{K}$ denoted by $(-a)$ such that $$a+(-a)=0_\mathcal{K}.$$
+			\item Existence of Reciprocal: for any $a\in \mathcal{K}$ and $a\neq 0_\mathcal{K}$, there exists one element in $\mathcal{K}$ denoted by $a^{-1}$ such that $$a\cdot a^{-1} = 1_\mathcal{K}.$$ 
+			\item Commutative Laws: let $ a,b\in \mathcal{K}$, $$a+b=b+a, \qquad a\cdot b=b\cdot a.$$
+			\item Attributive Law: let $a,b,c \in \mathcal{K}$, $$a\cdot (b+c)=a\cdot b + a\cdot c.$$
 		\end{enumerate}
 	\end{definitionenv}	
 	\begin{remarkenv}
 		Closure is contained in the defined addition and multiplication.
 	\end{remarkenv}
-	\begin{theoremenv}
-		Let $a,b,c \in \mathcal{K}$, if $a+c=b+c$, then $a=b$. This is called the cancellation law.
+    \begin{notationenv}
+        For $a,b \in \mathcal{K}$, we usually write $a-b$ to replace $a+(-b)$ and write $\dfrac{a}{b}$ or $a/b$ to replace $a\cdot b^{-1}$ when $b\neq 0_\mathcal{K}$.
+    \end{notationenv}
+	\begin{theoremenv}[Cancellation Laws]
+		Let $a,b,c \in \mathcal{K}$, if $a+c=b+c$, then $a=b$.
 	\end{theoremenv}
-	\begin{theoremenv}
+	\begin{corollaryenv}
 		$0_\mathcal{K}$ and $1_\mathcal{K}$ in $\mathbf{Field\ Axiom\ 2}$ is unique.
-	\end{theoremenv}
+	\end{corollaryenv}
 	\begin{exampleenv}
-		Note that $\mathbb{C,R,Q}$ are fields, but $\mathbb{N}$ is not a field because $2 \in \mathbb{N}$ but its reciprocal $\frac{1}{2} \notin \mathbb{N}$.This is the main difference between $\mathbb{Q}$ and $\mathbb{N}$.
+		$\mathbb{C,R,Q}$ are fields, but $\mathbb{N}$ is not a field because $2 \in \mathbb{N}$, but its reciprocal $\dfrac{1}{2} \notin \mathbb{N}$. This is the main difference between $\mathbb{Q}$ and $\mathbb{N}$.
 	\end{exampleenv}
 	\begin{definitionenv}\label{def_of_ss}
-		Let $\mathcal{F}$ be a field. A set $\mathcal{K}$ is a subset of $\mathcal{F}$. We shall say $\mathcal{K}$ a subfield of $\mathcal{F}$ when $\mathcal{K}$ satisfies the followings:
+		Let $\mathcal{F}$ be a field and a set $\mathcal{K} \subseteq \mathcal{F}$. We shall say $\mathcal{K}$ a \textbf{subfield} of $\mathcal{F}$ when $\mathcal{K}$ satisfies the followings:
 		\begin{enumerate}
 			\item If $x,y$ are elements of $\mathcal{K}$, then  $x+y\in \mathcal{K}$ and $x\cdot y$ $\in \mathcal{K}$.
 			\item If $x\in \mathcal{K}$, then $(-x)\in \mathcal{K}$. If furthermore $x\neq 0$ , $x^{-1}$ $\in \mathcal{K}$.
@@ -32,7 +39,7 @@
 		\end{enumerate}
 	\end{definitionenv}
 	\begin{remarkenv}
-		Definition~\ref{def_of_ss} provides a simpler way to prove a set is a field.
+		Definition~\ref{def_of_ss} provides a simpler way to prove a set to be a field.
 	\end{remarkenv}
 	\begin{propositionenv}
 		Let $\mathcal{K}$ be a field and $A,B$ are subfields of $\mathcal{K}$, then $A \cap B$ is also a subfield of $\mathcal{K}$.
@@ -50,20 +57,20 @@
 %		Let $\mathcal{K}$ be a field and $A,B$ are subfields of $\mathcal{K}$, then $A+B$ is also a subfield.
 %	\end{mypro}
 	\begin{exampleenv}
-		Note that $\mathbb{R}$ is a subfield of $\mathbb{C}$.
+		$\mathbb{R}$ is a subfield of $\mathbb{C}$.
 	\end{exampleenv}
 	\section{The Order Axioms}
-	\begin{definitionenv}
-		We shall assume that there exists a set $\mathbb{R}^+ \subset \mathbb{R}$, called the set of positive real numbers, which satisfies the followings(also known as the $\mathbf{Order\ Axioms}$):
+	\begin{definitionenv}[Order Axioms]
+		We shall assume that there exists a set $\mathbb{R}^+ \subset \mathbb{R}$, called the set of positive real numbers, which satisfies the followings:
 		\begin{enumerate}
 			\item For any $x,y\in \mathbb{R}^+$, we have $x+y \in \mathbb{R}^+$ and $x\cdot y \in \mathbb{R}^+$.
 			\item For any real $x \neq 0$, either $x\in \mathbb{R}^+$ or $(-x)\in \mathbb{R}^+$, but not both. 
 			\item $0 \notin \mathbb{R}^+$.
 		\end{enumerate}
 	\end{definitionenv}
-	\begin{propositionenv}
+	\begin{corollaryenv}
 		$\mathbb{R}^+$ is non-empty since $1 \in \mathbb{R}^+$.
-	\end{propositionenv}
+	\end{corollaryenv}
 	\begin{notationenv}
 		For any $a,b\in \mathbb{R}$, we define the symbols $>$, $<$, $\geq$, $\leq$ as below:
 			\item $x>y$ means that $x-y$ is positive. \centering
@@ -71,49 +78,46 @@
 			\item $x\ge y$ means that $x>y$ or $x=y$. \centering
 			\item $x \le y$ means that $y \ge x$. \centering
 	\end{notationenv}
-	\begin{theoremenv}\label{trichotomy law}
-		For any $a,b\in \mathbb{R}$, exactly one of the three relations holds: $a>b$, $a<b$ and $a=b$. This is called the trichotomy law.
+	\begin{theoremenv}[Trichotomy Law]\label{trichotomy law}
+		For any $a,b\in \mathbb{R}$, exactly one of the three relations holds: $a>b$, $a<b$ and $a=b$.
 	\end{theoremenv}
 	\begin{remarkenv}
 		Theorem~\ref{trichotomy law} is always used to prove real number equality, while another commonly-used way is to prove both $a\ge b$ and $a \le b$ hold. The latter one is similar to the method of proving set equality.
 	\end{remarkenv}
-	\begin{theoremenv}
-		For any $a,b,c\in \mathbb{R}$, if $a<b$ and $b<c$, then $a<c$. This is called the transitive law.
+	\begin{theoremenv}[Transitive Law]
+		For any $a,b,c\in \mathbb{R}$, if $a<b$ and $b<c$, then $a<c$.
 	\end{theoremenv}
 	\section{The Completeness Axiom}
 	\begin{definitionenv}\label{def_of_upb}
-		Let $S$ be an nonempty set of real numbers, for any $x$ $\in$ S, if we have	$x\le B$, then we say $S$ is bounded above by $B$ and $B$ is a upper bound of $S$. Furthermore, if $B\in S$, then we say $B$ the maximum of $S$, denoted by $\max S$. 
+		Let $S$ be an nonempty set of real numbers. For any $x$ $\in S$ , if we have	$x\le B$, then we say $S$ is \textbf{bounded above} by $B$ and $B$ is an \textbf{upper bound} of $S$. Furthermore, if $B\in S$, then we say $B$ the \textbf{maximum} of $S$, denoted by $\max S$. 
+
+        Similarly, we can define a \textbf{lower bound} and a \textbf{minimum} of a nonempty set. A minimum of $S$ is denoted by $\min S$.
 	\end{definitionenv}
-	\begin{remarkenv}
-		Similarly, we can define lower bound and minimum of a nonempty set.
-	\end{remarkenv}
 	\begin{definitionenv}
-		A number $B$ is called a least upper bound (a supremum) of a nonempty set $S$, denoted by $\sup S$, if $B$ satisfies the followings:
+		A number $B$ is called a \textbf{least upper bound} (a \textbf{supremum}) of a nonempty set $S$, denoted by $\sup S$, if $B$ satisfies the followings:
 		\begin{enumerate}
 			\item $B$ is an upper bound of $S$.
 			\item There's no number smaller than $B$ being an upper bound of $S$.
 		\end{enumerate}
+        Similarly, we can define a \textbf{greatest lower bound} (a \textbf{infimum}) of a nonempty set. An infimum of $S$ is denoted by $\inf S$.
 	\end{definitionenv}
-	\begin{remarkenv}
-		Similarly, we can define a greatest lower bound (a infimum) of a nonempty set.
-	\end{remarkenv}
-	\begin{axiomenv}
-		Every nonempty set $S$ of real numbers which is bounded above has a supremum, i.e., there exists such a number B that $B=\sup S$. This is called the $\mathbf{ Completeness\ Axiom}$.
+	\begin{axiomenv}[Completeness Axiom]
+		Every nonempty set $S$ of real numbers which is bounded above has a supremum, i.e., there exists such a number $B$ that $B=\sup S$.
 	\end{axiomenv}
 	\begin{remarkenv}
-		The completeness axiom indicates a crucial difference between $\mathbb{Q}$ and $\mathbb{R}$ because $\mathbb{Q}$ is not complete. For instance, it's impossible to find a least upper bound in $\mathbb{Q}$ for the set $\{ x\in \mathbb{Q}:x<\sqrt{2}\}$.
+		The completeness axiom indicates a crucial difference between $\mathbb{Q}$ and $\mathbb{R}$ because $\mathbb{Q}$ is not complete. For instance, it's impossible to find a least upper bound in $\mathbb{Q}$ for the set $\{ x\in \mathbb{Q}:x^2 < 2\}$.
 	\end{remarkenv}
-	\begin{theoremenv}
-		Every nonempty set of real numbers which is bounded below has a infimum.
-	\end{theoremenv}
 	\begin{definitionenv}
-		A set $S$ of real numbers is bounded if there exists a real number $M\ge 0$ such that
+		A set $S$ of real numbers is said to be \textbf{bounded} if there exists a real number $M\ge 0$ such that
 		\begin{align*}
 			|x|\le M\quad \text{for all } x \in S.
 		\end{align*}
 	\end{definitionenv}
+    \begin{theoremenv}
+		Every nonempty set of real numbers which is bounded below has a infimum.
+	\end{theoremenv}
 	\begin{theoremenv}
-		The set $\mathbb{P}$ of positive integers $1,2,3...$ is not bounded above.
+		The set $\mathbb{N}^+$ of positive integers $1,2,3...$ is not bounded above.
 	\end{theoremenv}
 	\begin{theoremenv}
 		For any $x\in \mathbb{R}$, there exists an positive integer $n$ such that $n>x$.
@@ -129,23 +133,23 @@
 		for every integer $n\ge 1$, then $x=a$.
 	\end{theoremenv}
 	\begin{propositionenv}\label{pro_r_dense}
-		Suppose $x$ and $y$ are arbitrary real numbers. If $x<y$, then there exists a rational number r such that $x<r<y$. Moreover, there exists infinite many different rational numbers $r_1,r_2,...$ such that $x<r_i<y$ for all i $\in \mathbb{Z}^+$.
+		Suppose $x$ and $y$ are arbitrary real numbers. If $x<y$, then there exists a rational number $r$ such that $x<r<y$. Moreover, there exists infinite many different rational numbers $r_1,r_2,...$ such that $x<r_i<y$ for all $i\in \mathbb{Z}^+$.
 	\end{propositionenv}
 	\begin{remarkenv}
 		Proposition~\ref{pro_r_dense} is often described by saying that rational numbers are $\mathbf{dense}$ in the real numbers.
 	\end{remarkenv}
 	\begin{propositionenv}\label{pro_ir_dense}
-		Suppose $x$ and $y$ are arbitrary real numbers. If $x<y$, then there exists a irrational number z such that $x<z<y$. Moreover, there exists infinite many different irrational numbers $z_1,z_2,...$ such that $x<z_i<y$ for all i $\in \mathbb{Z}^+$.
+		Suppose $x$ and $y$ are arbitrary real numbers. If $x<y$, then there exists a irrational number $z$ such that $x<z<y$. Moreover, there exists infinite many different irrational numbers $z_1,z_2,...$ such that $x<z_i<y$ for all $i\in \mathbb{Z}^+$.
 	\end{propositionenv}
 	\begin{remarkenv}
 		Proposition~\ref{pro_ir_dense} is often described by saying that irrational numbers are $\mathbf{dense}$ in the real numbers.
 	\end{remarkenv}
 	\begin{propositionenv}
-		If $x$ is a rational number, $x\neq 0$, and $y$ is an irrational number, then $x+y,x-y,xy,\frac{x}{y},\frac{y}{x}$ are all irrational.
+		If $x$ is a rational number, $x\neq 0$, and $y$ is an irrational number, then $x+y,x-y,xy,\dfrac{x}{y},\dfrac{y}{x}$ are all irrational.
 	\end{propositionenv}
-	\begin{propositionenv}
-		$\pi+e,\pi-e$ can't be both rational. This also holds for $e+\pi$ and $ \frac{e}{\pi}$. If we know that both $e$ and $\pi$ are transcendental numbers, then we can also prove that $\pi+e$ and $\pi e$, $\pi e$ and $\frac{e}{\pi}$ can't be both rational.
-	\end{propositionenv}
+	% \begin{propositionenv}
+	% 	$\pi+e,\pi-e$ can't be both rational. This also holds for $e+\pi$ and $ \frac{e}{\pi}$. If we know that both $e$ and $\pi$ are transcendental numbers, then we can also prove that $\pi+e$ and $\pi e$, $\pi e$ and $\frac{e}{\pi}$ can't be both rational.
+	% \end{propositionenv}
 	\begin{theoremenv}\label{pro1_sup}
 		Let $S$ be an nonempty set of real numbers. If $S$ has a supremum, then there exists an element $x\in S$  such that for any  $h\in \mathbb{R}^+$:
 		\begin{equation}
@@ -160,7 +164,7 @@
 		Theorem~\ref{pro1_sup} shows two properties of supremum (infimum) vividly and precisely. On one hand, it's greater (smaller) than or equal to any element of $S$. On the other hand, it's smaller (greater) than or equal to any upper bounds (lower bounds). This theorem also shows the uniqueness of supremum (infimum).
 	\end{remarkenv}
 	\begin{definitionenv}
-		Let $A,B$ be two sets. We define the sum of $A$ and $B$ as below:
+		Let $A,B$ be two sets. We define the \textbf{sum} of $A$ and $B$ as below:
 		\begin{equation}
 			A+B:=\{x\, |\, x=a+b,a\in A,\, b \in B\}\notag
 		\end{equation}
@@ -170,7 +174,7 @@
 		\begin{equation}
 			\sup (A+B)=\sup A+\sup B\notag
 		\end{equation}
-		If both A and B are bounded below, then:
+		If both $A$ and $B$ are bounded below, then:
 		\begin{equation}
 			\inf(A+B)=\inf A+\inf B\notag
 		\end{equation}
@@ -183,28 +187,30 @@
 	\end{theoremenv}
 	\section{Inductive Sets and Induction}
 	\begin{definitionenv}
-		We call a set $S$ an inductive set if it satisfies the followings:
+		We call a set $S$ an \textbf{inductive set} if it satisfies the followings:
 		\begin{enumerate}
 			\item $1\in S$. 
 			\item if $x\in$ S, then $x+1 \in S$.
 		\end{enumerate}
-		Then we could define positive integers more rigorously: let $\mathcal{F}$ be the collection of all inductive sets, then:
-		\begin{equation}
-			\mathbb{Z}^+ := \bigcap_{I\in \mathcal{F}}I \notag
-		\end{equation}
 	\end{definitionenv}
-	\begin{remarkenv}
-		Note that $\mathbb{Z}^+$ is the subset of all inductive sets. After we define $\mathbb{Z}^+$, it's easy to define integers $\mathbb{Z}$ as below:
-		\begin{equation}
-			\mathbb{Z}:=\mathbb{Z}^+ \cup \{0\} \cup \{x:(-x)\in \mathbb{Z}^+\}\notag
-		\end{equation}
-		Then we can define rational numbers $\mathbb{Q}$ as below:
-		\begin{equation}
-			\mathbb{Q}:=\{x:x=\frac{p}{q},\text{ where } p,q \in \mathbb{Z}, q \neq 0 \text{ and } \gcd(p,q)=1\}\notag
-		\end{equation}
-		However, it's harder to construct real numbers though we have infinite ways. We shall only prove the existence of a square root because it's instructive to see how $\mathbf{Axiom\ 10}$ differentiates real numbers from rational numbers. We will finish our proof in section $1.5$.
-	\end{remarkenv}
-	\begin{theoremenv}\label{pcp_ind}
+    \begin{definitionenv}
+        Let $I$ be an inductive set, we define the set of all \textbf{positive integers} \(\mathbb{Z}^+\) as the intersection of all inductive subsets of \(I\):
+		$$
+			\mathbb{Z}^+ := \bigcap\{A\subseteq I: A \text{ is inductive}\}.
+		$$
+    \end{definitionenv}
+	% \begin{remarkenv}
+	% 	Note that $\mathbb{Z}^+$ is the subset of all inductive sets. After we define $\mathbb{Z}^+$, it's easy to define integers $\mathbb{Z}$ as below:
+	% 	\begin{equation}
+	% 		\mathbb{Z}:=\mathbb{Z}^+ \cup \{0\} \cup \{x:(-x)\in \mathbb{Z}^+\}\notag
+	% 	\end{equation}
+	% 	Then we can define rational numbers $\mathbb{Q}$ as below:
+	% 	\begin{equation}
+	% 		\mathbb{Q}:=\{x:x=\frac{p}{q},\text{ where } p,q \in \mathbb{Z}, q \neq 0 \text{ and } \gcd(p,q)=1\}\notag
+	% 	\end{equation}
+	% 	However, it's harder to construct real numbers though we have infinite ways. We shall only prove the existence of a square root because it's instructive to see how $\mathbf{Axiom\ 10}$ differentiates real numbers from rational numbers. We will finish our proof in section $1.5$.
+	% \end{remarkenv}
+	\begin{theoremenv}[Principle of Mathematical Induction]\label{pcp_ind}
 		Let $S$ be a set of positive integers which has the following two properties:
 		\begin{enumerate}
 			\item $1\in S$.
@@ -212,7 +218,10 @@
 		\end{enumerate}
 		Then every positive integer is in the set $S$.
 	\end{theoremenv}
-	\begin{methodenv}\label{prove_by_indu}
+    \begin{remarkenv}
+		When we're proving by induction, we're applying Theorem~\ref{pcp_ind} to the set $S:=\{n\in \mathbb{Z}^+:A(n+n_1-1)\ \text{is true}\}$.
+	\end{remarkenv}
+	\begin{methodenv}[First Method of Proof by Induction]\label{prove_by_indu}
 		Let $A(n)$ be an assertion involving an integer $n$. We conclude that $A(n)$ is true for every $n\ge n_1$ if we can perform the following two steps:
 		\begin{enumerate}
 			\item Prove that $A(n_1)$ is true.
@@ -220,12 +229,9 @@
 		\end{enumerate}
 	\end{methodenv}
 	\begin{remarkenv}
-		Theorem~\ref{pcp_ind} is called the principle of mathematical induction. When we're proving by induction, we're applying Theorem~\ref{pcp_ind} to the set $S:=\{n\in \mathbb{Z}^+:A(n+n_1-1)\ is\ true.\}$.
+		If we assume that $A(n)$ is true for every integer $n\le k$ and prove that $A(k+1)$ is true, this method is called the second method of proof by induction.
 	\end{remarkenv}
-	\begin{remarkenv}
-		Method~\ref{prove_by_indu} is also called the first method of proof by induction. If we assume that $A(n)$ is true for every integer $n\le k$ and prove that $A(k+1)$ is true, this method is called the second method of proof by induction.
-	\end{remarkenv}
-	\begin{theoremenv}\label{pcp_wod}
+	\begin{theoremenv}[Well-Ordered Principle]\label{pcp_wod}
 		Every nonempty set of positive integers has a smallest member.
 	\end{theoremenv}
 	\begin{proofenv}
@@ -235,59 +241,60 @@
 		\begin{equation}
 			S:=\{x:x<t\text{ for all } t \in T\}\notag
 		\end{equation}
-		Then $1$ shouldn't be in $T$ because $1$ is the smallest positive integer. Thus, $1 \in S$. 
+		Then $1\notin T$ because $1$ is the smallest positive integer. Thus, $1 \in S$. 
 		
 		For a positive integer $k$, if $k\in S$, that is, $k<t$ for all $t\in T$. We shall consider $k+1$. For these two statements $k+1\in S$ and $k+1 \notin S$, only one of them holds. If we could prove both of them are false, then we reach a contradiction. 
-		
-		If $k+1 \notin S$, then there exists $t_1\in T$ such that $k+1\ge t_1$. Since $T$ has no smallest member, there exists $t_2 < t_1$ and we duduce $k+1>t_2$, that is, $k \ge t_2$, which contradicts with $k>t$ for all $t\in T$. 
-		
-		If $k+1\in S$, then we shall perform the principle of induction to $S$, that is, every positive integer is in $S$. Since $T$ is nonempty, there exists one positive integer $t\in T$. However, this $t$ is also in $S$, then we deduce $t<t$ by the definition of $S$, which is impossible.
-		
-		\fbox{Hence, the nonempty set $T$ must have a smallest member.}
+		\begin{itemize}
+            \item If $k+1 \notin S$, then there exists $t_1\in T$ such that $k+1\ge t_1$. Since $T$ has no smallest member, there exists $t_2 < t_1$ and we duduce $k+1>t_2$, that is, $k \ge t_2$, which contradicts with $k>t$ for all $t\in T$. 
+            		
+            \item If $k+1\in S$, then we shall perform the principle of induction to $S$, that is, every positive integer is in $S$. Since $T$ is nonempty, there exists one positive integer $t\in T$. However, this $t$ is also in $S$, then we deduce $t<t$ by the definition of $S$, which is impossible.
+            		
+        \end{itemize}
+		Hence, the nonempty set $T$ must have a smallest member.
 	\end{proofenv}
 	\begin{exampleenv}
-		Here's one example of proving by well-ordered principle.\\ Let n be a positive integer.
+		We introduce one typical example of proving by well-ordered principle.\\ Let n be a positive integer.
 		\begin{equation}
 			1+2+\cdots+n=\frac{n(n+1)}{2}\notag
 		\end{equation}
 		It's trivial that when $n=1$, the equality holds. Then there're two possible statements:
-		\begin{enumerate}
+		\begin{itemize}
 			\item For all positive integer, the equality holds.
 			\item There exists at least one positive integer such that the equality doesn't hold.
-		\end{enumerate}
+		\end{itemize}
 		We shall prove statement 2 is wrong so that statement 1 naturally holds. We apply the well-ordered principle to the collection of all positive integer that satisfy statement 2, thus we get one positive integer $k>1$ and for $k-1$ the equality holds. Now we add $k$ to both sides of equality and find the equality also holds for $k$, which leads to a contradiction. Thus statement 1 holds.
 	\end{exampleenv}
 	\begin{remarkenv}
-		Theorem~\ref{pcp_wod} is called the well-ordered principle, which is one important property of positive integers since it doesn't hold for arbitrary sets of integers. For example, $\mathbb{Z}$ doesn't have smallest member.
+		Theorem~\ref{pcp_wod} is one important property of positive integers since it doesn't hold for arbitrary sets of integers. For example, $\mathbb{Z}$ doesn't have smallest member.
 	\end{remarkenv}
 	\begin{notationenv}
 		We define the summation notation as below:
 		\begin{enumerate}
-			\item $\displaystyle\sum_{i=1}^1a_i=a_1$
-			\item $\displaystyle\sum_{i=1}^{n+1}a_{i}=\left(\sum\limits_{i=1}^n a_i \right) + a_{n+1}$, $n\ge 1$
+			\item $\displaystyle\sum_{i=1}^1a_i=a_1$.
+			\item $\displaystyle\sum_{i=1}^{n+1}a_{i}=\left(\sum\limits_{i=1}^n a_i \right) + a_{n+1}$, $n\ge 1$.
 		\end{enumerate}
 	\end{notationenv}
-	\begin{remarkenv}
-		It's easy to conclude that proof by induction and definition by induction involve the same underlying idea, that is, recursion.
-	\end{remarkenv}
+	% \begin{remarkenv}
+	% 	It's easy to conclude that proof by induction and definition by induction involve the same underlying idea, that is, recursion.
+	% \end{remarkenv}
 	\begin{exampleenv}
-		We shall see another example of inductive definition. Suppose $x$ a positive real number and consider the following inductive definition.
+		We shall see another example of inductive definition. Suppose $x$ a positive real number and consider the following inductive definition:
 		\begin{itemize}
 			\item Let $a_0$ denote the largest integer $\le x$.
-			\item Having chosen $a_0$, we let $a_1$ denote the largest integer such that $a_0+\frac{a_1}{10}\le x$.
+			\item Having chosen $a_0$, we let $a_1$ denote the largest integer such that $a_0+\dfrac{a_1}{10}\le x$.
 			\item More generally, having chosen $a_0,a_1,\cdots,a_{n-1}$, we let $a_n$ denote the largest integer such that
 			\begin{align*}
-				\sum_{i=0}^{n}\frac{a_i}{10^i}\le x
+				\sum_{i=0}^{n}\frac{a_i}{10^i}\le x.
 			\end{align*}
 		\end{itemize}
-		Define set $S$ to be the set of all numbers obtained in the above way, i.e.
+		Define set $S$ to be the set of all numbers obtained in the above way, i.e.,
 		\begin{align*}
 			S:=\left\{\sum_{i=0}^{n}\frac{a_i}{10^i}\ :\ n\in \mathbb{Z}^+\right\} \cup \left\{0 \right\}
 		\end{align*}
 		We have the following propositions:
 		\begin{enumerate}
 			\item $S$ is bounded above and $x=\sup S$.
-			\item Let $a_0,a_1,a_2,\cdots,$ be as the definition of $S$. We define the notation $a_0.a_1a_2a_3 \cdots$ to be the $\mathbf{decimal\ expansion}$ of $x$. Then if we replace all ``$\le$'' with ``$<$'', then one real number might have two different decimal expansions. This is merely a reflection of the fact that two different sets of of real numbers can have the same supremum.
+			\item Let $a_0,a_1,a_2,\cdots$ be as the definition of $S$. We define the notation $a_0.a_1a_2a_3 \cdots$ to be the \textbf{decimal expansion} of $x$. Then if we replace all ``$\le$'' with ``$<$'', then one real number might have two different decimal expansions. This is merely a reflection of the fact that two different sets of of real numbers can have the same supremum.
 			\item Note that $x$ satisfies the following inequality:
 			\begin{align*}
 				\sum_{i=0}^{n-1}\frac{a_i}{10^i}+\frac{a_n}{10^n}<x<\sum_{i=0}^{n-1}\frac{a_i}{10^i}+\frac{a_n+1}{10^n}
@@ -296,49 +303,81 @@
 		\end{enumerate}
 	\end{exampleenv}
 	\section{Square Root}
-	\begin{theoremenv}
-		Every nonnegative real number a has one unique square root, denoted by $a^{1/2}$ or $\sqrt a$.
-	\end{theoremenv}
 	\begin{proofenv}
-		Suppose $S:=\{x \in \mathbb{R}:\ x^2\le a\}$, $b:=\sup S$. We shall finish the proof within two steps:
-		\begin{enumerate}
-			\item Justify $S$ nonempty and $b$ well-defined.
-			\item Prove $b^2=a$ by the trichotomy law.
-		\end{enumerate}
-		
-		Note that $ \displaystyle \left(\frac{a}{a+1}\right)\in S$, thus S is nonempty. Since $(a+1)^2$ is an upper bound, $b$ is well-defined by the completeness axiom.
-		
-		First, we shall prove $b^2>a$ is false. If we could find a real number $c$ such that $b>c$ and $c^2>a$, then $c$ should be an upper bound smaller than $b$, which contradicts with the definition of supremum. Now we shall try to construct such $c$. Suppose $c=b-t$ where $t>0$, then:
-		\begin{align*}
-			c^2-a=(b-t)^2-a
-			=b^2-2bt+t^2-a>b^2-2bt-a=0  \Rightarrow t=\frac{a-b^2}{2b}>0,\ c=b-\frac{a-b^2}{2b}
-		\end{align*}
-		
-		Thus we successfully construct such $c$ and prove that $b^2>a$ doesn't hold. If we want to write the proof in order, we shall write as below:
-		\begin{align*}
-			c^2=(b-t)^2>b^2-2bt=b^2-2b\cdot \frac{a-b^2}{2b}=a
-		\end{align*}
-		
-		Second, we shall prove $b^2<a$ is false. If we could find a real number $c$ such that $b<c$ and $c^2<a$, then $c$ should be in $S$ but $c$ is greater than $b$, which contradicts with the definition of supremum. Now we shall try to construct such $c$. Suppose $c=b+t$ where $0<t<b$, then:
-		\begin{align*}
-			c^2-a&=(b+t)^2-a
-			=b^2+2bt+t^2-a<b^2+3bt-a=0\Rightarrow t=\frac{a-b^2}{3b}>0
-			\\ t&=\min\left(\frac{a-b^2}{3b},b\right) \text{ satisifying all limitations.}
-		\end{align*}
-		
-		Thus we successfully construct such $c$ and prove that $b^2<a$ doesn't hold. If we want to write the proof in order, we shall write as below:
-		\begin{align*}
-			c^2=(b+t)^2=b^2+2bt+t^2<b^2+3bt<b^2+3b\cdot \frac{a-b^2}{3b}=a
-		\end{align*}
-		
-		\fbox{Hence, we have $b^2=a$.}
-	\end{proofenv}
+    If \(a=0\), then \(0\) is clearly the unique nonnegative number whose square is
+    \(0\). Hence we assume \(a>0\).
+
+    Define
+    \[
+    S:=\{x\in\mathbb R:x^2\le a\}.
+    \]
+    We shall define \(\sqrt a\) as the least upper bound of \(S\), and then prove
+    that its square is exactly \(a\).
+
+    First, \(S\) is nonempty since \(0\in S\). Also, \(a+1\) is an upper bound for
+    \(S\). Indeed, if \(x>a+1\), then
+    \[
+    x^2>(a+1)^2>a,
+    \]
+    so \(x\notin S\). Hence no element of \(S\) can be greater than \(a+1\).
+
+    Therefore, by the completeness axiom, \(S\) has a supremum. Let
+    \[
+    b:=\sup S.
+    \]
+    We prove that \(b^2=a\).
+
+    First suppose, for contradiction, that \(b^2>a\). The idea is to move slightly
+    to the left of \(b\), but still remain above all elements of \(S\). Choose
+    \[
+    t:=\frac{b^2-a}{2b}>0,
+    \qquad
+    c:=b-t.
+    \]
+    Then \(c<b\), and
+    \begin{align*}
+    c^2
+    =(b-t)^2 
+    =b^2-2bt+t^2 
+    > b^2-2bt 
+    =b^2-(b^2-a) 
+    =a.
+    \end{align*}
+    Thus every \(x\in S\) must satisfy \(x<c\). Therefore \(c\) is an upper bound
+    for \(S\), but \(c<b\), contradicting \(b=\sup S\). Hence \(b^2>a\) is
+    impossible.
+
+    Next suppose, for contradiction, that \(b^2<a\). The idea is to move slightly
+    to the right of \(b\), while still staying inside \(S\). Choose
+    \[
+    t:=\min\left(1,\frac{a-b^2}{2b+1}\right)>0,
+    \qquad
+    c:=b+t.
+    \]
+    Then \(c>b\). Since \(t\le1\), we have \(t^2\le t\). Hence
+    \begin{align*}
+    c^2
+    =(b+t)^2 
+    =b^2+2bt+t^2 
+    \le b^2+(2b+1)t 
+    \le b^2+(a-b^2) 
+    =a.
+    \end{align*}
+    Therefore \(c\in S\). But this contradicts the fact that \(b\) is an upper
+    bound for \(S\), since \(c>b\). Hence \(b^2<a\) is impossible.
+
+    By trichotomy, the only remaining possibility is
+    \[
+    b^2=a.
+    \]
+    The uniqueness is trivial by the uniqueness of supremum.
+    \end{proofenv}
 	\begin{remarkenv}
-		In this proof we witness the property of supremum, or let's say, the least upper bound as we mentioned in Remark~\ref{two_pro_sup}. You should feel surprised about this proof now thanks to my detailed instruction.
+		This proof shows the beauty of the completeness axiom.
 	\end{remarkenv}
 	\section{Absolute Value and Inequalities}
 	\begin{definitionenv}
-		We define the absolute value of a real number $x$ as below:
+		We define the \textbf{absolute value} of a real number $x$ as below:
 		\begin{align*}
 			|x|:=\begin{cases}x,\ x\ge0
 				\\ -x,\ x<0
@@ -348,11 +387,11 @@
 	\begin{theoremenv}
 		If $a\ge 0$, $|x|\le a$ if and only if $-a\le x \le a$.
 	\end{theoremenv}
-	\begin{theoremenv}
-		If $x,y\in \mathbb{R}$, then $|x+y| \le |x|+|y|$. The equality sign holds if and only if $xy\ge 0$.
+	\begin{theoremenv}[Triangle Inequality]\label{triangle_inequality}
+		If $x,y\in \mathbb{R}$, then $$|x+y| \le |x|+|y|.$$ The equality sign holds if and only if $xy\ge 0$.
 	\end{theoremenv}
 	\begin{remarkenv}
-		This is called the triangle inequality, which could be generalized to vectors or complex numbers. Take $x=a-b,\ y=b-c$, then we have $|a-c|\le |a-b|+|b-c|$, which is more commonly used.
+		Theorem~\ref{triangle_inequality} could be generalized to vectors or complex numbers. Taking $x=a-b,\ y=b-c$, then we have $|a-c|\le |a-b|+|b-c|$, which is more commonly used.
 	\end{remarkenv}
 	\begin{theoremenv}
 		For arbitrary real numbers $a_1,a_2,\cdots,a_n$, we have:
@@ -360,7 +399,7 @@
 			\left|\sum_{i=1}^n a_i\right|\le \sum_{i=1}^n |a_i|
 		\end{align*}
 	\end{theoremenv}
-	\begin{theoremenv}
+	\begin{theoremenv}[Cauchy-Schwarz Inequality]\label{cauchy_schwarz_inequality}
 		For arbitrary real numbers $a_1,a_2,\cdots,a_n$ and $b_1,b_2,\cdots,b_n$, we have:
 		\begin{align*}
 			\left(\sum_{i=1}^{n}a_i^2\right)\left(\sum_{i=1}^{n}b_i^2\right) \ge \left(\sum_{i=1}^{n}a_ib_i\right)^2
@@ -368,7 +407,7 @@
 		The equality sign holds if and only if there exists a real number $x$ such that $a_ix+b_i=0$ for any $i\in \{1,2,\cdots n\}$.
 	\end{theoremenv}
 	\begin{remarkenv}
-		This is called Cauchy-Schwarz Inequality. The following two inequalities are more commonly used:
+		The following two inequalities are more commonly used:
 		\begin{align*}
 			\left(\sum_{i=1}^{n}\frac{a_i^2}{b_i}\right)\left(\sum_{i=1}^{n}b_i\right) \ge \left(\sum_{i=1}^{n}a_i\right)^2\\
 			\left(\sum_{i=1}^{n}\frac{a_i}{b_i}\right)\left(\sum_{i=1}^{n}a_ib_i\right) \ge \left(\sum_{i=1}^{n}a_i\right)^2

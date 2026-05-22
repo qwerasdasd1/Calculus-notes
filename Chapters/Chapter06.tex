@@ -1,6 +1,6 @@
 	\chapter{Integration and Differentiation}
 	\section{Two Fundamental Theorems for Calculus}
-	\begin{theoremenv}
+	\begin{theoremenv}[First Fundamental Theorem of Calculus (FTC1)]
 		Suppose $f$ is a function that is integrable on $[a,x]$ for every $x\in [a,b]$. Let $c\in [a,b]$ and define function $F$ on $[a,b]$ by
 		\[
 		F(x) = \int_c^x f(t)\, \dd t.
@@ -9,7 +9,7 @@
 		\[
 		F'(x) = f(x)\quad\text{or}\quad \frac{\dd}{\dd x} \left( \int_c^x f(t)\, \dd t \right) = f(x).
 		\]
-		This is called the \textbf{First Fundamental Theorem of Calculus (FTC1)}.
+		
 	\end{theoremenv}
 	\begin{proofenv}
 		Let $x\in (a,b)$ be fixed. Consider the quotient in the definition of $F'(x)$:
@@ -62,12 +62,12 @@
 	\begin{definitionenv}
 		A function $P$ is called a \textbf{primitive} (or an \textbf{antiderivative}) on a function $f$ on an open interval $I$ if $P'(x)=f(x)$ for any $x\in I$. 
 	\end{definitionenv}
-	\begin{theoremenv}
+	\begin{theoremenv}[Second Fundamental Theorem of Calculus (FTC2)]
 		Assume $f$ is continuous on an open interval $I$ and let $P$ be a primitive of $f$ on $I$. Then for each $x,c \in I$, we have
 		\[
 		\int_c^x f(t)\, \dd t = P(x) - P(c).
 		\]
-		This is called the \textbf{Second Fundamental Theorem of Calculus (FTC2)}.
+		
 	\end{theoremenv}
 	\begin{remarkenv}
 		We have 

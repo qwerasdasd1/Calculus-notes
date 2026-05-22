@@ -1,20 +1,20 @@
 	\chapter{Integral Calculus}
 	\section{Basic Concepts}
 	\begin{definitionenv}
-		Let $f$ be a correspondence. If each element of $\mathscr{D}_f$ has at most one image under $f$, we say that $f$ is a function.
+		Let $f$ be a correspondence. If each element of $\mathscr{D}_f$ has at most one image under $f$, we say that $f$ is a \textbf{function}.
 	\end{definitionenv}
 	\begin{remarkenv}
-		If you're confused about the definition of function above, you should refer to the Fundamental Algebra and Analysis.
+		Refer to the Fundamental Algebra and Analysis if you're confused about the definition of correspondence, domain and image.
 	\end{remarkenv}
 %	\begin{mydef}
 %		Let f be a function. If the domain of f is a collection of sets and function values are real numbers, we call f a set function.
 %	\end{mydef}
 	\begin{definitionenv}
-		Suppose $f$ is a function (from $\mathbb{R}$ to $\mathbb{R}$) and $f(x)\ge 0$ for any $x\in \left[ a,b\right] $ where $a<b$. We define the set
+		Suppose $f:\R \to \R$ is a function and $f(x)\ge 0$ for any $x\in \left[ a,b\right] $. We define the set
 		\begin{align*}
 			S:=\left\{ (x,y)\in \mathbb{R}^2\ |\ a\le x \le b\text{ and } 0\le y\le f(x)\right\}
 		\end{align*}
-		to be the ordinate set of $f$.
+		to be the \textbf{ordinate set} of $f$.
 	\end{definitionenv}
 	\begin{remarkenv}
 		Definitely $S$ defined above is a plane region. Thus, we can naturally raise these questions: can we compute the area of $S$, or more fundamentally, what is the area of $S$, does it even make sense to talk about the area of $S$? These questions motivate the axiomatic definition of area and measurable sets in $\mathbb{R}^2$. (Here a measurable set is a set that we can assign an area to.)
@@ -29,7 +29,7 @@
 			\item Choice of scale: Every rectangle $R$ is in $\mathscr{M}$. If the adjecent edges of $R$ are of length $w$ and $h$, then $A(R)=wh$.
 			\item Exhaustion Property: Suppose $Q\subseteq \mathbb{R}^2$. If there exists a unique $c\in \mathbb{R}$ such that $A(S)\le c \le A(T)$ for all step regions $S$ and $T$ with $S\subseteq Q \subseteq T$, then $Q\in \mathscr{M}$ and $A(Q)=c$.
 		\end{enumerate}
-		We call such $A$ an area function and each $S\in \mathscr{M}$ a measurable set.
+		We call such $A$ an area function and each $S\in \mathscr{M}$ a \textbf{measurable set}.
 	\end{definitionenv}
 	\begin{definitionenv}[Additional] Some definitions are lost above and here we add it.
 		\begin{enumerate}
@@ -53,7 +53,7 @@
 			\item $S_1:=\left\{ (a,b)\right\} $ where $a,b\in \mathbb{R}$ is measurable and $A(S_1)=0$.
 			\item $S_2:=\left\{ (a_1,b_1),(a_2,b_2),\cdots,(a_n,b_n)\right\}$ where $n\in \mathbb{Z}^+$ and $a_i,b_i\in \mathbb{R}$ for $i=1,2,\cdots, n$ is measurable with $A(S_2)=0$.
 			\item If $S_3$ is the union of a finite collection of line segments in $\mathbb{R}^2$, then $S_3$ is measurable with $A(S_3)=0$.
-			\item Suppose $S_4$ is the triangle with vertices $(0,0),(w,0),(\frac{w}{2},h)$ where $w,h>0$, $S_4$ is measurable and $A(S_4)=\frac{1}{2}wh$.
+			\item Suppose $S_4$ is the triangle with vertices $(0,0),(w,0),(\dfrac{w}{2},h)$ where $w,h>0$, $S_4$ is measurable and $\displaystyle A(S_4)=\frac{1}{2}wh$.
 		\end{enumerate}
 	\end{theoremenv}
 	\begin{definitionenv}
@@ -65,7 +65,7 @@
 		\[
 		P=\{x_0,x_1,x_2,\cdots,x_{n}\}
 		\]
-		to designate this partition. We call $[x_{k-1},x_k]$ the $k$th closed subinterval and $(x_{k-1},x_k)$ the $k$th open interval.
+		to designate this partition. We call $[x_{k-1},x_k]$ the $k$th closed subinterval and $(x_{k-1},x_k)$ the $k$-th open interval.
 	\end{definitionenv}
 	\begin{remarkenv}
 		Though we use set notation to designate a partition, the order \textbf{does} matter.
@@ -85,13 +85,13 @@
 			0, & \text{if } x \in \mathbb{R} \setminus \mathbb{Q}.
 		\end{cases}
 		\]
-		which is called the Dirichlet Function. It's easy to verify that $D(x)$ is not a step function. Even if we confine Dirichlet Function on $[0,1]$, it is not a step function.
+		which is called the \textbf{Dirichlet Function}. It's easy to verify that $D(x)$ is not a step function. Even if we confine Dirichlet Function on $[0,1]$, it is not a step function.
 	\end{exampleenv}
 	\begin{remarkenv}
 		At each of the endpoints $x_{k-1}$ and $x_k$ the function must have some well-defined value, but this need not be the same as $s_k$.
 	\end{remarkenv}
 	\begin{definitionenv}
-		For a given partition $P$ of $[a,b]$, a \textbf{refinement} is a new partition $P'$ satisfying $P\subseteq P'$ (order should be ensured). Then $P'$ is said to be finer than P.
+		For a given partition $P$ of $[a,b]$, a \textbf{refinement} is a new partition $P'$ satisfying $P\subseteq P'$ (order should be ensured). Then $P'$ is said to be \textbf{finer} than $P$.
 	\end{definitionenv}
 	\begin{definitionenv}
 		For two partitions $P_1,P_2$ of $[a,b]$, the union of $P_1$ and $P_2$ is called the \textbf{common refinement} of $P_1$ and $P_2$.
@@ -106,9 +106,9 @@
 		\[
 		s(x)=s_k \quad \text{if}\quad x_{k-1}<x<x_k,\quad k=1,2,\cdots,n
 		\]
-		The integral of $s$ from $a$ to $b$, is defined as:
+		The \textbf{integral} of $s$ from $a$ to $b$, is defined as:
 		\[
-		\int_{a}^{b}s(x)\,\mathrm{d}x=\sum_{k=1}^{n}s_k\cdot (x_k - x_{k-1})
+		\int_{a}^{b}s(x)\,\mathrm{d}x:=\sum_{k=1}^{n}s_k\cdot (x_k - x_{k-1})
 		\]
 	\end{definitionenv}
 	\begin{remarkenv}
@@ -117,21 +117,21 @@
 	\begin{theoremenv}
 		Here are some properties of the integral of a step function. If not stated, $s(x)$ and $t(x)$ are step functions well defined on $[a,b]$.
 		\begin{enumerate}
-			\item Additive Property:
+			% \item Additive Property:
+			% \[
+			% \int_{a}^{b}\left[s(x)+t(x)\right]\,\mathrm{d}x=\int_{a}^{b}s(x)\,\mathrm{d}x+\int_{a}^{b}t(x)\,\mathrm{d}x.
+			% \]
+			% \item Homogeneous Property: 
+			% \[
+			% \int_a^b c \cdot s(x) \, \mathrm{d}x = c \int_a^b s(x) \, \mathrm{d}x \quad \text{for every real } c.
+			% \]
+			\item Linearity Property: 
 			\[
-			\int_{a}^{b}\left[s(x)+t(x)\right]\,\mathrm{d}x=\int_{a}^{b}s(x)\,\mathrm{d}x+\int_{a}^{b}t(x)\,\mathrm{d}x.
-			\]
-			\item Homogeneous Property: 
-			\[
-			\int_a^b c \cdot s(x) \, \mathrm{d}x = c \int_a^b s(x) \, \mathrm{d}x \quad \text{for every real } c.
-			\]
-			\item Linearity Property: Combining Additive Property and Homogeneous Property, we have
-			\[
-			\int_a^b \left[ c_1 s(x) + c_2 t(x) \right] \, \mathrm{d}x
+			\int_a^b \left[ c_1 s(x) + c_2 t(x) \right] \mathrm{d}x
 			= c_1 \int_a^b s(x) \, \mathrm{d}x + c_2 \int_a^b t(x) \, \mathrm{d}x.
 			\]
 			for every real $c_1$ and $c_2$.
-			\item Comparison Theorem: If $s(x)<t(x)$ for every $x$ in $[a,b]$, then
+			\item Comparison Theorem: if $s(x)<t(x)$ for every $x$ in $[a,b]$, then
 			\[
 			\int_a^b s(x) \, \mathrm{d}x < \int_a^b t(x) \, \mathrm{d}x.
 			\]
@@ -154,22 +154,22 @@
 		\end{enumerate}
 	\end{theoremenv}
 	\begin{remarkenv}
-		Since the proofs of properties above are quite similar, we shall only prove Property 2 and 7 here as examples.
+		Since the proofs of properties above are quite similar, we shall only prove Property 7 here as examples.
 	\end{remarkenv}
-	\begin{proofenv}[Property 2]
-		Let \( P = \{x_0, x_1, \ldots, x_n\} \) be a partition of \([a, b]\) such that
-		\[
-		s(x) = s_k \quad \text{if}\quad x_{k-1} < x < x_k\ (k = 1, 2, \ldots, n). 
-		\]
-		Then
-		\[
-		\int_a^b c \cdot s(x) \, \mathrm{d}x
-		= \sum_{k=1}^{n} c \cdot s_k \cdot (x_k - x_{k-1})
-		= c \sum_{k=1}^{n} s_k \cdot (x_k - x_{k-1})
-		= c \int_a^b s(x) \, \mathrm{d}x.
-		\]
-	\end{proofenv}
-	\begin{proofenv}[Property 7]
+	% \begin{proofenv}[Proof of Property 2]
+	% 	Let \( P = \{x_0, x_1, \ldots, x_n\} \) be a partition of \([a, b]\) such that
+	% 	\[
+	% 	s(x) = s_k \quad \text{if}\quad x_{k-1} < x < x_k\ (k = 1, 2, \ldots, n). 
+	% 	\]
+	% 	Then
+	% 	\[
+	% 	\int_a^b c \cdot s(x) \, \mathrm{d}x
+	% 	= \sum_{k=1}^{n} c \cdot s_k \cdot (x_k - x_{k-1})
+	% 	= c \sum_{k=1}^{n} s_k \cdot (x_k - x_{k-1})
+	% 	= c \int_a^b s(x) \, \mathrm{d}x.
+	% 	\]
+	% \end{proofenv}
+	\begin{proofenv}[Proof of Property 7]
 	Let \( P = \{x_0, x_1, \ldots, x_n\} \) be a partition of \([a, b]\) such that
 	\[
 	s(x) = s_k \quad \text{if}\quad x_{k-1} < x < x_k\ (k = 1, 2, \ldots, n). 
@@ -192,22 +192,23 @@
 	\end{definitionenv}
 	\section{Integral for More General Functions}
 	\begin{definitionenv}
-		If $f$ is a real function, we say $f$ is bounded on $[a,b]$ if there exists a number $M>0$ such that  
+		If $f$ is a real function, we say $f$ is \textbf{bounded} on $[a,b]$ if there exists a number $M>0$ such that  
 		\[
 		|f(x)|\le M \quad \text{for every}\ x\in [a,b].
 		\]
+        Particularly, if $f \le M$ for some real $M$, we say $f$ is \textbf{bounded above} on $[a,b]$. If $f \ge m$ for some real $m$, we say $f$ is \textbf{bounded below} on $[a,b]$.
 	\end{definitionenv}
 	\begin{definitionenv}
 		If $f$ is a function defined and bounded on $[a,b]$, and $s,t$ are arbitrary step functions satisfying
 		\[ s(x)\le f(x)\le t(x) \quad \text{for every}\ x\in[a,b].\]
 		And for every pair of $s$ and $t$, there exists one and only one number $I$ such that
 		\[\int_a^b s(x)\,\mathrm{d}x\le I \le \int_a^b t(x)\,\mathrm{d}x \quad \text{for every}\ x\in[a,b],\]
-		then $I$ is defined as the integral of $f$ and denoted by
-		\[ I=\int_a^b f(x)\,\mathrm{d}x.\]
+		then $I$ is defined as the \textbf{integral} of $f$ and denoted by
+		\[ I:=\int_a^b f(x)\,\mathrm{d}x.\]
 		When such $I$ exists, we say $f$ is integrable on $[a,b]$.
 	\end{definitionenv}
 	\begin{remarkenv}
-		Note that this definition is quite similar to exhaustion property. We will see they work together in the following text.
+		This definition is quite similar to exhaustion property. We will see they work together in the following text.
 	\end{remarkenv}
 	\begin{definitionenv}
 		Let $f$ be a real function bounded on $[a,b]$ and $s,t$ be two step functions satisfying $s\le f\le t$, we define
@@ -220,7 +221,7 @@
 		\[
 		\int_a^b s(x)\,\mathrm{d}x \le \sup S\le \inf T\le \int_a^b t(x)\,\mathrm{d}x.
 		\]
-		We say $\sup S$ the lower integral of $f$ and $\inf T$ the upper integral of $f$ denoted by
+		We say $\sup S$ the \textbf{lower integral} of $f$ and $\inf T$ the \textbf{upper integral} of $f$ denoted by
 		\[
 		\underline{I}(f) = \sup \left\{ \int_a^b s(x) \, \mathrm{d}x \,\middle|\, s \le f \right\}, 
 		\qquad 
@@ -241,7 +242,7 @@
 		\]
 	\end{theoremenv}
 	\begin{remarkenv}
-		Seemingly, all bounded functions are integrable. But actually this is not true, otherwise we won't introduce such complex notations above. Here's a counter example showing bounded functions can also be non-integrable.
+		Seemingly, all bounded functions are integrable. However, this is not true. Otherwise we won't introduce such complex notations above. Here's a counter example showing bounded functions can also be non-integrable.
 	\end{remarkenv}
 	\begin{exampleenv}
 		Recall the definition of Dirichlet Function. We shall confine it on $[0,1]$. By the dense property of rational numbers and irrational numbers, it's easy to prove
@@ -262,14 +263,14 @@
 	\begin{propositionenv}
 		Let
 		\[
-		\widetilde{Q}:=\left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b\ and\ 0\le y< f(x)\right\},
+		\widetilde{Q}:=\left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b,\ 0\le y< f(x)\right\},
 		\]
 		then $\widetilde{Q}$ is also measurable and $A\!\left(\widetilde{Q}\right)=A(Q)$.
 	\end{propositionenv}
 	\begin{propositionenv}
 		Let 
 		\[
-		S:= \left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b\ and\ y=f(x)\right\},
+		S:= \left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b,\ y=f(x)\right\},
 		\]
 		then $S$ is also measurable and $A(S)=0$.
 	\end{propositionenv}
@@ -281,13 +282,25 @@
 		
 	\end{remarkenv}
 	\begin{definitionenv}
-		A function $f$ is said to be increasing on a set $S$ if $f(x)\le f(y)$ for every pair of points $x$ and $y$ in $S$ with $x<y$. If the strict equality $f(x)<f(y)$ holds for all $x<y$ in $S$, then the function $f$ is said to be strictly increasing on $S$. Similarly, we can define decreasing functions and strictly decreasing functions. 
-	\end{definitionenv}
-	\begin{definitionenv}
-		A function is called monotonic if it's increasing or decreasing. Similarly, a function is calle strictly monotonic if it's strictly increasing or decreasing. Furthermore, a function $f$ is called piecewise monotonic if there is a partition $P$ on $[a,b]$ such that $f$ is monotonic on every open subintervals of $P$.
-	\end{definitionenv}
+	Let \(f\) be a function defined on a set \(S\). We define the following notions:
+	    \begin{enumerate}
+            \item \(f\) is said to be \textbf{increasing} on \(S\) if \(f(x)\le f(y)\) for every \(x,y\in S\) with \(x<y\).
+
+            \item \(f\) is said to be \textbf{strictly increasing} on \(S\) if \(f(x)<f(y)\) for every \(x,y\in S\) with \(x<y\).
+
+            \item \(f\) is said to be \textbf{decreasing} on \(S\) if \(f(x)\ge f(y)\) for every \(x,y\in S\) with \(x<y\).
+
+            \item \(f\) is said to be \textbf{strictly decreasing} on \(S\) if \(f(x)>f(y)\) for every \(x,y\in S\) with \(x<y\).
+
+            \item \(f\) is called \textbf{monotonic} on \(S\) if it is either increasing or decreasing on \(S\).
+
+            \item \(f\) is called \textbf{strictly monotonic} on \(S\) if it is either strictly increasing or strictly decreasing on \(S\).
+
+            \item \(f\) is called \textbf{piecewise monotonic} on \([a,b]\) if there exists a partition \(P=\{a=x_0<x_1<\cdots<x_n=b\}\) such that \(f\) is monotonic on each open subinterval \((x_{i-1},x_i)\), for \(i=1,\dots,n\).
+        \end{enumerate}
+    \end{definitionenv}
 	\begin{remarkenv}
-		Note that a monotonic function needn't to be ``continuous" intuitively.
+		Note that a monotonic function needn't to be ``continuous" intuitively. We will introduce the concept of continuity in Chapter 4.
 	\end{remarkenv}
 	\begin{theoremenv}
 		If a function $f$ is monotonic on $[a,b]$, then $f$ is integrable.
@@ -491,7 +504,7 @@
 		\]
 	\end{theoremenv}
 	\begin{definitionenv}
-		Let $f,g$ be two functions and $f\le g$ on $[a,b]$. We call such set $S$ the region between two graphs if $S$ is defined as
+		Let $f,g$ be two functions and $f\le g$ on $[a,b]$. We call such set $S$ the \textbf{region between two graphs} if $S$ is defined as
 		\[
 		S:=\left\{(x,y)\in \mathbb{R}^2\ |\ a\le x \le b,f(x)\le y\le g(x) \right\}.
 		\]

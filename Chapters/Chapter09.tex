@@ -118,10 +118,10 @@
     \begin{remarkenv}
         This is a necessary and sufficient condition for convergence test.
     \end{remarkenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Comparison Test]
         Suppose $a_n\ge 0$ and $b_n\ge 0$ for any $n\in \N$. If there exists some $c>0$ such that $a_n \le c b_n$ for all $n$, then the convergence of $\sum b_n$ implies the convergence of $\sum a_n$. (or equivalently, the divergence of $\sum a_n$ implies the divergence of $\sum b_n$).
         
-        This is called the \textbf{comparison test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         Suppose $\displaystyle S_n = \sum_{k=1}^n a_k$ and $\displaystyle T_n = \sum_{k=1}^n b_k$. Then we have $S_n \le c T_n$ for any $n\in \N$. If $\{T_n\}$ converges, then $\{S_n\}$ is bounded and thus $\{S_n\}$ converges.
@@ -137,10 +137,10 @@
         \]
         We have $\zeta(2) = \displaystyle \sum_{n=1}^\infty \frac{1}{n^2}$ converges. We define the domain $\operatorname{Dom} \left( \zeta \right)$ to be the set of all $s\in \R$ such that $\zeta(s)$ converges.
     \end{exampleenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Integral Test]
         Suppose $f$ is a positive decreasing function defined for all $x\ge 1$. For each positive integer $n$, let $S_n = \displaystyle \sum_{k=1}^n f(k)$ and $\displaystyle t_n = \int_1^n f(x)\dd x$. Then the two sequences $\{S_n\}$ and $\{t_n\}$ both converge or both diverge.
 
-        This is called the \textbf{integral test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         Geometrically, we have
@@ -170,14 +170,14 @@
     \begin{remarkenv}
         The integral test only tells us about the convergence or divergence of the series but does not give us the value of the sum when the series converges (they are not necessarily equal)
     \end{remarkenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Root Test]
         Suppose $a_n \ge 0$ for any $n\in \N$ and additionally, $a_n^{1/n} \to r$ as $n\to \infty$ for some $r\in \R$. Then
         \begin{enumerate}[label=(\arabic*)]
             \item If $r<1$, then $\displaystyle \sum a_n$ converges.
             \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
             \item If $r=1$, then the test is inconclusive/fails.
         \end{enumerate}
-        This is called the \textbf{root test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         If $r<1$, then there exists some $x$ such that $r<x<1$. Since $a_n^{1/n} \to r$, there exists some $N\in \N$ such that $a_n^{1/n} < x$ for any $n > N$. Thus we have $a_n < x^n$ for any $n > N$. By the comparison test, we have $\displaystyle \sum a_n$ converges.
@@ -195,24 +195,24 @@
         \textbf{Example 2:} Simply letting $b_n=1$ gives a valid example.
         
     \end{proofenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Ratio Test]
         Suppose $a_n>0$ for all $n\ge 1$ and additionally $\dfrac{a_{n+1}}{a_n} \to r$ as $n\to \infty$. Then
         \begin{enumerate}[label=(\arabic*)]
             \item If $r<1$, then $\displaystyle \sum a_n$ converges.
             \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
             \item If $r=1$, then the test is inconclusive/fails.
         \end{enumerate}
-        This is called the \textbf{ratio test}.
+        
     \end{theoremenv}
     \begin{definitionenv}
         A series of the form $\displaystyle \sum_{n=1}^\infty (-1)^{n-1} a_n$ or $\displaystyle \sum_{n=1}^\infty (-1)^{n} a_n$ where $a_n > 0$ is called an \textbf{alternating} series.
     \end{definitionenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Leibniz Test (Alternating Series Test)]
         If $\{a_n\}$ is a decreasing positive sequence with $\displaystyle \lim_{n\to \infty} a_n = 0$, then the alternating series $\displaystyle \sum_{n=1}^\infty (-1)^{n-1} a_n$ converges. In the case where it does converge, let $S$ to denote the sum and $S_n$ denote the partial sum, then
         \[
         0 \le (-1)^n (S-S_n) = a_{n+1} - a_{n+2} + a_{n+3} + \cdots \le a_{n+1} \quad \text{for all } n\ge 1.
         \] 
-        This is called the \textbf{Leibniz test} or the \textbf{alternating series test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         Note $$S_{2n+2} - S_{2n} = a_{2n+1} - a_{2n+2} \ge 0$$
@@ -283,12 +283,12 @@
         $$ \sum_{k=1}^n|\alpha a_n + \beta b_n| \le \alpha \left( \sum_{k=1}^n |a_n| \right) + \beta \left( \sum_{k=1}^n |b_n| \right) \le \alpha \sum_{k=1}^{\infty} |a_n| + \beta \sum_{k=1}^\infty |b_n| =: S.$$
         Since all partial sum are bounded above by $S$, we have $\sum |\alpha a_n + \beta b_n|$ converges and thus $\sum (\alpha a_n + \beta b_n)$ is absolutely convergent.
     \end{propositionenv}
-    \begin{lemmaenv}
+    \begin{lemmaenv}[Abel's Partial Sum Formula]
         Suppose two sequences $\{a_n\}$ and $\{b_n\}$. Let $\displaystyle A_n = \sum_{k=1}^n a_k$. Then
         \[
         \sum_{k=1}^{n} a_k b_k = A_n b_{n+1} + \sum_{k=1}^n A_k (b_k - b_{k+1}).
         \]
-        This is called \textbf{Abel's partial sum formula}. 
+         
     \end{lemmaenv}
     \begin{proofenv}
         Let $A_0=0$, then $a_k = A_k - A_{k-1}$ and 
@@ -302,10 +302,10 @@
         If both $\{A_nb_{n+1}\}$ and $\displaystyle \sum_{k=1}^n A_k (b_k - b_{k+1})$ converge, then $\displaystyle \sum_{k=1}^n a_k b_k$ converges.
     \end{remarkenv}
     
-    \begin{theoremenv}
+    \begin{theoremenv}[Dirichlet's Test]
         Suppose $\sum a_n$ is a series whose partial sum $\{A_n\}$ is bounded. Suppose $\{b_n\}$ is a decreasing sequence with $b_n \to 0$ as $n\to \infty$. Then the series $ \sum a_n b_n$ converges.
 
-        This  is called the \textbf{Dirichlet's test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         Let $M>0$ be such that $|A_n| \le M$ for any $n\in \N$. We tackle the convergence pf $\{A_n b_{n+1}\}$ and $\displaystyle \sum_{k=1}^n A_k (b_k - b_{k+1}) $ seperately. 
@@ -320,10 +320,10 @@
         \end{itemize}
         By Abel's partial sum formula, we have $\sum a_n b_n$ converges.
     \end{proofenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Abel's Test]
         If $\sum a_n$ converges and $\{b_n\}$ is monotonic and convergent, then $\sum a_n b_n$ converges.
 
-        This is called the \textbf{Abel's test}.
+        
     \end{theoremenv}
     \begin{remarkenv}
         If $\{b_n\}$ is decreasing and $b_n \to 0$ as $n\to \infty$. Taking $a_n = x^n$, we know the partial sum $\displaystyle A_n = \sum_{k=1}^n x^k$ is bounded for any $x\in [-1,1)$. Particularly, when $x=-1$, Dirichlet's test  says that $\displaystyle \sum_{n=1}^\infty a_nb_n = \sum_{n=1}^\infty (-1)^n b_n$ converges, which is simply the alternating series test or the Leibniz test.
@@ -458,7 +458,7 @@
         \lim_{x\to a} \sum_{n=1}^\infty u_n(x) = \lim_{x\to a} f(x) = f(a)= \sum_{n=1}^\infty u_n(a) = \sum_{n=1}^\infty \lim_{x\to a} u_n(x).
         \]
     \end{propositionenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Weierstrass M-Test]
         Suppose $f_n \to f$ uniformly on $[a,b]$ and for each $n\ge 1$, $f_n$ is continuous on $[a,b]$. Define another function $\{g\}$ as $g_n(x) = \displaystyle \int _a^x f_n(t) \dd t$ for $x\in [a,b]$ and function $g$ as $g(x) = \displaystyle \int_a^x f(t) \dd t$ for $x\in [a,b]$. Then $g_n \to g$ uniformly on $[a,b]$ we have
         \[
         \lim_{n\to \infty} \int_a^x f_n(t) \dd t = \int_a^x \lim_{n\to \infty} f_n(t) \dd t.
@@ -505,7 +505,7 @@
     \begin{theoremenv}
         Given a series of functions $\sum u_n$ that converges pointwise to a function $f$ on $S\subseteq \R$. If there is a convergent series of positive numbers $\sum M_n$ such that $|u_n(x)| \le M_n$ for all $x\in S$ and all $n\in \N$, then $\sum u_n$ converges uniformly to $f$ on $S$.
         
-        This is called the \textbf{Weierstrass M-test}.
+        
     \end{theoremenv}
     \begin{proofenv}
         Given $\varepsilon >0$, we need to show that there is an $N\in \N$ such that $\Big|\displaystyle \sum_{k=1}^n u_k(x) - f(x)\Big| < \varepsilon$ for all $x\in S$ whenever $n \ge N$.

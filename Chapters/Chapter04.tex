@@ -189,7 +189,7 @@
 	\begin{theoremenv}
 		Let $f$ and $g$ be continuous at $p$. Then \[f+g,\, f-g,\, fg \] are also continuous at $p$. If we know $g(p)\neq 0$, then $\dfrac{f}{g}$ is also continuous at $p$.
 	\end{theoremenv}
-	\begin{theoremenv}
+	\begin{theoremenv}[Squeeze Theorem]
 		Suppose that $f(x)\le g(x)\le h(x)$ for all $x\neq p$ in some neighborhood $N(p)$ and additionally
 		\[
 		\lim_{x\to p} f(x)=\lim_{x\to p} h(x)=A,
@@ -198,7 +198,7 @@
 		\[
 		\lim_{x\to p} g(x)=A.
 		\]
-		This is called the \textbf{squeeze theorem}.
+		
 	\end{theoremenv}
 	\begin{proofenv}
 		For every $\varepsilon>0$, there exists some neighborhood $N_1(p)$ such that
@@ -311,7 +311,7 @@
 		\]
 		which implies $f(x)<0$. In both cases, we have $f(x)f(c)>0$.
 	\end{proofenv}
-	\begin{theoremenv}
+	\begin{theoremenv}[Bolzano's Theorem]
 		Let $f$ be a function continuous on the closed interval $[a,b]$. If $f(a)$ and $f(b)$ have opposite signs, then there exists some $c\in (a,b)$ such that
 		\[
 		f(c)=0.
@@ -348,7 +348,7 @@
 	\begin{remarkenv}
 		One-sided continuity should be considered at the endpoints $a$ and $b$ when applying Bolzano's Theorem. Otherwise, the conclusion might not hold.
 	\end{remarkenv}
-	\begin{theoremenv}
+	\begin{theoremenv}[Intermediate Value Theorem (IVT)]
 		Let $f$ be continuous at each point of a closed interval $[a,b]$. For two arbitrary points $x_1,x_2\in[a,b]$ with $f(x_1)\neq f(x_2)$ and any number $L$ between $f(x_1)$ and $f(x_2)$, there exists some $c$ between $x_1$ and $x_2$ such that
 		\[
 		f(c)=L.
@@ -482,7 +482,7 @@
 		which is a contradiction. Thus $f$ is bounded on $[a,b]$.
 	\end{proofenv}
 
-	\begin{theoremenv}
+	\begin{theoremenv}[Extreme Value Theorem (EVT)]
 		Suppose $f$ is continuous on $[a,b]$, then there exists $c\in [a,b]$ and $d\in [a,b]$ such that
 		\[
 		\forall x \in [a,b] \quad f(d)\le f(x)\le f(c).
@@ -557,7 +557,7 @@
 	\begin{theoremenv}
 		Suppose $f$ is continuous on $[a,b]$. Then for any $\varepsilon>0$, there exists a partition $P=\{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ such that the leap of $f$ in every closed interval $[x_{k-1},x_k]$ is less than $\varepsilon$.
 
-		This is called the \textbf{the Theorem of uniform continuity} or \textbf{the small leap/span Theorem}.
+		
 	\end{theoremenv}
 	\begin{proofenv}
 		We shall prove by contradiction. Recall how we use the method of successive bisection to prove that a continuous function on a closed interval is bounded. Now we do similarly to choose a sequence of subintervals:
