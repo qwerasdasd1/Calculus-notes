@@ -1,4 +1,21 @@
 	\chapter{Integral Calculus}
+
+    The integral is often introduced as a tool for calculating areas, volumes, and other quantities. 
+    But in a rigorous treatment, we cannot simply assume that every function can be integrated. 
+    Before we write down an integral and start computing, we should first ask:
+
+    \begin{center}
+        \textbf{Is the function we intend to integrate actually integrable?}
+    \end{center}
+
+    This chapter answers this question in a gradual way. We start from the geometric idea of area and introduce the ordinate set of a nonnegative function. 
+    Then we define the integral of step functions, whose values are directly determined by finite sums of rectangle areas. 
+    For more general bounded functions, we approximate the function from below and above by step functions. 
+    The gap between these two approximations gives rise to the lower integral and the upper integral. 
+    A function is integrable precisely when these two quantities agree.
+
+    After establishing the definition, we study basic criteria for integrability, such as monotonicity, and prove the fundamental algebraic properties of the integral. 
+    We then apply the theory to compute elementary integrals and to describe the area between two graphs.
 	\section{Basic Concepts}
 	\begin{definitionenv}
 		Let $f$ be a correspondence. If each element of $\mathscr{D}_f$ has at most one image under $f$, we say that $f$ is a \textbf{function}.
@@ -251,6 +268,15 @@
 		\]
 		Hence, the Dirichlet Function is non-integrable.
 	\end{exampleenv}
+    \begin{remarkenv}
+	So far, we have only introduced the definition of the integral for bounded functions. 
+	The example of the Dirichlet function shows that not every bounded function is integrable. 
+	However, this still leaves several deeper questions open: under what conditions can an unbounded function be integrated? 
+	And more generally, what are the structural features of non-integrable functions?
+
+	These questions require a more advanced theory of integration and will be studied in later courses. 
+	In this course, we shall mainly focus on functions that are integrable and on how to use their integrals.
+\end{remarkenv}
 	\begin{theoremenv}
 	Let $f$ be a nonnegative function, integrable on an interval $[a,b]$, and let $Q$ denote the ordinate set of $f$ over $[a,b]$. Then $Q$ is measurable and
 	\[

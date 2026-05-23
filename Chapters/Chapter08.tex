@@ -31,10 +31,10 @@
     \begin{theoremenv}
         Here are some properties of the Taylor polynomial:
         \begin{enumerate}[label=(\arabic*)]
-            \item Linearity: If $c_1,c_2 \in \mathbb R$, then $T_n(c_1 f + c_2 g) = c_1 T_n(f) + c_2 T_n(g)$.
-            \item Differentiation: $(T_n(f))' = T_{n-1}(f')$.
-            \item Integration: If $\displaystyle F(x)=\int_a^x f(t)\, \dd t$, then \[T_{n+1}(F) = \int_a^x T_n(f(t))\, \dd t.\]
-            \item Substitution: If $g(x)=f(cx)$ where $c\in \mathbb R$ is a constant, then \[T_n(g)(x;a) = T_n(f)(cx; ca).\]
+            \item Linearity: if $c_1,c_2 \in \mathbb R$, then $$T_n(c_1 f + c_2 g) = c_1 T_n(f) + c_2 T_n(g).$$
+            \item Differentiation: $$(T_n(f))' = T_{n-1}(f').$$
+            \item Integration: if $\displaystyle F(x)=\int_a^x f(t)\, \dd t$, then \[T_{n+1}(F) = \int_a^x T_n(f(t))\, \dd t.\]
+            \item Substitution: if $g(x)=f(cx)$ where $c\in \mathbb R$ is a constant, then \[T_n(g)(x;a) = T_n(f)(cx; ca).\]
             Particularly, if $a=0$, then $T_n(g)(x) = T_n(f)(cx)$.
         \end{enumerate}
     \end{theoremenv}
@@ -68,8 +68,11 @@
         \end{enumerate}
     \end{exampleenv}
     \begin{theoremenv}
-        Let $P_n$ be a polynomial of degree $n\ge 1$. Let $f$ and $g$ be two functions with derivatives of order $n$ at $x=0$ and assume that $f(x)=P_n(x)+x^n g(x)$ where $g(x)\to 0$ as $x\to 0$. Then $P_n$ is the Taylor polynomial $T_n(f)$ at 0.
+        Let $P_n$ be a polynomial of degree $n\ge 1$. Let $f$ and $g$ be two functions with derivatives of order $n$ at $x=0$ and assume that $$f(x)=P_n(x)+x^n g(x),$$ where $g(x)\to 0$ as $x\to 0$. Then $P_n$ is the Taylor polynomial $T_n(f)$ at 0.
     \end{theoremenv}
+    \begin{remarkenv}
+        the Taylor polynomial is the unique polynomial approximation whose error is \(x^ng(x)\) as \(x\to0\). Here, $x^n g(x)$ is called the \textbf{Peano form of the error term} of the Taylor polynomial $P_n$.
+    \end{remarkenv}
     \begin{exampleenv}
         \begin{enumerate}[label=(\arabic*),start=7]
         \item We start again by
@@ -109,7 +112,7 @@
             \[
             \frac{m(x-a)^2}{2} \le E_1(x) = \int_a^x f''(t)(x-t)\, \dd t \le \frac{M(x-a)^2}{2}.
             \]
-            By the squeeze theorem, we have $\displaystyle \lim_{x\to a} E_1(x) = 0$.
+            By the squeeze theorem, we have $\displaystyle \lim_{x\to a} E_1(x) = 0$. This example motivates us to find a more general formula for the error term $E_n$ as a integral.
         \end{enumerate}
     \end{exampleenv}
     \begin{theoremenv}\label{Taylor formula with error term}
@@ -126,6 +129,9 @@
         \frac{m(a-x)^{n+1}}{(n+1)!} \le (-1)^{n+1} E_n(x)  \le \frac{M(a-x)^{n+1}}{(n+1)!} \quad \forall x<a.
         \]
         \end{theoremenv}
+        \begin{remarkenv}
+            Here, $\displaystyle E_n(x) = \frac{1}{n!} \int_a^x f^{(n+1)}(t) (x-t)^n\, \dd t$ is called the \textbf{integral form of the error term} of the Taylor polynomial $T_n(f)$.
+        \end{remarkenv}
         \begin{exampleenv}
             We go back to the example of $\displaystyle f(x) = e^x=\sum_{k=0}^n \frac{x^k}{k!} + E_n(x)$ and $a=0$. Note for any $x\in [b,c]$, we know $e^b \le e^x \le e^c$. Particularly, if $b=0$ and $c=x=1$, then we have
             \[
@@ -142,7 +148,7 @@
             \[
             \begin{aligned}
                 E_n(x) &= \frac{1}{n!} \int_a^x f^{(n+1)}(t) (x-t)^n\, \dd t\\
-                &= \frac{1}{(n+1)!} f^{(n+1)}(c) \int_a^x (x-t)^n\, \dd t\\
+                &= \frac{1}{n!} f^{(n+1)}(c) \int_a^x (x-t)^n\, \dd t\\
                 &= \frac{1}{(n+1)!} f^{(n+1)}(c) (x-a)^{n+1}\quad \text{for some } c\in [a,x].
             \end{aligned}
             \]
@@ -150,9 +156,10 @@
 
             Suppose $f^{(n+1)}$ is continous on some interval $[a-r,a+r]$ where $r>0$, then $f^{(n+1)}$ is bounded on $[a-r,a+r]$ and there exists $M>0$ such that $|f^{(n+1)}(t)| \le M$ for any $t\in [a-r,a+r]$. Then
             \[
-            |E_n(x)| = M \cdot \frac{|x-a|^{n+1}}{(n+1)!} \quad \text{for any } x\in [a-r,a+r].
+            |E_n(x)| \le M \cdot \frac{|x-a|^{n+1}}{(n+1)!} \quad \text{for any } x\in [a-r,a+r].
             \]
-            For $x\neq a$, we know $\displaystyle 0 \le \big|\frac{E_n(x)}{(x-a)^{n}}\big| \le \frac{M}{(n+1)!}|x-a|$. By the squeeze theorem, we know $\displaystyle \frac{E_n(x)}{(x-a)^{n}} \to 0$ as $x \to a$. We say that the error term $E_n$ is of small order that $(x-a)^n$ as $x\to a$, and we often write $E_n(x) = o\left( (x-a)^n \right)$ as $x\to a$.
+            For $x\neq a$, we know $$0 \le \big|\frac{E_n(x)}{(x-a)^{n}}\big| \le \frac{M}{(n+1)!}|x-a|.$$ By the squeeze theorem, we know $\displaystyle \frac{E_n(x)}{(x-a)^{n}} \to 0$ as $x \to a$. We say that the error term $E_n$ is of small order that $(x-a)^n$ as $x\to a$, and we often write $$E_n(x) = o\left( (x-a)^n \right) \quad \text{as } x\to a.$$
+            Here, $E_n(x)$ is called the \textbf{Peano form of the error term} of the Taylor polynomial $T_n(f)$.
         \end{remarkenv}
         \begin{definitionenv}
             Assume $g(x)\neq 0$ for $x\neq a$ in some interval containing $a$. The notation $f(x) = o(g(x))$ as $x\to a$ means that $\displaystyle \lim_{x\to a} \frac{f(x)}{g(x)} = 0$.
@@ -243,7 +250,7 @@
 
         \section{Indeterminate forms and L'Hôpital's Rule}
         \begin{theoremenv}
-            Assume $f$ and $g$ have derivatives $f'(x)$ and $g'(x)$ for every $x$ in an open interval $(a,b)$ and suppose that $\displaystyle \lim_{x\to a^+} f(x) = \lim_{x\to a^+} g(x) = 0$. If $g'(x) \neq 0$ for every $x\in (a,b)$ and the limit $\displaystyle \lim_{x\to a^+} \frac{f'(x)}{g'(x)}$ exists and have value $L$, then we have $\displaystyle \lim_{x\to a^+} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)} = L$.
+            Assume $f$ and $g$ have derivatives $f'(x)$ and $g'(x)$ for every $x$ in an open interval $(a,b)$ and suppose that $\displaystyle \lim_{x\to a^+} f(x) = \lim_{x\to a^+} g(x) = 0$. If $g'(x) \neq 0$ for every $x\in (a,b)$ and the limit $\displaystyle \lim_{x\to a^+} \frac{f'(x)}{g'(x)}$ exists and have value $L$, then we have $$\lim_{x\to a^+} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)} = L.$$
         \end{theoremenv}
         \begin{proofenv}
             Note that L'ôpital's Rule does require $f,g,f',g'$ to be well-defined for $x\in (a,b)$. So we shall ``extend'' the definition of $f$ and $g$ ``a bit'' by letting
@@ -266,7 +273,7 @@
             \[
             \frac{f(x)}{g(x)} = \frac{F(x)}{G(x)} = \frac{F'(c)}{G'(c)} = \frac{f'(c)}{g'(c)} \quad \text{for some } c\in (a,x).
             \]
-            Note $g(x) \neq 0$ for $x\in (a,b)$ otherwise $G(x) = 0 = G(a)$ and by Role's Theorem, there exists some $d\in (a,x)$ such that $G'(d) = 0 = g'(d)$, which is a contradiction. Thus as $x\to a^+$, we have $c\to a^+$ and $\displaystyle \lim_{x\to a^+} \frac{f(x)}{g(x)} = \lim_{c\to a^+} \frac{f'(c)}{g'(c)} = L$.
+            Note $g(x) \neq 0$ for $x\in (a,b)$ otherwise $G(x) = 0 = G(a)$ and by Role's Theorem, there exists some $d\in (a,x)$ such that $G'(d) = 0 = g'(d)$, which is a contradiction. Thus as $x\to a^+$, we have $c\to a^+$ and $$\lim_{x\to a^+} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)} = L.$$
         \end{proofenv}
         \begin{remarkenv}
             The "left-sided limit" and the "two-sided limit" versions of L'Hôpital's Rule also hold provided that the derivatives are defined in the needed open interval.
@@ -276,11 +283,9 @@
         \begin{exampleenv}
             We use L'Hôpital's Rule to calculate some previous limits:
             \begin{enumerate}[label=(\arabic*)]
-                \item \(\displaystyle
-            \lim_{x\to 0} \frac{a^x - b^x}{x} \quad \text{where } a,b>0.
-            \)
-
-            Note that
+                \item Calculate \(\displaystyle
+            \lim_{x\to 0} \frac{a^x - b^x}{x}\text{ where } a,b>0.
+            \) Note that
             \[
             \lim_{x\to 0} a^x = \lim_{x\to 0} b^x = 1.
             \]
@@ -288,11 +293,9 @@
             \[
             \lim_{x\to 0} \frac{a^x - b^x}{x} = \lim_{x\to 0} \frac{a^x \ln a - b^x \ln b}{1} = \ln a - \ln b.
             \]
-                \item \(\displaystyle
-            \lim_{x\to 0} \frac{\ln(1+ax)}{x} \quad \text{where } a\in \mathbb{R}.
-            \)
-
-            We talk about the case $a=0$ here. Note that
+                \item Calculate \(\displaystyle
+            \lim_{x\to 0} \frac{\ln(1+ax)}{x} \text{ where } a\in \mathbb{R}.
+            \) We talk about the case $a=0$ here. Note that
             \[
             \lim_{x\to 0} \ln(1+ax) = \ln 1 = 0.
             \]
@@ -300,7 +303,7 @@
             \[
             \lim_{x\to 0} \frac{\ln(1+ax)}{x} = \lim_{x\to 0} \frac{a}{1+ax} = a.
             \]
-            \item $\displaystyle \lim_{x\to 0} \frac{x-\tan x}{x-\sin x} = \lim_{x\to 0}\frac{1-\sec^2 x}{1-\cos x} =-\lim_{x\to 0} \frac{\cos x+1}{\cos^2 x} -2$.
+            \item $\displaystyle \lim_{x\to 0} \frac{x-\tan x}{x-\sin x} = \lim_{x\to 0}\frac{1-\sec^2 x}{1-\cos x} =-\lim_{x\to 0} \frac{\cos x+1}{\cos^2 x}= -2$.
             \end{enumerate}
         \end{exampleenv}
         \begin{definitionenv}

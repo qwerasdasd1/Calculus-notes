@@ -31,9 +31,9 @@
 		which is called the ``$\varepsilon-\delta$ definition of limit".
 	\end{definitionenv}
 	\begin{remarkenv}
-		Actually you've seen and you will see infinitely many ``whenever" which all mean the same thing: ``for all ...".
+		You've seen and you will see infinitely many ``whenever" which all mean the same thing: ``for all ...".
 	\end{remarkenv}
-	\begin{remarkenv}
+	\begin{corollaryenv}
 		The following symbols are all equivalent:
 		\begin{align*}
 			&\lim_{x\to p} f(x)=A, \\
@@ -42,7 +42,7 @@
 			&\lim_{h\to 0} f(p+h)=A, \\
 			&\lim_{h\to 0} f(p-h)=A.
 		\end{align*}
-	\end{remarkenv}
+	\end{corollaryenv}
 	\begin{definitionenv}
 		Let $f$ be a function defined on $(p,b)$ for some $b>p$ and $A\in \mathbb{R}$. The symbol
 		\[
@@ -54,7 +54,7 @@
 		\]
 		which is called the \textbf{right-side limit}.
 		
-		Similarly we can define what is called the \textbf{left-side limit}.
+		Similarly, we can define what is called the \textbf{left-side limit}.
 		Let $f$ be a function defined on $(a,p)$ for some $a<p$ and $A\in \mathbb{R}$. The symbol
 		\[
 		\lim_{x\to p^-}f(x)=A
@@ -176,7 +176,7 @@
 	\begin{theoremenv}
 		Let $f$ and $g$ be functions such that 
 		\[
-		\lim_{x\to p} f(x)=A,\quad \lim_{x\to p} g(x)=B,
+		\lim_{x\to p} f(x)=A,\qquad \lim_{x\to p} g(x)=B.
 		\]
 		Then we have the following properties:
 		\begin{enumerate}
@@ -219,7 +219,7 @@
 		\]
 	\end{proofenv}
 	\begin{remarkenv}
-		When you choose $f$ and $h$ to apply the squeeze theorem, they're usually not unique as long as they work well.
+		When we choose $f$ and $h$ to apply the squeeze theorem, they're usually not unique as long as they work well.
 	\end{remarkenv}
 	\begin{theoremenv}
 		Assume $f$ is integrable on $[a,x]$ for every $x\in [a,b]$ and define
@@ -316,7 +316,6 @@
 		\[
 		f(c)=0.
 		\]
-		This is called the \textbf{Bolzano's Theorem}.
 	\end{theoremenv}
 	\begin{proofenv}
 		Without loss of generality, we assume $f(a)<0$ and $f(b)>0$. Let
@@ -353,10 +352,9 @@
 		\[
 		f(c)=L.
 		\]
-		This is called the \textbf{Intermediate Value Theorem (IVT)}.
 	\end{theoremenv}
 	\begin{remarkenv}
-		The Intermediate Value Theorem is a immediate consequence of Bolzano's Theorem. And such $c$ above might not be unique.
+		The Intermediate Value Theorem is a immediate consequence of Bolzano's Theorem. Note such $c$ above might not be unique.
 	\end{remarkenv}
 	\begin{propositionenv}
 		If $n$ is a positive integer and if $a>0$, then there is exactly one positive real number $x$ such that
@@ -487,7 +485,6 @@
 		\[
 		\forall x \in [a,b] \quad f(d)\le f(x)\le f(c).
 		\]
-		This is called the \textbf{Extreme Value Theorem (EVT)}.
 	\end{theoremenv}
 	\begin{proofenv}
 	By the above lemma, since $f$ is continuous on $[a,b]$, it is bounded on $[a,b]$.
@@ -545,9 +542,9 @@
 		c=\sup f,\quad d=\inf f.
 		\]
 	\end{remarkenv}
-	\begin{propositionenv}
+	\begin{corollaryenv}
 		Combining \textbf{EVT} and \textbf{IVT}, we have the following : If $f$ is continuous on $[a,b]$, then the range of $f$ on $[a,b]$ is $[\inf f, \sup f]$.
-	\end{propositionenv}
+	\end{corollaryenv}
 	\begin{definitionenv}
 		Suppose $f$ is continuous on $[a,b]$, we call $(\sup f - \inf f)$ the \textbf{leap} or \textbf{span} of $f$ on $[a,b]$.
 	\end{definitionenv}
@@ -682,6 +679,6 @@
 		By \textbf{EVT} and \textbf{IVT}, we know there exists $c\in [a,b]$ such that $f(c)=\operatorname{avg}(f)$.
 	\end{proofenv}
     \begin{remarkenv}
-        You can also expand the above theorem to what is so-called \textbf{Weighted Mean Value Theorem for Integrals} mentioned in Chapter 3. The proof is left to you as an exercise (since it's quite analogous to the above proof).
+        You can also expand the above theorem to what is so-called \textbf{Weighted Mean Value Theorem for Integrals} mentioned in Chapter 3. The proof is left as an exercise (since it's quite analogous to the above proof).
     \end{remarkenv}
 	\newpage

@@ -1,5 +1,5 @@
 	\chapter{Applications of Integration}
-	Every time before we integrate a function, we should ask ourselves: is the to-be-integrated function integrable?
+	Integration is a powerful tool for calculating areas, volumes, and many other quantities. However, before we use an integral to represent or compute such a quantity, there is a more fundamental issue to settle: is the function we intend to integrate actually integrable?
 	\section{More about Area}
 	\begin{definitionenv}
 		A \textbf{circular disk} of radius $r$ is the set of all points inside or on the boundary of a circle of radius $r$.
@@ -16,12 +16,12 @@
 		\pi := 2\int_{-1}^1 \sqrt{1-x^2}\,\mathrm{d}x.
 		\]
 	\end{definitionenv}
-	\begin{propositionenv}
+	\begin{corollaryenv}
 		The area of a circular disk with radius $r$ is given by
 		\[
 		A(r)=\pi r^2.
 		\] 
-	\end{propositionenv}
+	\end{corollaryenv}
 	\begin{theoremenv}
 		Let $f$ be nonnegative and integrable on $[a,b]$ and let $S$ be its ordinate set. We define a new function $g$ denoted by
 		\[
@@ -33,17 +33,17 @@
 		\]
 	\end{theoremenv}
 	\begin{remarkenv}
-		Actually this new $g$ is ``similar" to $f$ so we call this definition a similarity transformation.
+		In fact, this new $g$'s shape is ``similar" to $f$. Thus, we call this definition a similarity transformation.
 	\end{remarkenv}
 	\section{Integration formulas for the sine and cosine}
-	We omit deriving properties of sine and cosine in this lecture note since I'm lazy and I'm pretty sure you know them very well during your study in high school. I shall only introduce one property as you might know but cannot come up with due to less usage.
+	We omit deriving properties of sine and cosine in this lecture note since I'm lazy. However, with the following theorems and lemmas, we can derive the integral formulas for sine and cosine.
 	\begin{theoremenv}
-		For $0<x<\frac{1}{2}\pi$, we have
+		For $0<x<\dfrac{1}{2}\pi$, we have
 		\[
 		0<\cos x< \frac{\sin x}{x} < \frac{1}{\cos x}.
 		\]
 	\end{theoremenv}
-	\begin{propositionenv}
+	\begin{lemmaenv}
 		Here are several inequalities important in deriving integral formulas
 		for sine and cosine.
 		\begin{enumerate}
@@ -59,12 +59,12 @@
 				2\sin\theta\sum_{k=0}^{n-1}\cos(2k\theta)=\sin(2n-1)\theta+\sin\theta.
 			\end{align*}
 			
-			\item Suppose $\theta$ satisfies $0<2n\theta<\tfrac12\pi$, we have
+			\item Suppose $\theta$ satisfies $0<2n\theta<\dfrac12\pi$, we have
 			\begin{align*}
 				\sin(2n+1)\theta-\sin\theta<\frac{\sin\theta}{\theta}\sin(2n\theta).
 			\end{align*}
 			
-			\item Suppose $\theta$ satisfies $0<2n\theta<\tfrac12\pi$. First we have
+			\item Suppose $\theta$ satisfies $0<2n\theta<\dfrac12\pi$. First we have
 			\begin{align*}
 				\frac{\cos(n-1)\theta}{\cos(n\theta)}>\frac{\sin\theta}{\theta}
 			\end{align*}
@@ -73,9 +73,9 @@
 				\frac{\sin\theta}{\theta}\sin(2n\theta)<\sin(2n-1)\theta+\sin\theta.
 			\end{align*}
 		\end{enumerate}
-	\end{propositionenv}
+	\end{lemmaenv}
 	\begin{theoremenv}
-		For any $0<a\le \tfrac12\pi$, we have
+		For any $0<a\le \dfrac12\pi$, we have
 		\begin{align*}
 			\frac{a}{n}\sum_{k=1}^{n}\cos\frac{ka}{n}<\sin a
 			<
@@ -101,7 +101,7 @@
 		\[
 		x=r\cos \theta,\quad y=r\sin \theta.
 		\]
-		Here we call $r$ the radial distance of $P$ and $\theta$ a polar angle.
+		Here we call $r$ the \textbf{radial distance} of $P$ and $\theta$ a \textbf{polar angle}.
 	\end{definitionenv}
 	\begin{remarkenv}
 		Note that we call $\theta$ ``a'' polar angle instead of ``the'' polar angle because $\theta+2n\pi$ also represents the same angle for any integer $n$. But the radial distance $r$ is uniquely determined. 
@@ -109,11 +109,11 @@
 		If $r=0$, then by convention $\theta$ can be any real number.
 	\end{remarkenv}
 	\begin{definitionenv}
-		A curve is said to be given in polar coordinates if there is a nonnegative function $f$ defined on an interval $I$ such that every point $P$ on the curve has polar coordinates $(r,\theta)$ satisfying
+		A \textbf{curve} is said to be given in polar coordinates if there is a nonnegative function $f$ defined on an interval $I$ such that every point $P$ on the curve has polar coordinates $(r,\theta)$ satisfying
 		\[
 		r=f(\theta),\quad \theta\in I.
 		\]
-		And this equation is called the polar equation of the curve. Similarly, the graph of $f$ in polar coordinates is the set of all points $P$ with polar coordinates $(r,\theta)$ satisfying the above equation.
+		And this equation is called the \textbf{polar equation} of the curve. Similarly, the \textbf{graph} of $f$ in polar coordinates is the set of all points $P$ with polar coordinates $(r,\theta)$ satisfying the above equation.
 	\end{definitionenv}
 
 	\begin{remarkenv}
@@ -131,10 +131,10 @@
 		\[
 		0\le r \le f(\theta),\quad \theta\in [a,b]
 		\]
-		is called the radial set determined by $f$.
+		is called the \textbf{radial set} determined by $f$.
 	\end{definitionenv}
 	\begin{definitionenv}
-		Similarly as in rectangular coordinates, a nonnegative function $s$ defined on $[a,b]$ is called a step function in polar coordinates if there exists a partition $P=\left\{\theta_0,\theta_1,\cdots,\theta_n\right\}$ of $[a,b]$ such that
+		Similarly as in rectangular coordinates, a nonnegative function $s$ defined on $[a,b]$ is called a \textbf{step function in polar coordinates} if there exists a partition $P=\left\{\theta_0,\theta_1,\cdots,\theta_n\right\}$ of $[a,b]$ such that
 		\[
 		s(\theta)=s_k\quad\text{where}\quad \theta \in (\theta_{k-1},\theta_k),\quad k=1,2,\cdots,n.
 		\]
@@ -200,14 +200,14 @@
 			\item A plane set is call \textbf{bounded} if it is a subset of some square in the plane.
 		\end{enumerate}
 	\end{definitionenv}
-	\begin{propositionenv}
+	\begin{corollaryenv}
 		Here's some propositions for some basic cases.
 		\begin{enumerate}
 			\item The empty set $\varnothing$ is in $\mathcal{A}$ and $V(\varnothing)=0$.
 			\item Monotonicity property: If $S$ and $T$ are in $\mathcal{A}$ with $S\subseteq T$, then $V(S)\le V(T)$.
 			\item Every bounded plane set $S$ in $\mathcal{A}$ has volume zero, i.e., $V(S)=0$.
 		\end{enumerate}
-	\end{propositionenv}
+	\end{corollaryenv}
 	\begin{remarkenv}
 		Note that the Cavalieri's principle can be applied twice: if $A(S\cap F)=A(T\cap F)$ for every plane $F$ perpendicular to a given line, then $V(S)=V(T)$. In Chinese, we call this property Zu Geng's principle.
 	\end{remarkenv}
@@ -240,7 +240,7 @@
 	\]
 	\end{theoremenv}
 	\begin{exampleenv}
-		 Let $f(x) = \sqrt{r^2 - x^2}$ on $[-r,r]$, the solid is a sphere of radius $r$, and
+		 Let $f(x) = \sqrt{r^2 - x^2}$ on $[-r,r]$, then the solid is a sphere of radius $r$, and its volume is given by
 		\[
 		V = \pi \int_{-r}^{r} (r^2 - x^2)\, \mathrm{d}x = \frac{4}{3}\pi r^3.
 		\]
@@ -254,19 +254,20 @@
 		\]
 	\end{definitionenv}
     \begin{remarkenv}
-		Note that the definition of average value of a function is consistent with the definition of average value of a finite set of numbers. You might not see how this definition works in this section, but it will be useful in later section.
+		Note that the definition of average value of a function is consistent with the definition of average value of a finite set of numbers, i.e., the discrete average. You might not see how this definition works in this section, but it will be useful in later section.
 	\end{remarkenv}
-    \begin{theoremenv}
+    \begin{theoremenv}[Weighted Mean Value Theorem for Integrals]
         Assume $f$ and $g$ are continuous on $[a,b]$. If $g$ never changes sign on $[a,b]$, then for some $c\in[a,b]$, we have
         \[
         \int_a^b f(x)g(x)\,\mathrm{d}x = f(c)\int_a^b g(x)\,\mathrm{d}x.
         \]
-        This is called the \textbf{Weighted Mean Value Theorem for Integrals}.
+    \end{theoremenv}
+    \begin{corollaryenv}[Mean Value Theorem for Integrals]
         Let $g(x)\equiv 1$, we have the \textbf{Mean Value Theorem for Integrals}:
         \[
         \int_a^b f(x)\,\mathrm{d}x = f(c)(b-a).
         \]
-    \end{theoremenv}
+    \end{corollaryenv}
     \begin{remarkenv}
         The proof is in Chapter 4.
     \end{remarkenv}
@@ -278,7 +279,7 @@
 		where $a$ is an arbitrary point in $I$.
 	\end{definitionenv}
 	\begin{remarkenv}
-		Actually a different choice of $a$ will only lead to a different indefinite integral by a constant, since
+		Indeed, a different choice of $a$ will only lead to a different indefinite integral by a constant, since
 		\[
 		\int_b^x f(t)\,\mathrm{d}t = \int_a^x f(t)\,\mathrm{d}t - \int_a^b f(t)\,\mathrm{d}t.
 		\]
@@ -300,7 +301,11 @@
 		Geometrically, a function $g$ is convex on $[a,b]$ if the line segment joining any two points on the graph of $g$ lies above or on the graph between these two points. Similarly, $g$ is concave on $[a,b]$ if the line segment joining any two points on the graph of $g$ lies below or on the graph between these two points.
 	\end{remarkenv}
 	\begin{theoremenv}
-		Let $f$ be integrable on $[a,b]$ and let $F$ be an indefinite integral of $f$ on $[a,b]$. If $f$ is increasing on $[a,b]$, then $F$ is convex on $[a,b]$. If $f$ is decreasing on $[a,b]$, then $F$ is concave on $[a,b]$.
+		Let $f$ be integrable on $[a,b]$ and let $F$ be an indefinite integral of $f$ on $[a,b]$. Then:
+        \begin{enumerate}
+            \item if $f$ is increasing on $[a,b]$, then $F$ is convex on $[a,b]$;
+            \item if $f$ is decreasing on $[a,b]$, then $F$ is concave on $[a,b]$.
+        \end{enumerate}
 	\end{theoremenv}
 
 	\newpage

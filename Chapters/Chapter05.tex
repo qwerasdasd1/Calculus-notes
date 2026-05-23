@@ -69,6 +69,23 @@
 		\lim_{h\to 0} f(x+h) = \lim_{h\to 0} \left[ \frac{f(x+h)-f(x)}{h} \cdot h + f(x) \right] = f'(x)\cdot 0 + f(x) = f(x).
 		\]
 	\end{proofenv}
+    \begin{remarkenv}
+        The converse of the above theorem is not true, i.e., if $f$ is continuous at $x$, then $f$ does not necessarily have a derivative at $x$. The absolute value function $f(x)=|x|$ is a typical counterexample since $f$ is continuous at $0$ but $f'(0)$ does not exist.
+
+        Moreover, even if $f$ is differentiable at $x$, $f'$ may not be continuous at $x$. For example, we define
+        $$
+        f(x)=
+        \begin{cases}
+        x^2\sin\dfrac{1}{x^2}, & x\ne 0,\\[6pt]
+        0, & x=0.
+        \end{cases},\qquad
+        f'(x)= \begin{cases}
+            2x\sin\dfrac{1}{x^2}-\dfrac{2}{x}\cos\dfrac{1}{x^2}, & x\ne 0,\\[6pt]
+            0, & x=0.
+        \end{cases}.
+        $$
+        Then $f$ is differentiable on $\R$ but $f'$ is not continuous at $0$ since $\displaystyle\lim_{x\to 0} f'(x)$ does not exist while $f'(0)=0$.
+    \end{remarkenv}
 	\begin{theoremenv}
 		Suppose $f$ and $g$ are two functions defined on a common interval. If both $f$ adn $g$ have derivatives at $x=a$, then so do the following functions:
 		\[
@@ -113,7 +130,7 @@
 		for all rational numbers $n$.
 	\end{remarkenv}
 	\begin{notationenv}
-		Actually the following notations are also commonly used for derivatives:
+		In fact, the following notations are also commonly used for derivatives:
 		\begin{enumerate}
 			\item Leibniz's notation:
 			\[

@@ -62,6 +62,9 @@
 	\begin{definitionenv}
 		A function $P$ is called a \textbf{primitive} (or an \textbf{antiderivative}) on a function $f$ on an open interval $I$ if $P'(x)=f(x)$ for any $x\in I$. 
 	\end{definitionenv}
+    \begin{remarkenv}
+        Note that if $P$ is a primitive of $f$ on $I$, then $P$ is not unique since for any constant $C$, we have $(P+C)'=P'=f$.
+    \end{remarkenv}
 	\begin{theoremenv}[Second Fundamental Theorem of Calculus (FTC2)]
 		Assume $f$ is continuous on an open interval $I$ and let $P$ be a primitive of $f$ on $I$. Then for each $x,c \in I$, we have
 		\[
@@ -76,6 +79,32 @@
 		\]
 		provided that $P$ is a primitive of $f$ on some open interval containing $[a,b]$.
 	\end{remarkenv}
+    \begin{remarkenv}
+        If $F$ is a primitive of $f$ on $I$ but $f$ is not necessarily continuous, then $f$ is not necessarily integrable. For example, we define
+        $$
+        F(x)=
+        \begin{cases}
+        x^2\sin\dfrac{1}{x^2}, & x\ne 0,\\[6pt]
+        0, & x=0.
+        \end{cases},\qquad
+        f(x)=F'(x)=
+        \begin{cases}
+        2x\sin\dfrac{1}{x^2}-\dfrac{2}{x}\cos\dfrac{1}{x^2}, & x\ne 0,\\[6pt]    
+        0, & x=0.
+        \end{cases}
+        $$
+        Then $F$ is a primitive of $f$ on $\R$. However, $f$ is not integrable in the neighborhood of $0$ since $f$ is not bounded near $0$.
+
+        The converse is also not true, i.e., if $f$ is integrable on $I$, then $f$ does not necessarily have a primitive on $I$. For example, we define
+        $$
+        f(x)=
+        \begin{cases}
+        0, & x<0,\\
+        1, & x\ge 0.
+        \end{cases}
+        $$
+        Then $f$ is integrable on $[0,1]$ but $f$ does not have a primitive.
+    \end{remarkenv}
 	\begin{notationenv}
 		Leibniz introduced the notation \textbf{indefinite integral} to denote a general primitive of $f$ or the common format shared by all primitive of $f$:
 		\[
@@ -100,12 +129,11 @@
 	\end{remarkenv}
 
 	\section{Integration Techniques}
-	\begin{methodenv}
+	\begin{methodenv}[Integration by Substitution]
 		Suppose $u=g(x)$ is a differentiable function whose range is an interval $I$ and $f$ is continuous on $I$. Then
 		\[
 		\int f(g(x)) g'(x)\, \dd x = \int f(u)\, \dd u.
 		\]
-		This is called \textbf{integration by substitution}.
 	\end{methodenv}
 	\begin{theoremenv}
 		Suppose $g$ has a continuous derivative $g'$ on an open interval $I$. Let $J$ be the set of values taken by $g$ on $I$ and assume that $f$ is continuous on $J$. Then for any $x,c\in I$, we have
@@ -135,7 +163,7 @@
         \]
         Note that the integral value is independent of integral variable. Hence, we complete the proof.
     \end{proofenv}
-	\begin{methodenv}
+	\begin{methodenv}[Integration by Parts]
 		Suppose $u=u(x)$ and $v=v(x)$ are two differentiable functions on an open interval $I$. Then
 		\[
 		\int u(x) v'(x)\, \dd x = u(x) v(x) - \int v(x) u'(x)\, \dd x.
@@ -144,7 +172,6 @@
 		\[
 		\int_a^b u(x) v'(x)\, \dd x = \left[ u(x) v(x) \right]_a^b - \int_a^b v(x) u'(x)\, \dd x.
 		\]
-		This is called \textbf{integration by parts}.
 	\end{methodenv}
 	\begin{remarkenv}
 		With Leibniz's notation, since equivalently (in a sense of notation but it's rigorous by defining what is so called differential later) we have
@@ -183,7 +210,7 @@
 		\[
 		G(x) = \int_a^x g(t)\, \dd t.
 		\]
-		Since $g$ is continuous on $[a,b]$, by the \textbf{First Fundamental Theorem of Calculus}, we know $G'(x)=g(x)$ for any $x\in (a,b)$. By \textbf{integration by parts}, we have
+		Since $g$ is continuous on $[a,b]$, by the \textbf{FTC1}, we know $G'(x)=g(x)$ for any $x\in (a,b)$. By \textbf{integration by parts}, we have
 		\[
 		\begin{aligned}
 			\int_a^b f(x) g(x)\, \dd x &= \int_a^b f(x) G'(x)\, \dd x\\[6pt]
@@ -193,7 +220,7 @@
 			% &= f(b) \int_a^b g(t)\, \dd t - \int_a^b G(x) f'(x)\, \dd x. 
 		\end{aligned}
 		\]
-		Using the \textbf{Mean Value Theorem}, since $f'$ does not change sign on $[a,b]$, there exists some $c\in [a,b]$ such that
+		Using the \textbf{MVT}, since $f'$ does not change sign on $[a,b]$, there exists some $c\in [a,b]$ such that
 		\[
 		\int_a^b G(x) f'(x)\, \dd x = G(c) \int_a^b f'(x)\, \dd x =  \left( \int_a^c g(t)\, \dd t \right) [f(b)-f(a)].
 		\]

@@ -4,10 +4,21 @@
         A function $f:\N \to \R$ is called a \textbf{sequence}. The function value $f(n)$ is called the $n$-th term of the sequence. We often denote such a sequence by $\{a_n\}$ or $f(n)$ where $a_n := f(n)$ for any $n\in \N$.
     \end{definitionenv}
     \begin{definitionenv}
-        A sequence $\{f(n)\}$ is said to have a limit $L\in \R$, or converges to $L$, if for every $\varepsilon > 0$, there exists some $N\in \N$ such that $|f(n) - L| < \varepsilon$ for any $n > N$ and in this case we say the sequence is \textbf{convergent}. If a sequence is not convergent, then we say it is \textbf{divergent}.
+        A sequence $\{f(n)\}$ is said to have a limit $L\in \R$, or \textbf{converges} to $L$, if for every $\varepsilon > 0$, there exists some $N\in \N$ such that $|f(n) - L| < \varepsilon$ for any $n > N$ and in this case we say the sequence is \textbf{convergent}. If a sequence is not convergent, then we say it is \textbf{divergent}.
     \end{definitionenv}
     \begin{definitionenv}
-        A sequence $\{f(n)\}$ is \textbf{increasing} if $f(n) \le f(n+1)$ for all $n\in \N$. A sequence $\{f(n)\}$ is \textbf{decreasing} if $f(n) \ge f(n+1)$ for all $n\in \N$. A sequence is \textbf{monotonic} if it is either increasing or decreasing. A sequence $\{f(n)\}$ is \textbf{bounded} if there exists some $M>0$ such that $|f(n)| \le M$ for any $n\in \N$. A sequence is \textbf{unbounded} if it is not bounded.
+        Let \(\{f(n)\}\) be a sequence. We define the following notions:
+        \begin{enumerate}
+            \item The sequence \(\{f(n)\}\) is \textbf{increasing} if \(f(n)\le f(n+1)\) for all \(n\in\N\).
+
+            \item The sequence \(\{f(n)\}\) is \textbf{decreasing} if \(f(n)\ge f(n+1)\) for all \(n\in\N\).
+
+            \item The sequence \(\{f(n)\}\) is \textbf{monotonic} if it is either increasing or decreasing.
+
+            \item The sequence \(\{f(n)\}\) is \textbf{bounded} if there exists some \(M>0\) such that \(|f(n)|\le M\) for all \(n\in\N\).
+
+            \item The sequence \(\{f(n)\}\) is \textbf{unbounded} if it is not bounded.
+        \end{enumerate}
     \end{definitionenv}
     \begin{theoremenv}
         A monotonic sequence converges if and only if it is bounded.
@@ -15,6 +26,107 @@
     \begin{proofenv}
         If $\{f(n)\}$ is increasing, then it converges. Additionally, if $S = \{f(n):n\in \N\}$, then $f(n) \to \sup S = L$. For any $\varepsilon > 0$, $L-\varepsilon$ is not an upper bound of $S$, so there exists some $N\in \N$ such that $f(N) > L-\varepsilon$. For any $n\ge N$, we have $f(n) \ge f(N) > L-\varepsilon$ and $f(n) \le L$, so $|f(n) - L| < \varepsilon$. Thus $\{f(n)\}$ converges to $L$. The case for decreasing sequence is analogous.
     \end{proofenv}
+    \begin{corollaryenv}
+        Let \(f:[0,1]\to \mathbb{R}\) be monotone increasing and bounded. Then
+        \[
+        \lim_{n\to\infty}
+        \frac{1}{n}\sum_{k=1}^{n} f\left(\frac{k}{n}\right)
+        =
+        \int_0^1 f(x)\,\mathrm{d}x.
+        \]
+    \end{corollaryenv}
+
+    \begin{proofenv}
+        For each \(n\in\mathbb{N}\), partition \([0,1]\) into \(n\) equal subintervals:
+        \[
+        x_k=\frac{k}{n},
+        \qquad k=0,1,\dots,n.
+        \]
+        Define
+        \[
+        s_n=\frac{1}{n}\sum_{k=0}^{n-1}f(x_k),
+        \qquad
+        t_n=\frac{1}{n}\sum_{k=1}^{n}f(x_k).
+        \]
+        Since \(f\) is monotone increasing, for every \(x\in[x_{k-1},x_k]\), we have
+        \(
+        f(x_{k-1})\le f(x)\le f(x_k).
+        \)
+        Hence
+        \[
+        \frac{1}{n}f(x_{k-1})
+        \le
+        \int_{x_{k-1}}^{x_k}f(x)\,\mathrm{d}x
+        \le
+        \frac{1}{n}f(x_k).
+        \]
+        Summing from \(k=1\) to \(n\), we get
+        \[
+        s_n\le \int_0^1 f(x)\,\mathrm{d}x\le t_n.
+        \]
+        Moreover,
+        \[
+        t_n-s_n
+        =
+        \frac{1}{n}
+        \left(
+        \sum_{k=1}^{n}f(x_k)-\sum_{k=0}^{n-1}f(x_k)
+        \right)
+        =
+        \frac{f(1)-f(0)}{n}.
+        \]
+        Therefore,
+        \[
+        0\le t_n-\int_0^1 f(x)\,\mathrm{d}x
+        \le t_n-s_n
+        =
+        \frac{f(1)-f(0)}{n}\to 0.
+        \]
+        Hence
+        \[
+        \lim_{n\to\infty}t_n
+        =
+        \int_0^1 f(x)\,\mathrm{d}x.
+        \]
+        Since
+        \[
+        t_n
+        =
+        \frac{1}{n}\sum_{k=1}^{n}f\left(\frac{k}{n}\right),
+        \]
+        we conclude that
+        \[
+        \lim_{n\to\infty}
+        \frac{1}{n}\sum_{k=1}^{n}f\left(\frac{k}{n}\right)
+        =
+        \int_0^1 f(x)\,\mathrm{d}x.
+        \]
+    \end{proofenv}
+    \begin{exampleenv}
+        \[
+        \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}\frac{1}{1+k/n}
+        =
+        \int_0^1 \frac{1}{1+x}\,\mathrm{d}x
+        =
+        \log(1+x)\Big|_0^1
+        =
+        \log 2.
+        \]
+        \[
+        \begin{aligned}
+        \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}\frac{n^2}{n^2+k^2}
+        =
+        \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}
+        \frac{1}{1+(k/n)^2}
+        =
+        \int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x 
+        =
+        \arctan x\Big|_0^1
+        =
+        \frac{\pi}{4}.
+        \end{aligned}
+        \]
+    \end{exampleenv}
     \begin{definitionenv}
         For any sequence $\{a_n\}$, we can generate another sequence $\{S_n\}$ by defining
         \[
@@ -25,10 +137,13 @@
     \begin{notationenv}
         The following notations are often used for series:
         \[
-        \sum a_n = a_1 + a_2 + \cdots = \sum_{n=1}^\infty a_n.
+        \sum a_n \equiv a_1 + a_2 + \cdots \equiv \sum_{n=1}^\infty a_n := \lim_{n\to \infty} S_n = \lim_{n\to \infty} \sum_{k=1}^n a_k.
         \]
         If $S_n \to S$ as $n\to \infty$, then we say the series $\{S_n\}$ converges and has the sum $S$. In this case, we often write $\displaystyle \sum_{n=1}^\infty a_n = S$ instead of $S_n \to S$. A series that does not converge is divergent and it has no sum.
     \end{notationenv}
+    \begin{remarkenv}
+        We define infinite series as the limit of partial sums. Ordinary rules for finite sums do not necessarily hold for infinite series due to the limit operation.
+    \end{remarkenv}
     \begin{exampleenv}
         We list some typical examples of series here:
         \begin{enumerate}
@@ -50,6 +165,9 @@
         \sum_{n=1}^\infty (\alpha a_n + \beta b_n) = \alpha \sum_{n=1}^\infty a_n + \beta \sum_{n=1}^\infty b_n.
         \]
     \end{theoremenv}
+    \begin{corollaryenv}
+        If $\sum a_n$ converges and $\sum b_n$ diverges, then $\sum (a_n + b_n)$ diverges.
+    \end{corollaryenv}
     \begin{theoremenv}
         If $\{b_n\}$ is a sequence and another sequence $\{a_n\}$ satisfies $a_n = b_n - b_{n+1}$ for any $n\in \N$, then we call the series $\sum a_n$ a \textbf{telescoping series} and $\sum a_n$ converges if and only if $\{b_n\}$ converges. Furthermore, if $\{b_n\}$ converges to $L$ as $n\to \infty$, then we have
         \[
@@ -60,11 +178,11 @@
         Let $a_n = x^n$ for $n\in \N$, then the partial sum $\displaystyle S_n = \sum_{k=1}^n x^k$ satisfies
         \[
         S_n = \begin{cases}
-            n+1 & \text{if } x=1\\
+            n+1 & \text{if } x=1\\[6pt]
             \dfrac{1-x^{n}}{1-x} & \text{if } x\neq 1
         \end{cases}
         \]
-        We call $\{S_n\}$ the \textbf{geometric series} and $\{S_n\}$ converges if and only if $|x|<1$. When $\{S_n\}$ converges, we have $\displaystyle \sum_{n=1}^\infty x^n = \frac{1}{1-x}$.
+        We call $\{S_n\}$ the \textbf{geometric series} and $\{S_n\}$ converges if and only if $|x|<1$. When $\{S_n\}$ converges, we have $$ \sum_{n=1}^\infty x^n = \frac{1}{1-x}.$$
     \end{theoremenv}
     \begin{exampleenv}
         We can do some replacement to get some typical examples of geometric series:
@@ -99,7 +217,7 @@
     \end{exampleenv}
 
     \section{Convergence Tests for Series}
-    In this subsection we introduce three tests for convergence of series.
+    In this section, we introduce several tests and some necessary conditions for convergence of series.
     \begin{theoremenv}
         If $\sum a_n$ converges, then $\displaystyle \lim_{n\to \infty} a_n = 0$.
     \end{theoremenv}
@@ -167,22 +285,25 @@
 
         Recall the definition of Riemann zeta function $\zeta(s) = \displaystyle \sum_{n=1}^\infty \frac{1}{n^s}$, we have $\zeta(s)$ converges if and only if $s>1$ and $\zeta(s)$ diverges if $s\le 1$.
     \end{exampleenv}
+    \begin{exampleenv}
+        $$\displaystyle \sum_{n=2}^\infty \frac{1}{n (\ln n)^s}$$ converges if and only if $s>1$. 
+    \end{exampleenv}
     \begin{remarkenv}
         The integral test only tells us about the convergence or divergence of the series but does not give us the value of the sum when the series converges (they are not necessarily equal)
     \end{remarkenv}
     \begin{theoremenv}[Root Test]
         Suppose $a_n \ge 0$ for any $n\in \N$ and additionally, $a_n^{1/n} \to r$ as $n\to \infty$ for some $r\in \R$. Then
         \begin{enumerate}[label=(\arabic*)]
-            \item If $r<1$, then $\displaystyle \sum a_n$ converges.
-            \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
+            \item If $r<1$, then $ \sum a_n$ converges.
+            \item If $r>1$, then $ \sum a_n$ diverges.
             \item If $r=1$, then the test is inconclusive/fails.
         \end{enumerate}
         
     \end{theoremenv}
     \begin{proofenv}
-        If $r<1$, then there exists some $x$ such that $r<x<1$. Since $a_n^{1/n} \to r$, there exists some $N\in \N$ such that $a_n^{1/n} < x$ for any $n > N$. Thus we have $a_n < x^n$ for any $n > N$. By the comparison test, we have $\displaystyle \sum a_n$ converges.
+        If $r<1$, then there exists some $x$ such that $r<x<1$. Since $a_n^{1/n} \to r$, there exists some $N\in \N$ such that $a_n^{1/n} < x$ for any $n > N$. Thus we have $a_n < x^n$ for any $n > N$. By the comparison test, we have $ \sum a_n$ converges.
 
-        If $r>1$, then there exists $\tilde{N}$ such that $a_n^{1/n} >1$ for all $n\ge \sqrt{\tilde{N}}$. Then $a_n>1$ for all $n\ge \tilde{N}$ and thus $\displaystyle \lim_{n\to \infty} a_n$ cannot be $0$ and $\displaystyle \sum a_n$ diverges.
+        If $r>1$, then there exists $\tilde{N}$ such that $a_n^{1/n} >1$ for all $n\ge \sqrt{\tilde{N}}$. Then $a_n>1$ for all $n\ge \tilde{N}$ and thus $\displaystyle \lim_{n\to \infty} a_n$ cannot be $0$ and $\sum a_n$ diverges.
 
         If $r=1$, it suffices to give two examples.
 
@@ -190,7 +311,7 @@
         \[
         \lim_{n\to \infty} \left( \frac{1}{n^2} \right) ^{1/n} = \lim_{x\to 0} \left( x^x \right)^2 = 1.
         \]
-        However, we know $\displaystyle \sum a_n = \zeta(2)$ is convergent.
+        However, we know $ \sum a_n = \zeta(2)$ is convergent.
 
         \textbf{Example 2:} Simply letting $b_n=1$ gives a valid example.
         
@@ -198,8 +319,8 @@
     \begin{theoremenv}[Ratio Test]
         Suppose $a_n>0$ for all $n\ge 1$ and additionally $\dfrac{a_{n+1}}{a_n} \to r$ as $n\to \infty$. Then
         \begin{enumerate}[label=(\arabic*)]
-            \item If $r<1$, then $\displaystyle \sum a_n$ converges.
-            \item If $r>1$, then $\displaystyle \sum a_n$ diverges.
+            \item If $r<1$, then $ \sum a_n$ converges.
+            \item If $r>1$, then $ \sum a_n$ diverges.
             \item If $r=1$, then the test is inconclusive/fails.
         \end{enumerate}
         
@@ -216,7 +337,7 @@
     \end{theoremenv}
     \begin{proofenv}
         Note $$S_{2n+2} - S_{2n} = a_{2n+1} - a_{2n+2} \ge 0$$
-        and $$ S_{2n+1} - S_{2n-1} = a_{2n+1} - a_{2n} \le 0$$.
+        and $$ S_{2n+1} - S_{2n-1} = a_{2n+1} - a_{2n} \le 0.$$
         For $\left\{ S_{2n} \right\}$,
         \[
         S_2 \le S_{2n} = a_1 - a_2 + a_3 - \cdots - a_{2n-2} + a_{2n-1} - a_{2n} \le a_1.
@@ -240,12 +361,12 @@
         0 \le S-S_{2n} \le S_{2n+1} -S_{2n} = a_{2n+1}
         \]
         \[
-        0 \le S_{2n-1} - S \le S_{2n-1} - S_{2n} = a_{2n}
+        0 \le S_{2n-1} - S \le S_{2n-1} - S_{2n} = a_{2n}.
         \]
         Conbining the two sets of inequalities we get
         $$ 0 \le (-1)^k (S-S_k) \le a_{k+1}.$$
     \end{proofenv}
-    \begin{exampleenv}
+    \begin{exampleenv}\label{ex:alternating-harmonic-series}
         The harmonic series
         $$ 1+\frac12 +\frac13 + \cdots \to \infty.$$
         However the alternating harmonic series
@@ -278,11 +399,225 @@
     \begin{exampleenv}
         The alternating harmonic series converges conditionally. The series $\displaystyle \sum_{n=1}^\infty  \frac{(-1)^{n-1}}{n^2}$ converges absolutely.
     \end{exampleenv}
-    \begin{propositionenv}
+    \begin{theoremenv}
         If $\sum a_n$ and $\sum b_n$ both are absolutely convergent, then $\sum (\alpha a_n + \beta b_n)$ is also absolutely convergent for any $\alpha,\beta \in \R$.
         $$ \sum_{k=1}^n|\alpha a_n + \beta b_n| \le \alpha \left( \sum_{k=1}^n |a_n| \right) + \beta \left( \sum_{k=1}^n |b_n| \right) \le \alpha \sum_{k=1}^{\infty} |a_n| + \beta \sum_{k=1}^\infty |b_n| =: S.$$
         Since all partial sum are bounded above by $S$, we have $\sum |\alpha a_n + \beta b_n|$ converges and thus $\sum (\alpha a_n + \beta b_n)$ is absolutely convergent.
-    \end{propositionenv}
+    \end{theoremenv}
+    \begin{exampleenv}
+        Let \(\{a_n\}\) be a sequence defined by
+        \[
+        a_{2n-1}=\frac{1}{n}
+        \qquad\text{and}\qquad
+        a_{2n}=\int_n^{n+1}\frac{\mathrm{d}x}{x}
+        \qquad
+        \text{for } n=1,2,3,\dots.
+        \]
+        By Leibniz's rule, the series $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}a_n$ converges. We denote the sum of this series by \(S\) and denote the partial sums by \(s_n\). Note \[
+        \begin{aligned}
+        s_{2n-1}
+        &=
+        1-\int_1^2\frac{\mathrm{d}x}{x}
+        +\frac{1}{2}
+        -\int_2^3\frac{\mathrm{d}x}{x}
+        +\cdots
+        +\frac{1}{n-1}
+        -\int_{n-1}^{n}\frac{\mathrm{d}x}{x}
+        +\frac{1}{n} \\
+        &=
+        1+\frac{1}{2}+\cdots+\frac{1}{n}
+        -\int_1^n\frac{\mathrm{d}x}{x} \\
+        &=
+        1+\frac{1}{2}+\cdots+\frac{1}{n}
+        -\log n \to S \quad \text{as } n\to \infty.
+        \end{aligned}
+        \]
+        Then we have
+        $$
+        \lim_{n\to\infty}
+        \left(
+        1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n
+        \right)
+        =
+        S.
+        $$
+        We call this $S$ the \textbf{Euler-Mascheroni constant}. Now consider the partial sum the partial sum of the alternating harmonic series $\displaystyle t_m=\sum_{k=1}^{m}\frac{(-1)^{k-1}}{k}$. In Example \ref{ex:alternating-harmonic-series}, we show $t_m$ converges and now we use the above result to find the sum of $t_m$. Note that
+        \[
+        \begin{aligned}
+        t_{2n}
+        &=
+        \sum_{k=1}^{n}\frac{1}{2k-1}
+        -
+        \sum_{k=1}^{n}\frac{1}{2k}
+        =
+        \left(
+        \sum_{k=1}^{2n}\frac{1}{k}
+        -
+        \sum_{k=1}^{n}\frac{1}{2k}
+        \right)
+        -
+        \sum_{k=1}^{n}\frac{1}{2k} 
+        =
+        \sum_{k=1}^{2n}\frac{1}{k}
+        -
+        \sum_{k=1}^{n}\frac{1}{k}\\
+        &=
+        \bigl(\log(2n)+S+o(1)\bigr)
+        -
+        \bigl(\log n+S+o(1)\bigr)
+        =
+        \log 2+o(1) \quad \text{as } n\to \infty.
+        \end{aligned}
+        \]
+        Hence, we have $\displaystyle \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n} = \log 2$. Now, consider the consider the following series obtained by rearranging the terms in the above series (the rule is to take two positive terms and then one negative term):
+        \[
+        1+\frac{1}{3}-\frac{1}{2}
+        +\frac{1}{5}+\frac{1}{7}-\frac{1}{4}
+        +\frac{1}{9}+\frac{1}{11}-\frac{1}{6}
+        +\cdots.
+        \]
+        Let \(p_n\) denote the partial sum of this rearranged series. Then we have
+        $$
+        \begin{aligned}
+        p_{3m}
+        &=
+        \sum_{k=1}^{2m}\frac{1}{2k-1}
+        -
+        \sum_{k=1}^{m}\frac{1}{2k}
+        =
+        \left(
+        \sum_{k=1}^{4m}\frac{1}{k}
+        -
+        \sum_{k=1}^{2m}\frac{1}{2k}
+        \right)
+        -
+        \frac{1}{2}\sum_{k=1}^{m}\frac{1}{k} 
+        =
+        \sum_{k=1}^{4m}\frac{1}{k}
+        -
+        \frac{1}{2}\sum_{k=1}^{2m}\frac{1}{k}
+        -
+        \frac{1}{2}\sum_{k=1}^{m}\frac{1}{k} \\
+        &=
+        \bigl(\log(4m)+C+o(1)\bigr)
+        -
+        \frac{1}{2}\bigl(\log(2m)+C+o(1)\bigr)
+        -
+        \frac{1}{2}\bigl(\log m+C+o(1)\bigr) = \frac{3}{2}\log 2+o(1) \text{ as } m\to \infty.
+        \end{aligned}
+        $$
+        Thus, we show $p_m \to \dfrac{3}{2}\log 2$ as $m\to \infty$. This phenomenon that rearrangement of the terms of a convergent series may alter its sum motivates us to investigate the relationship between rearrangement and convergence of series.
+    \end{exampleenv}
+    \begin{theoremenv}
+        Let $\sum a_n$ be an absolutely convergent series having the sum $S$. Then any rearrangement of $\sum a_n$ also converges to $S$.
+    \end{theoremenv}
+    \begin{proofenv}
+        Let \(\sum b_n\) be a rearrangement, say \(b_n=a_{\sigma(n)}\). First we note that \(\sum b_n\) converges absolutely because \(\sum |b_n|\) is a series of nonnegative terms whose partial sums are bounded above by the number \(\sum |a_n|\) (well-defined as \(\sum a_n\) converges absolutely).
+
+        To prove that \(\sum b_n\) also has sum \(S\), we introduce
+
+        \[
+        B_n=\sum_{k=1}^{n}b_k,\qquad
+        A_n=\sum_{k=1}^{n}a_k,\qquad
+        A_n^*=\sum_{k=1}^{n}|a_k|,\qquad
+        \text{and}\qquad
+        S^*=\sum_{k=1}^{\infty}|a_k|.
+        \]
+
+        Now \(A_n\to S\) and \(A_n^*\to S^*\) as \(n\to\infty\). Therefore, given any \(\epsilon>0\), there is an \(N\) such that
+
+        \[
+        |A_N-S|<\frac{\epsilon}{2}
+        \qquad
+        \text{and}
+        \qquad
+        |A_N^*-S^*|<\frac{\epsilon}{2}.
+        \]
+
+        For this \(N\) we can choose \(M\) so that
+
+        \[
+        \{1,2,\dots,N\}\subseteq\{\sigma(1),\sigma(2),\dots,\sigma(M)\}.
+        \]
+
+        This is possible because the range of \(\sigma\) includes all the positive integers. If \(n\ge M\), we have
+
+        \[
+        |B_n-S|=|B_n-A_N+A_N-S|\le |B_n-A_N|+|A_N-S|\le |B_n-A_N|+\frac{\epsilon}{2}.
+        \]
+
+        But we also have
+
+        \[
+        |B_n-A_N|
+        =
+        \left|
+        \sum_{k=1}^{n}b_k-\sum_{k=1}^{N}a_k
+        \right|
+        =
+        \left|
+        \sum_{k=1}^{n}a_{\sigma(k)}-\sum_{k=1}^{N}a_k
+        \right|.
+        \]
+
+        The terms \(a_1,\dots,a_N\) cancel in the subtraction, so we have
+
+        \[
+        |B_n-A_N|\le |a_{N+1}|+|a_{N+2}|+\cdots=|A_N^*-S^*|<\frac{\epsilon}{2}.
+        \]
+
+        Combining the above two inequalities, we see that \(|B_n-S|<\epsilon\) for all \(n\ge M\), which means that \(B_n\to S\) as \(n\to\infty\). This proves that the rearranged series \(\sum b_n\) has sum \(S\).
+    \end{proofenv}
+    \begin{remarkenv}
+        This is a very important result. It says that if a series is absolutely convergent, then rearrangement of the terms does not alter its sum.
+    \end{remarkenv}
+    \begin{lemmaenv}\label{lem:conditional-convergence}
+        Given a series $\sum a_n$, we seperate its terms by sign and define
+        $$ a_n^+ = \frac{a_n+|a_n|}{2},\qquad a_n^- = \frac{a_n - |a_n|}{2}.$$
+        If $\sum a_n$ conditionally converges, then $\sum a_n^+$ and $\sum a_n^-$ both diverge.
+    \end{lemmaenv}
+    \begin{theoremenv}[Riemann's Rearrangement Theorem]
+        Let $\sum a_n$ be a conditionally convergent series and let $S\in \R$ be any real number. Then there exists a rearrangement $\sum b_n$ of $\sum a_n$ which converges to $S$.
+    \end{theoremenv}
+    \begin{proofenv}
+        We shall follow the notation in Lemma~\ref{lem:conditional-convergence}. Both series \(\sum a_n^+\) and \(\sum a_n^-\) diverge since \(\sum a_n\) is conditionally convergent. We rearrange \(\sum a_n\) as follows:
+
+        Take, in order, just enough positive terms \(a_n^+\) so that their sum exceeds \(S\). If \(p_1\) positive terms are required, we have
+
+        \[
+        \sum_{n=1}^{p_1}a_n^+>S
+        \qquad
+        \text{but}
+        \qquad
+        \sum_{n=1}^{q}a_n^+\le S
+        \qquad
+        \text{if } q<p_1.
+        \]
+
+        This is always possible since the partial sums of \(\sum a_n^+\) tend to \(+\infty\). To this sum we add just enough negative terms \(a_n^-\), say \(n_1\) negative terms, so that the resulting sum is less than \(S\). This is possible since the partial sums of \(a_n^-\) tend to \(-\infty\). Thus, we have
+
+        \[
+        \sum_{n=1}^{p_1}a_n^+
+        +
+        \sum_{n=1}^{n_1}a_n^-
+        <S
+        \qquad
+        \text{but}
+        \qquad
+        \sum_{n=1}^{p_1}a_n^+
+        +
+        \sum_{n=1}^{m}a_n^-
+        \ge S
+        \qquad
+        \text{if } m<n_1.
+        \]
+
+        Now we repeat the process, adding just enough new positive terms to make the sum exceed \(S\), and then just enough new negative terms to make the sum less than \(S\). Continuing in this way, we obtain a rearrangement \(\sum b_n\). Each partial sum of \(\sum b_n\) differs from \(S\) by at most one term \(a_n^+\) or \(a_n^-\). But \(a_n\to 0\) as \(n\to\infty\) since \(\sum a_n\) converges, so the partial sums of \(\sum b_n\) tend to \(S\). This proves that the rearranged series \(\sum b_n\) converges and has sum \(S\), as asserted.
+    \end{proofenv}
+    \begin{remarkenv}
+        Riemann's rearrangement theorem not only tells us that the sum of a conditionally convergent series can be changed by rearrangement, but also tells us that we can rearrange the terms of a conditionally convergent series to make it converge to any real number we want.
+    \end{remarkenv}
+
     \begin{lemmaenv}[Abel's Partial Sum Formula]
         Suppose two sequences $\{a_n\}$ and $\{b_n\}$. Let $\displaystyle A_n = \sum_{k=1}^n a_k$. Then
         \[
@@ -328,10 +663,46 @@
     \begin{remarkenv}
         If $\{b_n\}$ is decreasing and $b_n \to 0$ as $n\to \infty$. Taking $a_n = x^n$, we know the partial sum $\displaystyle A_n = \sum_{k=1}^n x^k$ is bounded for any $x\in [-1,1)$. Particularly, when $x=-1$, Dirichlet's test  says that $\displaystyle \sum_{n=1}^\infty a_nb_n = \sum_{n=1}^\infty (-1)^n b_n$ converges, which is simply the alternating series test or the Leibniz test.
     \end{remarkenv}
+    \begin{lemmaenv}[Raabe's test]
+        For a positive sequence \(\{a_n\}\), if there is an \(r>0\) and an \(N\ge 1\) such that
+        \[
+        \frac{a_{n+1}}{a_n}
+        \le
+        1-\frac{1}{n}-\frac{r}{n}
+        \qquad
+        \text{for all } n\ge N,
+        \]
+        then \(\sum a_n\) converges.
+    \end{lemmaenv}
 
+    \begin{theoremenv}[Gauss's test]
+        Let \(\sum a_n\) be a series of positive terms. If there is an \(N\ge 1\), an \(s>1\), and an \(M>0\) such that
+        \[
+        \frac{a_{n+1}}{a_n}
+        =
+        1-\frac{A}{n}
+        +
+        \frac{f(n)}{n^s}
+        \qquad
+        \text{for } n\ge N,
+        \]
+        where
+        \[
+        |f(n)|\le M
+        \qquad
+        \text{for all } n,
+        \]
+        then \(\sum a_n\) converges if \(A>1\) and diverges if \(A\le 1\).
+    \end{theoremenv}
+    \begin{exampleenv}
+        $$
+        \sum_{n=1}^\infty \left( \frac{1\cdot 3 \cdot 5 \cdots (2n-1)}{2\cdot 4 \cdot 6 \cdots 2n} \right)^k
+        $$
+        converges if $k>2$ and diverges if $k\le 2$. Note that for this example the ratio test fails but Gauss's test works.
+    \end{exampleenv}
     \section{Improper Integrals}
     \begin{definitionenv}
-        The symbol $\displaystyle \int_a^\infty f(x) \dd x$ means $\displaystyle \lim_{b\to \infty} \int_a^b f(x) \dd x$ and the symbol $\displaystyle \int_{-\infty}^b f(x) \dd x$ means $\displaystyle \lim_{a\to -\infty} \int_a^b f(x) \dd x$. They are referred to as \textbf{improper integrals of the first kind}. We say the improper integral $\displaystyle \int_a^\infty f(x) \dd x$ converges if the limit exists and diverges otherwise. If the limit does exist and equal to $A$, then we call $A$ the value of the improper integral and write $\displaystyle \int_a^\infty f(x) \dd x=A$.
+        We define $$\displaystyle \int_a^\infty f(x) \dd x:= \displaystyle \lim_{b\to \infty} \int_a^b f(x) \dd x,\qquad \displaystyle \int_{-\infty}^b f(x) \dd x:= \lim_{a\to -\infty} \int_a^b f(x) \dd x.$$ They are referred to as \textbf{improper integrals of the first kind}. We say the improper integral $\displaystyle \int_a^\infty f(x) \dd x$ converges if the limit exists and diverges otherwise. If the limit does exist and equal to $A$, then we call $A$ the value of the improper integral and write $\displaystyle \int_a^\infty f(x) \dd x=A$.
 
         If $\displaystyle \int_{-\infty}^c f(x) \dd x$ and $\displaystyle \int_c^\infty f(x) \dd x$ both converge for some $c\in \R$, then we say the improper integral $\displaystyle \int_{-\infty}^\infty f(x) \dd x$ also converges. And we say $\displaystyle \int_{-\infty}^\infty f(x) \dd x$ diverges if at least one of $\displaystyle \int_{-\infty}^c f(x) \dd x$ and $\displaystyle \int_c^\infty f(x) \dd x$ diverges.
     \end{definitionenv}
@@ -472,6 +843,15 @@
             &< \int_a^x \frac{\varepsilon}{b-a} \dd t = \frac{\varepsilon}{b-a} (x-a) \le \varepsilon.
         \end{aligned}\]
     \end{proofenv}
+    \begin{exampleenv}
+        Suppose \(f_n(x)=nxe^{-nx^2}\) for \(n=1,2,\dots\) and \(x\) real, then
+        $$
+        \frac12 = \lim_{n\to\infty}\int_0^1 f_n(x)\,\mathrm{d}x
+        \ne
+        \int_0^1 \lim_{n\to\infty} f_n(x)\,\mathrm{d}x = 0.
+        $$
+        The equality fails because the convergence of $\{f_n\}$ is not uniform on $[0,1]$. 
+    \end{exampleenv}
     \begin{propositionenv}
         Particularly, if $f_n=\displaystyle \sum_{k=1}^n u_k$ where $\{u_n\}$ is another function sequence, then the above theorem can be written as:
 
@@ -497,6 +877,27 @@
         \]
 
     \end{propositionenv}
+    \begin{exampleenv}
+        Let $f(x) = \displaystyle\sum_{n=1}^{\infty}\frac{\sin nx}{n^2}$ for $x\in \R$. Note $f$ is continuous on $[0,\pi]$ and the series \(\displaystyle\sum_{n=1}^{\infty}(\sin nx)/n^2\) converges uniformly on \([0,\pi]\). Then we can integrate term-by-term to get
+        \[
+        \begin{aligned}
+        \int_0^\pi f(x)\,\mathrm{d}x
+        &=
+        \int_0^\pi \sum_{n=1}^{\infty}\frac{\sin(nx)}{n^2}\,\mathrm{d}x
+        =
+        \sum_{n=1}^{\infty}\int_0^\pi \frac{\sin(nx)}{n^2}\,\mathrm{d}x 
+        =
+        \sum_{n=1}^{\infty}\frac{1}{n^2}\int_0^\pi \sin(nx)\,\mathrm{d}x \\
+        &=
+        \sum_{n=1}^{\infty}\frac{1}{n^2}
+        \left[
+        -\frac{\cos(nx)}{n}
+        \right]_0^\pi
+        =
+        \sum_{n=1}^{\infty}\frac{1}{n^2}\cdot \frac{1}{n}\cdot (1-(-1)^n) =2\sum_{k=1}^{\infty}\frac{1}{(2k-1)^3}.
+        \end{aligned}
+        \]
+    \end{exampleenv}
     \begin{remarkenv}
         We do not have such nice property (i.e. differentiating term-by-term) for general uniformly convergent series. For example, let $f_n(x) = \displaystyle \frac{\sin nx}{n^2}$. Note that $\sum f_n$ is convergent since $\displaystyle 0\le |f_n(x)| \le \frac{1}{n^2}$ and $\displaystyle \sum \frac{1}{n^2}$ converges. Then by the Weierstrass M-test (which will be introduced later), we have $\sum f_n$ converges uniformly.
 
@@ -746,7 +1147,36 @@
         $$
         Thus we have
         $$ y = a_0 (1-x^2) + a_1 \sum_{n=0}^\infty \frac{-1}{(2n+1)(2n-1)} x^{2n+1} \quad \text{for } x\in (-1,1). $$
-        Thus the series gives a family of solutions to the differential equation. However, this is not necessarily all the solutions to the differential equation since we only consider power series solutions. In other words, can we have some solutions not infinitely differentiable but still satisfying the differential equation? We'll introduce several basic theorems about differential equations here.
+        Thus the series gives a family of solutions to the differential equation. However, this is not necessarily all the solutions to the differential equation since we only consider power series solutions. In other words, can we have some solutions not infinitely differentiable but still satisfying the differential equation? We'll only introduce several basic theorems about differential equations here.
     \end{exampleenv}
-
+    \begin{definitionenv}
+        Assume $P$ and $Q$ are given functions continuous on some open interval \(I\). A differential equation of the form
+        \[
+        y'+P(x)y=Q(x),
+        \]
+        is called a \textbf{first-order linear differential equation}.
+    \end{definitionenv}
+    \begin{theoremenv}
+        Assume \(P\) is continuous on an open interval \(I\). Choose any point \(a\) in \(I\) and
+        let \(b\) be any real number. Then there is one and only one function \(y=f(x)\) which satisfies the
+        initial-value problem
+        \[
+        y'+P(x)y=0,\qquad \text{with}\qquad f(a)=b,
+        \]
+        on the interval \(I\). This function is given by the formula
+        \[
+        f(x)=be^{-A(x)},\qquad \text{where}\qquad A(x)=\int_a^x P(t)\dd t
+        \]
+    \end{theoremenv}
+    \begin{theoremenv}
+        Assume \(P\) and \(Q\) are continuous on an open interval \(I\). Choose any point \(a\) in \(I\) and let \(b\) be any real number. Then there is one and only one function \(y=f(x)\) which satisfies the initial-value problem
+        \[
+        y'+P(x)y=Q(x),\qquad \text{with}\qquad f(a)=b,
+        \]
+        on the interval \(I\). This function is given by the formula
+        \[
+        f(x)=be^{-A(x)}+e^{-A(x)}\int_a^x Q(t)e^{A(t)}\dd t,
+        \]
+        where \(\displaystyle A(x)=\int_a^x P(t)\dd t\).
+    \end{theoremenv}
     \newpage
