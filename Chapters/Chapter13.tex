@@ -4,10 +4,10 @@
         Suppose $f$ is a scalar field on $S\subseteq \R^n$ and $c\in \R$ is a constant. We call the set $L(c) := \{\vec x \in S: f(\vec x) = c\}$ a \textbf{level set} of $f$. In particular, if $n=2$, we call $L(c)$ a \textbf{level curve} of $f$; if $n=3$, we call $L(c)$ a \textbf{level surface} of $f$.
     \end{definitionenv}
     \begin{exampleenv}
-        Suppose $f:\R^2 \to \R$. For any curve $\vec r(t) $ in $\R^2$, if we let $g$ be defined as $g(t) = f[\vec r(t)]$, then $$g'(t) = \nabla f(\vec r(t)) \cdot \vec r\,'(t) = \| \vec r\,'(t)\| \left( \nabla f(\vec r(t)) \cdot T(t) \right).$$
+        Suppose $f:\R^2 \to \R$. For any curve $\vec r(t) $ in $\R^2$, if we let $g$ be defined as $g(t) = f[\vec r(t)]$, then $$g'(t) = \nabla f(\vec r(t)) \cdot \vec r'(t) = \| \vec r'(t)\| \left( \nabla f(\vec r(t)) \cdot T(t) \right).$$
         Particularly, if this curve happens to be the level curve given by $f(x,y)  = c$. Suppose level curve $L(c) := \{ (x,y) : f(x,y) = c\}$ is also described by $\vec r_c(t)$. Then $g(t) = f[\vec r_c(t)] = c$ for any $t$, which means $g'(t) = 0$ for any $t$. Thus
         $$
-        \| \vec r_c\,'(t)\| \left( \nabla f(\vec r_c(t)) \cdot T(t) \right) = 0.
+        \| \vec r_c'(t)\| \left( \nabla f(\vec r_c(t)) \cdot T(t) \right) = 0.
         $$
         On this level curve, $\nabla f \cdot T = 0$, and we say: the gradient vector is always normal to the curve $C$; the directional derivative of $f$ along any level curve of $f$ is zero. By Cauchy-Schwarz inequality, we have
         $$ |\nabla f(x,y) \cdot \vec y | \le \|\nabla f(x,y)\| \|\vec y\|, $$
@@ -30,7 +30,7 @@
         If $f$ has either a relative maximum or a relative minimum at $\vec a$, then we say $f$ has an \textbf{extremum} at $\vec a$.
     \end{definitionenv}
     \begin{theoremenv}
-        If $f$ has an extremum at $\vec a\in \int S$ and $f$ is differentiable at $\vec a$, then $\nabla f(\vec a) = \vec 0$.
+        If $f$ has an extremum at $\vec a\in \operatorname{int} S$ and $f$ is differentiable at $\vec a$, then $\nabla f(\vec a) = \vec 0$.
     \end{theoremenv}
     \begin{remarkenv}
         If $f$ is differentiable at $\vec a$ and $\nabla f(\vec a) = \vec 0$, then $f$ does not necessarily have an extremum at $\vec a$. Assume $z=f(x,y) = x^2 - y^2$, then $\nabla f(0,0) = \vec 0$ but $f$ does not have an extremum at $(0,0)$ since $f$ can be positive or negative in any neighborhood of $(0,0)$.
@@ -54,25 +54,64 @@
         $$
         where $E_2(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$.
     \end{theoremenv}
+    \begin{exampleenv}
+        Consider the function
+        $$
+        f(x,y) = \begin{cases}
+            xy\dfrac{x^2-y^2}{x^2+y^2} & (x,y) \ne (0,0) \\[6pt]
+            0 & (x,y) = (0,0)
+        \end{cases}.
+        $$
+        By definition,
+        $$ \begin{aligned}
+            D_1 f(0,y) &= \lim_{h\to 0} \frac{f(h,y) - f(0,y)}{h} = \lim_{h\to 0} y \frac{h^2 - y^2}{h^2 + y^2} = -y, \\ D_{2,1}f(0,0) &= D_2(D_1f)(0,0) = \lim_{k \to 0} \frac{D_1 f(0,k) - D_1 f(0,0)}{k} = -1.
+        \end{aligned}$$
+        Analogously, we have
+        $$
+        D_2 f(x,0) = x, \quad D_{1,2} f(0,0) = 1.
+        $$
+        Though $D_{1,2} f(0,0)$ and $D_{2,1} f(0,0)$ both exist, they are not equal since we do not have the continuity of $D_{1,2} f$ and $D_{2,1} f$ at $(0,0)$: note
+        $$
+        D_{2,1}f(x,y)
+        =
+        \frac{x^6+9x^4y^2-9x^2y^4-y^6}{(x^2+y^2)^3},
+        \qquad (x,y)\neq(0,0),
+        $$
+        and we have
+        $$ D_{2,1}f(0,0)=-1 \ne 1 =\frac{x^6}{x^6} =\lim_{x \to 0} D_{2,1}f(x,0)\quad \text{along } y=0. $$
+        This example shows that the continuity of second-order partial derivatives is necessary for the equality of mixed partial derivatives and motivates the following theorem.
+    \end{exampleenv}
+    \begin{theoremenv}\label{thm: mixed partials}
+        Suppose \(f\) is a scalar field on an open set \(S\subseteq \R^n\), and suppose
+        the first-order partial derivatives \(D_i f\) and \(D_j f\) exist on \(S\).
+        Assume further that the second-order partial derivatives \(D_{ij}f\) and
+        \(D_{ji}f\) exist on \(S\) and are continuous at \(\vec a\in S\). Then
+        \[
+            D_{ij}f(\vec a)=D_{ji}f(\vec a).
+        \]
+    \end{theoremenv}
     \begin{remarkenv}
-        Since the Hessian matrix is symmetric, we know it has an orthonormal eigenbasis and $\vec y H(\vec a + c \vec y) \vec y^T$ is a quadratic form associated with a unique symmetric matrix. If we know all the eigenvalues of $H(\vec a)$ are positive, then
+        One can actually prove a \textbf{stronger} version of the above theorem, which only requires the continuity of \textbf{one of the two} second order partial derivatives \(D_{i,j}f\) and \(D_{j,i}f\) at \(\vec a\).
+    \end{remarkenv}
+    \begin{lemmaenv}
+        By Theorem~\ref{thm: mixed partials}, we know the symmetric Hessian matrix has an orthonormal eigenbasis and $\vec y H(\vec a + c \vec y) \vec y^T$ is a quadratic form associated with a unique symmetric matrix. If we know all the eigenvalues of $H(\vec a)$ are positive, then
         $$ f(\vec a + \vec y) - f(\vec a) = \frac{1}{2} \vec y H(\vec a) \vec y^T + \| \vec y\|^2 E_2(\vec a, \vec y) > 0 $$
         for $\vec y$ close enough to $\vec 0$.
-    \end{remarkenv}
+    \end{lemmaenv}
     \begin{proofenv}
         Fix $\vec y$ and define $g(u) = f(\vec a + u\vec y)$ for $u \in [-1,1]$. Then
         $$ f(\vec a + \vec y ) = g(1) - g(0) = g'(0) + \frac{1}{2} g''(c)$$
         where $c\in (0,1)$ by the second-order Taylor formula for $g$ on $[0,1]$ with the Lagrange form of the remainder.
 
-        Let $\vec r = \vec a + u \vec y$, then $\vec r\,'(u) = \vec y$ and
-        $$ g'(u) = \nabla f(\vec r) \cdot \vec r\,'(u) = \sum_{j=1} D_j f(\vec r) y_j. $$
+        Let $\vec r = \vec a + u \vec y$, then $\vec r'(u) = \vec y$ and
+        $$ g'(u) = \nabla f(\vec r) \cdot \vec r'(u) = \sum_{j=1} D_j f(\vec r) y_j. $$
         Thus
         $$ g'(0) = \sum_{j=1}^{n=1} D_j f(\vec a) y_j = \nabla f(\vec a) \cdot \vec y = 0. $$
 
     \end{proofenv}
-    \begin{lemmaenv}
-        Suppose $f$ is a scalar field on $\R^2$ with $D_1 f, D_2 f, D_{12} f, D_{21} f$ exist on an open set $S$. If $(a,b) \in S$ and $D_{12} f$ and $D_{21} f$ are both continuous at $(a,b)$, then $D_{12} f(a,b) = D_{21} f(a,b)$.
-    \end{lemmaenv}
+    % \begin{corollaryenv}
+    %     Suppose $f$ is a scalar field on $\R^2$ with $D_1 f, D_2 f, D_{12} f, D_{21} f$ exist on an open set $S$. If $(a,b) \in S$ and $D_{12} f$ and $D_{21} f$ are both continuous at $(a,b)$, then $D_{12} f(a,b) = D_{21} f(a,b)$.
+    % \end{corollaryenv}
     \begin{lemmaenv}
         Suppose $A\in \mathbf M_{n\times n}(\R)$ is a symmetric matrix and $\vec y $ is a row vector in $\R^n$. Let $Q(\vec y) = \vec y A \vec y^T$. Then
         \begin{enumerate}
@@ -89,6 +128,32 @@
             \item If $H(\vec a)$ has both positive and negative eigenvalues, then $f$ has a saddle point at $\vec a$.
         \end{enumerate}
     \end{theoremenv}
+    \begin{corollaryenv}
+        Let \(\vec a\) be a stationary point of a scalar field \(f(x_1,x_2)\) with continuous second order partial derivatives in a 2-ball \(B(\vec a)\). Let
+        \[
+        A=D_{1,1}f(\vec a),\qquad B=D_{1,2}f(\vec a),\qquad C=D_{2,2}f(\vec a),
+        \]
+        and let
+        \[
+        \Delta=\det H(\vec a)
+        =\det
+        \begin{pmatrix}
+        A & B\\
+        B & C
+        \end{pmatrix}
+        =AC-B^2.
+        \]
+        Then we have:
+        \begin{enumerate}[label=(\alph*)]
+            \item If $\Delta > 0$ and $A > 0$, then $f$ has a local minimum at $\vec a$;
+            \item If $\Delta > 0$ and $A < 0$, then $f$ has a local maximum at $\vec a$;
+            \item If $\Delta < 0$, then $f$ has a saddle point at $\vec a$;
+            \item If $\Delta = 0$, then the test is inconclusive.
+        \end{enumerate}
+    \end{corollaryenv}
+    \begin{remarkenv}
+        The determinant test is only applicable for $n=2$. For $n\ge 3$, we need to check the signs of all the eigenvalues of the Hessian matrix to determine the nature of a stationary point.
+    \end{remarkenv}
     \begin{theoremenv}
         Given $\vec a = (a_1, \ldots, a_n), \vec b = (b_1, \ldots, b_n) \in \R^n$ with $a_i < b_i$ for $i=1, \ldots, n$. We define $\left[ \vec a, \vec b \right] := [a_1, b_1] \times \cdots \times [a_n, b_n]$. If a scalar field $f$ is continuous at every $\vec x \in [\vec a, \vec b]$, then
         \begin{itemize}

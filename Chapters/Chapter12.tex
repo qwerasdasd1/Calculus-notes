@@ -56,9 +56,9 @@
         \begin{enumerate}
             \item Suppose $\vec f=(f_1, \ldots, f_m):\R^n \to \R^m$ is a function. Then $\vec f$ is continuous at $\vec a$ if and only if each component function $f_i$ is continuous at $\vec a$ for $i=1, \ldots, m$.
             \item $\vec f(\vec x) = \vec x$ is called the \textbf{identity function}.
-            \item A linear map $f:\R^n \to \R^m$. Then
-            $$ \lim_{\left\|h\right\| \to 0} \frac{\| f(\vec a + h) - f(\vec a) - f(h)\|}{\| h\|} = \lim_{\left\|h\right\| \to 0} \frac{\| f(h)\|}{\| h\|}.$$
-            If $\vec h \ne \vec 0$,
+            % \item A linear map $f:\R^n \to \R^m$. Then
+            % $$ \lim_{\left\|h\right\| \to 0} \frac{\| f(\vec a + \vec h) - f(\vec a)\|}{\| \vec h\|} = \lim_{\left\|h\right\| \to 0} \frac{\| f(h)\|}{\| h\|}.$$
+            % If $\vec h \ne \vec 0$,
             \item Polynomials in $n$ variable
             $$ P(\vec x) = \sum_{i_1, \ldots, i_n} c_{i_1, \ldots, i_n} x_1^{i_1} \cdots x_n^{i_n} $$
             are continuous for all $\vec x$.
@@ -71,6 +71,39 @@
             $$
             is not continuous at $(0,0)$ since $\displaystyle \lim_{x\to 0} f(x,x) = \dfrac{1}{2}$ but $f(0,0) = 0$. This indicates that continuity needs to be checked along all possible paths approaching the point, not just along some specific paths.
         \end{enumerate}
+    \end{exampleenv}
+    \begin{theoremenv}
+        If \(\displaystyle \lim_{(x,y)\to(a,b)} f(x,y)=L\), and if the one-dimensional limits
+        \[
+        \lim_{x\to a} f(x,y) \qquad \text{and} \qquad \lim_{y\to b} f(x,y)
+        \]
+        both exist, then
+        \[
+        \lim_{x\to a}\left[\lim_{y\to b} f(x,y)\right]
+        =
+        \lim_{y\to b}\left[\lim_{x\to a} f(x,y)\right]
+        =
+        L.
+        \]
+    \end{theoremenv}
+    \begin{remarkenv}
+        The two limits in the above equation are called \textbf{iterated limits}; this theorem shows that the existence of the two-dimensional limit and of the two one-dimensional limits implies the existence and equality of the two iterated limits. However, the converse is not true, which will be illustrated by the following example.
+    \end{remarkenv}
+    \begin{exampleenv}
+        Let
+        \[
+        f(x,y)=\frac{x^2y^2}{x^2y^2+(x-y)^2}
+        \qquad \text{whenever} \qquad x^2y^2+(x-y)^2\neq 0.
+        \]
+        Then
+        $$\lim_{x\to 0}\left[\lim_{y\to 0} f(x,y)\right]
+        =
+        \lim_{y\to 0}\left[\lim_{x\to 0} f(x,y)\right]
+        =
+        0.
+        $$
+        However, along the path $y=x$, we have
+        $$ \lim_{x\to 0} f(x,x) = \lim_{x\to 0} \frac{x^4}{x^4 + 0} = 1 \ne 0. $$
     \end{exampleenv}
     \section{The Derivative of a Scalar Field}
     \begin{definitionenv}
@@ -100,8 +133,18 @@
         is not continuous at $(0,0)$ since approaching $(0,0)$ along the path $y=x^2$ gives
         $$ \lim_{x\to 0} f(x,x^2) = \lim_{x\to 0} \frac{x^4}{2x^4} = \frac{1}{2} \ne f(0,0) = 0. $$
         However, the derivative $f'(\vec 0; \vec y)$ exists for any $\vec y = (y_1, y_2)$ since
-        $$ f'(\vec 0; \vec y) = \lim_{h\to 0} \frac{f(h y_1, h y_2) - f(0,0)}{h} = \lim_{h\to 0} \frac{h^3 y_1^2 y_2}{h^5 y_1^4 + h^4 y_2^2} = \lim_{h\to 0} \frac{y_1^2 y_2}{h^2 y_1^4 + h y_2^2} = 0. $$
-        This indicates that the existence of directional derivatives does not necessarily imply the continuity of the function. However, if we still want differentiability to imply continuity like in the case of $f:\R \to \R$, we need more stronger definition of differentiability.
+        $$ f'(\vec 0; \vec y) = \lim_{h\to 0} \frac{f(h y_1, h y_2) - f(0,0)}{h} = \lim_{h\to 0} \frac{h^3 y_1^2 y_2}{h^4 y_1^4 + h^2 y_2^2}= \lim_{h\to 0} \frac{y_1^2 y_2}{h^2 y_1^4 + y_2^2}.$$
+        If \(y_2 \neq 0\), then
+        \[
+        f'(\vec 0;\vec y)
+        =
+        \frac{y_1^2}{y_2}.
+        \]
+        If \(y_2=0\), then \(f(hy_1,0)=0\), so
+        \[
+        f'(\vec 0;\vec y)=0.
+        \]
+        This indicates that the existence of directional derivatives does not necessarily imply the continuity of the function. However, if we still want differentiability to imply continuity like in the case of $f:\R \to \R$, we need a stronger definition of differentiability.
             
     \end{exampleenv}
     \begin{theoremenv}
@@ -139,19 +182,19 @@
     \end{theoremenv}
     \begin{theoremenv}
         Suppose $f$ is a scalar field on an open set $S\subseteq \R^n$ and $\vec r$ is a vector-valued function mapping $J\subseteq \R$ to $S$. Define the composite function $g = f \circ \vec r$ on $J$ as $g(t) = f(\vec r(t))$ for every $t\in J$. If $f$ is differentiable at $\vec r(t)$ and $\vec r$ is differentiable at $t$, then $g$ is differentiable at $t$ and
-        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r\,'(t). $$
+        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r'(t). $$
     \end{theoremenv}
     \begin{proofenv}
         Suppose $\vec r'(t)$ exists for $t\in J$ and let $\vec a = \vec r(t)$. Since $a\in S$ and $S$ is open, there is an open $n$-ball $B(\vec a) \subseteq S$. Note $\vec r$ is continuous at $t$, so we can consider $h\ne 0$ but with $\left\|h\right\|$ small enough so that $\vec r(t+h) \in B(\vec a)$. Let $\vec y = \vec r(t+h) - \vec r(t)$, then
         $$ g(t+h) - g(t) = f(\vec r(t+h)) - f(\vec r(t)) = f(\vec a + \vec y) - f(\vec a) = \nabla f(\vec a) \cdot \vec y + o(\|\vec y\|). $$
         Then
         $$ \frac{g(t+h) - g(t)}{h} = \nabla f(\vec a) \cdot \frac{\vec y}{h} + o\left( \frac{\|\vec y\|}{|h|}\right) = \nabla f(\vec a) \cdot \frac{\vec r(t+h) - \vec r(t)}{h} + o\left( \frac{\|\vec r(t+h) - \vec r(t)\|}{|h|}\right). $$
-        Since $\vec r$ is differentiable at $t$, we have $\displaystyle \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h} = \vec r\,'(t)$ and thus $\displaystyle \lim_{h\to 0} o\left( \frac{\|\vec r(t+h) - \vec r(t)\|}{|h|}\right) = 0$. Thus
-        $$ g'(t) = \lim_{h\to 0} \frac{g(t+h) - g(t)}{h} = \nabla f(\vec a) \cdot \vec r\,'(t). $$
+        Since $\vec r$ is differentiable at $t$, we have $\displaystyle \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h} = \vec r'(t)$ and thus $\displaystyle \lim_{h\to 0} o\left( \frac{\|\vec r(t+h) - \vec r(t)\|}{|h|}\right) = 0$. Thus
+        $$ g'(t) = \lim_{h\to 0} \frac{g(t+h) - g(t)}{h} = \nabla f(\vec a) \cdot \vec r'(t). $$
     \end{proofenv}
     \begin{exampleenv}
         If $\vec r$ describes a curve in $\R^2$ or $\R^3$ and $f:\R^2 \to \R$, $g=f\circ \vec r$, then
-        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r\,'(t) = \left\|\vec r\,'(t)\right\|\left(\nabla f(\vec r(t)) \cdot T(t)\right) $$
+        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r'(t) = \left\|\vec r'(t)\right\|\left(\nabla f(\vec r(t)) \cdot T(t)\right) $$
         where $T$ is the unit tangent vector of the curve. Here the term $\nabla f(\vec r(t)) \cdot T(t)$ is called the \textbf{directional derivative} of $f$ along the curve provided it's well-defined.
     \end{exampleenv}
 
@@ -160,8 +203,8 @@
         Given a vector field $\vec f:S\to \R^m$ where $S\subseteq \R^n$. Let $\vec a \in \operatorname{int} S$ and $\vec y \in \R^n$.
         \begin{itemize}
             \item The \textbf{derivative of $\vec f$ at $\vec a$ with respect to $\vec y$} is denoted by $\vec f'(\vec a; \vec y)$ and is defined as
-            $$ \vec{f}\,'(\vec a; \vec y) := \lim_{h\to 0} \frac{\vec f(\vec a + h \vec y) - \vec f(\vec a)}{h}\in \R^m, $$
-            provided the limit exists. Let $f_k$ denote the $k$-th component of $\vec f$, then $\vec f\,'(\vec a; \vec y) $ exists if and only if $f_k'(\vec a; \vec y)$ exists for $k=1, \ldots, m$, in which case $$\vec f\,'(\vec a; \vec y) = (f_1'(\vec a; \vec y), \ldots, f_m'(\vec a; \vec y))=\sum_{k=1}^m f_k'(\vec a; \vec y) \vec e_k.$$        
+            $$ \vec{f}'(\vec a; \vec y) := \lim_{h\to 0} \frac{\vec f(\vec a + h \vec y) - \vec f(\vec a)}{h}\in \R^m, $$
+            provided the limit exists. Let $f_k$ denote the $k$-th component of $\vec f$, then $\vec f'(\vec a; \vec y) $ exists if and only if $f_k'(\vec a; \vec y)$ exists for $k=1, \ldots, m$, in which case $$\vec f'(\vec a; \vec y) = (f_1'(\vec a; \vec y), \ldots, f_m'(\vec a; \vec y))=\sum_{k=1}^m f_k'(\vec a; \vec y) \vec e_k.$$        
             \item We say that $\vec f$ is \textbf{differentiable} at $\vec a$ if there exists a linear map $\vec T_{\vec a}:\R^n \to \R^m$ and a function $\vec E:\R^n \times \R^n \to \R^m$ such that
             $$ \vec f(\vec a + \vec v) = \vec f(\vec a) + \vec T_{\vec a}(\vec v) + \|v\| \vec E(\vec a, \vec v) $$
             for any $\vec v$ with $\vec a + \vec v \in B(\vec a;r)\subseteq S$ with $r>0$, where $\vec E(\vec a, \vec v) \to \vec 0$ as $\vec v \to \vec 0$. The linear map $\vec T_{\vec a}$ uniquely exists and is called the \textbf{total derivative} of $\vec f$ at $\vec a$.
@@ -184,7 +227,7 @@
         This $m\times n$ matrix is called the \textbf{Jacobian matrix} of $\vec f$ at $\vec a$ and is denoted by $\mathbf{D}_{\vec f(\vec a)}$.
         The $kj$-th entry is actually $$\left[ \mathbf{D}_{\vec f(\vec a)} \right]_{kj} = \dfrac{\partial f_k}{\partial x_j}(\vec a) = D_j f_k(\vec a).$$
 
-        We often simply denote the total derivative $\vec T_{\vec a}$ by $\vec f\,'(\vec a)$, which is a linear map from $\R^n$ to $\R^m$. Also we know $\vec f\,'(\vec a; \vec y) = \mathbf D_{\vec f(\vec a)} \vec y$ for any $\vec y\in \R^n$. Thus $\mathbf D_{\vec f(\vec a)}$ is the matrix representation of the linear map $\vec f\,'(\vec a)$ with respect to the standard bases of $\R^n$ and $\R^m$. We also have
+        We often simply denote the total derivative $\vec T_{\vec a}$ by $\vec f'(\vec a)$, which is a linear map from $\R^n$ to $\R^m$. Also we know $\vec f'(\vec a; \vec y) = \mathbf D_{\vec f(\vec a)} \vec y$ for any $\vec y\in \R^n$. Thus $\mathbf D_{\vec f(\vec a)}$ is the matrix representation of the linear map $\vec f'(\vec a)$ with respect to the standard bases of $\R^n$ and $\R^m$. We also have
         $$ \vec f(\vec a + \vec v) = \vec f(\vec a) + \mathbf D_{\vec f(\vec a)} \vec v + \left\|\vec v\right\| \vec E(\vec a, \vec v),$$
         where $\vec E(\vec a, \vec v) \to \vec 0$ as $\vec v \to \vec 0$.
     \end{remarkenv}
@@ -198,29 +241,29 @@
         $$ \| \vec g(\vec a) (\vec v) \| = \left\| \sum_{k=1}^m \left( \nabla g_k(\vec a) \cdot \vec v\right) \vec e_k\right\| \le \sum_{k=1}^m \left| \nabla g_k(\vec a) \cdot \vec v\right| \le \sum_{k=1}^m \|\nabla g_k(\vec a)\| \|\vec v\|. $$
     \end{proofenv}
     \begin{theoremenv}
-        Suppose $\vec f$ and $\vec g$ are vector fields such that the composition $\vec h = \vec f \circ \vec g$ is defined in an opne $n$-ball $B(\vec a)$. If $\vec g$ is differentiable at $\vec a$ with total derivative $\vec g\,'(\vec a)$ and $\vec f$ is differentiable at $\vec b = \vec g(\vec a)$ with total derivative $\vec f\,'(\vec b)$, then $h = \vec f \circ \vec g$ is differentiable at $\vec a$ and
-        $$\vec h\,'(\vec a) =  (\vec f \circ \vec g)\,'(\vec a) = \vec f\,'(\vec b) \circ \vec g\,'(\vec a). $$
+        Suppose $\vec f$ and $\vec g$ are vector fields such that the composition $\vec h = \vec f \circ \vec g$ is defined in an opne $n$-ball $B(\vec a)$. If $\vec g$ is differentiable at $\vec a$ with total derivative $\vec g'(\vec a)$ and $\vec f$ is differentiable at $\vec b = \vec g(\vec a)$ with total derivative $\vec f'(\vec b)$, then $h = \vec f \circ \vec g$ is differentiable at $\vec a$ and
+        $$\vec h'(\vec a) =  (\vec f \circ \vec g)'(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a). $$
     \end{theoremenv}
     \begin{proofenv}
         We shall consider $\vec h (\vec a + \vec v)$ for $\vec y $ with small $\| \vec y \|$. Note $\vec b = \vec g(\vec a)$, let $\vec v = \vec g(\vec a + \vec y) - \vec g(\vec a) = \vec g(\vec a + \vec y) - \vec b$, then $\vec h (\vec a + \vec y) - \vec h(\vec a) = \vec f(\vec b + \vec v) - \vec f(\vec b)$. 
         Since $f$ is differentiable at $\vec b=\vec g(\vec a)$, we have
         $$ \begin{aligned}
-            \vec f(\vec b + \vec v) - \vec f(\vec b) &= \vec f\,'(\vec b)(\vec v) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
-            &= \vec f\,'(\vec b)(\vec g\,'(\vec a)(\vec y) + \vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\ 
-            &= \vec f\,'(\vec b) \circ \vec g\,'(\vec a)(\vec y) + \|\vec y\| \vec f\,'(\vec b)(\vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
-            &= \vec f\,'(\vec b) \circ \vec g\,'(\vec a)(\vec y) + \|\vec y\| \vec E(\vec a, \vec y),
+            \vec f(\vec b + \vec v) - \vec f(\vec b) &= \vec f'(\vec b)(\vec v) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
+            &= \vec f'(\vec b)(\vec g'(\vec a)(\vec y) + \vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\ 
+            &= \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \|\vec y\| \vec f'(\vec b)(\vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
+            &= \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \|\vec y\| \vec E(\vec a, \vec y),
         \end{aligned}$$
         where $$\vec E(\vec a, \vec y) = \begin{cases}
-            \vec f\,'(\vec b)(\vec E_g(\vec a, \vec y)) + \dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v), & \vec y \ne \vec 0; \\[6pt]
+            \vec f'(\vec b)(\vec E_g(\vec a, \vec y)) + \dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v), & \vec y \ne \vec 0; \\[6pt]
             \vec 0, & \vec y = \vec 0.
         \end{cases}$$
-        We still need to show that if $\vec y \to \vec 0$ (with $\vec y \ne \vec 0$), then $\vec E(\vec a, \vec y) \to \vec 0$. Note as $\vec y \to \vec 0$, the first term $\vec f\,'(\vec b)(\vec E_g(\vec a, \vec y)) \to \vec 0$ since $\vec E_g(\vec a, \vec y) \to \vec 0$ due to the differentiability at $\vec a$ and $\vec f\,'(\vec b)$ is a linear map and thus continuous. For the second term $\dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v)$, we will show that the factor $\dfrac{\|\vec v\|}{\|\vec y\|}$ is bounded as $\vec y \to \vec 0$. Note
-        $$ \left\|\vec v\right\| = \left\|\vec g(\vec a + \vec y) - \vec g(\vec a)\right\| = \left\|\vec g\,'(\vec a)(\vec y) + \|\vec y\| \vec E_g(\vec a, \vec y)\right\| \le \left\|\vec g\,'(\vec a)(\vec y)\right\| + \|\vec y\| \left\|\vec E_g(\vec a, \vec y)\right\|. $$
-        By the above lemma, we have $\left\|\vec g\,'(\vec a)(\vec y)\right\| \le M(\vec a) \|\vec y\|$ for some constant $M(\vec a)$. Therefore,
+        We still need to show that if $\vec y \to \vec 0$ (with $\vec y \ne \vec 0$), then $\vec E(\vec a, \vec y) \to \vec 0$. Note as $\vec y \to \vec 0$, the first term $\vec f'(\vec b)(\vec E_g(\vec a, \vec y)) \to \vec 0$ since $\vec E_g(\vec a, \vec y) \to \vec 0$ due to the differentiability at $\vec a$ and $\vec f'(\vec b)$ is a linear map and thus continuous. For the second term $\dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v)$, we will show that the factor $\dfrac{\|\vec v\|}{\|\vec y\|}$ is bounded as $\vec y \to \vec 0$. Note
+        $$ \left\|\vec v\right\| = \left\|\vec g(\vec a + \vec y) - \vec g(\vec a)\right\| = \left\|\vec g'(\vec a)(\vec y) + \|\vec y\| \vec E_g(\vec a, \vec y)\right\| \le \left\|\vec g'(\vec a)(\vec y)\right\| + \|\vec y\| \left\|\vec E_g(\vec a, \vec y)\right\|. $$
+        By the above lemma, we have $\left\|\vec g'(\vec a)(\vec y)\right\| \le M(\vec a) \|\vec y\|$ for some constant $M(\vec a)$. Therefore,
         $$ \frac{\|\vec v\|}{\|\vec y\|} \le M(\vec a) + \left\|\vec E_g(\vec a, \vec y)\right\|. $$
         Since $\vec E_g(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$, we know the factor is bounded as long as $\vec y$ is not so far away from $\vec 0$. Thus $\vec E(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$ and we have $\vec E(\vec a, \vec y) = o(\|\vec y\|)$. Therefore,
-        $$ \vec h(\vec a + \vec y) - \vec h(\vec a) = \vec f\,'(\vec b) \circ \vec g\,'(\vec a)(\vec y) + \| \vec y \| \vec E(\vec a, \vec y) = \vec f\,'(\vec b) \circ \vec g\,'(\vec a)(\vec y) + o(\|\vec y\|), $$
-        which means $\vec h$ is differentiable at $\vec a$ with total derivative $\vec h\,'(\vec a) = \vec f\,'(\vec b) \circ \vec g\,'(\vec a)$.
+        $$ \vec h(\vec a + \vec y) - \vec h(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \| \vec y \| \vec E(\vec a, \vec y) = \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + o(\|\vec y\|), $$
+        which means $\vec h$ is differentiable at $\vec a$ with total derivative $\vec h'(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a)$.
     \end{proofenv}
     \begin{remarkenv}
         Note the corresponding matrix form of a linear map composition $\vec h = \vec f \circ \vec g$ is given by the matrix product of the Jacobian matrices of $\vec f$ and $\vec g$:
@@ -236,7 +279,7 @@
         $$ D_j h(\vec a) = \sum_{i=1}^n D_i f(\vec b) D_j g_i(\vec a),\quad j=1, \ldots, p. $$
         \begin{enumerate}[label=(\arabic*), start=1]
             \item In Section 5.2, we cover the case where $p=1$:
-            $$ h'(t) = \sum_{i=1}^n D_i f(\vec b) g_i'(t) = \nabla f(\vec b) \cdot \vec g\,'(t). $$
+            $$ h'(t) = \sum_{i=1}^n D_i f(\vec b) g_i'(t) = \nabla f(\vec b) \cdot \vec g'(t). $$
             \item Consider $p=2$ and $n=2$, $\vec a = (s,t)$, $\vec b = \vec g(\vec a) = (x,y)$ with $x = g_1(s,t)$ and $y = g_2(s,t)$, then
             $$ D_1 h(s,t) = D_1 f(x,y) D_1 g_1(s,t) + D_2 f(x,y) D_1 g_2(s,t), $$
             or equivalently,
