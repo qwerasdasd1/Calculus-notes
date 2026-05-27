@@ -92,11 +92,11 @@
         \begin{enumerate}[label=(\arabic*)]
             \item $\vv g$ is the gradient of some scalar field $\varphi$ in $S$, i.e., $\vv g = \nabla \varphi$, where $\varphi$ is called a \textbf{potential function} of $\vv g$;
             \item the line integral of $\vv g$ is independent of path in $S$;
-            \item $\displaystyle \oint_C \vv g \cdot \dd \vv r = 0$ for any piecewise smooth closed curve $C$ in $S$.
+            \item $\displaystyle \oint_C \vv g \cdot \dd \vv r = 0$ for any piecewise smooth closed path $C$ in $S$.
         \end{enumerate}
     \end{theoremenv}
     \begin{proofenv}
-        By Theorem~\ref{thm:fundamental-theorem-line-integrals}, we have (2) $\Rightarrow$ (1). By Theorem~\ref{thm:fundamental-theorem-line-integrals-1}, we have (1) $\Rightarrow$ (2) and (1) $\Rightarrow$ (3). 
+        By Theorem~\ref{thm:fundamental-theorem-line-integrals-1}, we have (2) $\Rightarrow$ (1). By Theorem~\ref{thm:fundamental-theorem-line-integrals}, we have (1) $\Rightarrow$ (2) and (1) $\Rightarrow$ (3). 
         
         We will only show (3) $\Rightarrow$ (2). Suppose $C_1$ and $C_2$ are any two piecewise smooth paths in $S$ sharing the same endpoints. Let $C_1$ be described by $\vv \alpha$ on $[a,b]$ and $C_2$ be described by $\vv \beta$ on $[c,d]$ with $\vv \alpha(a) = \vv \beta(c)$ and $\vv \alpha(b) = \vv \beta(d)$.
 
@@ -109,4 +109,21 @@
         $$ 0 = \oint_{\vv \gamma(a)}^{\vv \gamma(b + d - c)} \vv g \cdot \dd \vv r = \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r + \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot (-\dd \vv r) = \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r - \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot  \dd \vv r. $$
         Hence, $\displaystyle \int_{\vv \alpha(a)}^{\vv \alpha(b)} \vv g \cdot \dd \vv r = \int_{\vv \beta(c)}^{\vv \beta(d)} \vv g \cdot  \dd \vv r$, which means the line integral of $\vv g$ is independent of path in $S$.
     \end{proofenv}
+    \begin{remarkenv}
+        Actually, Theorem~\ref{thm:fundamental-theorem-line-integrals-1} not only proves (2) $\Rightarrow$ (1), it also tells us we can fin a potential function $\varphi$ (such that $\nabla \varphi = \vv f$) by picking $\varphi (\vv x) := \displaystyle \int_{\vv a}^{\vv x} \vec f \cdot \dd \vv \alpha$ for any $\vv a\in S$ and any piecewise smooth path $\vv \alpha$ from $\vv a$ to $\vv x$.
+    \end{remarkenv}
+    \begin{exampleenv}
+        We call $S\subseteq \R^n$ a \textbf{convex set} if every pair of points in $S$ can be joined by a line segment fully contained in $S$. Note if $S$ is open convex, then $S$ is open connected. Suppose $S$ is open convex, we can pick
+        $$
+        \varphi(\vv x) := \int_{\vv a}^{\vv x} \vec f \cdot \dd \vv \alpha = \int_0^1 \vec f[\vv a + t(\vv x - \vv a)] \cdot (\vv x - \vv a) \dd t.
+        $$
+        Particularly, if $\vv 0 \in S$, then $\displaystyle \varphi(\vv x) = \int_0^1 \vec f(t \vv x) \cdot \vv x \dd t$.
+    \end{exampleenv}
+    \begin{exampleenv}
+        Let $\vv f = (f_1, f_2, f_3)$, we know
+        $$ \pdv{\varphi}{x} = f_1, \quad \pdv{\varphi}{y} = f_2, \quad \pdv{\varphi}{z} = f_3. $$
+        Then we can pick
+        $$ \varphi(x,y,z) = \int f_1(x,y,z) \dd x + C_1(y,z) = \int f_2(x,y,z) \dd y + C_2(x,z) = \int f_3(x,y,z) \dd z + C_3(x,y). $$
+        Note that the functions \(C_1, C_2, C_3\) are not arbitrary constants, but functions of the remaining variables. In practice, we collect all terms from the three integrals $\displaystyle \int f_1(x,y,z) \dd x$, $\displaystyle \int f_2(x,y,z) \dd y$ and $\displaystyle \int f_3(x,y,z) \dd z$ and add the missing terms into \(C_1(y,z)\), \(C_2(x,z)\), or \(C_3(x,y)\).
+    \end{exampleenv}
 \newpage

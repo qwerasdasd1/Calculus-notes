@@ -1,0 +1,49 @@
+\chapter{Multiple Integrals}
+\section{Double Integrals}
+In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) by approximating \(f\) by step functions. In this section, we follow the same idea to define the double integral of a function \(f: Q \to \R\) where \(Q\) is a rectangle in \(\R^2\).
+\begin{definitionenv}
+    Given two closed intervals \([a,b]\) and \([c,d]\) in \(\R\), we call
+    \[
+        Q := [a,b]\times[c,d]
+        = \{(x,y) \in \R^2 : a \leq x \leq b,\ c \leq y \leq d\}
+    \]
+    a \textbf{rectangle} in \(\R^2\).
+
+    \begin{enumerate}
+        \item Suppose \(P_1 = \{x_0, x_1, \dots, x_n\}\) and \(P_2 = \{y_0, y_1, \dots, y_m\}\) are partitions of \([a,b]\) and \([c,d]\), respectively, with
+        \[
+            a = x_0 < x_1 < \dots < x_n = b,
+            \qquad
+            c = y_0 < y_1 < \dots < y_m = d.
+        \]
+        Then we call
+        \[
+            P := P_1 \times P_2
+            =
+            \{[x_{i-1},x_i]\times[y_{j-1},y_j] : 1 \leq i \leq n,\ 1 \leq j \leq m\}
+        \]
+        a \textbf{partition} of \(Q\), which decomposes \(Q\) into \(nm\) \textbf{subrectangles}.
+
+        \item The Cartesian product \((x_{i-1},x_i)\times(y_{j-1},y_j)\), where \(1 \leq i \leq n\) and \(1 \leq j \leq m\), is called an \textbf{open subrectangle} of \(P\), or of \(Q\).
+
+        \item Another partition \(\widetilde P\) is said to be \textbf{finer than} \(P\), or a \textbf{refinement} of \(P\), if \(P \subseteq \widetilde P\), i.e., all the points in \(P\) are also in \(\widetilde P\).
+
+        \item A scalar field \(f\colon Q \to \R\) is called a \textbf{step function} if there exists a partition \(P\) of \(Q\) such that \(f\) is constant on each open subrectangle of \(P\).
+    \end{enumerate}
+\end{definitionenv}
+\begin{remarkenv}
+    For a rectangle $Q$ in $\R^2$, the set of all step functions defined on $Q$ is a vector space over $\R$: if $f$ and $g$ are step functions defined on $Q$ with respect to partitions $P_f$ and $P_g$, respectively, then $\alpha f + \beta g$ is a step function defined on $Q$ with respect to the common refinement $P_f \cup P_g$ of $P_f$ and $P_g$ for any $\alpha, \beta \in \R$.
+\end{remarkenv}
+\begin{definitionenv}
+    Suppose $Q=[a,b]\times[c,d]$ with a partition $P=P_1 \times P_2$ where $P_1 = \{x_0, x_1, \dots, x_n\}$ and $P_2 = \{y_0, y_1, \dots, y_m\}$. Let $f$ be a step function defined on $Q$ that takes constant value $c_{ij}$ on the open subinterval $(x_{i-1},x_i)\times(y_{j-1},y_j)$ for $1 \leq i \leq n$ and $1 \leq j \leq m$. Then we define the \textbf{double integral} of $f$ over $Q$ by
+    \[
+        \iint_Q f(x,y) \dd x \dd y := \sum_{i=1}^n \sum_{j=1}^m c_{ij} \cdot (x_i - x_{i-1})(y_j - y_{j-1}).
+    \]
+    Note if we replace $P$ with a finer partition $\tilde P$, then the value of the double integral does not change.
+\end{definitionenv}
+\begin{remarkenv}
+    Since $f(x,y) = c_{ij}$ on $(x_{i-1},x_i) \times (y_{j-1},y_j)$, if we let $Q_{ij} := [x_{i-1},x_i]\times[y_{j-1},y_j]$, then we have
+    \[
+    \iint_{Q_{ij}} f(x,y) \dd x \dd y = c_{ij} \cdot (x_i - x_{i-1})(y_j - y_{j-1}) = f(x,y) \int_{x_{i-1}}^{x_i} \dd x \int_{y_{j-1}}^{y_j} \dd y = \int_{y_{j-1}}^{y_j} \left[ \int_{x_{i-1}}^{x_i} f(x,y) \dd x \right] \dd y.
+    \]
+\end{remarkenv}
