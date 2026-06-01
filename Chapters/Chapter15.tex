@@ -41,9 +41,179 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
     \]
     Note if we replace $P$ with a finer partition $\tilde P$, then the value of the double integral does not change.
 \end{definitionenv}
+\begin{notationenv}
+    We can also write the double integral of $f$ over $Q$ as $\displaystyle \iint_Q f$.
+\end{notationenv}
 \begin{remarkenv}
     Since $f(x,y) = c_{ij}$ on $(x_{i-1},x_i) \times (y_{j-1},y_j)$, if we let $Q_{ij} := [x_{i-1},x_i]\times[y_{j-1},y_j]$, then we have
     \[
-    \iint_{Q_{ij}} f(x,y) \dd x \dd y = c_{ij} \cdot (x_i - x_{i-1})(y_j - y_{j-1}) = f(x,y) \int_{x_{i-1}}^{x_i} \dd x \int_{y_{j-1}}^{y_j} \dd y = \int_{y_{j-1}}^{y_j} \left[ \int_{x_{i-1}}^{x_i} f(x,y) \dd x \right] \dd y.
+    \begin{aligned}
+        \iint_{Q_{ij}} f(x,y) \dd x \dd y &= c_{ij} \cdot (x_i - x_{i-1})(y_j - y_{j-1}) \\ &= f(x,y) \int_{x_{i-1}}^{x_i} \dd x \int_{y_{j-1}}^{y_j} \dd y\\ &= \left( \int_{x_{i-1}}^{x_i} f(x,y) \dd x \right) \left( \int_{y_{j-1}}^{y_j} \dd y  \right)\\ &= \int_{y_{j-1}}^{y_j} \left[ \int_{x_{i-1}}^{x_i} f(x,y) \dd x \right] \dd y.
+    \end{aligned}
+    \]
+    Analogously, we also have
+    \[
+    \iint_{Q_{ij}} f(x,y) \dd x \dd y = \int_{x_{i-1}}^{x_i} \left[ \int_{y_{j-1}}^{y_j} f(x,y) \dd y \right] \dd x.
+    \]
+    Summing up all $Q_{ij}$, we get
+    \[
+    \begin{aligned}
+        \iint_Q f(x,y) \dd x \dd y &= \sum_{i=1}^n \sum_{j=1}^m \iint_{Q_{ij}} f(x,y) \dd x \dd y\\ &= \sum_{i=1}^m \int_{y_{j-1}}^{y_j} \left[ \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x,y) \dd x \right] \dd y\\ &= \int_c^d \left[ \int_a^b f(x,y) \dd x \right] \dd y\\ &= \int_a^b \left[ \int_c^d f(x,y) \dd y \right] \dd x.
+    \end{aligned}
     \]
 \end{remarkenv}
+\begin{theoremenv}
+    Suppose $s$ and $t$ are step functionson rectangle $Q\subseteq \R^2$. Then we have the following properties:
+    \begin{enumerate}[label=(\arabic*)]
+        \item Linearity: for any $\alpha, \beta \in \R$,
+        $$ \iint_Q (\alpha s + \beta t)(x,y) \dd x \dd y = \alpha \iint_Q s(x,y) \dd x \dd y + \beta \iint_Q t(x,y) \dd x \dd y, $$
+        \item Additivity: if $Q$ can be subdivided to rectangles $Q_1$ and $Q_2$, then
+        $$ \iint_Q s(x,y) \dd x \dd y = \iint_{Q_1} s(x,y) \dd x \dd y + \iint_{Q_2} s(x,y) \dd x \dd y, $$
+        \item Comparison: if $s(x,y) \leq t(x,y)$ for all $(x,y) \in Q$, then
+        $$ \iint_Q s(x,y) \dd x \dd y \leq \iint_Q t(x,y) \dd x \dd y. $$
+    \end{enumerate}
+\end{theoremenv}
+\begin{definitionenv}
+    Let $f$ be a scalar field defined and bounded on a rectangle $Q$. If there exists a unique number $I\in \R$ such that
+    $$
+    \iint_Q s(x,y) \dd x \dd y \leq I \leq \iint_Q t(x,y) \dd x \dd y
+    $$
+    for every pair of step functions $s$ and $t$ defined on $Q$ with $s(x,y) \leq f(x,y) \leq t(x,y)$ for all $(x,y) \in Q$, then we call $f$ \textbf{integrable} on $Q$ and call $I$ the \textbf{double integral} of $f$ over $Q$, denoted by
+    \[
+    I := \iint_Q f(x,y) \dd x \dd y.
+    \]
+\end{definitionenv}
+\begin{remarkenv}
+    If $s(x,y) \leq f(x,y)$ for all $(x,y) \in Q$, then we say $s$ is \textbf{below} $f$ and often write $s \leq f$. Similarly, if $f(x,y) \leq t(x,y)$ for all $(x,y) \in Q$, then we say $t$ is \textbf{above} $f$ and often write $f \leq t$.
+\end{remarkenv}
+\begin{definitionenv}
+    Let $f$ be a scalar field defined and bounded on a rectangle $Q\subseteq \R^2$. Let
+    $$
+    \begin{aligned}
+        S&:= \left\{ \iint_Q s(x,y) \dd x \dd y : s \text{ is a step function defined on } Q \text{ with } s \leq f\ \right\},\\ T&:= \left\{ \iint_Q t(x,y) \dd x \dd y : t \text{ is a step function defined on } Q \text{ with } f \leq t\ \right\}.
+    \end{aligned}
+    $$
+    We call $\sup S$ the \textbf{lower integral} of $f$ over $Q$, denoted by $\underline{I}(f)$, and call $\inf T$ the \textbf{upper integral} of $f$ over $Q$, denoted by $\overline{I}(f)$.
+\end{definitionenv}
+\begin{theoremenv}
+    Let $f$ be a scalar field defined and bounded on a rectangle $Q\subseteq \R^2$. Then
+    \begin{enumerate}
+        \item $\displaystyle \iint_Q s\, \dd x \dd y \leq \underline{I}(f) \leq \overline{I}(f) \leq \iint_Q t\, \dd x \dd y$ for any step functions $s \le f \le t$;
+        \item $f$ is integrable on $Q$ if and only if $\underline{I}(f) = \overline{I}(f)$, in which case $\displaystyle \iint_Q f \dd x \dd y = \underline{I}(f) = \overline{I}(f)$.
+    \end{enumerate}
+\end{theoremenv}
+\begin{theoremenv}
+    Let $f$ be a scalar field defined, bounded and integrable on a rectangle $Q = [a,b] \times [c,d]$. For every fixed $y \in [c,d]$, suppose $\displaystyle \int_a^b f(x,y) \dd x$ exists and denote it by $A(y)$. If $\displaystyle \int_c^d A(y) \dd y$ exists, then we have
+    $$
+    \iint_Q f(x,y) \dd x \dd y = \int_c^d A(y) \dd y = \int_c^d \left[ \int_a^b f(x,y) \dd x \right] \dd y.
+    $$
+\end{theoremenv}
+\begin{proofenv}
+    For any step functions $s\le f \le t$ on $Q$, we have
+    \[
+    \int_a^b s(x,y) \dd x \leq \int_a^b f(x,y) \dd x = A(y) \leq \int_a^b t(x,y) \dd x.
+    \]
+    Then integrating both sides gives
+    \[
+    \int_c^d \left[ \int_a^b s(x,y) \dd x \right] \dd y \leq \int_c^d A(y) \dd y \leq \int_c^d \left[ \int_a^b t(x,y) \dd x \right] \dd y
+    \]
+    for any arbitrary step functions $s\le f \le t$ on $Q$. By definition, we have $$\displaystyle \iint_Q f(x,y) \dd x \dd y = \int_c^d A(y) \dd y = \int_c^d \int_a^b f(x,y) \dd x \dd y.$$
+\end{proofenv}
+\begin{remarkenv}
+    Alternatively, we could also evaluate $A(x) \displaystyle = \int_c^d f(x,y) \dd y$  and then calculate $\displaystyle \int_a^b A(x) \dd x$ to get the same result.
+\end{remarkenv}
+\begin{definitionenv}
+    Suppose $f$ is non-negative on a rectangle $Q\subseteq \R^2$, the set
+    $$
+    \mathcal{S} := \{(x,y,z) \in \R^3 : (x,y) \in Q, 0 \leq z \leq f(x,y)\}
+    $$
+    is called the \textbf{ordinate set} of $f$ over $Q$.
+\end{definitionenv}
+\begin{remarkenv}
+    If $f$ is non-negative and integrable on $Q$, then $\displaystyle \iint_Q f(x,y) \dd x \dd y = \text{vol}(\mathcal{S})$, where $\text{vol}(\mathcal{S})$ is the volume of $\mathcal{S}$. Particularly, for any $y_0 \in [c,d]$, $\displaystyle A(y_0) = \int_a^b f(x,y_0) \dd x$ describes the area of the cross section of $\mathcal{S}$ at $y=y_0$. Moreover, $\displaystyle \iint_Q f(x,y) \dd x \dd y = \int_c^d A(y) \dd y$ can be interpreted that the volume of $\mathcal{S}_f$ is the integral of the cross-sectional area function $A(y)$ from $y=c$ to $y=d$. 
+\end{remarkenv}
+\begin{theoremenv}[Fubini's Theorem]
+    If a scalar field $f$ is continuous on a rectangle $Q = [a,b] \times [c,d]$, then $f$ is integrable on $Q$. Moreover, we have
+    $$ \iint_Q f(x,y) \dd x \dd y = \int_c^d \left[ \int_a^b f(x,y) \dd x \right] \dd y = \int_a^b \left[ \int_c^d f(x,y) \dd y \right] \dd x. $$
+\end{theoremenv}
+\begin{proofenv}[Proof of Integrability]
+    Since $f$ is continuous on $Q$, $f$ is also bounded on $Q$ and by Theorem~\ref{thm:small-span}, we know given $\varepsilon > 0$, there is a partition $P$ of $Q$ such that the span of $f$ on each of the closed subrectangles in $P$ is less than $\varepsilon$. For convenience, suppose $P$ decomposes $Q$ into $Q_1,\ldots, Q_N$ subrectangles and the span of $f$ on $Q_k$ is denoted by $M_k(f) - m_k(f)$ and satisfies $M_k(f) - m_k(f) < \varepsilon$ for $k = 1, \ldots, N$. Then we can define a pair of step functions $s$ and $t$ on $Q$ as:
+    \begin{itemize}
+        \item for $x\in \operatorname{int} Q_k$, let $s(x) := m_k(f)$ and $t(x) := M_k(f)$;
+        \item for $x\in \partial Q_k$, let $s(x) := m$ and $t(x) := M$, where $m$ and $M$ are the absolute minimum and maximum values of $f$ on $Q$, respectively.
+    \end{itemize}
+    Then we have $s \leq f \leq t$ on $Q$ and
+    \[
+    \iint_Q s = \sum_{k=1}^N m_k(f) \cdot A(Q_k), \qquad \iint_Q t = \sum_{k=1}^N M_k(f) \cdot A(Q_k),
+    \]
+    where $A(\cdot)$ denotes the area function. Thus, we have
+    \[
+    0 \le \iint_Q t - \iint_Q s = \sum_{k=1}^N (M_k(f) - m_k(f)) \cdot A(Q_k) < \varepsilon \sum_{k=1}^N A(Q_k) = \varepsilon A(Q).
+    \]
+    Note
+    $$
+    0 \le \overline{I}(f) - \underline{I}(f) \leq \iint_Q t - \iint_Q s < \varepsilon A(Q),
+    $$
+    which implies $\overline{I}(f) = \underline{I}(f)$ since $\varepsilon$ can be arbitrarily small. Therefore, $f$ is integrable on $Q$.
+\end{proofenv}
+\begin{proofenv}
+    For any fixed $y\in [c,d]$, $f(x,y)$ is a continuous function of $x$ on $[a,b]$, so $\displaystyle A(y) := \int_a^b f(x,y) \dd x$ is well-defined. Next, we need to show $A(y)$ is integrable on $[c,d]$. We will do this by showing that $A(y)$ is continuous on $[c,d]$. For any $y, y_0 \in [c,d]$, we have
+    \[
+    |A(y) - A(y_0)| = \left| \int_a^b f(x,y) \dd x - \int_a^b f(x,y_0) \dd x \right| \le \int_a^b |f(x,y) - f(x,y_0)| \dd x \le (b-a) \cdot \left|f(x_0, y) - f(x_0, y_0) \right|
+    \]
+    for some $x_0 \in [a,b]$. Thus
+    \[
+    |A(y) - A(y_0)| \to 0 \quad \text{as } y \to y_0,
+    \]
+    which implies $A(y)$ is continuous at every $y_0 \in [c,d]$. Then
+    $$ \iint_Q f(x,y) \dd x \dd y = \int_c^d \left[ \int_a^b f(x,y) \dd x \right] \dd y. $$
+\end{proofenv}
+\begin{remarkenv}
+    There is some functions $f:\R^2 \to \R$ not continuous on $Q$ but the set of discontinuities of $f$ is ``not too large'', then $f$ still remains integrable on $Q$. 
+\end{remarkenv}
+\begin{definitionenv}
+    Let $B$ be a bounded set in $\R^2$. $B$ is said to \textbf{have content zero} if, for every $\varepsilon >0$, there is a finite collection of rectangles whose union contains $B$ and the sum of whose areas does not exceed $\varepsilon$. Formally, there exists rectangles $R_1, \ldots, R_k$ such that
+    $$
+    B\subseteq \bigcup_{i=1}^k R_i, \qquad \sum_{i=1}^k A(R_i) < \varepsilon,
+    $$
+    where $A(\cdot)$ denotes the area function.
+\end{definitionenv}
+\begin{exampleenv}
+    \begin{enumerate}
+        \item A set containing finitely many points in $\R^2$ has content zero.
+        \item A line segment in $\R^2$ has content zero.
+        \item If $A_1, A_2, \ldots, A_n$ all have content zero, then $\displaystyle \bigcup_{i=1}^n A_i$ has content zero.
+        \item If $A$ has content zero and $B \subseteq A$, then $B$ has content zero.
+    \end{enumerate}
+\end{exampleenv}
+\begin{theoremenv}
+    If a scalar field $f$ is defined and bounded on a rectangle $Q$ and the set of discontinuities of $f$ has content zero, then $f$ is integrable on $Q$.
+\end{theoremenv}
+\begin{proofenv}
+    Let $M>0$ be such that $|f(x,y)| \le M$ for every $(x,y) \in Q$. Let
+    $$ D = \{(x,y) \in Q : f \text{ is not continuous at } (x,y)\} $$
+    be the set of discontinuities of $f$. Since $D$ has content zero, for every $\varepsilon > 0$, we can pick a partition $P$ of $Q$ such that:
+    \begin{itemize}
+        \item suppose $\{ Q_1, \ldots, Q_d \}$ denotes the closed subrectangles of $P$ such that
+        $$ Q_k \cap D \neq \varnothing,\qquad D \subseteq \bigcup_{k=1}^d Q_k\qquad \text{with } \sum_{k=1}^d A(Q_k) < \varepsilon.$$
+        \item suppose $\{Q_{d+1}, \ldots, Q_N\}$ denotes the rest of the closed subrectangles in $P$. Then $f$ is continuous on each $Q_k$ for $k = d+1, \ldots, N$. Furthermore, by Theorem~\ref{thm:small-span}, the span of $f$ on each $Q_k$, denoted by $M_k(f) - m_k(f)$, is less than $\varepsilon$ for $k = d+1, \ldots, N$.
+    \end{itemize}
+    Then we can define a pair of step functions $s$ and $t$ on $Q$ as
+    $$
+    s(x) := \begin{cases}
+        -M & \text{if } x \in \operatorname{int} Q_k \text{ for } 1 \le k \le d,\\
+        m_k(f) & \text{if } x \in \operatorname{int} Q_k \text{ for } d+1 \le k \le N,\\
+        -M & \text{if } x \in \partial Q_k \text{ for } 1 \le k \le N,
+    \end{cases}\quad
+    t(x) := \begin{cases}
+        M & \text{if } x \in \operatorname{int} Q_k \text{ for } 1 \le k \le d,\\
+        M_k(f) & \text{if } x \in \operatorname{int} Q_k \text{ for } d+1 \le k \le N,\\
+        M & \text{if } x \in \partial Q_k \text{ for } 1 \le k \le N.
+    \end{cases}
+    $$
+    Then $s\le f \le t$ on $Q$ and
+    $$
+    0\le \overline{I}(f) - \underline{I}(f) \le \iint_Q t - \iint_Q s = \sum_{k=1}^d 2M\cdot A(Q_k) + \sum_{k=d+1}^N (M_k(f) - m_k(f)) \cdot A(Q_k) < 2M\varepsilon + \varepsilon A(Q)
+    $$
+    for any $\varepsilon > 0$. Thus, $\overline{I}(f) = \underline{I}(f)$, which implies $f$ is integrable on $Q$.
+\end{proofenv}

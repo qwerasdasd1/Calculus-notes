@@ -27,12 +27,15 @@
     \end{definitionenv}
     \begin{exampleenv}
         \begin{enumerate}[label=(\arabic*),start=0]
-            \item Is $\R^n$ open or closed? Is $\varnothing$ open or closed?
+            \item $\R^n$ is open and closed. The empty set $\varnothing$ is also open and closed.
             \item An open $n$-ball is open. Note
             $$ \operatorname{ext}(B(\vec a; r)) = \{ \vec x\in \R^n : \| \vec x - \vec a\| > r\}, \quad \partial B(\vec a; r) = \{ \vec x\in \R^n : \| \vec x - \vec a\| = r\}. $$
             \item Let $A_1 = (a,b)$ and $A_2 = (c,d)$ where $a<b$, $c<d$ and $A_1, A_2 \subseteq \R$. Then $A_1\times A_2 = \{ (x,y) : x\in A_1, y\in A_2\}$ is an open set in $\R^2$.
         \end{enumerate}
     \end{exampleenv}
+    \begin{propositionenv}
+        Let $S\subseteq \R^n$. Then $\operatorname{int}(S)$, $\operatorname{ext}(S)$ and $\partial S$ are mutually disjoint and $\R^n = \operatorname{int}(S) \cup \operatorname{ext}(S) \cup \partial S$.
+    \end{propositionenv}
     \begin{definitionenv}
         Consider $S \subseteq \R^n$ and function $\vec f:S\to \R^m$. 
         \begin{itemize}
