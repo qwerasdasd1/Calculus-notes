@@ -1,0 +1,108 @@
+# Calculus Lecture Notes / 微积分讲义
+
+**2025 Calculus Track A (Fall & Spring) / 2025 学年微积分 A 类（上、下）**
+
+---
+
+## Overview / 概述
+
+This repository contains the lecture notes for **Calculus Track A** (both semesters), delivered by **Prof. Yabin Zhang (张雅彬)** at the 2025 academic year. The notes have been compiled and uploaded with the explicit permission of the instructor.
+
+本仓库为 **2025 学年微积分 A 类（上、下）课程讲义**，由 **张雅彬** 老师授课。讲义经授课教师明确同意后整理上传。
+
+---
+
+## Chapter Outline / 章节目录
+
+### Single-Variable Calculus / 单变量微积分（上）
+
+| Ch. | English | 中文 |
+|-----|---------|------|
+| 01 | Preparations: Ten Axioms | 预备知识：十大公理 |
+| 02 | Integral Calculus | 积分学 |
+| 03 | Applications of Integration | 积分的应用 |
+| 04 | Limits and Continuity of Functions | 函数的极限与连续性 |
+| 05 | Differential Calculus | 微分学 |
+| 06 | Integration and Differentiation | 积分与微分的联系 |
+| 07 | Transcendental Functions | 超越函数 |
+| 08 | Polynomial Approximations to Functions | 函数的多项式逼近 |
+| 09 | Sequences and Series | 数列与级数 |
+
+### Multivariable Calculus / 多变量微积分（下）
+
+| Ch. | English | 中文 |
+|-----|---------|------|
+| 10 | Vector Algebra and Analytic Geometry | 向量代数与解析几何 |
+| 11 | Multivariable Calculus | 多元微积分 |
+| 12 | Differential Calculus of Scalar and Vector Fields | 标量与向量场的微分学 |
+| 13 | Applications of Differential Calculus | 微分学的应用 |
+| 14 | Line Integrals | 线积分 |
+| 15 | Multiple Integrals | 多重积分 |
+
+---
+
+## Textbook and References / 教材与参考资料
+
+- **Primary Textbook / 主要教材**  
+  Tom M. Apostol, *Calculus, Volume I* (2nd edition) and *Calculus, Volume II* (2nd edition).  
+  本课程以 Tom M. Apostol 所著《Calculus》第一卷与第二卷（第二版）为主要教材。
+
+---
+
+## Who Should Use These Notes / 适用人群
+
+- **Pre-study / 课前预习**  
+  If you have not yet taken the course and wish to prepare in advance, these notes can serve as a structured preview of the material and its scope.  
+  若您尚未修读本课程并希望提前预习，本讲义可作为课程内容与范围的结构化预览。
+
+- **Review / 课后复习**  
+  If you have already taken the course and wish to consolidate your understanding or revisit specific topics, these notes provide a reorganized and annotated reference.  
+  若您已修读本课程，希望巩固理解或回顾特定知识点，本讲义可作为经过重排与注解的参考资料。
+
+- **Exam Scope Reference (Credit Exemption) / 免修考试范围参考**  
+  If you have previously self-studied calculus and intend to sit for a credit exemption exam, these notes can help you gauge the breadth and depth of the course coverage. However, please note that the exam syllabus may vary slightly from year to year.  
+  若您已自学过微积分并希望参加免修考试，本讲义可帮助您了解课程的覆盖范围与深度。但请注意，每年考纲可能略有变动。
+
+---
+
+## Who Should NOT Use These Notes / 不适用人群
+
+- **First-Time Self-Learners / 首次自学微积分者**  
+  These notes were not designed as a standalone textbook. They assume the presence of an instructor and are intended to complement, rather than replace, classroom instruction. Readers encountering calculus for the first time are strongly advised to use a comprehensive textbook alongside these materials.  
+  本讲义并非为独立学习而设计。讲义假定读者有授课教师指导，旨在补充而非替代课堂教学。强烈建议首次接触微积分的读者在参考本讲义的同时，系统使用一本完整的教材。
+
+---
+
+## How These Notes Were Created / 讲义的创作过程
+
+These notes were compiled through the following process:
+
+1. **Board note transcription / 板书整理** — The core content is based on Prof. Zhang's lecture board work, faithfully transcribed and typeset.
+2. **Motivational context and remarks / 动机阐释与评注** — The author has added their own commentary to provide motivation, intuitive explanations, and supplementary remarks where deemed helpful.
+3. **Restructuring and pruning / 重排与删节** — The material has undergone a degree of rearrangement to improve logical flow, and overly trivial examples have been removed to keep the notes concise.
+4. **Supplementary content / 补充内容** — Material from exercise sessions (习题课) and homework assignments has been incorporated to enrich the treatment of certain topics.
+
+In summary, these notes are **not** a verbatim transcript of lectures; they are a curated and augmented version, shaped by the author's own perspective on the subject.
+
+本讲义的创作过程如下：
+
+1. **板书整理** — 核心内容基于张老师的课堂板书进行转录与排版；
+2. **动机阐释与评注** — 作者适当加入了自身的理解与评注，以提供学习动机和直观解释；
+3. **重排与删节** — 对内容进行了一定程度的重排以优化逻辑脉络，并删去了部分过于简单的例题；
+4. **补充内容** — 结合习题课与课后作业内容，对相关知识点进行了补充。
+
+---
+
+## Disclaimer / 注意事项
+
+These notes may contain typographical or mathematical errors. If you spot any, please feel free to [open an issue](../../issues) in this repository. Contributions and corrections are welcome.
+
+本讲义可能存在排版错误或数学笔误。如您发现任何问题，欢迎在本仓库[提交 Issue](../../issues)。感谢您的反馈与指正。
+
+---
+
+## License / 许可
+
+The lecture content is based on Prof. Yabin Zhang's lectures and is shared with the instructor's consent. Please do not redistribute these notes for commercial purposes without permission.
+
+讲义内容基于张雅彬老师的授课内容，已获得授课教师的分享许可。请勿在未经许可的情况下将这些笔记用于商业目的。
