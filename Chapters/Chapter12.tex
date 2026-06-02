@@ -4,23 +4,23 @@
         A function $f: \R^n \to \R^m$ is called
         \begin{itemize}
             \item a \textbf{real-valued function} $f(t)$ if $n=m=1$;
-            \item a \textbf{vector-valued function} (of a real variable) $\vec f (t)$ if $n=1$ and $m\ge 2$;
-            \item a \textbf{scalar field} $f(\vec x)$ if $n\ge 2$ and $m=1$;
-            \item a \textbf{vector field} $\vec f (\vec x)$ if $n\ge 2$ and $m\ge 2$. We often write it as $\vec f = (f_1(\vec x), \cdots, f_m(\vec x))$ where $f_i(\vec x)$ denotes the $i$-th component of $\vec f$.
+            \item a \textbf{vector-valued function} (of a real variable) $\bm f (t)$ if $n=1$ and $m\ge 2$;
+            \item a \textbf{scalar field} $f(\bm x)$ if $n\ge 2$ and $m=1$;
+            \item a \textbf{vector field} $\bm f (\bm x)$ if $n\ge 2$ and $m\ge 2$. We often write it as $\bm f = (f_1(\bm x), \cdots, f_m(\bm x))$ where $f_i(\bm x)$ denotes the $i$-th component of $\bm f$.
         \end{itemize}
     \end{definitionenv}
     \begin{definitionenv}
-        Let $\vec a \in \R^n$ and $r>0$. The set of all points $\vec x\in \R^n$ such that $\| \vec x - \vec a\| < r$ is called the \textbf{open ($n$-)ball} of radius $r$ centered at $\vec a$ and is denoted by $B(\vec a; r)$ or simply $B(\vec a)$.
+        Let $\bm a \in \R^n$ and $r>0$. The set of all points $\bm x\in \R^n$ such that $\| \bm x - \bm a\| < r$ is called the \textbf{open ($n$-)ball} of radius $r$ centered at $\bm a$ and is denoted by $B(\bm a; r)$ or simply $B(\bm a)$.
     \end{definitionenv}
     \begin{definitionenv}
-        Let $S\subseteq \R^n$ and $\vec a \in S$.
+        Let $S\subseteq \R^n$ and $\bm a \in S$.
         \begin{itemize}
-            \item We call $\vec a $ an \textbf{interior point} of $S$ if there exists an $r>0$ such that $B(\vec a; r) \subseteq S$.
+            \item We call $\bm a $ an \textbf{interior point} of $S$ if there exists an $r>0$ such that $B(\bm a; r) \subseteq S$.
             \item The set of all interior points of $S$ is called the \textbf{interior} of $S$ and is denoted by $\operatorname{int}(S)$.
             \item The set $S$ is called \textbf{open} if every point of $S$ is an interior point, i.e. $\operatorname{int}(S) = S$.
-            \item A point $\vec b\in \R^n$ is said to be \textbf{exterior} to $S$ if there is an open $n$-ball $B(\vec b)$ such that $B(\vec b) \cap S = \varnothing$.
+            \item A point $\bm b\in \R^n$ is said to be \textbf{exterior} to $S$ if there is an open $n$-ball $B(\bm b)$ such that $B(\bm b) \cap S = \varnothing$.
             \item The set of all points in $\R^n$ exterior to $S$ is called the \textbf{exterior} of $S$ and is denoted by $\operatorname{ext}(S)$.
-            \item A point $\vec c\in \R^n$ is called a \textbf{boundary point} of $S$ if $c$ is $\vec c \notin \operatorname{int}(S)$ and $\vec c \notin \operatorname{ext}(S)$, i.e. for any open $n$-ball $B(\vec c)$, we have $B(\vec c) \nsubseteq S$ and $B(\vec c) \cap S \ne \varnothing$.
+            \item A point $\bm c\in \R^n$ is called a \textbf{boundary point} of $S$ if $c$ is $\bm c \notin \operatorname{int}(S)$ and $\bm c \notin \operatorname{ext}(S)$, i.e. for any open $n$-ball $B(\bm c)$, we have $B(\bm c) \nsubseteq S$ and $B(\bm c) \cap S \ne \varnothing$.
             \item The set of all boundary points of $S$ is called the \textbf{boundary} of $S$ and is denoted by $\partial S$.
             \item If $\partial S \subseteq S$, then $S$ is called a \textbf{closed} set.
         \end{itemize}
@@ -29,7 +29,7 @@
         \begin{enumerate}[label=(\arabic*),start=0]
             \item $\R^n$ is open and closed. The empty set $\varnothing$ is also open and closed.
             \item An open $n$-ball is open. Note
-            $$ \operatorname{ext}(B(\vec a; r)) = \{ \vec x\in \R^n : \| \vec x - \vec a\| > r\}, \quad \partial B(\vec a; r) = \{ \vec x\in \R^n : \| \vec x - \vec a\| = r\}. $$
+            $$ \operatorname{ext}(B(\bm a; r)) = \{ \bm x\in \R^n : \| \bm x - \bm a\| > r\}, \quad \partial B(\bm a; r) = \{ \bm x\in \R^n : \| \bm x - \bm a\| = r\}. $$
             \item Let $A_1 = (a,b)$ and $A_2 = (c,d)$ where $a<b$, $c<d$ and $A_1, A_2 \subseteq \R$. Then $A_1\times A_2 = \{ (x,y) : x\in A_1, y\in A_2\}$ is an open set in $\R^2$.
         \end{enumerate}
     \end{exampleenv}
@@ -37,35 +37,35 @@
         Let $S\subseteq \R^n$. Then $\operatorname{int}(S)$, $\operatorname{ext}(S)$ and $\partial S$ are mutually disjoint and $\R^n = \operatorname{int}(S) \cup \operatorname{ext}(S) \cup \partial S$.
     \end{propositionenv}
     \begin{definitionenv}
-        Consider $S \subseteq \R^n$ and function $\vec f:S\to \R^m$. 
+        Consider $S \subseteq \R^n$ and function $\bm f:S\to \R^m$. 
         \begin{itemize}
-            \item If $\vec a\in \R^n$ and $\vec b \in \R^m$, we write $$ \lim_{\vec x \to \vec a} \vec f(\vec x) = \vec b \quad \text{or} \quad \vec f(\vec x) \to \vec b \text{ as } \vec x \to \vec a $$ to mean that $$ \lim_{\left\|\vec x - \vec a\right\| \to 0} \left\|\vec f(\vec x) - \vec b\right\| = 0. $$
-            \item $\vec f$ is said to be \textbf{continuous} at $\vec a$ if $f$ is defined at $\vec a$ and $\displaystyle \lim_{\vec x \to \vec a} \vec f(\vec x) = \vec f(\vec a)$.
-            \item $\vec f$ is said to be \textbf{continuous} on $S$ if $\vec f$ is continuous at every point of $S$.
+            \item If $\bm a\in \R^n$ and $\bm b \in \R^m$, we write $$ \lim_{\bm x \to \bm a} \bm f(\bm x) = \bm b \quad \text{or} \quad \bm f(\bm x) \to \bm b \text{ as } \bm x \to \bm a $$ to mean that $$ \lim_{\left\|\bm x - \bm a\right\| \to 0} \left\|\bm f(\bm x) - \bm b\right\| = 0. $$
+            \item $\bm f$ is said to be \textbf{continuous} at $\bm a$ if $f$ is defined at $\bm a$ and $\displaystyle \lim_{\bm x \to \bm a} \bm f(\bm x) = \bm f(\bm a)$.
+            \item $\bm f$ is said to be \textbf{continuous} on $S$ if $\bm f$ is continuous at every point of $S$.
         \end{itemize}
     \end{definitionenv}
     \begin{theoremenv}
-        If $\displaystyle \lim_{\vec x \to \vec a} \vec f(\vec x) = \vec b$ and $\displaystyle \lim_{\vec x \to \vec a} \vec g(\vec x) = \vec c$, then
+        If $\displaystyle \lim_{\bm x \to \bm a} \bm f(\bm x) = \bm b$ and $\displaystyle \lim_{\bm x \to \bm a} \bm g(\bm x) = \bm c$, then
         \begin{itemize}
-            \item For $\alpha, \beta \in \R$, $\displaystyle \lim_{\vec x \to \vec a} (\alpha \vec f + \beta \vec g)(\vec x) = \alpha \vec b + \beta \vec c$;
-            \item $\displaystyle \lim_{\vec x \to \vec a} (\vec f \cdot \vec g)(\vec x) = \vec b \cdot \vec c$;
-            \item $\displaystyle \lim_{\vec x \to \vec a} \left\|\vec f (\vec x) \right\| = \left\|\vec b\right\|$.
+            \item For $\alpha, \beta \in \R$, $\displaystyle \lim_{\bm x \to \bm a} (\alpha \bm f + \beta \bm g)(\bm x) = \alpha \bm b + \beta \bm c$;
+            \item $\displaystyle \lim_{\bm x \to \bm a} (\bm f \cdot \bm g)(\bm x) = \bm b \cdot \bm c$;
+            \item $\displaystyle \lim_{\bm x \to \bm a} \left\|\bm f (\bm x) \right\| = \left\|\bm b\right\|$.
         \end{itemize}
     \end{theoremenv}
     \begin{theoremenv}
-        Suppose $\vec f$ and $\vec g$ are functions such that the composition $\vec f \circ \vec g$ is well-defined at $\vec a$. If $\vec g$ is continuous at $\vec a$ and $\vec f$ is continuous at $\vec g(\vec a)$, then $\vec f \circ \vec g$ is continuous at $\vec a$.
+        Suppose $\bm f$ and $\bm g$ are functions such that the composition $\bm f \circ \bm g$ is well-defined at $\bm a$. If $\bm g$ is continuous at $\bm a$ and $\bm f$ is continuous at $\bm g(\bm a)$, then $\bm f \circ \bm g$ is continuous at $\bm a$.
     \end{theoremenv}
     \begin{exampleenv}
         \begin{enumerate}
-            \item Suppose $\vec f=(f_1, \ldots, f_m):\R^n \to \R^m$ is a function. Then $\vec f$ is continuous at $\vec a$ if and only if each component function $f_i$ is continuous at $\vec a$ for $i=1, \ldots, m$.
-            \item $\vec f(\vec x) = \vec x$ is called the \textbf{identity function}.
+            \item Suppose $\bm f=(f_1, \ldots, f_m):\R^n \to \R^m$ is a function. Then $\bm f$ is continuous at $\bm a$ if and only if each component function $f_i$ is continuous at $\bm a$ for $i=1, \ldots, m$.
+            \item $\bm f(\bm x) = \bm x$ is called the \textbf{identity function}.
             % \item A linear map $f:\R^n \to \R^m$. Then
-            % $$ \lim_{\left\|h\right\| \to 0} \frac{\| f(\vec a + \vec h) - f(\vec a)\|}{\| \vec h\|} = \lim_{\left\|h\right\| \to 0} \frac{\| f(h)\|}{\| h\|}.$$
-            % If $\vec h \ne \vec 0$,
+            % $$ \lim_{\left\|h\right\| \to 0} \frac{\| f(\bm a + \bm h) - f(\bm a)\|}{\| \bm h\|} = \lim_{\left\|h\right\| \to 0} \frac{\| f(h)\|}{\| h\|}.$$
+            % If $\bm h \ne \bm 0$,
             \item Polynomials in $n$ variable
-            $$ P(\vec x) = \sum_{i_1, \ldots, i_n} c_{i_1, \ldots, i_n} x_1^{i_1} \cdots x_n^{i_n} $$
-            are continuous for all $\vec x$.
-            \item Scalar fields of the form $f(\vec x) = \dfrac{P(\vec x)}{Q(\vec x)}$ where $P$ and $Q$ are polynomials and $Q(\vec x) \ne 0$ are continuous at any $\vec a$ with $Q(\vec a) \ne 0$.
+            $$ P(\bm x) = \sum_{i_1, \ldots, i_n} c_{i_1, \ldots, i_n} x_1^{i_1} \cdots x_n^{i_n} $$
+            are continuous for all $\bm x$.
+            \item Scalar fields of the form $f(\bm x) = \dfrac{P(\bm x)}{Q(\bm x)}$ where $P$ and $Q$ are polynomials and $Q(\bm x) \ne 0$ are continuous at any $\bm a$ with $Q(\bm a) \ne 0$.
             \item The function
             $$ f(x,y) = \begin{cases}
                 0, & (x,y) = (0,0); \\[6pt]
@@ -110,13 +110,13 @@
     \end{exampleenv}
     \section{The Derivative of a Scalar Field}
     \begin{definitionenv}
-        Given a scalar field $f:S\to \R$ where $S\subseteq \R^n$. Let $\vec a \in \operatorname{int} S$ and $\vec y \in \R^n$.
+        Given a scalar field $f:S\to \R$ where $S\subseteq \R^n$. Let $\bm a \in \operatorname{int} S$ and $\bm y \in \R^n$.
         \begin{itemize}
-            \item The \textbf{derivative of $f$ at $\vec a$ with respect to $\vec y$} is denoted by $f'(\vec a; \vec y)$ and is defined as
-            $$ f'(\vec a; \vec y) := \lim_{h\to 0} \frac{f(\vec a + h \vec y) - f(\vec a)}{h}, $$
+            \item The \textbf{derivative of $f$ at $\bm a$ with respect to $\bm y$} is denoted by $f'(\bm a; \bm y)$ and is defined as
+            $$ f'(\bm a; \bm y) := \lim_{h\to 0} \frac{f(\bm a + h \bm y) - f(\bm a)}{h}, $$
             provided the limit exists.
-            \item In particular, if $\vec y$ is a unit vector, we also call $f'(\vec a; \vec y)$ a \textbf{directional derivative} of $f$ at $\vec a$ in the direction $\vec y$.
-            \item In particular, if $\vec y = \vec e_k$ is the $k$-th standard basis vector, we call $f'(\vec a; \vec e_k)$ the \textbf{partial derivative} of $f$ at $\vec a$ with respect to $x_k$ and denote it by $\dfrac{\partial f}{\partial x_k}(\vec a)$ or $D_k f(\vec a)$.
+            \item In particular, if $\bm y$ is a unit vector, we also call $f'(\bm a; \bm y)$ a \textbf{directional derivative} of $f$ at $\bm a$ in the direction $\bm y$.
+            \item In particular, if $\bm y = \bm e_k$ is the $k$-th standard basis vector, we call $f'(\bm a; \bm e_k)$ the \textbf{partial derivative} of $f$ at $\bm a$ with respect to $x_k$ and denote it by $\dfrac{\partial f}{\partial x_k}(\bm a)$ or $D_k f(\bm a)$.
         \end{itemize}
     \end{definitionenv}
     \begin{remarkenv}
@@ -135,155 +135,155 @@
         $$
         is not continuous at $(0,0)$ since approaching $(0,0)$ along the path $y=x^2$ gives
         $$ \lim_{x\to 0} f(x,x^2) = \lim_{x\to 0} \frac{x^4}{2x^4} = \frac{1}{2} \ne f(0,0) = 0. $$
-        However, the derivative $f'(\vec 0; \vec y)$ exists for any $\vec y = (y_1, y_2)$ since
-        $$ f'(\vec 0; \vec y) = \lim_{h\to 0} \frac{f(h y_1, h y_2) - f(0,0)}{h} = \lim_{h\to 0} \frac{h^3 y_1^2 y_2}{h^4 y_1^4 + h^2 y_2^2}= \lim_{h\to 0} \frac{y_1^2 y_2}{h^2 y_1^4 + y_2^2}.$$
+        However, the derivative $f'(\bm 0; \bm y)$ exists for any $\bm y = (y_1, y_2)$ since
+        $$ f'(\bm 0; \bm y) = \lim_{h\to 0} \frac{f(h y_1, h y_2) - f(0,0)}{h} = \lim_{h\to 0} \frac{h^3 y_1^2 y_2}{h^4 y_1^4 + h^2 y_2^2}= \lim_{h\to 0} \frac{y_1^2 y_2}{h^2 y_1^4 + y_2^2}.$$
         If \(y_2 \neq 0\), then
         \[
-        f'(\vec 0;\vec y)
+        f'(\bm 0;\bm y)
         =
         \frac{y_1^2}{y_2}.
         \]
         If \(y_2=0\), then \(f(hy_1,0)=0\), so
         \[
-        f'(\vec 0;\vec y)=0.
+        f'(\bm 0;\bm y)=0.
         \]
         This indicates that the existence of directional derivatives does not necessarily imply the continuity of the function. However, if we still want differentiability to imply continuity like in the case of $f:\R \to \R$, we need a stronger definition of differentiability.
             
     \end{exampleenv}
     \begin{theoremenv}
-        For a fixed $\vec a, \vec y \in \R^n$, let $g(t):= f(\vec a + t \vec y)$ for $t\in \R$. Then $g'(t)$ exists if and only if $f'(\vec a + t \vec y; \vec y)$ exists, in which case $g'(t) = f'(\vec a + t \vec y; \vec y)$. Particularly, $f'(\vec a; \vec y) = g'(0)$.
+        For a fixed $\bm a, \bm y \in \R^n$, let $g(t):= f(\bm a + t \bm y)$ for $t\in \R$. Then $g'(t)$ exists if and only if $f'(\bm a + t \bm y; \bm y)$ exists, in which case $g'(t) = f'(\bm a + t \bm y; \bm y)$. Particularly, $f'(\bm a; \bm y) = g'(0)$.
     \end{theoremenv}
     \begin{theoremenv}
-        Suppose $f'(\vec a + t\vec y; \vec y)$ exists for any $t\in [0,1]$. Then $f(\vec a + \vec y) - f(\vec a) = f'(\vec a + \theta \vec y; \vec y)$ for some $\theta \in (0,1)$.
+        Suppose $f'(\bm a + t\bm y; \bm y)$ exists for any $t\in [0,1]$. Then $f(\bm a + \bm y) - f(\bm a) = f'(\bm a + \theta \bm y; \bm y)$ for some $\theta \in (0,1)$.
     \end{theoremenv}
     \begin{definitionenv}
-        Consider a scalar field $f:S\to \R$ where $S\subseteq \R^n$ and $\vec a \in \operatorname{int} S$. We say $f$ is \textbf{differentiable} at $\vec a$ if there exists a linear map $T_{\vec a}:\R^n \to \R$ and a function $E:\R^n \times \R^n \to \R$ such that
-        $$ f(\vec a + \vec v) = f(\vec a) + T_{\vec a}(\vec v) + \|v\|E(\vec a, \vec v) $$
-        for any $\vec v$ with $\vec a + \vec v \in B(\vec a;r)\subseteq S$ with $r>0$, where $E(\vec a, \vec v) \to 0$ as $\vec v \to \vec 0$.
+        Consider a scalar field $f:S\to \R$ where $S\subseteq \R^n$ and $\bm a \in \operatorname{int} S$. We say $f$ is \textbf{differentiable} at $\bm a$ if there exists a linear map $T_{\bm a}:\R^n \to \R$ and a function $E:\R^n \times \R^n \to \R$ such that
+        $$ f(\bm a + \bm v) = f(\bm a) + T_{\bm a}(\bm v) + \|v\|E(\bm a, \bm v) $$
+        for any $\bm v$ with $\bm a + \bm v \in B(\bm a;r)\subseteq S$ with $r>0$, where $E(\bm a, \bm v) \to 0$ as $\bm v \to \bm 0$.
 
-        The linear map $T_{\vec a}$ is called the \textbf{total derivative} of $f$ at $\vec a$. The above equation is called the \textbf{first-order Taylor expansion} of $f(\vec a+\vec v)$, whose error term is $\| v\|E(\vec a, \vec v)=o(\|\vec v\|)$.
+        The linear map $T_{\bm a}$ is called the \textbf{total derivative} of $f$ at $\bm a$. The above equation is called the \textbf{first-order Taylor expansion} of $f(\bm a+\bm v)$, whose error term is $\| v\|E(\bm a, \bm v)=o(\|\bm v\|)$.
     \end{definitionenv}
     \begin{remarkenv}
         Note we cannot define derivative through quotient like in the case of $f:\R \to \R$ since we do not have a notion of division in $\R^n$. Instead, inspired by Taylor's expansion, we define the derivative through linear approximation, which is more general and can be applied to functions between general normed vector spaces.
     \end{remarkenv}
     \begin{theoremenv}
-        Suppose $f$ is differentiable at $\vec a$ with total derivative $T_{\vec a}$. Then $f'(\vec a; \vec y)$ exists for any $\vec y\in \R^n$ and $T_{\vec a}(\vec y) = f'(\vec a; \vec y)$. Furthermore, 
-        $$ f'(\vec a; \vec y) = \sum_{k=1}^n y_k \frac{\partial f}{\partial x_k}(\vec a). $$
+        Suppose $f$ is differentiable at $\bm a$ with total derivative $T_{\bm a}$. Then $f'(\bm a; \bm y)$ exists for any $\bm y\in \R^n$ and $T_{\bm a}(\bm y) = f'(\bm a; \bm y)$. Furthermore, 
+        $$ f'(\bm a; \bm y) = \sum_{k=1}^n y_k \frac{\partial f}{\partial x_k}(\bm a). $$
     \end{theoremenv}
     \begin{notationenv}
-        The vector $\displaystyle\left(\frac{\partial f}{\partial x_1}(\vec a), \ldots, \frac{\partial f}{\partial x_n}(\vec a)\right)$ is called the \textbf{gradient} of $f$ at $\vec a$ and is denoted by $\nabla f(\vec a)$. Then we can write $$f'(\vec a; \vec y) = \nabla f(\vec a) \cdot \vec y.$$
+        The vector $\displaystyle\left(\frac{\partial f}{\partial x_1}(\bm a), \ldots, \frac{\partial f}{\partial x_n}(\bm a)\right)$ is called the \textbf{gradient} of $f$ at $\bm a$ and is denoted by $\nabla f(\bm a)$. Then we can write $$f'(\bm a; \bm y) = \nabla f(\bm a) \cdot \bm y.$$
         With this notation, we can also write the first-order Taylor expansion as
-        $$ f(\vec a + \vec v) = f(\vec a) + \nabla f(\vec a) \cdot \vec v + o(\|\vec v\|). $$
+        $$ f(\bm a + \bm v) = f(\bm a) + \nabla f(\bm a) \cdot \bm v + o(\|\bm v\|). $$
         This is quite similar to the first-order Taylor expansion for $f:\R \to \R$ given by
         $$ f(a + h) = f(a) + f'(a) h + o(h). $$
     \end{notationenv}
     \begin{theoremenv}
-        If a scalar field is differentiable at $\vec a$, then it is continuous at $\vec a$.
+        If a scalar field is differentiable at $\bm a$, then it is continuous at $\bm a$.
     \end{theoremenv}
     \begin{theoremenv}
-        If all the partial derivatives $D_1 f, \ldots, D_n f$ exist in some open $n-$ball $B(\vec a)$ and continuous at $\vec a$, then $f$ is differentiable at $\vec a$, in which case we also say $f$ is \textbf{continuously differentiable} at $\vec a$.
+        If all the partial derivatives $D_1 f, \ldots, D_n f$ exist in some open $n-$ball $B(\bm a)$ and continuous at $\bm a$, then $f$ is differentiable at $\bm a$, in which case we also say $f$ is \textbf{continuously differentiable} at $\bm a$.
     \end{theoremenv}
     \begin{theoremenv}
-        Suppose $f$ is a scalar field on an open set $S\subseteq \R^n$ and $\vec r$ is a vector-valued function mapping $J\subseteq \R$ to $S$. Define the composite function $g = f \circ \vec r$ on $J$ as $g(t) = f(\vec r(t))$ for every $t\in J$. If $f$ is differentiable at $\vec r(t)$ and $\vec r$ is differentiable at $t$, then $g$ is differentiable at $t$ and
-        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r'(t). $$
+        Suppose $f$ is a scalar field on an open set $S\subseteq \R^n$ and $\bm r$ is a vector-valued function mapping $J\subseteq \R$ to $S$. Define the composite function $g = f \circ \bm r$ on $J$ as $g(t) = f(\bm r(t))$ for every $t\in J$. If $f$ is differentiable at $\bm r(t)$ and $\bm r$ is differentiable at $t$, then $g$ is differentiable at $t$ and
+        $$ g'(t) = \nabla f(\bm r(t)) \cdot \bm r'(t). $$
     \end{theoremenv}
     \begin{proofenv}
-        Suppose $\vec r'(t)$ exists for $t\in J$ and let $\vec a = \vec r(t)$. Since $a\in S$ and $S$ is open, there is an open $n$-ball $B(\vec a) \subseteq S$. Note $\vec r$ is continuous at $t$, so we can consider $h\ne 0$ but with $\left\|h\right\|$ small enough so that $\vec r(t+h) \in B(\vec a)$. Let $\vec y = \vec r(t+h) - \vec r(t)$, then
-        $$ g(t+h) - g(t) = f(\vec r(t+h)) - f(\vec r(t)) = f(\vec a + \vec y) - f(\vec a) = \nabla f(\vec a) \cdot \vec y + o(\|\vec y\|). $$
+        Suppose $\bm r'(t)$ exists for $t\in J$ and let $\bm a = \bm r(t)$. Since $a\in S$ and $S$ is open, there is an open $n$-ball $B(\bm a) \subseteq S$. Note $\bm r$ is continuous at $t$, so we can consider $h\ne 0$ but with $\left\|h\right\|$ small enough so that $\bm r(t+h) \in B(\bm a)$. Let $\bm y = \bm r(t+h) - \bm r(t)$, then
+        $$ g(t+h) - g(t) = f(\bm r(t+h)) - f(\bm r(t)) = f(\bm a + \bm y) - f(\bm a) = \nabla f(\bm a) \cdot \bm y + o(\|\bm y\|). $$
         Then
-        $$ \frac{g(t+h) - g(t)}{h} = \nabla f(\vec a) \cdot \frac{\vec y}{h} + o\left( \frac{\|\vec y\|}{|h|}\right) = \nabla f(\vec a) \cdot \frac{\vec r(t+h) - \vec r(t)}{h} + o\left( \frac{\|\vec r(t+h) - \vec r(t)\|}{|h|}\right). $$
-        Since $\vec r$ is differentiable at $t$, we have $\displaystyle \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h} = \vec r'(t)$ and thus $\displaystyle \lim_{h\to 0} o\left( \frac{\|\vec r(t+h) - \vec r(t)\|}{|h|}\right) = 0$. Thus
-        $$ g'(t) = \lim_{h\to 0} \frac{g(t+h) - g(t)}{h} = \nabla f(\vec a) \cdot \vec r'(t). $$
+        $$ \frac{g(t+h) - g(t)}{h} = \nabla f(\bm a) \cdot \frac{\bm y}{h} + o\left( \frac{\|\bm y\|}{|h|}\right) = \nabla f(\bm a) \cdot \frac{\bm r(t+h) - \bm r(t)}{h} + o\left( \frac{\|\bm r(t+h) - \bm r(t)\|}{|h|}\right). $$
+        Since $\bm r$ is differentiable at $t$, we have $\displaystyle \lim_{h\to 0} \frac{\bm r(t+h) - \bm r(t)}{h} = \bm r'(t)$ and thus $\displaystyle \lim_{h\to 0} o\left( \frac{\|\bm r(t+h) - \bm r(t)\|}{|h|}\right) = 0$. Thus
+        $$ g'(t) = \lim_{h\to 0} \frac{g(t+h) - g(t)}{h} = \nabla f(\bm a) \cdot \bm r'(t). $$
     \end{proofenv}
     \begin{exampleenv}
-        If $\vec r$ describes a curve in $\R^2$ or $\R^3$ and $f:\R^2 \to \R$, $g=f\circ \vec r$, then
-        $$ g'(t) = \nabla f(\vec r(t)) \cdot \vec r'(t) = \left\|\vec r'(t)\right\|\left(\nabla f(\vec r(t)) \cdot T(t)\right) $$
-        where $T$ is the unit tangent vector of the curve. Here the term $\nabla f(\vec r(t)) \cdot T(t)$ is called the \textbf{directional derivative} of $f$ along the curve provided it's well-defined.
+        If $\bm r$ describes a curve in $\R^2$ or $\R^3$ and $f:\R^2 \to \R$, $g=f\circ \bm r$, then
+        $$ g'(t) = \nabla f(\bm r(t)) \cdot \bm r'(t) = \left\|\bm r'(t)\right\|\left(\nabla f(\bm r(t)) \cdot T(t)\right) $$
+        where $T$ is the unit tangent vector of the curve. Here the term $\nabla f(\bm r(t)) \cdot T(t)$ is called the \textbf{directional derivative} of $f$ along the curve provided it's well-defined.
     \end{exampleenv}
 
     \section{The Derivatives of a Vector Field}
     \begin{definitionenv}
-        Given a vector field $\vec f:S\to \R^m$ where $S\subseteq \R^n$. Let $\vec a \in \operatorname{int} S$ and $\vec y \in \R^n$.
+        Given a vector field $\bm f:S\to \R^m$ where $S\subseteq \R^n$. Let $\bm a \in \operatorname{int} S$ and $\bm y \in \R^n$.
         \begin{itemize}
-            \item The \textbf{derivative of $\vec f$ at $\vec a$ with respect to $\vec y$} is denoted by $\vec f'(\vec a; \vec y)$ and is defined as
-            $$ \vec{f}'(\vec a; \vec y) := \lim_{h\to 0} \frac{\vec f(\vec a + h \vec y) - \vec f(\vec a)}{h}\in \R^m, $$
-            provided the limit exists. Let $f_k$ denote the $k$-th component of $\vec f$, then $\vec f'(\vec a; \vec y) $ exists if and only if $f_k'(\vec a; \vec y)$ exists for $k=1, \ldots, m$, in which case $$\vec f'(\vec a; \vec y) = (f_1'(\vec a; \vec y), \ldots, f_m'(\vec a; \vec y))=\sum_{k=1}^m f_k'(\vec a; \vec y) \vec e_k.$$        
-            \item We say that $\vec f$ is \textbf{differentiable} at $\vec a$ if there exists a linear map $\vec T_{\vec a}:\R^n \to \R^m$ and a function $\vec E:\R^n \times \R^n \to \R^m$ such that
-            $$ \vec f(\vec a + \vec v) = \vec f(\vec a) + \vec T_{\vec a}(\vec v) + \|v\| \vec E(\vec a, \vec v) $$
-            for any $\vec v$ with $\vec a + \vec v \in B(\vec a;r)\subseteq S$ with $r>0$, where $\vec E(\vec a, \vec v) \to \vec 0$ as $\vec v \to \vec 0$. The linear map $\vec T_{\vec a}$ uniquely exists and is called the \textbf{total derivative} of $\vec f$ at $\vec a$.
+            \item The \textbf{derivative of $\bm f$ at $\bm a$ with respect to $\bm y$} is denoted by $\bm f'(\bm a; \bm y)$ and is defined as
+            $$ \bm{f}'(\bm a; \bm y) := \lim_{h\to 0} \frac{\bm f(\bm a + h \bm y) - \bm f(\bm a)}{h}\in \R^m, $$
+            provided the limit exists. Let $f_k$ denote the $k$-th component of $\bm f$, then $\bm f'(\bm a; \bm y) $ exists if and only if $f_k'(\bm a; \bm y)$ exists for $k=1, \ldots, m$, in which case $$\bm f'(\bm a; \bm y) = (f_1'(\bm a; \bm y), \ldots, f_m'(\bm a; \bm y))=\sum_{k=1}^m f_k'(\bm a; \bm y) \bm e_k.$$        
+            \item We say that $\bm f$ is \textbf{differentiable} at $\bm a$ if there exists a linear map $\bm T_{\bm a}:\R^n \to \R^m$ and a function $\bm E:\R^n \times \R^n \to \R^m$ such that
+            $$ \bm f(\bm a + \bm v) = \bm f(\bm a) + \bm T_{\bm a}(\bm v) + \|v\| \bm E(\bm a, \bm v) $$
+            for any $\bm v$ with $\bm a + \bm v \in B(\bm a;r)\subseteq S$ with $r>0$, where $\bm E(\bm a, \bm v) \to \bm 0$ as $\bm v \to \bm 0$. The linear map $\bm T_{\bm a}$ uniquely exists and is called the \textbf{total derivative} of $\bm f$ at $\bm a$.
         \end{itemize}
     \end{definitionenv}
     \begin{theoremenv}
-        If $\vec f$ is differentiable at $\vec a$ with total derivative $\vec T_{\vec a}$, then $\vec f'(\vec a; \vec y)$ exists for any $\vec y\in \R^n$ and $\vec T_{\vec a}(\vec y) = \vec f'(\vec a; \vec y)$. Furthermore, if we write $\vec f = (f_1, \ldots, f_m)$ and $\vec y = (y_1, \ldots, y_n)$, then
-        $$ \vec T_{\vec a}(\vec y) = \vec f'(\vec a; \vec y) = \left( \nabla f_1(\vec a) \cdot \vec y, \ldots, \nabla f_m(\vec a) \cdot \vec y \right) = \sum_{k=1}^n \left( \nabla f_k (\vec a) \cdot \vec y \right) \vec e_k. $$
+        If $\bm f$ is differentiable at $\bm a$ with total derivative $\bm T_{\bm a}$, then $\bm f'(\bm a; \bm y)$ exists for any $\bm y\in \R^n$ and $\bm T_{\bm a}(\bm y) = \bm f'(\bm a; \bm y)$. Furthermore, if we write $\bm f = (f_1, \ldots, f_m)$ and $\bm y = (y_1, \ldots, y_n)$, then
+        $$ \bm T_{\bm a}(\bm y) = \bm f'(\bm a; \bm y) = \left( \nabla f_1(\bm a) \cdot \bm y, \ldots, \nabla f_m(\bm a) \cdot \bm y \right) = \sum_{k=1}^n \left( \nabla f_k (\bm a) \cdot \bm y \right) \bm e_k. $$
     \end{theoremenv}
     \begin{remarkenv}
-        Note we can also write $\vec T_{\vec a}(\vec y)$ as a matrix-vector product as follows:
-        $$ \vec T_{\vec a}(\vec y) = \begin{pmatrix}
-            \nabla f_1(\vec a) \\ \vdots \\ \nabla f_m(\vec a)
-        \end{pmatrix} \vec y = \begin{pmatrix}
-            \dfrac{\partial f_1}{\partial x_1}(\vec a) & \dfrac{\partial f_1}{\partial x_2}(\vec a) & \cdots & \dfrac{\partial f_1}{\partial x_n}(\vec a) \\[8pt]
-            \dfrac{\partial f_2}{\partial x_1}(\vec a) & \dfrac{\partial f_2}{\partial x_2}(\vec a) & \cdots & \dfrac{\partial f_2}{\partial x_n}(\vec a) \\[8pt]
+        Note we can also write $\bm T_{\bm a}(\bm y)$ as a matrix-vector product as follows:
+        $$ \bm T_{\bm a}(\bm y) = \begin{pmatrix}
+            \nabla f_1(\bm a) \\ \vdots \\ \nabla f_m(\bm a)
+        \end{pmatrix} \bm y = \begin{pmatrix}
+            \dfrac{\partial f_1}{\partial x_1}(\bm a) & \dfrac{\partial f_1}{\partial x_2}(\bm a) & \cdots & \dfrac{\partial f_1}{\partial x_n}(\bm a) \\[8pt]
+            \dfrac{\partial f_2}{\partial x_1}(\bm a) & \dfrac{\partial f_2}{\partial x_2}(\bm a) & \cdots & \dfrac{\partial f_2}{\partial x_n}(\bm a) \\[8pt]
                 \vdots & \vdots & \ddots & \vdots \\[8pt]
-            \dfrac{\partial f_m}{\partial x_1}(\vec a) & \dfrac{\partial f_m}{\partial x_2}(\vec a) & \cdots & \dfrac{\partial f_m}{\partial x_n}(\vec a)
-        \end{pmatrix} \vec y. $$
-        This $m\times n$ matrix is called the \textbf{Jacobian matrix} of $\vec f$ at $\vec a$ and is denoted by $\mathbf{D}_{\vec f(\vec a)}$.
-        The $kj$-th entry is actually $$\left[ \mathbf{D}_{\vec f(\vec a)} \right]_{kj} = \dfrac{\partial f_k}{\partial x_j}(\vec a) = D_j f_k(\vec a).$$
+            \dfrac{\partial f_m}{\partial x_1}(\bm a) & \dfrac{\partial f_m}{\partial x_2}(\bm a) & \cdots & \dfrac{\partial f_m}{\partial x_n}(\bm a)
+        \end{pmatrix} \bm y. $$
+        This $m\times n$ matrix is called the \textbf{Jacobian matrix} of $\bm f$ at $\bm a$ and is denoted by $\mathbf{D}_{\bm f(\bm a)}$.
+        The $kj$-th entry is actually $$\left[ \mathbf{D}_{\bm f(\bm a)} \right]_{kj} = \dfrac{\partial f_k}{\partial x_j}(\bm a) = D_j f_k(\bm a).$$
 
-        We often simply denote the total derivative $\vec T_{\vec a}$ by $\vec f'(\vec a)$, which is a linear map from $\R^n$ to $\R^m$. Also we know $\vec f'(\vec a; \vec y) = \mathbf D_{\vec f(\vec a)} \vec y$ for any $\vec y\in \R^n$. Thus $\mathbf D_{\vec f(\vec a)}$ is the matrix representation of the linear map $\vec f'(\vec a)$ with respect to the standard bases of $\R^n$ and $\R^m$. We also have
-        $$ \vec f(\vec a + \vec v) = \vec f(\vec a) + \mathbf D_{\vec f(\vec a)} \vec v + \left\|\vec v\right\| \vec E(\vec a, \vec v),$$
-        where $\vec E(\vec a, \vec v) \to \vec 0$ as $\vec v \to \vec 0$.
+        We often simply denote the total derivative $\bm T_{\bm a}$ by $\bm f'(\bm a)$, which is a linear map from $\R^n$ to $\R^m$. Also we know $\bm f'(\bm a; \bm y) = \mathbf D_{\bm f(\bm a)} \bm y$ for any $\bm y\in \R^n$. Thus $\mathbf D_{\bm f(\bm a)}$ is the matrix representation of the linear map $\bm f'(\bm a)$ with respect to the standard bases of $\R^n$ and $\R^m$. We also have
+        $$ \bm f(\bm a + \bm v) = \bm f(\bm a) + \mathbf D_{\bm f(\bm a)} \bm v + \left\|\bm v\right\| \bm E(\bm a, \bm v),$$
+        where $\bm E(\bm a, \bm v) \to \bm 0$ as $\bm v \to \bm 0$.
     \end{remarkenv}
     \begin{theoremenv}
-        If a vector field $\vec f$ is differentiable at $\vec a$, then it is continuous at $\vec a$.
+        If a vector field $\bm f$ is differentiable at $\bm a$, then it is continuous at $\bm a$.
     \end{theoremenv}
     \begin{lemmaenv}
-        Suppose $\vec g$ is differentiable at $\vec a$. Then $\| \vec g(\vec a) (\vec v) \| \le M(\vec a) \| \vec v\|$ where $M(\vec a)=\displaystyle \sum_{k=1}^m \left\|\nabla g_k(\vec a)\right\|$
+        Suppose $\bm g$ is differentiable at $\bm a$. Then $\| \bm g(\bm a) (\bm v) \| \le M(\bm a) \| \bm v\|$ where $M(\bm a)=\displaystyle \sum_{k=1}^m \left\|\nabla g_k(\bm a)\right\|$
     \end{lemmaenv}
     \begin{proofenv}
-        $$ \| \vec g(\vec a) (\vec v) \| = \left\| \sum_{k=1}^m \left( \nabla g_k(\vec a) \cdot \vec v\right) \vec e_k\right\| \le \sum_{k=1}^m \left| \nabla g_k(\vec a) \cdot \vec v\right| \le \sum_{k=1}^m \|\nabla g_k(\vec a)\| \|\vec v\|. $$
+        $$ \| \bm g(\bm a) (\bm v) \| = \left\| \sum_{k=1}^m \left( \nabla g_k(\bm a) \cdot \bm v\right) \bm e_k\right\| \le \sum_{k=1}^m \left| \nabla g_k(\bm a) \cdot \bm v\right| \le \sum_{k=1}^m \|\nabla g_k(\bm a)\| \|\bm v\|. $$
     \end{proofenv}
     \begin{theoremenv}
-        Suppose $\vec f$ and $\vec g$ are vector fields such that the composition $\vec h = \vec f \circ \vec g$ is defined in an opne $n$-ball $B(\vec a)$. If $\vec g$ is differentiable at $\vec a$ with total derivative $\vec g'(\vec a)$ and $\vec f$ is differentiable at $\vec b = \vec g(\vec a)$ with total derivative $\vec f'(\vec b)$, then $h = \vec f \circ \vec g$ is differentiable at $\vec a$ and
-        $$\vec h'(\vec a) =  (\vec f \circ \vec g)'(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a). $$
+        Suppose $\bm f$ and $\bm g$ are vector fields such that the composition $\bm h = \bm f \circ \bm g$ is defined in an opne $n$-ball $B(\bm a)$. If $\bm g$ is differentiable at $\bm a$ with total derivative $\bm g'(\bm a)$ and $\bm f$ is differentiable at $\bm b = \bm g(\bm a)$ with total derivative $\bm f'(\bm b)$, then $h = \bm f \circ \bm g$ is differentiable at $\bm a$ and
+        $$\bm h'(\bm a) =  (\bm f \circ \bm g)'(\bm a) = \bm f'(\bm b) \circ \bm g'(\bm a). $$
     \end{theoremenv}
     \begin{proofenv}
-        We shall consider $\vec h (\vec a + \vec v)$ for $\vec y $ with small $\| \vec y \|$. Note $\vec b = \vec g(\vec a)$, let $\vec v = \vec g(\vec a + \vec y) - \vec g(\vec a) = \vec g(\vec a + \vec y) - \vec b$, then $\vec h (\vec a + \vec y) - \vec h(\vec a) = \vec f(\vec b + \vec v) - \vec f(\vec b)$. 
-        Since $f$ is differentiable at $\vec b=\vec g(\vec a)$, we have
+        We shall consider $\bm h (\bm a + \bm v)$ for $\bm y $ with small $\| \bm y \|$. Note $\bm b = \bm g(\bm a)$, let $\bm v = \bm g(\bm a + \bm y) - \bm g(\bm a) = \bm g(\bm a + \bm y) - \bm b$, then $\bm h (\bm a + \bm y) - \bm h(\bm a) = \bm f(\bm b + \bm v) - \bm f(\bm b)$. 
+        Since $f$ is differentiable at $\bm b=\bm g(\bm a)$, we have
         $$ \begin{aligned}
-            \vec f(\vec b + \vec v) - \vec f(\vec b) &= \vec f'(\vec b)(\vec v) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
-            &= \vec f'(\vec b)(\vec g'(\vec a)(\vec y) + \vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\ 
-            &= \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \|\vec y\| \vec f'(\vec b)(\vec E_g(\vec a, \vec y)) + \|\vec v\| \vec E_f(\vec b, \vec v)\\
-            &= \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \|\vec y\| \vec E(\vec a, \vec y),
+            \bm f(\bm b + \bm v) - \bm f(\bm b) &= \bm f'(\bm b)(\bm v) + \|\bm v\| \bm E_f(\bm b, \bm v)\\
+            &= \bm f'(\bm b)(\bm g'(\bm a)(\bm y) + \bm E_g(\bm a, \bm y)) + \|\bm v\| \bm E_f(\bm b, \bm v)\\ 
+            &= \bm f'(\bm b) \circ \bm g'(\bm a)(\bm y) + \|\bm y\| \bm f'(\bm b)(\bm E_g(\bm a, \bm y)) + \|\bm v\| \bm E_f(\bm b, \bm v)\\
+            &= \bm f'(\bm b) \circ \bm g'(\bm a)(\bm y) + \|\bm y\| \bm E(\bm a, \bm y),
         \end{aligned}$$
-        where $$\vec E(\vec a, \vec y) = \begin{cases}
-            \vec f'(\vec b)(\vec E_g(\vec a, \vec y)) + \dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v), & \vec y \ne \vec 0; \\[6pt]
-            \vec 0, & \vec y = \vec 0.
+        where $$\bm E(\bm a, \bm y) = \begin{cases}
+            \bm f'(\bm b)(\bm E_g(\bm a, \bm y)) + \dfrac{\|\bm v\|}{\|\bm y\|} \bm E_f(\bm b, \bm v), & \bm y \ne \bm 0; \\[6pt]
+            \bm 0, & \bm y = \bm 0.
         \end{cases}$$
-        We still need to show that if $\vec y \to \vec 0$ (with $\vec y \ne \vec 0$), then $\vec E(\vec a, \vec y) \to \vec 0$. Note as $\vec y \to \vec 0$, the first term $\vec f'(\vec b)(\vec E_g(\vec a, \vec y)) \to \vec 0$ since $\vec E_g(\vec a, \vec y) \to \vec 0$ due to the differentiability at $\vec a$ and $\vec f'(\vec b)$ is a linear map and thus continuous. For the second term $\dfrac{\|\vec v\|}{\|\vec y\|} \vec E_f(\vec b, \vec v)$, we will show that the factor $\dfrac{\|\vec v\|}{\|\vec y\|}$ is bounded as $\vec y \to \vec 0$. Note
-        $$ \left\|\vec v\right\| = \left\|\vec g(\vec a + \vec y) - \vec g(\vec a)\right\| = \left\|\vec g'(\vec a)(\vec y) + \|\vec y\| \vec E_g(\vec a, \vec y)\right\| \le \left\|\vec g'(\vec a)(\vec y)\right\| + \|\vec y\| \left\|\vec E_g(\vec a, \vec y)\right\|. $$
-        By the above lemma, we have $\left\|\vec g'(\vec a)(\vec y)\right\| \le M(\vec a) \|\vec y\|$ for some constant $M(\vec a)$. Therefore,
-        $$ \frac{\|\vec v\|}{\|\vec y\|} \le M(\vec a) + \left\|\vec E_g(\vec a, \vec y)\right\|. $$
-        Since $\vec E_g(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$, we know the factor is bounded as long as $\vec y$ is not so far away from $\vec 0$. Thus $\vec E(\vec a, \vec y) \to \vec 0$ as $\vec y \to \vec 0$ and we have $\vec E(\vec a, \vec y) = o(\|\vec y\|)$. Therefore,
-        $$ \vec h(\vec a + \vec y) - \vec h(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + \| \vec y \| \vec E(\vec a, \vec y) = \vec f'(\vec b) \circ \vec g'(\vec a)(\vec y) + o(\|\vec y\|), $$
-        which means $\vec h$ is differentiable at $\vec a$ with total derivative $\vec h'(\vec a) = \vec f'(\vec b) \circ \vec g'(\vec a)$.
+        We still need to show that if $\bm y \to \bm 0$ (with $\bm y \ne \bm 0$), then $\bm E(\bm a, \bm y) \to \bm 0$. Note as $\bm y \to \bm 0$, the first term $\bm f'(\bm b)(\bm E_g(\bm a, \bm y)) \to \bm 0$ since $\bm E_g(\bm a, \bm y) \to \bm 0$ due to the differentiability at $\bm a$ and $\bm f'(\bm b)$ is a linear map and thus continuous. For the second term $\dfrac{\|\bm v\|}{\|\bm y\|} \bm E_f(\bm b, \bm v)$, we will show that the factor $\dfrac{\|\bm v\|}{\|\bm y\|}$ is bounded as $\bm y \to \bm 0$. Note
+        $$ \left\|\bm v\right\| = \left\|\bm g(\bm a + \bm y) - \bm g(\bm a)\right\| = \left\|\bm g'(\bm a)(\bm y) + \|\bm y\| \bm E_g(\bm a, \bm y)\right\| \le \left\|\bm g'(\bm a)(\bm y)\right\| + \|\bm y\| \left\|\bm E_g(\bm a, \bm y)\right\|. $$
+        By the above lemma, we have $\left\|\bm g'(\bm a)(\bm y)\right\| \le M(\bm a) \|\bm y\|$ for some constant $M(\bm a)$. Therefore,
+        $$ \frac{\|\bm v\|}{\|\bm y\|} \le M(\bm a) + \left\|\bm E_g(\bm a, \bm y)\right\|. $$
+        Since $\bm E_g(\bm a, \bm y) \to \bm 0$ as $\bm y \to \bm 0$, we know the factor is bounded as long as $\bm y$ is not so far away from $\bm 0$. Thus $\bm E(\bm a, \bm y) \to \bm 0$ as $\bm y \to \bm 0$ and we have $\bm E(\bm a, \bm y) = o(\|\bm y\|)$. Therefore,
+        $$ \bm h(\bm a + \bm y) - \bm h(\bm a) = \bm f'(\bm b) \circ \bm g'(\bm a)(\bm y) + \| \bm y \| \bm E(\bm a, \bm y) = \bm f'(\bm b) \circ \bm g'(\bm a)(\bm y) + o(\|\bm y\|), $$
+        which means $\bm h$ is differentiable at $\bm a$ with total derivative $\bm h'(\bm a) = \bm f'(\bm b) \circ \bm g'(\bm a)$.
     \end{proofenv}
     \begin{remarkenv}
-        Note the corresponding matrix form of a linear map composition $\vec h = \vec f \circ \vec g$ is given by the matrix product of the Jacobian matrices of $\vec f$ and $\vec g$:
-        $$ \mathbf D_{\vec h(\vec a)} = \mathbf D_{\vec f(\vec b)} \mathbf D_{\vec g(\vec a)}. $$
-        Additionally, suppose $\vec a \in \R^p$, $\vec b \in \R^n$ and $\vec f(\vec b) \in \R^m$, then $\vec h(\vec a) \in \R^m$ and the Jacobian matrix of $\vec h$ at $\vec a$ is given by
-        $$ \left[ \mathbf D_{\vec h(\vec a)} \right]_{kj} = \left[ \mathbf D_{\vec f(\vec b)} \mathbf D_{\vec g(\vec a)} \right]_{kj} = \sum_{i=1}^n \left[ \mathbf D_{\vec f(\vec b)} \right]_{ki} \left[ \mathbf D_{\vec g(\vec a)} \right]_{ij} = \sum_{i=1}^n \frac{\partial f_k}{\partial x_i}(\vec b) \frac{\partial g_i}{\partial x_j}(\vec a), $$
+        Note the corresponding matrix form of a linear map composition $\bm h = \bm f \circ \bm g$ is given by the matrix product of the Jacobian matrices of $\bm f$ and $\bm g$:
+        $$ \mathbf D_{\bm h(\bm a)} = \mathbf D_{\bm f(\bm b)} \mathbf D_{\bm g(\bm a)}. $$
+        Additionally, suppose $\bm a \in \R^p$, $\bm b \in \R^n$ and $\bm f(\bm b) \in \R^m$, then $\bm h(\bm a) \in \R^m$ and the Jacobian matrix of $\bm h$ at $\bm a$ is given by
+        $$ \left[ \mathbf D_{\bm h(\bm a)} \right]_{kj} = \left[ \mathbf D_{\bm f(\bm b)} \mathbf D_{\bm g(\bm a)} \right]_{kj} = \sum_{i=1}^n \left[ \mathbf D_{\bm f(\bm b)} \right]_{ki} \left[ \mathbf D_{\bm g(\bm a)} \right]_{ij} = \sum_{i=1}^n \frac{\partial f_k}{\partial x_i}(\bm b) \frac{\partial g_i}{\partial x_j}(\bm a), $$
         for $k=1, \ldots, m$ and $j=1, \ldots, p$. Equivalently, we can write the chain rule as
-        $$ D_j h_k(\vec a) = \sum_{i=1}^n D_i f_k(\vec b) D_j g_i(\vec a). $$
+        $$ D_j h_k(\bm a) = \sum_{i=1}^n D_i f_k(\bm b) D_j g_i(\bm a). $$
     \end{remarkenv}
     \begin{exampleenv}
 
-        For the special case $\vec a\in \R^p$, $\vec b = \vec g(\vec a) \in \R^n$ and $\vec f(\vec b) \in \R$, the chain rule simplifies to
-        $$ D_j h(\vec a) = \sum_{i=1}^n D_i f(\vec b) D_j g_i(\vec a),\quad j=1, \ldots, p. $$
+        For the special case $\bm a\in \R^p$, $\bm b = \bm g(\bm a) \in \R^n$ and $\bm f(\bm b) \in \R$, the chain rule simplifies to
+        $$ D_j h(\bm a) = \sum_{i=1}^n D_i f(\bm b) D_j g_i(\bm a),\quad j=1, \ldots, p. $$
         \begin{enumerate}[label=(\arabic*), start=1]
             \item In Section 5.2, we cover the case where $p=1$:
-            $$ h'(t) = \sum_{i=1}^n D_i f(\vec b) g_i'(t) = \nabla f(\vec b) \cdot \vec g'(t). $$
-            \item Consider $p=2$ and $n=2$, $\vec a = (s,t)$, $\vec b = \vec g(\vec a) = (x,y)$ with $x = g_1(s,t)$ and $y = g_2(s,t)$, then
+            $$ h'(t) = \sum_{i=1}^n D_i f(\bm b) g_i'(t) = \nabla f(\bm b) \cdot \bm g'(t). $$
+            \item Consider $p=2$ and $n=2$, $\bm a = (s,t)$, $\bm b = \bm g(\bm a) = (x,y)$ with $x = g_1(s,t)$ and $y = g_2(s,t)$, then
             $$ D_1 h(s,t) = D_1 f(x,y) D_1 g_1(s,t) + D_2 f(x,y) D_1 g_2(s,t), $$
             or equivalently,
             $$ \pdv{h}{s} = \pdv{f}{x} \pdv{x}{s} + \pdv{f}{y} \pdv{y}{s}. $$
