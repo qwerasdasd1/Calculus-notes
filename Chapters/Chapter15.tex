@@ -217,3 +217,92 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
     $$
     for any $\varepsilon > 0$. Thus, $\overline{I}(f) = \underline{I}(f)$, which implies $f$ is integrable on $Q$.
 \end{proofenv}
+
+\section{Double Integrals over more General Regions}
+\begin{definitionenv}
+    Suppose $S\subseteq \R^2$ is a bounded region and there is a rectangle $Q=[a,b] \times [c,d]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{etended scalar field} $\tilde f$ of $f$ on $Q$ by
+    $$
+    \tilde f(x,y) := \begin{cases}
+    f(x,y) & \text{if } (x,y) \in S,\\
+    0 & \text{if } (x,y) \in Q\setminus S.
+    \end{cases}
+    $$
+    If $\tilde f$ is integrable on $Q$, then we say $f$ is \textbf{integrable} on $S$ and define the \textbf{double integral} of $f$ over $S$ by
+    $$\iint_S f(x,y) \dd x \dd y := \iint_Q \tilde f(x,y) \dd x \dd y.$$
+\end{definitionenv}
+\begin{remarkenv}
+    We need to show that the definition does not depend on the choice of the rectangle $Q$. Otherwise, the definition is not well-defined. Suppose $Q_1=[a_1,b_1] \times [c_1,d_1]$ and $Q_2=[a_2,b_2] \times [c_2,d_2]$ are two arbitrary rectangles containing $S$. Now define $\tilde f_1$ and $\tilde f_2$ to be the extended scalar fields of $f$ on $Q_1$ and $Q_2$, respectively. Note $S\subseteq Q_1 \cap Q_2$. Thus if $\tilde f_1$ is integrable on $Q_1$, then $\tilde f_1$ is also integrable on $Q_1 \cap Q_2$ and
+    $$\iint_{Q_1} \tilde f_1 = \iint_{Q_1 \cap Q_2} \tilde f_1 = \iint_{Q_1 \cap Q_2} \tilde f_2 = \iint_{Q_2} \tilde f_2.$$
+    Therefore, the definition of the double integral of $f$ over $S$ is invariant under the choice of the rectangle $Q$.
+\end{remarkenv}
+\begin{definitionenv}
+    We define two types of regions in $\R^2$ as follows:
+    \begin{enumerate}[label=(\arabic*)]
+        \item a subset $S_I$ of $\R^2$ is called a \textbf{type I region} if there are two continuous functions $\varphi_1, \varphi_2: [a,b] \to \R$ satisfying $\varphi_1(x) \leq \varphi_2(x)$ for all $x \in [a,b]$ such that
+        $$ S_I = \{(x,y) \in \R^2 : a \leq x \leq b, \varphi_1(x) \leq y \leq \varphi_2(x)\}; $$
+        \item a subset $S_{II}$ of $\R^2$ is called a \textbf{type II region} if there are two continuous functions $\psi_1, \psi_2: [c,d] \to \R$ satisfying $\psi_1(y) \leq \psi_2(y)$ for all $y \in [c,d]$ such that
+        $$ S_{II} = \{(x,y) \in \R^2 : c \leq y \leq d, \psi_1(y) \leq x \leq \psi_2(y)\}. $$
+    \end{enumerate}
+\end{definitionenv}
+\begin{remarkenv}
+    We will consider integrals $\displaystyle \iint_S f$ for regions $S\subseteq \R^2$ that are of type I, type II, or that can be partitioned into finitely many subregions of type I or type II.
+\end{remarkenv}
+\begin{theoremenv}
+    If $\varphi: [a,b] \to \R$ is a continuous function, then the graph of $\varphi$, i.e., the set $\{(x,y) \in \R^2 : y = \varphi(x), a \leq x \leq b\}$, has content zero in $\R^2$.
+\end{theoremenv}
+\begin{theoremenv}
+    Let $S\subseteq \R^2$ be a region of type I between the graphs of two continuous functions $\varphi_1, \varphi_2: [a,b] \to \R$. Suppose $f:S\to \R$ is a scalar field bounded on $S$ and continuous on $\operatorname{int} S$. Then $f$ is integrable on $S$ and its value is given by
+    $$ \iint_S f(x,y) \dd x \dd y = \int_a^b \left[ \int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) \dd y \right] \dd x. $$
+\end{theoremenv}
+\begin{corollaryenv}
+    Let $S\subseteq \R^2$ be a region of type II between the graphs of two continuous functions $\psi_1, \psi_2: [c,d] \to \R$. Suppose $f:S\to \R$ is a scalar field bounded on $S$ and continuous on $\operatorname{int} S$. Then $f$ is integrable on $S$ and its value is given by
+    $$ \iint_S f(x,y) \dd x \dd y = \int_c^d \left[ \int_{\psi_1(y)}^{\psi_2(y)} f(x,y) \dd x \right] \dd y. $$
+\end{corollaryenv}
+\begin{exampleenv}
+    The solid enclosed by the ellipsoid $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$ is given by the set
+    $$
+    E_{a,b,c} := \left\{(x,y,z) \in \R^3 : \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} \leq 1\right\}.
+    $$
+    Let
+    $$S_{a,b} = \left\{(x,y) \in \R^2 : \frac{x^2}{a^2} + \frac{y^2}{b^2} \leq 1\right\}$$
+    and define $f_{a,b,c}: S_{a,b} \to \R$ by
+    $$
+    f(x,y) = c \sqrt{1 - \frac{x^2}{a^2} - \frac{y^2}{b^2}}.
+    $$
+    Then $f_{a,b,c}$ is continuous on $S_{a,b}$ and the ordinate set of $f$ over $S_{a,b}$ is exactly $E_{a,b,c}$. Thus, we have
+    \[
+    \begin{aligned}
+        \text{vol}(E_{a,b,c}) &= \iint_{S_{a,b}} \left[ f(x,y) - (-f(x,y)) \right] \dd x \dd y\\
+        &= 2 \int_{-a}^a \left[ \int_{-b \sqrt{1-(x/a)^2}}^{b \sqrt{1-(x/a)^2}} c \sqrt{1 - \frac{x^2}{a^2} - \frac{y^2}{b^2}} \dd y \right] \dd x\\
+        &= 2 \int_{-a}^a \left[ \int_{-bA}^{bA} c \sqrt{A^2 - \frac{y^2}{b^2}} \dd y \right] \dd x \quad \text{where } A = \sqrt{1 - \frac{x^2}{a^2}}\\
+        &= 2 \int_{-a}^a A^2bc \left[ \int_{-\pi/2}^{\pi/2} \cos^2 \theta \dd \theta \right] \dd x \quad \text{where } y = bA \sin \theta,\theta \in [-\pi/2, \pi/2]\\
+        &= 2 \int_{-a}^a A^2bc \frac{\pi}{2} \dd x \\
+        &= \pi abc \int_{-a}^a \left(1 - \frac{x^2}{a^2}\right) \dd x\\
+        &= \frac{4}{3} \pi abc.
+    \end{aligned}
+    \]
+\end{exampleenv}
+\section{Green's Theorem}
+\begin{definitionenv}
+    Suppose $C$ is a curve described by a continuous vector-valued function $\bm \alpha: [a,b] \to \R^n$. Then
+    \begin{enumerate}[label=(\arabic*)]
+        \item we say $C$ is a \textbf{closed curve} if $\bm \alpha(a) = \bm \alpha(b)$;
+        \item we say $C$ is a \textbf{simple closed curve} if $C$ is a closed curve and $\bm \alpha(t_1) \neq \bm \alpha(t_2)$ for any $t_1, t_2 \in [a,b)$ with $t_1 \neq t_2$.
+        \item we say $C$ is a \textbf{Jordan curve} if it is a simple closed curve in a plane, i.e., $\alpha : [a,b] \to \R^2$.
+        \item The Jordan Curve Theorem states that if $C$ is a Jordan curve, then $\R^2 \setminus C$ is the disjoint union of two connected open subsets. One of these components is bounded and is called the \textbf{inner region}. The other component is unbounded and is called the \textbf{outer region}. Moreover, $C$ is the common boundary of the inner and outer regions.
+    \end{enumerate}
+\end{definitionenv}
+\begin{theoremenv}[Green's Theorem in the Plane]
+    Let $P$ and $Q$ be two scalar fields defined and continuously differentiable on an open open set $S\subseteq \R^2$. Let $C$ be a piecewise smooth Jordan curve and let $R$ be the region enclosed by $C$ (containing $C$). If $R \subseteq S$, then we have
+    $$ \oint_C P \dd x + Q \dd y = \iint_R \left( \pdv{Q}{x} - \pdv{P}{y} \right) \dd x \dd y. $$
+\end{theoremenv}
+\begin{exampleenv}
+    Let $C$ be a piecewise smooth Jordan curve and let $R$ be the region enclosed by $C$. Then we have
+    \[
+    A(R) = \iint_R 1 \dd x \dd y = \iint_R \left( \pdv{Q}{x} - \pdv{P}{y} \right) \dd x \dd y = \oint_C P \dd x + Q \dd y = \frac12 \oint_C x \dd y - y \dd x,
+    \]
+    where we take $Q(x,y) =  \dfrac{x}{2}$ and $P(x,y) = -\dfrac{y}{2}$ to apply Green's Theorem. In particular, if $C$ is described by the parameterization $x = X(t)$ and $y = Y(t)$ for $t \in [a,b]$, then
+    \[
+    A(R) = \frac12 \int_a^b X(t) Y'(t) - Y(t) X'(t) \dd t = \frac12 \int_a^b \det \begin{pmatrix} X(t) & Y(t)\\ X'(t) & Y'(t) \end{pmatrix} \dd t.
+    \]
+\end{exampleenv}
