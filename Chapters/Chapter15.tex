@@ -258,7 +258,7 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
     Let $S\subseteq \R^2$ be a region of type II between the graphs of two continuous functions $\psi_1, \psi_2: [c,d] \to \R$. Suppose $f:S\to \R$ is a scalar field bounded on $S$ and continuous on $\operatorname{int} S$. Then $f$ is integrable on $S$ and its value is given by
     $$ \iint_S f(x,y) \dd x \dd y = \int_c^d \left[ \int_{\psi_1(y)}^{\psi_2(y)} f(x,y) \dd x \right] \dd y. $$
 \end{corollaryenv}
-\begin{exampleenv}
+\begin{exampleenv}\label{ex:vol of ellipsoid}
     The solid enclosed by the ellipsoid $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$ is given by the set
     $$
     E_{a,b,c} := \left\{(x,y,z) \in \R^3 : \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} \leq 1\right\}.
@@ -289,7 +289,7 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
         \item we say $C$ is a \textbf{closed curve} if $\bm \alpha(a) = \bm \alpha(b)$;
         \item we say $C$ is a \textbf{simple closed curve} if $C$ is a closed curve and $\bm \alpha(t_1) \neq \bm \alpha(t_2)$ for any $t_1, t_2 \in [a,b)$ with $t_1 \neq t_2$.
         \item we say $C$ is a \textbf{Jordan curve} if it is a simple closed curve in a plane, i.e., $\alpha : [a,b] \to \R^2$.
-        \item The Jordan Curve Theorem states that if $C$ is a Jordan curve, then $\R^2 \setminus C$ is the disjoint union of two connected open subsets. One of these components is bounded and is called the \textbf{inner region}. The other component is unbounded and is called the \textbf{outer region}. Moreover, $C$ is the common boundary of the inner and outer regions.
+        \item The Jordan Curve Theorem (the proof is beyond the scope of this text) states that if $C$ is a Jordan curve, then $\R^2 \setminus C$ is the disjoint union of two connected open subsets. One of these components is bounded and is called the \textbf{inner region}. The other component is unbounded and is called the \textbf{outer region}. Moreover, $C$ is the common boundary of the inner and outer regions.
     \end{enumerate}
 \end{definitionenv}
 \begin{theoremenv}[Green's Theorem in the Plane]
@@ -306,3 +306,266 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
     A(R) = \frac12 \int_a^b X(t) Y'(t) - Y(t) X'(t) \dd t = \frac12 \int_a^b \det \begin{pmatrix} X(t) & Y(t)\\ X'(t) & Y'(t) \end{pmatrix} \dd t.
     \]
 \end{exampleenv}
+
+\section{Change of Variables in Double Integrals}
+\begin{theoremenv}\label{thm:change_of_variables}
+    Let $S$ and $T$ be two bounded regions in $\R^2$ and let $f: S \to \R$ be a scalar field defined, bounded and integrable on $S$. Suppose there exists a function $\bm X: T \to S$ where $\bm X = (X_1, X_2)$ satisfies the following conditions:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $X_1$ and $X_2$ are continuously differentiable on $T$;
+        \item $\bm X$ is invertible;
+        \item The Jacobian determinant  determinant
+        $$ J(u,v) := \det \begin{pmatrix} \dfrac{\partial X_1}{\partial u} & \dfrac{\partial X_2}{\partial u}\\[6pt] \dfrac{\partial X_1}{\partial v} & \dfrac{\partial X_2}{\partial v} \end{pmatrix} \ne 0,\qquad \text{for every } (u,v) \in T. $$
+    \end{enumerate}
+    Then we have
+    $$ \iint_S f(x,y) \dd x \dd y = \iint_T f(X_1(u,v), X_2(u,v)) |J(u,v)| \dd u \dd v. $$
+\end{theoremenv}
+\begin{remarkenv}
+    Recall the $1$d version
+    $$
+    \int_{u(a)}^{u(b)} f(x) \dd x = \int_a^b f(u(t)) u'(t) \dd t,
+    $$
+    where $u: [a,b] \to \R$ is a continuously differentiable function. Note there's no absolute value sign in the $1$d version. 
+
+    Moreover, the conclusion of Theorem~\ref{thm:change_of_variables} still holds if we allow $\bm X$ to be non-invertible on a set of content zero, or $J(u,v)$ to vanish on such a subset.
+\end{remarkenv}
+\begin{exampleenv}
+    In the polar coordinate system, we have
+    $$ \begin{cases}
+    x = r \cos \theta,\\
+    y = r \sin \theta.
+    \end{cases}
+    \quad r \geq 0, \theta \in [0, 2\pi). $$
+    Note $\bm X(r,\theta) = (r \cos \theta, r \sin \theta): [0,\infty) \times [0,2\pi) \to \R^2$ is not bijective on ${0} \times [0,2\pi)$, which is a set of content zero. Thus we can still apply Theorem~\ref{thm:change_of_variables} to get
+    \[
+    J(r,\theta) = \det \begin{pmatrix} \cos \theta & \sin \theta \\[6pt] -r \sin \theta & r \cos \theta \end{pmatrix} = r.
+    \]
+    Therefore, for any scalar field $f$ defined, bounded and integrable on a region $S\subseteq \R^2$, we have
+    \[
+    \iint_S f(x,y) \dd x \dd y = \iint_T f(r \cos \theta, r \sin \theta) r \dd r \dd \theta,
+    \]
+    where $T = \{(r,\theta) : r \geq 0, \theta \in [0,2\pi), (r \cos \theta, r \sin \theta) \in S\}$.
+\end{exampleenv}
+\begin{exampleenv}
+    We want to evaluate the Gaussian integral
+    $$
+    \int_{-\infty}^{\infty} e^{-x^2} \dd x = \sqrt{\pi}.
+    $$
+    For any $R > 0$, let $I(R) := \displaystyle \int_{-R}^R e^{-x^2} \dd x$. Then we have
+    $$
+    I^2 = \int_{-R}^R e^{-x^2} \dd x \cdot \int_{-R}^R e^{-y^2} \dd y = \iint_{[-R,R]^2} e^{-(x^2+y^2)} \dd x \dd y.
+    $$
+    Let
+    $$ D_R = \{(x,y) \in \R^2 : x^2 + y^2 \leq R^2\},\quad D_{\sqrt{2}R} = \{(x,y) \in \R^2 : x^2 + y^2 \leq 2R^2\}. $$
+    Then we have $D_R \subseteq [-R,R]^2 \subseteq D_{\sqrt{2}R}$ and
+    \[
+    \iint_{D_R} e^{-(x^2+y^2)} \dd x \dd y \leq I^2 \leq \iint_{D_{\sqrt{2}R}} e^{-(x^2+y^2)} \dd x \dd y.
+    \]
+    Applying the change of variables in polar coordinates, for $\lambda > 0$, we have
+    \[
+    \iint_{D_\lambda} e^{-(x^2+y^2)} \dd x \dd y = \int_0^{2\pi} \left[ \int_0^\lambda e^{-r^2} r \dd r \right] \dd \theta = 2\pi \int_0^\lambda e^{-r^2} r \dd r = \pi (1 - e^{-\lambda^2})\to \pi \quad \text{as } \lambda \to \infty.
+    \]
+    Thus, by taking $\lambda = R$ and $\lambda = \sqrt{2}R$ and letting $R \to \infty$, we have
+    \[
+    \lim_{R \to \infty} (I(R))^2 = \pi.
+    \]
+    However, we still need to show that
+    $$ \lim_{R \to \infty} (I(R))^2 = \left( \lim_{R \to \infty} I(R) \right)^2 $$
+    by showing that $\displaystyle \int_{-\infty}^{\infty} e^{-x^2} \dd x$ exists. By symmetry, it suffices to show $\displaystyle \int_0^{\infty} e^{-x^2} \dd x$ exists. Note $\displaystyle \int_0^1 e^{-x^2} \dd x$ is finite since $e^{-x^2}$ is continuous on $[0,1]$. Thus we only need to show $\displaystyle \int_1^{\infty} e^{-x^2} \dd x$ exists. By comparison test, we have
+    \[
+    0 \le \int_1^R e^{-x^2} \dd x \le \int_1^R xe^{-x^2} \dd x = \frac{1}{2} (\frac1e - e^{-R^2}) \to \frac{1}{2e} \quad \text{as } R \to \infty.
+    \]
+    Hence,
+    $$ \lim_{R \to \infty} I(R) = \sqrt{\lim_{R \to \infty} (I(R))^2} = \sqrt{\pi}. $$
+\end{exampleenv}
+
+\section{Multiple Integrals in Higher Dimensions}
+The idea of a double integral can be extended to higher dimensions. The following definitions and results are the natural generalizations of the corresponding ones in the $2$d case. We will state the definitions and results without proofs since the proofs are analogous.
+\begin{definitionenv}
+    Let $f: \R^n \to \R$ be a scalar field defined and bounded on a bounded region $S \subseteq \R^n$ for any $n \geq 2$. In particular, if $n=3$, we call the integral a \textbf{triple integral} and denote it by
+$$ \iiint_S f(x,y,z) \dd x \dd y \dd z\quad \text{or} \quad \iiint_S f(x,y,z). $$
+In general, we call the integral a \textbf{$n$-fold integral} and denote it by
+$$ \int \cdots \int_S f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n \quad \text{or} \quad \int \cdots \int_S f(x_1, \ldots, x_n). $$
+\end{definitionenv}
+\begin{definitionenv}
+    Given $n$ closed intervals $[a_1, b_1], \ldots, [a_n, b_n]$, we define the \textbf{hyperrectangle} $Q$ in $\R^n$ by
+$$ Q = [a_1, b_1] \times \cdots \times [a_n, b_n] = \{(x_1, \ldots, x_n) \in \R^n : a_i \leq x_i \leq b_i \text{ for } i = 1, \ldots, n\}. $$
+\end{definitionenv}
+\begin{definitionenv}
+    Let $Q:= [\bm a, \bm b] = [a_1, b_1] \times \cdots \times [a_n, b_n]$ be a hyperrectangle in $\R^n$ and $P = P_1 \times \cdots \times P_n$ be a partition of $Q$. Let $f$ be a step function defined on $Q$ that takes a constant value $c_i$ on each open subinterval $Q_i := (a_1^{(i)}, b_1^{(i)}) \times \cdots \times (a_n^{(i)}, b_n^{(i)})$ of $P$. Then we define \textbf{the integral of a step function $f$} on $Q$ by
+    $$ \int \cdots \int_Q f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n := \sum_i\left(  c_i \prod_{j=1}^n (b_j^{(i)} - a_j^{(i)}) \right). $$
+\end{definitionenv}
+\begin{definitionenv}
+    Suppose $f: Q \to \R$ is a scalar field defined and bounded on a hyperrectangle $Q\subseteq \R^n$. We say $f$ is \textbf{integrable} on $Q$ if there is a unique $I \in \R$ such that
+    $$
+    \int \cdots \int_Q s \leq I \leq \int \cdots \int_Q t
+    $$
+    for all step functions $s$ and $t$ defined on $Q$ satisfying $s \leq f \leq t$ on $Q$. In this case, we define and denote the \textbf{integral} of $f$ on $Q$ by
+    $$
+    \int \cdots \int_Q f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n := I.
+    $$
+\end{definitionenv}
+\begin{remarkenv}
+    In particular, if $f$ is continuous on $Q$, then $f$ is integrable on $Q$. Moreover, if $f$ is defined and bounded on $Q$ and the set of discontinuities of $f$ has content zero, then $f$ is integrable on $Q$.
+\end{remarkenv}
+\begin{definitionenv}
+    Suppose that $S\subseteq \R^n$ is a bounded region and there is a hyperrectangle $Q = [\bm a, \bm b]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{extended scalar field} $\tilde f$ of $f$ on $Q$ by
+    $$
+    \tilde f(\bm x) := \begin{cases}
+        f(\bm x) & \text{if } \bm x \in S, \\
+        0 & \text{if } \bm x \in Q \setminus S.
+    \end{cases}
+    $$
+    We say that $f$ is \textbf{integrable} on $S$ if $\tilde f$ is integrable on $Q$. In this case, we define and denote the \textbf{integral} of $f$ on $S$ by
+    $$
+    \int \cdots \int_S f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n := \int \cdots \int_Q \tilde f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n.
+    $$
+\end{definitionenv}
+\begin{theoremenv}
+    Let $S,T \subseteq \R^n$ be two bounded regions and let $f: S \to \R$ be a scalar field defined, bounded and integrable on $S$. Suppose there exists a function $\bm X: T \to S$ where $\bm X = (X_1, \ldots, X_n)$ satisfies the following conditions:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $X_1, \ldots, X_n$ are continuously differentiable on $T$;
+        \item $\bm X$ is invertible;
+        \item The Jacobian determinant
+        $$ J(u_1, \ldots, u_n) := \det \begin{pmatrix} \dfrac{\partial X_1}{\partial u_1} & \cdots & \dfrac{\partial X_n}{\partial u_1}\\[6pt] \vdots & \ddots & \vdots\\[6pt] \dfrac{\partial X_1}{\partial u_n} & \cdots & \dfrac{\partial X_n}{\partial u_n} \end{pmatrix} \ne 0,\qquad \text{for every } (u_1, \ldots, u_n) \in T. $$
+    \end{enumerate}
+    Then we have
+    $$ \int \cdots \int_S f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n = \int \cdots \int_T f(\bm X(u_1, \ldots, u_n)) |J(u_1, \ldots, u_n)| \dd u_1 \cdots \dd u_n. $$
+    Moreover, the conclusion still holds if we allow $\bm X$ to be non-invertible on a set of content zero, or $J(u_1, \ldots, u_n)$ to vanish on such a subset.
+\end{theoremenv}
+\begin{remarkenv}
+    Note this matrix is the transpose of the Jacobian matrix of $\bm X$. However, the determinant is invariant under transposition, so we can still call it the Jacobian determinant of $\bm X$.
+\end{remarkenv}
+\begin{corollaryenv}
+    In the cylindrical coordinate system, we have
+    $$ \begin{cases}
+    x = r \cos \theta,\\
+    y = r \sin \theta,\\
+    z = z.
+    \end{cases}
+    \quad r \geq 0, \theta \in [0, 2\pi), z \in \R. $$
+    Then
+    \[
+    J(r,\theta,z) = \det \begin{pmatrix} \cos \theta & \sin \theta & 0\\ -r \sin \theta & r \cos \theta & 0\\ 0 & 0 & 1 \end{pmatrix} = r.
+    \]
+    Therefore, for any scalar field $f$ defined, bounded and integrable on a region $S\subseteq \R^3$, we have
+    \[
+    \iiint_S f(x,y,z) \dd x \dd y \dd z = \iiint_T f(r \cos \theta, r \sin \theta, z)\cdot r\cdot \dd r \dd \theta \dd z,
+    \]
+    where $T = \{(r,\theta,z) : r \geq 0, \theta \in [0,2\pi), z \in \R, (r \cos \theta, r \sin \theta, z) \in S\}$.
+\end{corollaryenv}
+\begin{corollaryenv}
+    In the spherical coordinate system, we have
+    $$ \begin{cases}
+    x = \rho \sin \varphi \cos \theta,\\
+    y = \rho \sin \varphi \sin \theta,\\
+    z = \rho \cos \varphi.
+    \end{cases}
+    \quad \rho \geq 0, \theta \in [0, 2\pi), \varphi \in [0,\pi]. $$
+    Then
+    \[
+    J(\rho,\theta,\varphi) = \det \begin{pmatrix} \sin \varphi \cos \theta & \sin \varphi \sin \theta & \cos \varphi \\ -\rho \sin \varphi \sin \theta & \rho \sin \varphi \cos \theta & 0\\ \rho \cos \varphi \cos \theta & \rho \cos \varphi \sin \theta & -\rho \sin \varphi \end{pmatrix} = -\rho^2 \sin\varphi.
+    \]
+    Therefore, for any scalar field $f$ defined, bounded and integrable on a region $S\subseteq \R^3$, we have
+    $$ 
+    \iiint_S f(x,y,z) \dd x \dd y \dd z = \iiint_T f(\rho \sin \varphi \cos \theta, \rho \sin \varphi \sin \theta, \rho \cos \varphi)\cdot \rho^2 \sin\varphi\cdot \dd \rho \dd \theta \dd \varphi,
+    $$
+    where $T = \{(\rho,\theta,\varphi) : \rho \geq 0, \theta \in [0,2\pi), \varphi \in [0,\pi], (\rho \sin \varphi \cos \theta, \rho \sin \varphi \sin \theta, \rho \cos \varphi) \in S\}$.
+\end{corollaryenv}
+\begin{exampleenv}
+    Let $E_{a,b,c}$ be the solid enclosed by the ellipsoid $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$. Applying the change of variables
+    \[
+    \begin{cases}
+    x = a \rho \sin \varphi \cos \theta,\\
+    y = b \rho \sin \varphi \sin \theta,\\
+    z = c \rho \cos \varphi,
+    \end{cases}
+    \quad \rho \geq 0, \theta \in [0, 2\pi), \varphi \in [0,\pi],
+    \]
+    we have
+    \[
+    \begin{aligned}
+        \text{vol}(E_{a,b,c}) &= \iiint_{E_{a,b,c}} 1 \dd x \dd y \dd z\\
+        &= \iiint_T a b c \rho^2 \sin\varphi \dd \rho \dd \theta \dd \varphi\\
+        &= abc \int_0^1 \rho^2 \dd \rho \cdot \int_0^{2\pi} \dd \theta \cdot \int_0^\pi \sin\varphi \dd \varphi\\
+        &= abc\cdot\frac{1}{3} \cdot 2\pi \cdot 2 = \frac{4}{3} abc.
+    \end{aligned}
+    \]
+    This results is consistent with the one we obtained in Example~\ref{ex:vol of ellipsoid} but with much less computational effort.
+\end{exampleenv}
+\begin{lemmaenv}\label{lem:scaling for vol of n-ball}
+    For any positive integer $n$ and any $a > 0$, we have
+    $$
+    V_n(a) = a^n V_n(1),
+    $$
+    where $V_n(a)$ is the volume of the $n$-ball $B_n(a) = \{(x_1, \ldots, x_n) \in \R^n : x_1^2 + \cdots + x_n^2 \leq a^2\}$.
+\end{lemmaenv}
+\begin{proofenv}
+    Let $\bm X: B_n(1) \to B_n(a)$ be the function defined by $\bm X(x_1, \ldots, x_n) = (a x_1, \ldots, a x_n)$. Then $\bm X$ is a bijection and
+    \[
+    J(x_1, \ldots, x_n) = \det \operatorname{diag}(a, \ldots, a) = a^n.
+    \]
+    Thus, by the change of variables in higher dimensions, we have
+    \[
+    V_n(a) = \int \cdots \int_{B_n(a)} 1 \dd x_1 \cdots \dd x_n = \int \cdots \int_{B_n(1)} a^n \dd x_1 \cdots \dd x_n = a^n V_n(1).
+    \]
+\end{proofenv}
+\begin{lemmaenv}\label{lem:recursion for vol of n-ball}
+    For any positive integer $n$, we have
+    $$
+    V_{n+2}(1) = \frac{2\pi}{n+2} V_n(1).
+    $$
+\end{lemmaenv}
+\begin{proofenv}
+    Note
+    \[
+    \sum_{i=1}^{n+2} x_i^2 \leq 1 \Leftrightarrow \begin{cases}
+        x_{n+1}^2 + x_{n+2}^2 \le 1 \\
+        (x_1, \ldots, x_n) \in B_n(\sqrt{1 - x_{n+1}^2 - x_{n+2}^2})
+    \end{cases}
+    \]
+    Thus, by the change of variables in higher dimensions, we have
+    \[
+    \begin{aligned}
+        V_{n+2}(1) &= \int \cdots \int_{B_{n+2}(1)} 1 \dd x_1 \cdots \dd x_{n+2}\\[6pt] 
+        &= \iint_{x_{n+1}^2 + x_{n+2}^2 \le 1} \left[ \int\cdots\int_{B_n(\sqrt{1 - x_{n+1}^2 - x_{n+2}^2})} 1 \dd x_1 \cdots \dd x_n \right] \dd x_{n+1} \dd x_{n+2}\\[6pt]
+        &= \iint_{x_{n+1}^2 + x_{n+2}^2 \le 1} V_n(\sqrt{1 - x_{n+1}^2 - x_{n+2}^2}) \dd x_{n+1} \dd x_{n+2}\\[6pt]
+        &= \iint_{x_{n+1}^2 + x_{n+2}^2 \le 1} \left( \sqrt{1 - x_{n+1}^2 - x_{n+2}^2} \right)^n V_n(1) \dd x_{n+1} \dd x_{n+2} \\
+        &= V_n(1) \int_0^{2\pi} \left[ \int_0^1 (1 - r^2)^{n/2} r \dd r \right] \dd \theta \quad \text{where } x_{n+1} = r \cos \theta, x_{n+2} = r \sin \theta\\
+        &= \frac{2\pi}{n+2} V_n(1).
+    \end{aligned}
+    \]
+\end{proofenv}
+\begin{propositionenv}
+    Suppose $a>0$ and $V_n(a)$ is the volume of the $n$-ball
+    $$ B_n(a) = \{(x_1, \ldots, x_n) \in \R^n : x_1^2 + \cdots + x_n^2 \leq a^2\}. $$
+    If $n$ is even, i.e., $n = 2m$ for some positive integer $m$, then
+    $$ V_n(a) = \frac{\pi^m}{m!} a^n. $$
+\end{propositionenv}
+\begin{proofenv}
+    By Lemma~\ref{lem:scaling for vol of n-ball}, it suffices to show $V_{2m}(1) = \frac{\pi^m}{m!}$ for any positive integer $m$. We prove this by induction on $m$. 
+
+    \textbf{Base case:} when $m=1$, we have $V_2(1) = \pi$ since $B_2(1)$ is the unit disk in $\R^2$. Thus, the conclusion holds for $m=1$.
+    
+    \textbf{Induction step:} assume the conclusion holds for $m = k$ for some positive integer $k$, i.e., $V_{2k}(1) = \dfrac{\pi^k}{k!}$. Then, by Lemma~\ref{lem:recursion for vol of n-ball}, we have
+    \[
+    V_{2(k+1)}(1) = \frac{2\pi}{2k+2} V_{2k}(1) = \frac{\pi^{k+1}}{(k+1)!}.
+    \]
+    Thus, the conclusion holds for $m = k+1$.  Hence, the conclusion holds for all positive integer $m$.
+\end{proofenv}
+\begin{propositionenv}
+    Suppose $a>0$ and $V_n(a)$ is the volume of the $n$-ball
+    $$ B_n(a) = \{(x_1, \ldots, x_n) \in \R^n : x_1^2 + \cdots + x_n^2 \leq a^2\}. $$
+    If $n$ is odd, i.e., $n = 2m-1$ for some non-negative integer $m$, then
+    $$ V_{2m-1}(a) = \frac{2((m-1)!) (4\pi)^{m-1}}{(2m-1)!} a^{2m-1}. $$
+\end{propositionenv}
+\begin{proofenv}
+    By Lemma~\ref{lem:scaling for vol of n-ball}, it suffices to show $V_{2m-1}(1) = \dfrac{2((m-1)!) (4\pi)^{m-1}}{(2m-1)!}$ for any non-negative integer $m$. We prove this by induction on $m$. 
+
+    \textbf{Base case:} when $m=0$, we have $V_1(1) = 2$ since $B_1(1)$ is the interval $[-1,1]$ in $\R$. Thus, the conclusion holds for $m=0$.
+    
+    \textbf{Induction step:} assume the conclusion holds for $m = k$ for some non-negative integer $k$, i.e., $V_{2k-1}(1) = \dfrac{2((k-1)!) (4\pi)^{k-1}}{(2k-1)!}$. Then, by Lemma~\ref{lem:recursion for vol of n-ball}, we have
+    \[
+    V_{2k+1}(1) = \frac{2\pi}{2k+1} V_{2k-1}(1) = \frac{2\pi}{2k+1} \cdot \frac{2((k-1)!) (4\pi)^{k-1}}{(2k-1)!} = \frac{2(k!) (4\pi)^k}{(2k+1)!}.
+    \]
+    Thus, the conclusion holds for $m = k+1$. Hence, the conclusion holds for all non-negative integer $m$.
+\end{proofenv}

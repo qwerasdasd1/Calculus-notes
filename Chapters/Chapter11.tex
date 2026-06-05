@@ -167,5 +167,25 @@
         $$
     \end{theoremenv}
     \section{Curves in Polar Coordinates}
-    
+    Sometimes it's more natural to use polar coordinates to describe a curve in $\R^2$:
+    $$ \bm r = (r \cos \theta, r \sin \theta) = r (\cos \theta, \sin \theta). $$
+    \begin{definitionenv}
+        We define the unit radial vector $\bm e_r$ and the tangential vector $\bm e_\theta$ as
+        $$ \bm e_r = (\cos \theta, \sin \theta) \quad \text{and} \quad \bm e_\theta = \dv{\bm e_r}{\theta} = (-\sin \theta, \cos \theta). $$
+        Note $\| \bm e_r\| = \| \bm e_\theta\| = 1$ and $\bm e_r \cdot \bm e_\theta = 0$.
+    \end{definitionenv}
+    \begin{exampleenv}
+        Let $\bm r(t) = f(t)$, $\theta(t) = g(t)$ for $t\in [a,b]$. Then
+        $$ \bm r(t) = r \bm e_r = f(t) \bm e_r  + 0 \cdot \bm e_\theta. $$
+        Thus the velocity $\bm v(t)$ is given by
+        $$ \bm v(t) = \dv{\bm r}{t} = \dv{r}{t} \bm e_r + r \dv{\bm e_r}{t} = \dv{r}{t} \bm e_r + r \dv{\bm e_r}{\theta} \dv{\theta}{t} = f'(t) \bm e_r + \left[ f(t) g'(t)  \right]\bm e_\theta. $$
+        We call $f'(t)$ the \textbf{radial component} of the velocity $\bm v(t)$ and $f(t) g'(t)$ the \textbf{transverse component} of the velocity $\bm v(t)$.
+        Note the speed $v(t)$ is given by
+        $$v(t) =\sqrt{ \bm v(t) \cdot \bm v(t)} = \sqrt{(f'(t))^2 + (f(t) g'(t))^2} $$
+        and the acceleration $\bm a(t)$ is given by
+        $$\bm a(t) = \left[ \dv[2]{r}{t} - r\left( \dv{\theta}{t} \right)^2 \right] \bm e_r + \left[ r \dv[2]{\theta}{t} + 2 \dv{r}{t} \dv{\theta}{t} \right] \bm e_\theta = \left[ \dv[2]{r}{t} - r\left( \dv{\theta}{t} \right)^2 \right] \bm e_r + \frac1r \frac{\dd}{\dd t} \left( r^2 \dv{\theta}{t} \right) \bm e_\theta .$$
+        We say the acceleration $\bm a(t)$ is \textbf{radical} if the transverse component is always zero, i.e., $\displaystyle r^2 \dv{\theta}{t}$ is a constant. 
+
+    \end{exampleenv}
+
     \newpage

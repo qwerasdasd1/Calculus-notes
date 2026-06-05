@@ -1,6 +1,6 @@
-    \chapter{Polynomial Approximations to functions}
+    \chapter{Polynomial Approximations to Functions}
     With the help of a special identity $1-x^n = (1-x)(1+x+x^2+\cdots + x^{n-1})$, we can find a polynomial approximation to $-\ln(1-x)$ in the previous section. However, this may not help to find a polynomial approximation to other functions, which motivates us to find a more general method to find polynomial approximations to functions.
-    \section{The Taylor Polynomial for a function}
+    \section{The Taylor Polynomial for a Function}
     \begin{theoremenv}
         Let $f$ be a function with derivatives of order $n$ at the point $x=a$. Then there exists a unique polynomial $P$ of degree at most $n$ such that $P(a)=f(a), P'(a)=f'(a), \ldots, P^{(n)}(a) = f^{(n)}(a)$. Additionally, this polynomial is given by
         \[
@@ -248,7 +248,7 @@
             \end{enumerate}
         \end{exampleenv}
 
-        \section{Indeterminate forms and L'Hôpital's Rule}
+        \section{Indeterminate Forms and L'Hôpital's Rule}
         \begin{theoremenv}
             Assume $f$ and $g$ have derivatives $f'(x)$ and $g'(x)$ for every $x$ in an open interval $(a,b)$ and suppose that $\displaystyle \lim_{x\to a^+} f(x) = \lim_{x\to a^+} g(x) = 0$. If $g'(x) \neq 0$ for every $x\in (a,b)$ and the limit $\displaystyle \lim_{x\to a^+} \frac{f'(x)}{g'(x)}$ exists and have value $L$, then we have $$\lim_{x\to a^+} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)} = L.$$
         \end{theoremenv}
