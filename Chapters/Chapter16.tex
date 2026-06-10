@@ -1,0 +1,93 @@
+\chapter{Surface Integrals}
+\section{Parametrization}
+\begin{definitionenv}
+    Suppose $T\subseteq \R^2$ is connected and nonempty and $\bm r: T\to \R^3$ is continuous vector function. Then we call the image $S$ of $\bm r$ a \textbf{parametric surface} and $\bm r$ a \textbf{parametrization} of $S$. Furthermore, if $\bm r$ is injective, then we call $S$ a \textbf{simple parametric surface}.
+
+    We typically regard $S$ as lying in $xyz-$space and $T$ as lying in the $uv-$plane. Formally, there exists functions $X,Y,Z: T\to \R$ such that
+    $$ x = X(u,v),\quad y = Y(u,v),\quad z = Z(u,v). $$
+    Then the vector equation for $S$ is
+    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T. $$
+\end{definitionenv}
+\begin{remarkenv}
+    Particularly, if a surface $S$ is given explicitly by an equation of the form $z = f(x,y)$, then we can parametrize $S$ by
+    $$ X(u,v) = u,\quad Y(u,v) = v,\quad Z(u,v) = f(u,v). $$
+    Conversely, suppose that we can solve the equations
+    $$ x = X(u,v),\quad y = Y(u,v) $$
+    for $u$ and $v$ in terms of $x$ and $y$, then we can express $z$ as a function of $x$ and $y$ by substituting the expressions for $u$ and $v$ into the equation
+    $$ z = Z(u,v). $$
+\end{remarkenv}
+\begin{definitionenv}
+    Suppose $S$ is a parametric surface with parametrization
+    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T, $$
+    where $X,Y,Z$ are differentiable on $T$. Then the \textbf{fundamental vector product} of $\bm r$ is defined by the cross product
+    $$ \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} =
+    \left(\pdv{X}{u}, \pdv{Y}{u}, \pdv{Z}{u}\right)\times \left(\pdv{X}{v}, \pdv{Y}{v}, \pdv{Z}{v}\right) =
+    \begin{vmatrix}
+        \bm i & \bm j & \bm k\\[6pt]
+        \dfrac{\partial X}{\partial u} & \dfrac{\partial Y}{\partial u} & \dfrac{\partial Z}{\partial u}\\[6pt]
+        \dfrac{\partial X}{\partial v} & \dfrac{\partial Y}{\partial v} & \dfrac{\partial Z}{\partial v}
+    \end{vmatrix}. $$
+    If $(u_0,v_0) \in T$ is a point such that the partial derivatives $\displaystyle \pdv{\bm r}{u}$ and $\displaystyle \pdv{\bm r}{v}$ are both continuous at $(u_0,v_0)$ and
+    $$ \left( \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} \right) \Bigg|_{(u_0,v_0)} \neq \bm 0, $$
+    then we say $\bm r(u_0, v_0)\in S$ is a \textbf{regular point} of $S$. If $(x,y,z) \in S$ is not a regular point, then we say $(x,y,z)$ is a \textbf{singular point} of $S$. If every point of $S$ is regular, then we say $S$ is a \textbf{smooth surface}.
+\end{definitionenv}
+\begin{remarkenv}
+    Note a regular point for one parametrization of a surface may be a singular point for another parametrization of the same surface. Thus the regularity \textbf{does} depend on the choice of parametrization. 
+\end{remarkenv}
+\begin{exampleenv}
+    Suppose $f:T\to \R$ is a differentiable function and $S$ is the surface given explicitly by the equation $z = f(x,y)$. Then we can parametrize $S$ by
+    $$ \bm r(u,v) = u\bm i + v\bm j + f(u,v)\bm k. $$
+    Then the fundamental vector product of $\bm r$ is
+    $$ \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} 
+    = -\pdv{f}{x}\bm i - \pdv{f}{y}\bm j + \bm k$$
+    for all $(u,v)\in T$. Thus all the regular points are those points $(x,y,z)$ on $S$ such that one of $\displaystyle \pdv{f}{x}(x,y)$ and $\displaystyle \pdv{f}{y}(x,y)$ does not exist.
+\end{exampleenv}
+\begin{exampleenv}
+    Suppose the sphere
+    $$ S = \{(x,y,z)\in \R^3: x^2 + y^2 + z^2 = 1\} $$
+    is parametrized by
+    $$ \bm r(\theta,\phi) = (\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi),\quad (\theta,\phi)\in T, $$
+    where $T = \{(\theta,\phi): 0\le \theta < 2\pi, 0\le \phi \le \pi\}$. Then the norm of the fundamental vector product of $\bm r$ is
+    $$ \left\|\pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\|= \left\| -\sin\phi
+(\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi)\right\|
+    = \sin\phi. $$
+    Note the north pole $(0,0,1) = \bm r(\theta, 0)$ for any $\theta\in [0,2\pi)$ is a singular point of $S$. However, parametrizing $S$ by
+    $$ \bm R(u,v) = (u,\ v,\ \sqrt{1-u^2-v^2}),\quad (u,v)\in T', $$
+    where $T' = \{(u,v): u^2 + v^2 < 1\}$, we have
+    $$ \pdv{\bm R}{u} \left( 0,0 \right) \times \pdv{\bm R}{v} \left( 0,0 \right) =\left( 1,0,0 \right) \times \left( 0,1,0 \right) = \left( 0,0,1 \right) \ne \bm 0, $$
+    showing that the north pole is a regular point of $S$. Thus the regularity of a point depends on the choice of parametrization.
+\end{exampleenv}
+\begin{propositionenv}\label{prop: fundamental vector product is normal to the surface}
+    Let $S$ be a parametric surface with parametrization $\bm r: T\to \R^3$ and $C\subseteq T$ be a smooth curve. Then the image $\bm r(C)$ is also a smooth curve and at each point $\bm r(u_0,v_0) \in \bm r(C)$, the fundamental vector product
+    $\displaystyle \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_{(u_0,v_0)}$ is normal to the $\bm r(C)$.
+\end{propositionenv}
+\begin{proofenv}
+    We parametrize $\bm r(T)$ by
+    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T. $$
+    Also, we parametrize $C$ by a continuously differentiable function
+    $$ \begin{array}{c c l c}
+        \bm \alpha: & [a,b] & \longrightarrow & S\\
+        & t & \longmapsto & (u(t), v(t))
+    \end{array}
+    $$
+    to describe $\bm r(C)$ by the composition function $\bm \rho = \bm r\circ \bm \alpha : [a,b]\to \R^3$. More explicitly, we have
+    $$ \bm \rho(t) = X(u(t), v(t))\bm i + Y(u(t), v(t))\bm j + Z(u(t), v(t))\bm k. $$
+    Since $\bm \alpha$ and $\bm r$ are both continuously differentiable, $\bm \rho$ is also continuously differentiable. Thus $\bm r(C)$ is a smooth curve. Differentiating $\bm \rho$ with respect to $t$, we have
+    $$ \begin{aligned}
+        \dv{\bm \rho}{t} = u'(t)\left( \pdv{X}{u} \bm i + \pdv{Y}{u} \bm j + \pdv{Z}{u} \bm k \right) + v'(t)\left( \pdv{X}{v} \bm i + \pdv{Y}{v} \bm j + \pdv{Z}{v} \bm k \right)
+        = u'(t)\pdv{\bm r}{u} + v'(t)\pdv{\bm r}{v}.
+    \end{aligned} $$
+    Note the fundamental vector product $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is normal to both $\displaystyle \pdv{\bm r}{u}$ and $\displaystyle \pdv{\bm r}{v}$. Thus $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is normal to $\displaystyle \dv{\bm \rho}{t}$.
+\end{proofenv}
+\begin{remarkenv}
+    By Proposition~\ref{prop: fundamental vector product is normal to the surface}, the fundamental vector product $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is said to be normal to the surface $\bm r(T)$. By definition, at each regular point $P\in \bm r(T)$,
+    $$ \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right) \Bigg|_P \ne \bm 0, $$
+    and the plane passing through $P$ with normal vector $\displaystyle \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_P$ is called the \textbf{tangent plane} to $\bm r(T)$ at $P$. 
+\end{remarkenv}
+\begin{definitionenv}
+    Suppose $T$ is a region in the $uv$-plane and $S\subseteq \R^3$ be a parametric surface with parametrization $\bm r: T\to \R^3$. The \textbf{area} of $S$ is defined by the double integral
+    $$ a(S) = \iint_T \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \dd u \dd v. $$
+\end{definitionenv}
+\begin{remarkenv}
+    It's possible that the area of a parametric surface $S=\bm r(T)$ may not exist. However, if $T$ is a bounded region and $\bm r$ is continuously differentiable, then $a(S)$ exists. Later we'll see that under some natural conditions, the area of a parametric surface is independent of the choice of parametrization $\bm r$.
+\end{remarkenv}

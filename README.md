@@ -38,6 +38,7 @@ This repository contains the lecture notes for **Calculus Track A** (both semest
 | 13 | Applications of Differential Calculus | 微分学的应用 |
 | 14 | Line Integrals | 线积分 |
 | 15 | Multiple Integrals | 多重积分 |
+| 16 | Surface Integrals | 曲面积分 |
 
 ---
 
