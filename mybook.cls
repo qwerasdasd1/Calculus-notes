@@ -264,6 +264,17 @@
 % ===== Display style shorthand =====
 \newcommand{\dis}{\displaystyle}
 
+% Jacobian determinant: \Jac{Y}{Z}{u}{v}
+\newcommand{\Jac}[4]{%
+  \frac{\partial\!\left(#1,#2\right)}{\partial\!\left(#3,#4\right)}%
+}
+
+% ================= Vector calculus operators =================
+\DeclareMathOperator{\Curl}{\mathrm{curl}}
+\DeclareMathOperator{\Div}{\mathrm{div}}
+\renewcommand{\curl}{\nabla\times}
+\renewcommand{\div}{\nabla\cdot}
+
 % ===== Numbering =====
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}

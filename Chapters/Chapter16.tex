@@ -1,25 +1,28 @@
 \chapter{Surface Integrals}
 \section{Parametrization}
-\begin{definitionenv}
-    Suppose $T\subseteq \R^2$ is connected and nonempty and $\bm r: T\to \R^3$ is continuous vector function. Then we call the image $S$ of $\bm r$ a \textbf{parametric surface} and $\bm r$ a \textbf{parametrization} of $S$. Furthermore, if $\bm r$ is injective, then we call $S$ a \textbf{simple parametric surface}.
+\begin{definitionenv}\label{def: parametric surface}
+    Suppose $T\subseteq \R^2$ has nonempty and connected interior and $\widetilde T \supseteq T$ is an open set of $\R^2$. Let $\bm r: \widetilde T\to \R^3$ be a continuous vector function. Then we call the image $S=\bm r(T)$ of the restricted $\bm r\big|_T$ a \textbf{parametric surface} with respect to $(\bm r, T)$ and $(\bm r,T)$ a \textbf{parametrization} of $S$. Furthermore, if $\bm r\big|_T$ is injective, then we call $S$ a \textbf{simple parametric surface}.
 
-    We typically regard $S$ as lying in $xyz-$space and $T$ as lying in the $uv-$plane. Formally, there exists functions $X,Y,Z: T\to \R$ such that
+    We typically regard $S$ as lying in $xyz-$space, and $\widetilde T$ and $T$ as lying in the $uv-$plane. Formally, there exists functions $X,Y,Z: \widetilde T\to \R$ such that
     $$ x = X(u,v),\quad y = Y(u,v),\quad z = Z(u,v). $$
     Then the vector equation for $S$ is
-    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T. $$
+    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in \widetilde T \supseteq T. $$
 \end{definitionenv}
 \begin{remarkenv}
+    Here, we need restriction of $\bm r$ from $\widetilde T$ to $T$ to ensure that the partial derivatives of $\bm r$ is well-defined on the boundary of $T$. Note the parametrization of a surface is not unique.
+\end{remarkenv}
+\begin{exampleenv}
     Particularly, if a surface $S$ is given explicitly by an equation of the form $z = f(x,y)$, then we can parametrize $S$ by
     $$ X(u,v) = u,\quad Y(u,v) = v,\quad Z(u,v) = f(u,v). $$
     Conversely, suppose that we can solve the equations
     $$ x = X(u,v),\quad y = Y(u,v) $$
     for $u$ and $v$ in terms of $x$ and $y$, then we can express $z$ as a function of $x$ and $y$ by substituting the expressions for $u$ and $v$ into the equation
     $$ z = Z(u,v). $$
-\end{remarkenv}
+\end{exampleenv}
 \begin{definitionenv}
-    Suppose $S$ is a parametric surface with parametrization
-    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T, $$
-    where $X,Y,Z$ are differentiable on $T$. Then the \textbf{fundamental vector product} of $\bm r$ is defined by the cross product
+    Suppose $S$ is a parametric surface with parametrization $(\bm r:\widetilde T \to \R^3, T)$ where
+    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in \widetilde T \supseteq T, $$
+    where $X,Y,Z$ are differentiable on $\widetilde T$. Then the \textbf{fundamental vector product} of $\bm r$ is defined by the cross product
     $$ \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} =
     \left(\pdv{X}{u}, \pdv{Y}{u}, \pdv{Z}{u}\right)\times \left(\pdv{X}{v}, \pdv{Y}{v}, \pdv{Z}{v}\right) =
     \begin{vmatrix}
@@ -27,50 +30,66 @@
         \dfrac{\partial X}{\partial u} & \dfrac{\partial Y}{\partial u} & \dfrac{\partial Z}{\partial u}\\[6pt]
         \dfrac{\partial X}{\partial v} & \dfrac{\partial Y}{\partial v} & \dfrac{\partial Z}{\partial v}
     \end{vmatrix}. $$
-    If $(u_0,v_0) \in T$ is a point such that the partial derivatives $\displaystyle \pdv{\bm r}{u}$ and $\displaystyle \pdv{\bm r}{v}$ are both continuous at $(u_0,v_0)$ and
+    If $(u_0,v_0) \in T$ is a point such that the partial derivatives $\displaystyle \pdv{\bm r}{u}$ and $\displaystyle \pdv{\bm r}{v}$ both exist, and are both continuous at $(u_0,v_0)$ and
     $$ \left( \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} \right) \Bigg|_{(u_0,v_0)} \neq \bm 0, $$
-    then we say $\bm r(u_0, v_0)\in S$ is a \textbf{regular point} of $S$. If $(x,y,z) \in S$ is not a regular point, then we say $(x,y,z)$ is a \textbf{singular point} of $S$. If every point of $S$ is regular, then we say $S$ is a \textbf{smooth surface}.
+    then we say $\bm r$ is \textbf{regular} at $(u_0,v_0)$. If $\bm{r}$ is not regular at $(u_0, v_0) \in \widetilde{T}$, then we say that $\bm{r}$ \textbf{is singular} at $(u_0, v_0)$. If $\bm{r}$ is regular at every $(u_0, v_0) \in \widetilde{T}$, then we say that $(\bm{r}, T)$ is a \textbf{smooth parametric representation}.
+
+    If $(x, y, z) \in S$ is a point such that, for every $(u_0, v_0) \in T$ with $\bm{r}(u_0, v_0) = (x, y, z)$, the parametric representation $\bm{r}$ is regular at $(u_0, v_0)$, then we say that $(x, y, z)$ \textbf{is a regular point} of $S$ \textbf{(with respect to $(\bm{r}, T)$)}. If $(x, y, z) \in S$ is not a regular point of $S$ (\textbf{with respect to $(\bm{r}, T)$}), then we say that $(x, y, z)$ \textbf{is a singular point} of $S$ (\textbf{with respect to $(\bm{r}, T)$}). The parametric surface $S$ is called \textbf{smooth} (\textbf{with respect to $(\bm{r}, T)$}) if all of its points are regular points (\textbf{with respect to $(\bm{r}, T)$}).
 \end{definitionenv}
 \begin{remarkenv}
-    Note a regular point for one parametrization of a surface may be a singular point for another parametrization of the same surface. Thus the regularity \textbf{does} depend on the choice of parametrization. 
+    Note a regular point for one parametrization of a surface may be a singular point for another parametrization of the same surface. Thus the regularity \textbf{does} depend on the choice of parametrization. Moreover, $\bm r$ may not be injective. Thus the definition of a regular point requires that all points in the preimage of $(x, y, z)$ are regular points of $\bm r$.
 \end{remarkenv}
-\begin{exampleenv}
-    Suppose $f:T\to \R$ is a differentiable function and $S$ is the surface given explicitly by the equation $z = f(x,y)$. Then we can parametrize $S$ by
+\begin{exampleenv}\label{example: regularity of a surface given explicitly}
+    Follow the setup in Definition~\ref{def: parametric surface} and suppose $f:\widetilde T\to \R$ is a differentiable function and $S$ is the surface given explicitly by the equation $z = f(x,y)$ for $(x,y) \in T \subseteq \widetilde T$. Then we can parametrize $S$ by
     $$ \bm r(u,v) = u\bm i + v\bm j + f(u,v)\bm k. $$
     Then the fundamental vector product of $\bm r$ is
     $$ \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} 
     = -\pdv{f}{x}\bm i - \pdv{f}{y}\bm j + \bm k$$
     for all $(u,v)\in T$. Thus all the regular points are those points $(x,y,z)$ on $S$ such that one of $\displaystyle \pdv{f}{x}(x,y)$ and $\displaystyle \pdv{f}{y}(x,y)$ does not exist.
 \end{exampleenv}
-\begin{exampleenv}
-    Suppose the sphere
-    $$ S = \{(x,y,z)\in \R^3: x^2 + y^2 + z^2 = 1\} $$
+\begin{exampleenv}\label{example: regularity depends on parametrization}
+    Suppose the hemisphere
+    $$ S = \{(x,y,z)\in \R^3: x^2 + y^2 + z^2 = a^2, z \ge 0\} $$
     is parametrized by
-    $$ \bm r(\theta,\phi) = (\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi),\quad (\theta,\phi)\in T, $$
-    where $T = \{(\theta,\phi): 0\le \theta < 2\pi, 0\le \phi \le \pi\}$. Then the norm of the fundamental vector product of $\bm r$ is
-    $$ \left\|\pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\|= \left\| -\sin\phi
+    $$ \bm r(\theta,\phi) = a(\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi),\quad (\theta,\phi)\in \R^2, $$
+    and $T = \{(\theta,\phi): 0\le \theta < 2\pi, 0\le \phi \le \dfrac{\pi}{2}\}$. Then the norm of the fundamental vector product of $\bm r$ is
+    $$ \left\|\pdv{\bm r}{\theta}\times \pdv{\bm r}{\phi} \right\|= a^2 \left\| -\sin\phi
 (\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi)\right\|
-    = \sin\phi. $$
-    Note the north pole $(0,0,1) = \bm r(\theta, 0)$ for any $\theta\in [0,2\pi)$ is a singular point of $S$. However, parametrizing $S$ by
-    $$ \bm R(u,v) = (u,\ v,\ \sqrt{1-u^2-v^2}),\quad (u,v)\in T', $$
-    where $T' = \{(u,v): u^2 + v^2 < 1\}$, we have
+    = a^2\sin\phi. $$
+    Note that, with respect to this parametrization, the parameter values $(\theta,0)$ are singular. However, parametrizing $S$ by
+    $$ \bm R(u,v) = \begin{cases}
+        (u, v, \sqrt{a^2-u^2-v^2}),\quad &(u,v)\in T'\\
+        (u, v, 0), \quad &(u,v)\in \R^2\setminus T' 
+    \end{cases}, $$
+    where $T' = \{(u,v): u^2 + v^2 \le a^2\}$, we have
     $$ \pdv{\bm R}{u} \left( 0,0 \right) \times \pdv{\bm R}{v} \left( 0,0 \right) =\left( 1,0,0 \right) \times \left( 0,1,0 \right) = \left( 0,0,1 \right) \ne \bm 0, $$
-    showing that the north pole is a regular point of $S$. Thus the regularity of a point depends on the choice of parametrization.
+    showing that the north pole is a regular point of $S$. Thus the regularity of a point depends on the choice of parametrization. In this case, the set of singular points is $\{ (x,y,0) : x^2 + y^2 = a^2 \}$ since the partial derivatives of $\bm r$ fails to exist and be continuous at these points.
 \end{exampleenv}
+\begin{notationenv}
+    Expanding the fundamental vector product by the first row, we have
+    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = \left( \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm i - \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm j + \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Y}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Y}{\partial u} \right) \bm k. $$
+    For convenience, we adopt the following notation
+    $$ \Jac{Y}{Z}{u}{v} = \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u}. $$
+    Then we can write
+    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = \Jac{Y}{Z}{u}{v} \bm i - \Jac{X}{Z}{u}{v} \bm j + \Jac{X}{Y}{u}{v} \bm k. $$
+\end{notationenv}
 \begin{propositionenv}\label{prop: fundamental vector product is normal to the surface}
-    Let $S$ be a parametric surface with parametrization $\bm r: T\to \R^3$ and $C\subseteq T$ be a smooth curve. Then the image $\bm r(C)$ is also a smooth curve and at each point $\bm r(u_0,v_0) \in \bm r(C)$, the fundamental vector product
-    $\displaystyle \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_{(u_0,v_0)}$ is normal to the $\bm r(C)$.
-\end{propositionenv}
-\begin{proofenv}
-    We parametrize $\bm r(T)$ by
-    $$ \bm r(u,v) = X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k,\quad (u,v)\in T. $$
-    Also, we parametrize $C$ by a continuously differentiable function
-    $$ \begin{array}{c c l c}
-        \bm \alpha: & [a,b] & \longrightarrow & S\\
+    Let $S$ be a parametric surface with parametrization $(\bm r: \widetilde T \to \R^3, T)$ where
+    $$\begin{array}{r r c l}
+        \bm r: & \widetilde T & \longrightarrow & S \subseteq \R^3 \\
+        & (u,v) & \longmapsto & \left( X(u,v), Y(u,v), Z(u,v) \right)
+    \end{array}$$
+    and $C\subseteq T \subseteq \widetilde T$ be a smooth curve with parametrization $$ \begin{array}{r r c l}
+        \bm \alpha: & [a,b] & \longrightarrow & C \subseteq T \subseteq \widetilde T \\
         & t & \longmapsto & (u(t), v(t))
     \end{array}
     $$
-    to describe $\bm r(C)$ by the composition function $\bm \rho = \bm r\circ \bm \alpha : [a,b]\to \R^3$. More explicitly, we have
+    Then the composite $\bm \rho = \bm r\big|_C \circ \bm \alpha : [a,b]\to \bm r(C) \subseteq S$ is a smooth parametrization of a curve $\bm r(C)$ on $S$. Moreover, for each $t\in [a,b]$, the vectors
+    $$ \dv{\bm \rho}{t},\quad \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_{(u,v)=\bm \alpha(t)}$$
+    are orthogonal to each other.
+\end{propositionenv}
+\begin{proofenv}
+    We adopt the notation in the statement of the proposition. Then the composite $\bm \rho$ is given by
     $$ \bm \rho(t) = X(u(t), v(t))\bm i + Y(u(t), v(t))\bm j + Z(u(t), v(t))\bm k. $$
     Since $\bm \alpha$ and $\bm r$ are both continuously differentiable, $\bm \rho$ is also continuously differentiable. Thus $\bm r(C)$ is a smooth curve. Differentiating $\bm \rho$ with respect to $t$, we have
     $$ \begin{aligned}
@@ -80,14 +99,253 @@
     Note the fundamental vector product $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is normal to both $\displaystyle \pdv{\bm r}{u}$ and $\displaystyle \pdv{\bm r}{v}$. Thus $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is normal to $\displaystyle \dv{\bm \rho}{t}$.
 \end{proofenv}
 \begin{remarkenv}
-    By Proposition~\ref{prop: fundamental vector product is normal to the surface}, the fundamental vector product $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is said to be normal to the surface $\bm r(T)$. By definition, at each regular point $P\in \bm r(T)$,
+    By Proposition~\ref{prop: fundamental vector product is normal to the surface}, the fundamental vector product $\displaystyle \pdv{\bm r}{u}\times \pdv{\bm r}{v}$ is said to be normal to the surface $S = \bm r(T)$. By definition, at each regular point $P\in \bm r(T)$,
     $$ \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right) \Bigg|_P \ne \bm 0, $$
-    and the plane passing through $P$ with normal vector $\displaystyle \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_P$ is called the \textbf{tangent plane} to $\bm r(T)$ at $P$. 
+    and the plane passing through $P$ with normal vector $\displaystyle \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right)\Bigg|_P$ is called the \textbf{tangent plane} to $\bm r(T)$ at $P$ with respect to $(\bm r, T)$. 
 \end{remarkenv}
 \begin{definitionenv}
-    Suppose $T$ is a region in the $uv$-plane and $S\subseteq \R^3$ be a parametric surface with parametrization $\bm r: T\to \R^3$. The \textbf{area} of $S$ is defined by the double integral
+    Suppose $T$ is a region in the $uv$-plane and $S\subseteq \R^3$ be a parametric surface with parametrization $(\bm r: \widetilde T\to \R^3, T)$. The \textbf{area} of $S$ is defined by the double integral
     $$ a(S) = \iint_T \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \dd u \dd v. $$
+    Moreover, if the boundary of $T$ is content zero, then we only require differentiability of $\bm r$ on $\operatorname{int} T$ and define $a(S)$ as the corresponding double integral over $\operatorname{int} T$.
 \end{definitionenv}
 \begin{remarkenv}
     It's possible that the area of a parametric surface $S=\bm r(T)$ may not exist. However, if $T$ is a bounded region and $\bm r$ is continuously differentiable, then $a(S)$ exists. Later we'll see that under some natural conditions, the area of a parametric surface is independent of the choice of parametrization $\bm r$.
 \end{remarkenv}
+\begin{exampleenv}
+    Following the parametrization of the surface $S$ in Example~\ref{example: regularity of a surface given explicitly}, we have
+    $$
+    a(S) = \iint_T \sqrt{1 + \left( \pdv{f}{x} \right)^2 + \left( \pdv{f}{y} \right)^2} \dd x \dd y.
+    $$
+    In particular, when $S$ lies in a plane parallel to the $xy$-plane, i.e., $f(x,y) = c$ for some constant $c$, we have
+    $$ a(S) = \iint_T 1 \dd x \dd y, $$
+    which agrees with our definition of area for a region in the plane.
+\end{exampleenv}
+\begin{exampleenv}
+    Following the parametrization of the semisphere $S$ in Example~\ref{example: regularity depends on parametrization}, we have
+    $$ a(S) = \iint_T a^2\sin\phi \dd \theta \dd \phi = a^2 \int_0^{\pi/2} \sin\phi \dd \phi \int_0^{2\pi} \dd \theta = 2\pi a^2. $$
+\end{exampleenv}
+\begin{exampleenv}
+    Let $a>b>0$ and consider the torus $S$ with vector equation
+    $$ \bm r(u,v) = (a + b\cos v)\cos u\bm i + (a + b\cos v)\sin u\bm j + b\sin v\bm k,\quad (u,v)\in \R^2,$$
+    where $T = \{(u,v): 0\le u < 2\pi, 0\le v < 2\pi\}$. Then the fundamental vector product of $\bm r$ is
+    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = a(R+a\cos v)(\cos v\cos u,\cos v\sin u, \sin v\big).$$
+    Thus the area of $S$ is given by
+    $$ a(S) = \iint_T a(b + a\cos v) \dd u \dd v = b \int_0^{2\pi} \dd u \int_0^{2\pi} (a + b\cos v) \dd v = 4\pi^2 ab. $$
+\end{exampleenv}
+
+\section{Surface Integrals}
+\begin{definitionenv}
+    Let $S$ be a parametric surface with paramatrization $(\bm r: \widetilde T\to \R^3, T)$ where $\bm r$ is differentiable. Let $f: S\to \R$ be a bounded function. Then the \textbf{surface integral of $f$ over $S$} is defined by the double integral
+    $$ \iint_S f(x,y,z) \dd S := \iint_T f(\bm r(u,v)) \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \dd u \dd v. $$
+    Morevoer, if the boundary of $T$ is content zero, then we only require differentiability of $\bm r$ on $\operatorname{int} T$ and define the surface integral as the corresponding double integral over $\operatorname{int} T$.
+\end{definitionenv}
+\begin{notationenv}
+    The surface integral of $f$ over $S$ is also denoted by
+    $$ \iint_S f \dd S. $$
+\end{notationenv}
+\begin{remarkenv}
+    To show that the definition of surface integral is well-defined, we need to verify that the integral does not depend on the choice of parametrization.
+\end{remarkenv}
+\begin{definitionenv}
+    Let $(\bm r: \widetilde T\to \R^3, T)$ and $(\bm s: \widetilde U\to \R^3, U)$ be two parametrizations of the same surface $S = \bm r(T) = \bm s(U)$ such that $\bm r$ and $\bm s$ are both differentiable functions. If there exists a bijective and continuously differentiable function $\bm \phi: \widetilde U\to \widetilde T$ with nonvanishing Jacobian determinant such that $\bm s = \bm r\circ \bm \phi$ and $\bm \phi(U) = T$, then the parametrizations $(\bm r, T)$ and $(\bm s, U)$ are said to be \textbf{smoothly equivalent}.
+\end{definitionenv}
+\begin{theoremenv}
+    Let $(\bm r: \widetilde T\to \R^3, T)$ and $(\bm s: \widetilde U\to \R^3, U)$ be two parametrizations of the same surface $S = \bm r(T) = \bm s(U)$ such that $\bm r$ and $\bm s$ are both differentiable functions. Let $f: S\to \R$ be a bounded function. Suppose $(\bm r, T)$ and $(\bm s, U)$ are smoothly equivalent. If one of the double integrals
+    $$ \iint_T f(\bm r(u,v)) \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \dd u \dd v, \quad \text{or} \quad \iint_U f(\bm s(\xi,\eta)) \left\| \pdv{\bm s}{\xi}\times \pdv{\bm s}{\eta} \right\| \dd \xi \dd \eta $$
+    exists, then both of them exist and they are equal.
+\end{theoremenv}
+\begin{proofenv}
+    By definition, there exists a bijective and continuously differentiable function $\bm \phi: \widetilde U\to \widetilde T$ with nonvanishing Jacobian determinant such that $\bm s = \bm r\circ \bm \phi$ and $\bm \phi(U) = T$. Writing $\bm \phi(\xi, \eta) = (u(\xi,\eta), v(\xi,\eta))$, we have
+    $$ \begin{cases}
+        \dfrac{\partial \bm s}{\partial \xi} &= \dfrac{\partial \bm r}{\partial u}\dfrac{\partial u}{\partial \xi} + \dfrac{\partial \bm r}{\partial v}\dfrac{\partial v}{\partial \xi},\\[6pt]
+        \dfrac{\partial \bm s}{\partial \eta} &= \dfrac{\partial \bm r}{\partial u}\dfrac{\partial u}{\partial \eta} + \dfrac{\partial \bm r}{\partial v}\dfrac{\partial v}{\partial \eta}.
+    \end{cases} $$
+    Thus the fundamental vector product of $\bm s$ is given by
+    $$ \pdv{\bm s}{\xi}\times \pdv{\bm s}{\eta} = \left( \pdv{u}{\xi}\pdv{v}{\eta} - \pdv{u}{\eta}\pdv{v}{\xi} \right) \left( \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right). $$
+    Since the Jacobian determinant of $\bm \phi$ is nonvanishing, we have
+    $$ \left\| \pdv{\bm s}{\xi}\times \pdv{\bm s}{\eta} \right\| = \left| \pdv{u}{\xi}\pdv{v}{\eta} - \pdv{u}{\eta}\pdv{v}{\xi} \right| \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| = \left| \Jac{u}{v}{\xi}{\eta} \right| \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\|. $$
+    Hence, by the change of variables formula for double integrals, if one of the following integrals exists, then both of them exist and they are equal:
+    $$ \begin{aligned}
+        &\iint_T f(\bm r(u,v)) \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \dd u \dd v\\
+        =& \iint_U f(\bm r(u(\xi,\eta), v(\xi,\eta))) \left\| \pdv{\bm r}{u}\times \pdv{\bm r}{v} \right\| \left| \Jac{u}{v}{\xi}{\eta} \right| \dd \xi \dd \eta\\
+        =& \iint_U f(\bm s(\xi,\eta)) \left\| \pdv{\bm s}{\xi}\times \pdv{\bm s}{\eta} \right\| \dd \xi \dd \eta.
+    \end{aligned} $$
+\end{proofenv}
+\begin{remarkenv}
+    There are some other common ways to write the surface integrals.
+\end{remarkenv}
+\begin{definitionenv}
+    Let $(\bm r: \widetilde T\to \R^3, T)$ be a simple and smooth parametrization of a parametric surface $S$. Then restircting $\bm r$ to $T$ gives a bijective function $\bm r\big|_T: T\to S$. Since $\bm r\big|_T$ is bijective, we define the \textbf{unit normal vector} of $S$ at $\bm r(u,v)$ by
+    $$ \bm n(x,y,z) = \left.\frac{\dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v}}{\left\| \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} \right\|} \right|_{(u,v) = \bm r^{-1}(x,y,z)}$$
+    having the same direction as the fundamental vector product.
+
+    Let $\bm F: \widetilde S\to \R^3$ be a continuous vector function where $\widetilde S$ is an open subset of $\R^3$ containing $S$. Then the \textbf{surface integral of $\bm F$ over $S$}, also called the \textbf{flux of $\bm F$ through $S$}, is defined by the scalar surface integral
+    $$ \iint_S \bm F \cdot \dd \bm S := \iint_S  \left(\bm F \cdot \bm n \right) \dd S.$$
+\end{definitionenv}
+\begin{remarkenv}
+    We write the components of $\bm F$ and $\bm r$ as follows:
+    $$ \begin{aligned}
+        \bm F(x,y,z) &= P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k,\\
+        \bm r(u,v) &= X(u,v)\bm i + Y(u,v)\bm j + Z(u,v)\bm k.
+    \end{aligned}
+    $$
+    Then the surface integral of $\bm F$ over $S$ can be written as
+    $$ \iint_S \bm F \cdot \dd \bm S = \iint_T \left( P\Jac{Y}{Z}{u}{v} + Q\Jac{Z}{X}{u}{v} + R\Jac{X}{Y}{u}{v} \right) \dd u \dd v. $$
+    It is common to write
+    $$
+    \begin{aligned}
+        \iint_T P(\bm r(u,v)) \Jac{Y}{Z}{u}{v} \dd u \dd v &=: \iint_S P \dd y \wedge \dd z,\\
+        \iint_T Q(\bm r(u,v)) \Jac{Z}{X}{u}{v} \dd u \dd v &=: \iint_S Q \dd z \wedge \dd x,\\
+        \iint_T R(\bm r(u,v)) \Jac{X}{Y}{u}{v} \dd u \dd v &=: \iint_S R \dd x \wedge \dd y.
+    \end{aligned}
+    $$
+    Thus, we have
+    $$ \iint_S \bm F \cdot \dd \bm S = \iint_S P \dd y \wedge \dd z + Q \dd z \wedge \dd x + R \dd x \wedge \dd y. $$
+\end{remarkenv}
+\begin{exampleenv}
+    Following the parametrization of the surface $S$ in Example~\ref{example: regularity of a surface given explicitly}, we have
+    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = -\pdv{f}{x}\bm i - \pdv{f}{y}\bm j + \bm k. $$
+    Let $\widetilde S$ be an open set of $\R^3$ containing $S$, and let $\bm F: \widetilde S\to \R^3$ be a continuous vector field given by
+    $$ \bm F(x,y,z) = P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k. $$
+    Then the surface integral of $\bm F$ over $S$ is given by
+    $$ \iint_S \bm F \cdot \dd \bm S = \iint_T \left( -P(x,y,f(x,y))\pdv{f}{x} - Q(x,y,f(x,y))\pdv{f}{y} + R(x,y,f(x,y)) \right) \dd x \dd y. $$
+\end{exampleenv}
+
+\section{Curl and Divergence of Vector Fields}
+\begin{definitionenv}
+    Let $\bm F$ be a differentiable vector field given by
+    $$ \bm F(x,y,z) = P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k. $$
+    Then the \textbf{curl} of $\bm F$ is defined by
+    $$ \Curl \bm F = \left( \pdv{R}{y} - \pdv{Q}{z} \right)\bm i + \left( \pdv{P}{z} - \pdv{R}{x} \right)\bm j + \left( \pdv{Q}{x} - \pdv{P}{y} \right)\bm k. $$
+    The \textbf{divergence} of $\bm F$ is defined by
+    $$  \Div \bm F = \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z}. $$
+\end{definitionenv}
+\begin{remarkenv}
+    It is often convenient to introduce the differential operator $\nabla$ defined by
+    $$ \nabla = \pdv{}{x}\bm i + \pdv{}{y}\bm j + \pdv{}{z}\bm k. $$
+    Then we can write
+    $$ \Curl \bm F = \curl \bm F, \quad  \Div \bm F = \div \bm F. $$
+    Here the dot and cross products are interpreted formally using the standard rules of vector algebra, treating $\nabla$ as a vector of differential operators acting on the components of $\bm F$. In particular, we have
+    $$
+    \Curl \bm F = \begin{pmatrix}
+        \bm i & \bm j & \bm k\\[6pt]
+        \displaystyle \pdv{x} & \displaystyle \pdv{y} & \displaystyle \pdv{z}\\[6pt]
+        P & Q & R
+    \end{pmatrix}.
+    $$
+\end{remarkenv}
+\begin{propositionenv}
+    Let $\bm F$ be a differentiable vector field given by
+    $$ \bm F(x,y,z) = P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k. $$
+    Let
+    $$ J_{\bm F} = \begin{pmatrix}
+        \dfrac{\partial P}{\partial x} & \dfrac{\partial P}{\partial y} & \dfrac{\partial P}{\partial z}\\[6pt]
+        \dfrac{\partial Q}{\partial x} & \dfrac{\partial Q}{\partial y} & \dfrac{\partial Q}{\partial z}\\[6pt]
+        \dfrac{\partial R}{\partial x} & \dfrac{\partial R}{\partial y} & \dfrac{\partial R}{\partial z}
+    \end{pmatrix} $$
+    be the Jacobian matrix of $\bm F$. Then we have
+    $$ \Div \bm F = \tr(J_{\bm F}).$$
+    Moreover, if $J_{\bm F}$ is symmetric, then $\Curl \bm F = \bm 0$.
+\end{propositionenv}
+\begin{exampleenv}
+    Let
+    $$S = \{(x,y,z)\in \R^3: x^2 + y^2 \ne 0\}$$
+    and $\bm F: S\to \R^3$ be a vector field given by
+    $$ \bm F(x,y,z) =  -\dfrac{y}{x^2 + y^2}\bm i + \dfrac{x}{x^2 + y^2}\bm j. $$
+    Note $S$ is an open subset of $\R^3$ and $\bm F$ is a differentiable vector field on $S$. Then the Jacobian matrix of $\bm F$ is given by
+    $$ J_{\bm F} = \begin{pmatrix}
+        \dfrac{2xy}{(x^2 + y^2)^2} & \dfrac{y^2 - x^2}{(x^2 + y^2)^2} & 0\\[6pt]
+        \dfrac{y^2-x^2}{(x^2 + y^2)^2} & -\dfrac{2xy}{(x^2 + y^2)^2} & 0\\[6pt]
+        0 & 0 & 0
+    \end{pmatrix}. $$
+    Thus we have $\Div \bm F = 0$ and $\Curl \bm F = \bm 0$. 
+\end{exampleenv}
+\begin{propositionenv}
+    Let $\bm F$ and $\bm G$ be two twicely differentiable vector fields and $f$ be a twice continuously differentiable scalar field. Then we have
+    \begin{enumerate}[label=(\arabic*)]
+        \item for any $\alpha, \beta \in \R$,
+        $$ \Curl(\alpha\bm F + \beta\bm G) = \alpha\Curl \bm F + \beta\Curl \bm G, \quad \Div(\alpha\bm F + \beta\bm G) = \alpha\Div \bm F + \beta\Div \bm G; $$
+        \item $$ \Div(f\bm F) = f \Div \bm F + \bm F \cdot \nabla f; $$
+        \item $$ \Curl(\nabla f) = \bm 0, \quad \Div(\curl \bm F) = 0. $$
+        \item $$ \Div (\nabla f) = \pdv[2]{f}{x} + \pdv[2]{f}{y} + \pdv[2]{f}{z} =: \Delta f, $$
+        where $\Delta$ is called the \textbf{Laplacian} operator.
+    \end{enumerate}
+\end{propositionenv}
+
+\section{Stoke's Theorem}
+\begin{theoremenv}[Stoke's Theorem]
+    Let $T\subseteq \R^2$ where $\operatorname{int} T$ is the inner region of a piecewise smooth Jordan curve $\Gamma$. Suppose $S$ is a simple smooth parametric surface with parametrization $\bm r: T\to \R^3$ such that $\bm r$ is a twice continuously differentiable function on an open set $\widetilde{T} \supseteq T \cup \Gamma$ and $\Gamma$ is the boundary of $T$. Let $C= \bm r(\Gamma)$ be the boundary of $S$ and $\bm F: S\to \R^3$ be a continuously differentiable function on an open set $\widetilde{S} \supseteq \R^3$ with $\widetilde{S} \supseteq \bm r(T \cup \Gamma)$. Suppose $\Gamma$ is parametrized by $\bm \gamma: [a,b]\to \Gamma$, traversing the Jordan curve $\Gamma$ in the counterclockwise direction, and $C$ is parametrized by $\bm \alpha = \bm r\big|_\Gamma \circ \bm \gamma: [a,b] \to \R^3$. Then we have
+    $$ \iint_S (\curl \bm F) \cdot \dd \bm S = \oint_C \bm F \cdot \dd \bm \alpha. $$
+\end{theoremenv}
+\begin{proofenv}
+    We write the components of $\bm F$ as
+    $$ \bm F(x,y,z) = P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k. $$
+    Then the surface integral of $\curl \bm F$ over $S$ is given by
+    $$ \iint_S \curl \bm F \cdot \dd \bm S = \iint_T \left( \pdv{R}{y} - \pdv{Q}{z} \right) \dd y \wedge \dd z + \left( \pdv{P}{z} - \pdv{R}{x} \right) \dd z \wedge \dd x + \left( \pdv{Q}{x} - \pdv{P}{y} \right) \dd x \wedge \dd y. $$
+    Moreover, the line integral of $\bm F$ over $C$ is given by
+    $$ \oint_C \bm F \cdot \dd \bm \alpha = \int_C P \dd x + Q \dd y + R \dd z. $$
+    Therefore, it suffices to show that
+    $$ \begin{cases}
+        &\displaystyle \iint_S -\pdv{P}{y} \dd x \wedge \dd y + \pdv{P}{z} \dd z \wedge \dd x = \int_C P \dd x\\[8pt]
+        &\displaystyle \iint_S -\pdv{Q}{z} \dd y \wedge \dd z + \pdv{Q}{x} \dd x \wedge \dd y = \int_C Q \dd y\\[8pt]
+        &\displaystyle \iint_S -\pdv{R}{x} \dd z \wedge \dd x + \pdv{R}{y} \dd y \wedge \dd z = \int_C R \dd z
+    \end{cases}
+    $$
+    and add them together. Note all of these integrals exist because
+    \begin{itemize}
+        \item $T \cup \Gamma \subseteq \widetilde{T}$, where $\bm r$ is a twice continuously differentiable function on $\widetilde{T}$ and $T \cup \Gamma$ is compact;
+        \item $\bm r(T \cup \Gamma) \subseteq \widetilde{S}$, where $\bm F$ is a continuously differentiable function on $\widetilde{S}$ and $\bm r(T \cup \Gamma)$ is compact.
+    \end{itemize}
+    We only show the first equality holds since the other two are analogous. Note we can write the surface integral over $S$ as a double integral over $T$ and apply Green's theorem to write the double integral as a line integral over $\Gamma$. First, we have
+    $$ \iint_S -\pdv{P}{y} \dd x \wedge \dd y + \pdv{P}{z} \dd z \wedge \dd x = \iint_T -\pdv{P}{y} \Jac{X}{Y}{u}{v} + \pdv{P}{z} \Jac{Z}{X}{u}{v} \dd u \dd v. $$
+    Let
+    $$ U = \bm r^{-1}(\widetilde S) := \{(u,v)\in \widetilde T: \bm r(u,v) \in \widetilde S\}. $$
+    Since $\bm r: \widetilde T \to \R^3$ is continuous and $\widetilde S\supseteq \bm r(T \cup \Gamma)$, we know $U\subseteq \R^2$ is open and $U \supseteq T \cup \Gamma$. We restrict $\bm r$ to $U$:
+    $$ \begin{array}{r r c l}
+        \bm r\big|_U: & U & \longrightarrow & \widetilde S \subseteq \R^3\\
+        & (u,v) & \longmapsto & (X(u,v), Y(u,v), Z(u,v))
+    \end{array} $$
+    and define
+    $$ \begin{array}{r r c l}
+        p:= P \circ \bm r\big|_U: & U & \longrightarrow & \R\\
+        & (u,v) & \longmapsto & P(X(u,v), Y(u,v), Z(u,v))
+    \end{array}
+    $$
+    which is a continuously differentiable function on $U$. We claim that
+    $$ -\pdv{P}{y} \Jac{X}{Y}{u}{v} + \pdv{P}{z} \Jac{Z}{X}{u}{v} = \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right). $$
+    To see this, we first expand the right-hand side:
+    $$ \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) = \pdv{p}{u} \pdv{X}{v} - \pdv{p}{v} \pdv{X}{u}.$$
+    Then we apply the chain rule to write $\displaystyle \pdv{p}{u}$ and $\displaystyle \pdv{p}{v}$ as follows:
+    $$ \begin{cases}
+        \displaystyle \pdv{p}{u} = \pdv{P}{x}\pdv{X}{u} + \pdv{P}{y}\pdv{Y}{u} + \pdv{P}{z}\pdv{Z}{u},\\[6pt]
+        \displaystyle \pdv{p}{v} = \pdv{P}{x}\pdv{X}{v} + \pdv{P}{y}\pdv{Y}{v} + \pdv{P}{z}\pdv{Z}{v}.
+    \end{cases} $$
+    Substituting these expressions into the previous expansion, we have
+    $$ \begin{aligned}
+        \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) &= \left( \pdv{P}{x}\pdv{X}{u} + \pdv{P}{y}\pdv{Y}{u} + \pdv{P}{z}\pdv{Z}{u} \right) \pdv{X}{v} - \left( \pdv{P}{x}\pdv{X}{v} + \pdv{P}{y}\pdv{Y}{v} + \pdv{P}{z}\pdv{Z}{v} \right) \pdv{X}{u}\\[6pt]
+        &= \pdv{P}{y}\left( \pdv{Y}{u}\pdv{X}{v} - \pdv{Y}{v}\pdv{X}{u} \right) + \pdv{P}{z}\left( \pdv{Z}{u}\pdv{X}{v} - \pdv{Z}{v}\pdv{X}{u} \right)\\[6pt]
+        &= -\pdv{P}{y} \Jac{X}{Y}{u}{v} + \pdv{P}{z} \Jac{Z}{X}{u}{v}.
+    \end{aligned} $$
+    Hence, we have
+    $$ \iint_S -\pdv{P}{y} \dd x \wedge \dd y + \pdv{P}{z} \dd z \wedge \dd x = \iint_T \left( \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) \right) \dd u \dd v. $$
+    Note $p$ is continuously differentiable on $U$ and $X$ is twice continuously differentiable on $U$. Therefore, $\displaystyle p \pdv{X}{v}$ and $\displaystyle p \pdv{X}{u}$ are continuously differentiable on $U\supseteq T \cup \Gamma$. Thus, by Green's theorem, we have
+    $$ \iint_T \left( \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) \right) \dd u \dd v = \int_\Gamma p \pdv{X}{v} \dd v + p \pdv{X}{u} \dd u. $$
+    Finally, we write $\bm \gamma = u \bm i + v \bm j$ and by definition of the line integral and chain rule, we have
+    $$
+    \int_\Gamma p \pdv{X}{v} \dd v + p \pdv{X}{u} \dd u = \int_a^b p(\bm \gamma (t)) \left( \left. \pdv{X}{u}\right| u'(t) + \left. \pdv{X}{v}\right| v'(t) \right) \dd t = \int_a^b p(\bm \gamma(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t.
+    $$
+    Moreover, since $\bm \alpha = \bm r\big|_\Gamma \circ \bm \gamma$ on $[a,b]$ and $p = P \circ \bm r$ on $\Gamma$, we have
+    $$ p \circ \bm \gamma = P \circ \bm r\big|_\Gamma \circ \bm \gamma = P \circ \bm \alpha, $$
+    and thus
+    $$
+    \int_a^b p(\bm \gamma(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t = \int_a^b P(\bm \alpha(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t.
+    $$
+    Furthermore, $\bm \alpha : [a,b] \to C$ parametrizes $C$ and $X\circ \gamma$ is precisely the $x$-component of $\alpha$. Hence, we have
+    $$ \int_a^b P(\bm \alpha(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t = \int_C P \dd x. $$
+    Therefore, we have shown that
+    $$ \iint_S -\pdv{P}{y} \dd x \wedge \dd y + \pdv{P}{z} \dd z \wedge \dd x = \int_C P \dd x. $$
+    Adding the other two equalities together, we finish the proof of Stoke's theorem.
+\end{proofenv}
+\begin{exampleenv}
+    
+\end{exampleenv}
