@@ -39,7 +39,7 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
     \[
         \iint_Q f(x,y) \dd x \dd y := \sum_{i=1}^n \sum_{j=1}^m c_{ij} \cdot (x_i - x_{i-1})(y_j - y_{j-1}).
     \]
-    Note if we replace $P$ with a finer partition $\tilde P$, then the value of the double integral does not change.
+    Note if we replace $P$ with a finer partition $\widetilde P$, then the value of the double integral does not change.
 \end{definitionenv}
 \begin{notationenv}
     We can also write the double integral of $f$ over $Q$ as $\displaystyle \iint_Q f$.
@@ -220,19 +220,19 @@ In Chapter 02, we define the integral of a general function \(f: [a,b] \to \R\) 
 
 \section{Double Integrals over more General Regions}
 \begin{definitionenv}
-    Suppose $S\subseteq \R^2$ is a bounded region and there is a rectangle $Q=[a,b] \times [c,d]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{etended scalar field} $\tilde f$ of $f$ on $Q$ by
+    Suppose $S\subseteq \R^2$ is a bounded region and there is a rectangle $Q=[a,b] \times [c,d]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{etended scalar field} $\widetilde f$ of $f$ on $Q$ by
     $$
-    \tilde f(x,y) := \begin{cases}
+    \widetilde f(x,y) := \begin{cases}
     f(x,y) & \text{if } (x,y) \in S,\\
     0 & \text{if } (x,y) \in Q\setminus S.
     \end{cases}
     $$
-    If $\tilde f$ is integrable on $Q$, then we say $f$ is \textbf{integrable} on $S$ and define the \textbf{double integral} of $f$ over $S$ by
-    $$\iint_S f(x,y) \dd x \dd y := \iint_Q \tilde f(x,y) \dd x \dd y.$$
+    If $\widetilde f$ is integrable on $Q$, then we say $f$ is \textbf{integrable} on $S$ and define the \textbf{double integral} of $f$ over $S$ by
+    $$\iint_S f(x,y) \dd x \dd y := \iint_Q \widetilde f(x,y) \dd x \dd y.$$
 \end{definitionenv}
 \begin{remarkenv}
-    We need to show that the definition does not depend on the choice of the rectangle $Q$. Otherwise, the definition is not well-defined. Suppose $Q_1=[a_1,b_1] \times [c_1,d_1]$ and $Q_2=[a_2,b_2] \times [c_2,d_2]$ are two arbitrary rectangles containing $S$. Now define $\tilde f_1$ and $\tilde f_2$ to be the extended scalar fields of $f$ on $Q_1$ and $Q_2$, respectively. Note $S\subseteq Q_1 \cap Q_2$. Thus if $\tilde f_1$ is integrable on $Q_1$, then $\tilde f_1$ is also integrable on $Q_1 \cap Q_2$ and
-    $$\iint_{Q_1} \tilde f_1 = \iint_{Q_1 \cap Q_2} \tilde f_1 = \iint_{Q_1 \cap Q_2} \tilde f_2 = \iint_{Q_2} \tilde f_2.$$
+    We need to show that the definition does not depend on the choice of the rectangle $Q$. Otherwise, the definition is not well-defined. Suppose $Q_1=[a_1,b_1] \times [c_1,d_1]$ and $Q_2=[a_2,b_2] \times [c_2,d_2]$ are two arbitrary rectangles containing $S$. Now define $\widetilde f_1$ and $\widetilde f_2$ to be the extended scalar fields of $f$ on $Q_1$ and $Q_2$, respectively. Note $S\subseteq Q_1 \cap Q_2$. Thus if $\widetilde f_1$ is integrable on $Q_1$, then $\widetilde f_1$ is also integrable on $Q_1 \cap Q_2$ and
+    $$\iint_{Q_1} \widetilde f_1 = \iint_{Q_1 \cap Q_2} \widetilde f_1 = \iint_{Q_1 \cap Q_2} \widetilde f_2 = \iint_{Q_2} \widetilde f_2.$$
     Therefore, the definition of the double integral of $f$ over $S$ is invariant under the choice of the rectangle $Q$.
 \end{remarkenv}
 \begin{definitionenv}
@@ -408,16 +408,16 @@ $$ Q = [a_1, b_1] \times \cdots \times [a_n, b_n] = \{(x_1, \ldots, x_n) \in \R^
     In particular, if $f$ is continuous on $Q$, then $f$ is integrable on $Q$. Moreover, if $f$ is defined and bounded on $Q$ and the set of discontinuities of $f$ has content zero, then $f$ is integrable on $Q$.
 \end{remarkenv}
 \begin{definitionenv}
-    Suppose that $S\subseteq \R^n$ is a bounded region and there is a hyperrectangle $Q = [\bm a, \bm b]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{extended scalar field} $\tilde f$ of $f$ on $Q$ by
+    Suppose that $S\subseteq \R^n$ is a bounded region and there is a hyperrectangle $Q = [\bm a, \bm b]$ such that $S \subseteq Q$. Let $f$ be a scalar field defined and bounded on $S$. We define the \textbf{extended scalar field} $\widetilde f$ of $f$ on $Q$ by
     $$
-    \tilde f(\bm x) := \begin{cases}
+    \widetilde f(\bm x) := \begin{cases}
         f(\bm x) & \text{if } \bm x \in S, \\
         0 & \text{if } \bm x \in Q \setminus S.
     \end{cases}
     $$
-    We say that $f$ is \textbf{integrable} on $S$ if $\tilde f$ is integrable on $Q$. In this case, we define and denote the \textbf{integral} of $f$ on $S$ by
+    We say that $f$ is \textbf{integrable} on $S$ if $\widetilde f$ is integrable on $Q$. In this case, we define and denote the \textbf{integral} of $f$ on $S$ by
     $$
-    \int \cdots \int_S f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n := \int \cdots \int_Q \tilde f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n.
+    \int \cdots \int_S f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n := \int \cdots \int_Q \widetilde f(x_1, \ldots, x_n) \dd x_1 \cdots \dd x_n.
     $$
 \end{definitionenv}
 \begin{theoremenv}
@@ -542,7 +542,7 @@ $$ Q = [a_1, b_1] \times \cdots \times [a_n, b_n] = \{(x_1, \ldots, x_n) \in \R^
     $$ V_n(a) = \frac{\pi^m}{m!} a^n. $$
 \end{propositionenv}
 \begin{proofenv}
-    By Lemma~\ref{lem:scaling for vol of n-ball}, it suffices to show $V_{2m}(1) = \frac{\pi^m}{m!}$ for any positive integer $m$. We prove this by induction on $m$. 
+    By Lemma~\ref{lem:scaling for vol of n-ball}, it suffices to show $V_{2m}(1) = \dfrac{\pi^m}{m!}$ for any positive integer $m$. We prove this by induction on $m$. 
 
     \textbf{Base case:} when $m=1$, we have $V_2(1) = \pi$ since $B_2(1)$ is the unit disk in $\R^2$. Thus, the conclusion holds for $m=1$.
     

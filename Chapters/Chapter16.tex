@@ -69,7 +69,10 @@
     Expanding the fundamental vector product by the first row, we have
     $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = \left( \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm i - \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm j + \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Y}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Y}{\partial u} \right) \bm k. $$
     For convenience, we adopt the following notation
-    $$ \Jac{Y}{Z}{u}{v} = \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u}. $$
+    $$ \Jac{Y}{Z}{u}{v} = \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} = \det \begin{pmatrix}
+        \dfrac{\partial Y}{\partial u} & \dfrac{\partial Y}{\partial v}\\[6pt]
+        \dfrac{\partial Z}{\partial u} & \dfrac{\partial Z}{\partial v} 
+    \end{pmatrix}.$$
     Then we can write
     $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = \Jac{Y}{Z}{u}{v} \bm i - \Jac{X}{Z}{u}{v} \bm j + \Jac{X}{Y}{u}{v} \bm k. $$
 \end{notationenv}
@@ -227,7 +230,7 @@
     $$ \Curl \bm F = \curl \bm F, \quad  \Div \bm F = \div \bm F. $$
     Here the dot and cross products are interpreted formally using the standard rules of vector algebra, treating $\nabla$ as a vector of differential operators acting on the components of $\bm F$. In particular, we have
     $$
-    \Curl \bm F = \begin{pmatrix}
+    \Curl \bm F =\det \begin{pmatrix}
         \bm i & \bm j & \bm k\\[6pt]
         \displaystyle \pdv{x} & \displaystyle \pdv{y} & \displaystyle \pdv{z}\\[6pt]
         P & Q & R
