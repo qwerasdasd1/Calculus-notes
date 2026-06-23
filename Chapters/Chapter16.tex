@@ -69,7 +69,7 @@
     Expanding the fundamental vector product by the first row, we have
     $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = \left( \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm i - \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Z}{\partial u} \right) \bm j + \left( \dfrac{\partial X}{\partial u} \dfrac{\partial Y}{\partial v} - \dfrac{\partial X}{\partial v} \dfrac{\partial Y}{\partial u} \right) \bm k. $$
     For convenience, we adopt the following notation
-    $$ \Jac{Y}{Z}{u}{v} = \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} = \det \begin{pmatrix}
+    $$ \Jac{Y}{Z}{u}{v} := \dfrac{\partial Y}{\partial u} \dfrac{\partial Z}{\partial v} - \dfrac{\partial Y}{\partial v} \dfrac{\partial Z}{\partial u} = \det \begin{pmatrix}
         \dfrac{\partial Y}{\partial u} & \dfrac{\partial Y}{\partial v}\\[6pt]
         \dfrac{\partial Z}{\partial u} & \dfrac{\partial Z}{\partial v} 
     \end{pmatrix}.$$
@@ -175,7 +175,7 @@
     \end{aligned} $$
 \end{proofenv}
 \begin{remarkenv}
-    There are some other common ways to write the surface integrals.
+    In above discussions, we define the surface integral of a scalar function over a parametric surface. We can also define the surface integral of a vector field over a parametric surface.
 \end{remarkenv}
 \begin{definitionenv}
     Let $(\bm r: \widetilde T\to \R^3, T)$ be a simple and smooth parametrization of a parametric surface $S$. Then restircting $\bm r$ to $T$ gives a bijective function $\bm r\big|_T: T\to S$. Since $\bm r\big|_T$ is bijective, we define the \textbf{unit normal vector} of $S$ at $\bm r(u,v)$ by
@@ -335,7 +335,7 @@
     $$ \iint_T \left( \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) \right) \dd u \dd v = \int_\Gamma p \pdv{X}{v} \dd v + p \pdv{X}{u} \dd u. $$
     Finally, we write $\bm \gamma = u \bm i + v \bm j$ and by definition of the line integral and chain rule, we have
     $$
-    \int_\Gamma p \pdv{X}{v} \dd v + p \pdv{X}{u} \dd u = \int_a^b p(\bm \gamma (t)) \left( \left. \pdv{X}{u}\right| u'(t) + \left. \pdv{X}{v}\right| v'(t) \right) \dd t = \int_a^b p(\bm \gamma(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t.
+    \int_\Gamma p \pdv{X}{v} \dd v + p \pdv{X}{u} \dd u = \int_a^b p(\bm \gamma (t)) \left( \left. \pdv{X}{u}\right|_{\bm \gamma(t)} u'(t) + \left. \pdv{X}{v}\right|_{\bm \gamma(t)} v'(t) \right) \dd t = \int_a^b p(\bm \gamma(t)) \dv{t} (X\circ \bm \gamma)(t) \dd t.
     $$
     Moreover, since $\bm \alpha = \bm r\big|_\Gamma \circ \bm \gamma$ on $[a,b]$ and $p = P \circ \bm r$ on $\Gamma$, we have
     $$ p \circ \bm \gamma = P \circ \bm r\big|_\Gamma \circ \bm \gamma = P \circ \bm \alpha, $$
