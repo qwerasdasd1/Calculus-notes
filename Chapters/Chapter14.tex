@@ -32,15 +32,15 @@
     \end{definitionenv}
 
     \begin{definitionenv}
-        Suppose $\bm{\alpha}$ is a path with $\bm{\alpha}'$ continuous on $[a,b]$. Then $\bm{\alpha}$ describes a \textbf{rectifiable curve} whose arc-length function is given by
+        Suppose $\bm{\alpha}$ is a path with $\bm{\alpha}'$ continuous on $[a,b]$. Then $\bm{\alpha}$ describes a \textbf{rectifiable curve} $C$ whose arc-length function $s$ is given by
         $$ s(t) = \int_a^t \|\bm{\alpha}'(\tau)\| \dd \tau, \quad t\in [a,b]. $$
         We also know $s'(t) = \|\bm{\alpha}'(t)\|$. Suppose $f$ is a scalar function defined and bounded on $C$. The line integral of $f$ with respect to arc-length along $C$ is defined as
         $$ \int_C f \dd s := \int_a^b f(\bm{\alpha}(t)) s'(t) \dd t. $$ 
     \end{definitionenv}
     \begin{exampleenv}
-        Let $\bm g$ be a vector field (e.g. velocity filed of the fluid) defined on a curve $C$ described by $\bm \alpha(t)$ on $[a,b]$. Then $\varphi[\bm \alpha (t)] := \bm g[\bm \alpha(t)] \cdot T(t)$ is a scalar field defined on $C$ and
-        $$ \int_C \varphi \dd s = \int_a^b \bm \varphi[\bm \alpha(t)] s'(t) \dd t = \int_a^b \bm g[\bm \alpha(t)] \cdot T(t) s'(t) \dd t = \int_a^b \bm g[\bm \alpha(t)] \cdot \bm \alpha'(t) \dd t = \int_C \bm g \cdot \dd\bm r. $$
-        Then $\displaystyle \int_C \varphi \dd s=\int_C \bm g \cdot T \dd s$ is called the \textbf{flow integral} of $\bm g$ along $C$. Particularly, when $C$ is a closed curve, it is also called the \textbf{circulation} of $\bm g$ along $C$.
+        Let $\bm g$ be a vector field (e.g. velocity filed of the fluid) defined on a curve $C$ described by $\bm \alpha(t)$ on $[a,b]$. Then $\varphi[\bm \alpha (t)] := \bm g[\bm \alpha(t)] \cdot \bm T(t)$ is a scalar field defined on $C$ and
+        $$ \int_C \varphi \dd s = \int_a^b \varphi[\bm \alpha(t)] s'(t) \dd t = \int_a^b \bm g[\bm \alpha(t)] \cdot \bm T(t) s'(t) \dd t = \int_a^b \bm g[\bm \alpha(t)] \cdot \bm \alpha'(t) \dd t = \int_C \bm g \cdot \dd\bm r. $$
+        Then $\displaystyle \int_C \varphi \dd s=\int_C \bm g \cdot \bm T \dd s$ is called the \textbf{flow integral} of $\bm g$ along $C$. Particularly, when $C$ is a closed curve, it is also called the \textbf{circulation} of $\bm g$ along $C$.
     \end{exampleenv}
 
     \section{Fundamental Theorems of Calculus for Line Integrals}
