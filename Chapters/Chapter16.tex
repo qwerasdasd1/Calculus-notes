@@ -1,5 +1,5 @@
 \chapter{Surface Integrals}
-\section{Parametrization}
+\section{Parametric Surfaces}
 \begin{definitionenv}\label{def: parametric surface}
     Suppose $T\subseteq \R^2$ has nonempty and connected interior and $\widetilde T \supseteq T$ is an open set of $\R^2$. Let $\bm r: \widetilde T\to \R^3$ be a continuous vector function. Then we call the image $S=\bm r(T)$ of the restricted $\bm r\big|_T$ a \textbf{parametric surface} with respect to $(\bm r, T)$ and $(\bm r,T)$ a \textbf{parametrization} of $S$. Furthermore, if $\bm r\big|_T$ is injective, then we call $S$ a \textbf{simple parametric surface}.
 
@@ -51,19 +51,19 @@
     Suppose the hemisphere
     $$ S = \{(x,y,z)\in \R^3: x^2 + y^2 + z^2 = a^2, z \ge 0\} $$
     is parametrized by
-    $$ \bm r(\theta,\phi) = a(\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi),\quad (\theta,\phi)\in \R^2, $$
-    and $T = \{(\theta,\phi): 0\le \theta < 2\pi, 0\le \phi \le \dfrac{\pi}{2}\}$. Then the norm of the fundamental vector product of $\bm r$ is
-    $$ \left\|\pdv{\bm r}{\theta}\times \pdv{\bm r}{\phi} \right\|= a^2 \left\| -\sin\phi
-(\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi)\right\|
-    = a^2\sin\phi. $$
-    Note that, with respect to this parametrization, the parameter values $(\theta,0)$ are singular. However, parametrizing $S$ by
+    $$ \bm r(\theta, \phi) = a(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta),\quad (\theta,\phi)\in \R^2, $$
+    and $T = \{(\theta, \phi): 0\le \phi < 2\pi, 0\le \theta \le \dfrac{\pi}{2}\}$. Then the norm of the fundamental vector product of $\bm r$ is
+    $$ \left\|\pdv{\bm r}{\theta}\times \pdv{\bm r}{\phi} \right\|= a^2 \left\| -\sin\theta
+(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta)\right\|
+    = a^2\sin\theta. $$
+    Note that, with respect to this parametrization, the parameter values $(0,\phi)$ are singular. However, parametrizing $S$ by
     $$ \bm R(u,v) = \begin{cases}
         (u, v, \sqrt{a^2-u^2-v^2}),\quad &(u,v)\in T'\\
         (u, v, 0), \quad &(u,v)\in \R^2\setminus T' 
     \end{cases}, $$
     where $T' = \{(u,v): u^2 + v^2 \le a^2\}$, we have
     $$ \pdv{\bm R}{u} \left( 0,0 \right) \times \pdv{\bm R}{v} \left( 0,0 \right) =\left( 1,0,0 \right) \times \left( 0,1,0 \right) = \left( 0,0,1 \right) \ne \bm 0, $$
-    showing that the north pole is a regular point of $S$. Thus the regularity of a point depends on the choice of parametrization. In this case, the set of singular points is $\{ (x,y,0) : x^2 + y^2 = a^2 \}$ since the partial derivatives of $\bm r$ fails to exist and be continuous at these points.
+    showing that the north pole is a regular point of $S$. Thus the regularity of a point depends on the choice of parametrization. In this case, the set of singular points is $\{ (x,y,0) : x^2 + y^2 = a^2 \}$ since the partial derivatives of $\bm R$ fails to exist and be continuous at these points.(Note they are regular points with respect to the first parametrization.)
 \end{exampleenv}
 \begin{notationenv}
     Expanding the fundamental vector product by the first row, we have
@@ -125,7 +125,7 @@
 \end{exampleenv}
 \begin{exampleenv}
     Following the parametrization of the semisphere $S$ in Example~\ref{example: regularity depends on parametrization}, we have
-    $$ a(S) = \iint_T a^2\sin\phi \dd \theta \dd \phi = a^2 \int_0^{\pi/2} \sin\phi \dd \phi \int_0^{2\pi} \dd \theta = 2\pi a^2. $$
+    $$ a(S) = \iint_T a^2\sin\theta \dd \theta \dd \phi = a^2 \int_0^{\pi/2} \sin\theta \dd \theta \int_0^{2\pi} \dd \phi = 2\pi a^2. $$
 \end{exampleenv}
 \begin{exampleenv}
     Let $a>b>0$ and consider the torus $S$ with vector equation
@@ -315,7 +315,7 @@
     \end{array}
     $$
     which is a continuously differentiable function on $U$. We claim that
-    $$ -\pdv{P}{y} \Jac{X}{Y}{u}{v} + \pdv{P}{z} \Jac{Z}{X}{u}{v} = \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right). $$
+    $$ -\pdv{P}{y} \Jac{X}{Y}{u}{v} + \pdv{P}{z} \Jac{Z}{X}{u}{v} = \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right).$$
     To see this, we first expand the right-hand side:
     $$ \pdv{u} \left( p \pdv{X}{v} \right) - \pdv{v} \left( p \pdv{X}{u} \right) = \pdv{p}{u} \pdv{X}{v} - \pdv{p}{v} \pdv{X}{u}.$$
     Then we apply the chain rule to write $\displaystyle \pdv{p}{u}$ and $\displaystyle \pdv{p}{v}$ as follows:
@@ -350,5 +350,177 @@
     Adding the other two equalities together, we finish the proof of Stoke's theorem.
 \end{proofenv}
 \begin{exampleenv}
-    
+    Let $C$ be the curve of intersection of the sphere $x^2 + y^2 + z^2 = a^2$ and the plane $x+y+z=0$. We want to evaluate the line integral
+    $$ \int_C y\dd x + z\dd y + x\dd z. $$
+    Let
+    $$ \begin{array}{r r c l}
+        \bm F:& \R^3 & \longrightarrow & \R^3\\
+        & (x,y,z) & \longmapsto & y\bm i + z\bm j + x\bm k
+    \end{array}
+    $$
+    We will find a simple smooth parametrization $(\bm r: \widetilde T\to \R^3, T)$ of a surface $S$ such that $\partial S = C$ and apply Stoke's theorem to evaluate the line integral. 
+
+    Note $S$ should be a disk in the $x+y+z=0$ plane. Let $\widetilde T = \R^2$ and $T = \{(u,v)\in \R^2: u^2 + v^2 \le a^2\} \subseteq \widetilde{T}$. Note $T$ is closed with nonempty connected interior, and its boundary $\Gamma = \{(u,v)\in \R^2: u^2 + v^2 = a^2\}$ is a smooth Jordan curve.
+
+    We define
+    $$ \begin{array}{r r c l}
+        \bm r:& \widetilde T & \longrightarrow & \R^3\\
+        & (u,v) & \longmapsto & u\bm b_1 + v\bm b_2
+    \end{array} $$
+    where $\{ \bm b_1, \bm b_2\}$ is an orthonormal basis for the plane $x+y+z=0$. In particular, we can take
+    $$ \bm b_1 = \frac{1}{\sqrt{6}}(1,1,-2), \quad \bm b_2 = \frac{1}{\sqrt{2}}(1,-1,0). $$
+    Then we have $\bm r(T) = S$ since
+    $$
+    \| \bm r(u,v) \| ^2 = u^2 + v^2 \le a^2.
+    $$
+    Letting $(x,y,z) = \bm r(u,v)$ be the corresponding point on the plane $x+y+z=0$ for any $(u,v)\in \widetilde T$, we have
+    $$ (x,y,z) \in S \Leftrightarrow x^2+y^2+z^2 \le a^2 \Leftrightarrow u^2 + v^2 \le a^2 \Leftrightarrow (u,v) \in T. $$
+    Moreover, we have
+    $$
+    \pdv{\bm r}{u} \times \pdv{\bm r}{v} = -\frac{1}{\sqrt{3}}(1,1,1).
+    $$
+    Thus, $(\bm r: \widetilde T\to \R^3, T)$ is a simple smooth parametrization of $S$. We parametrize the boundary $\Gamma$ of $T$ by
+    $$ \begin{array}{r r c l}
+        \bm \gamma:& [0,2\pi] & \longrightarrow & \Gamma\\
+        & t & \longmapsto & a\cos t \bm i + a\sin t \bm j.
+    \end{array} $$
+    Then we parametrize $C$ by $\bm \alpha = \bm r\big|_\Gamma \circ \bm \gamma: [0,2\pi] \to C$ and we have $r(\partial T)=C.$
+    The curl of $\bm F$ is given by
+    $$ \curl \bm F = \left( \pdv{y} x - \pdv{z} z \right)\bm i + \left( \pdv{z} y - \pdv{x} x \right)\bm j + \left( \pdv{x} z - \pdv{y} y \right)\bm k = -\bm i - \bm j - \bm k. $$
+    Thus, by Stoke's theorem, we have
+    $$
+    \int_C \bm F \cdot \dd \bm \alpha = \iint_S (\curl \bm F) \cdot \dd \bm S = \int_T (\curl \bm F) \big|_{(x,y,z)=\bm r(u,v)} \cdot \left( \pdv{\bm r}{u} \times \pdv{\bm r}{v} \right) \dd u \dd v = \int_T \sqrt3 \dd u \dd v = \sqrt3 \pi a^2.
+    $$
 \end{exampleenv}
+
+\section{Orientable and Closed Surfaces}
+\begin{definitionenv}
+    A subset $S\subseteq \R^3$ is said to be a \textbf{piecewise smooth surface} if it can be expressed as a finite union
+    $$ S = \bigcup_{i=1}^n S_i $$
+    where each $S_i$ admits a simple smooth parametrization $(\bm r_i, T_i)$ and the intersection of any two distinct $S_i$ and $S_j$ is either empty, a finite set of points, or a finite number of smooth curves; we call these intersections \textbf{common boundaries}.
+\end{definitionenv}
+\begin{remarkenv}
+    There are two parametrizations of the northern hemisphere $S$ of radius $a>0$ in Example~\ref{example: regularity depends on parametrization}. However, neither of them is a simple smooth parametrization of $S$. We can combine them to make a simple smooth parametrization of $S$ by the following example.
+\end{remarkenv}
+\begin{exampleenv}\label{example: orientable surface}
+     Suppose $S$ is the northern hemisphere of radius $a>0$. Let
+     $$ \cos \theta_0 = \frac{b}{a}, \quad 0< b < a,\quad 0 < \theta_0 < \frac{\pi}{2}. $$
+    We parametrize the top cap $S_1$ of $S$ by
+    $$ \begin{array}{r r c l}
+        \bm r_1: & \widetilde T_1 & \longrightarrow & \R^3\\
+        & (x,y) & \longmapsto & (x,y,\sqrt{a^2 - x^2 - y^2})
+    \end{array}, $$
+    where $\widetilde T_1 = \{(x,y)\in \R^2: x^2 + y^2 < a^2\}$ and $T_1 = \{(x,y)\in \R^2: x^2 + y^2 \le b^2\} \subseteq \widetilde T_1$. We parametrize the bottom part $S_2$ by
+    $$ \begin{array}{r r c l}
+        \bm r_2: & \widetilde T_2 & \longrightarrow & \R^3\\
+        & (\theta, \phi) & \longmapsto & (a\sin\theta\cos\phi, a\sin\theta\sin\phi, a\cos\theta)
+    \end{array}, $$
+    where $\widetilde T_2 = \R^2$ and $T_2 = \{(\theta, \phi)\in \R^2: 0 \le \theta \le \theta_0, 0 \le \phi < 2\pi\} \subseteq \widetilde T_2$. 
+    Then $S=S_1\cup S_2$ is piecewise smooth with respect to $(\bm r_1, T_1)$ and $(\bm r_2, T_2)$.
+\end{exampleenv}
+\begin{definitionenv}
+    Let $S=\displaystyle \bigcup_{i=1}^n S_i$ be a piecewise smooth surface. We say $S$ is \textbf{orientable} if it is possible to choose simple smooth parametrizations $(\bm r_i, T_i)$ of $S_i$ such that, for every distince pair of adjacent patches $S_i$ and $S_j$, sharing a common boundary curve $C_{ij} = S_i \cap S_j$, the induced direction on $C$ from $S_i$ is opposite to that induced from $S_j$.
+\end{definitionenv}
+\begin{exampleenv}
+    Note the northern hemisphere is orientable in Example~\ref{example: orientable surface}. However, the Möbius strip is not orientable.
+\end{exampleenv}
+\begin{definitionenv}
+    An orientable piecewise smooth surface $S$ is said to be \textbf{closed} if its entire outer boundary is empty, i.e., $\partial S = \varnothing$.
+\end{definitionenv}
+
+\section{Gauss's Theorem}
+\begin{theoremenv}
+    Let $V$ be a closed and bounded solid in $\R^3$ whose boundary $S=\partial V$ is a piecewise smooth closed surface. Let $\bm n$ be the outer unit normal vector of $S$ pointing away from the inner region $V$. Suppose $\bm F$ is a continuously differentiable vector field on an open set containing $V$. Then we have
+    $$ \iint_S \bm F \cdot \dd \bm S = \iiint_V \Div \bm F \dd V. $$
+\end{theoremenv}
+\begin{proofenv}
+    We only prove the case when $V$ is convex. We write the components of $\bm F$ and $\bm n$ as
+    $$
+    \begin{cases}
+        \bm F(x,y,z)&= P(x,y,z)\bm i + Q(x,y,z)\bm j + R(x,y,z)\bm k,\\
+        \bm n(x,y,z)&= \cos(\alpha(x,y,z))\bm i + \cos(\beta(x,y,z))\bm j + \cos(\gamma(x,y,z))\bm k.
+    \end{cases}
+    $$
+    Then the desired equality can be written as
+    $$ \iiint_V \left( \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z} \right) \dd V = \iint_S \left( P\cos\alpha + Q\cos\beta + R\cos\gamma \right) \dd S. $$
+    Therefore, it suffices to show that
+    $$ \begin{cases}
+        &\displaystyle \iiint_V \pdv{P}{x} \dd V = \iint_S P\cos\alpha \dd S\\[8pt]
+        &\displaystyle \iiint_V \pdv{Q}{y} \dd V = \iint_S Q\cos\beta \dd S\\[8pt]
+        &\displaystyle \iiint_V \pdv{R}{z} \dd V = \iint_S R\cos\gamma \dd S
+    \end{cases}
+    $$
+    We only prove the third equality since the other two are analogous. Since $V$ is convex, we can write
+    $$ V = \{(x,y,z)\in \R^3: (x,y)\in D, g_1(x,y) \le z \le g_2(x,y)\} $$
+    where $D\subseteq \R^2$ is a closed, connected and bounded region and $g_1, g_2: D \to \R$ are continuous functions. Then we have
+    $$ \iiint_V \pdv{R}{z} \dd V = \iint_D \left( \int_{g_1(x,y)}^{g_2(x,y)} \pdv{R}{z} \dd z \right) \dd x \dd y = \iint_D R(x,y,g_2(x,y)) - R(x,y,g_1(x,y)) \dd x \dd y. $$
+    Then, we evaluate the surface integral on the right-hand side by deviding $S$ into three parts:
+    \begin{enumerate}
+        \item the bottom surface $S_1$, where $z=g_1(x,y)$;
+        \item the top surface $S_2$, where $z=g_2(x,y)$;
+        \item the side surface $S_3$.
+    \end{enumerate}
+    On the bottom surface $S_1$, we have
+    $$
+    \bm r_1(x,y) = x\bm i + y\bm j + g_1(x,y)\bm k, \quad (x,y)\in D.
+    $$
+    Then the fundamental vector product points in the opposite direction of the outer unit normal vector $\bm n$ and we have
+    $$
+    \iint_{S_1} R\cos\gamma \dd S = -\iint_{S_1} R \dd x \wedge \dd y = -\iint_D R(x,y,g_1(x,y)) \dd x \dd y.
+    $$
+    On the top surface $S_2$, we have
+    $$
+    \bm r_2(x,y) = x\bm i + y\bm j + g_2(x,y)\bm k, \quad (x,y)\in D.
+    $$
+    Then the fundamental vector product points in the same direction of the outer unit normal vector $\bm n$ and we have
+    $$
+    \iint_{S_2} R\cos\gamma \dd S = \iint_{S_2} R \dd x \wedge \dd y = \iint_D R(x,y,g_2(x,y)) \dd x \dd y.
+    $$
+    On $S_3$, the fundamental vector product is perpendicular to $\bm k$ so $\gamma = \pi/2$ and we have
+    $$
+    \iint_{S_3} R\cos\gamma \dd S = 0.
+    $$
+    Summing up the three parts, we have
+    $$ \iint_S R\cos\gamma \dd S = \iint_D R(x,y,g_2(x,y)) - R(x,y,g_1(x,y)) \dd x \dd y. $$
+    This completes the proof of Gauss's theorem for convex solids.
+\end{proofenv}
+\begin{exampleenv}
+    Let $V = [0,1]^3$ be the unit cube in $\R^3$ and $S = \partial V$ be the boundary of $V$. Let
+    $$ \begin{array}{r r c l}
+        \bm F:& \R^3 & \longrightarrow & \R^3\\
+        & (x,y,z) & \longmapsto & x^2\bm i + y^2\bm j + z^2\bm k
+    \end{array}
+    $$
+    Note the surface integral of $\bm F$ over $S$, $\displaystyle \iint_S \bm F \cdot \dd \bm S$, is the sum of the surface integrals over the six faces of the cube. It is quite annoying if we compute the surface integral directly over six faces. However, we can apply Gauss's theorem to compute the surface integral by evaluating the triple integral of $\Div \bm F$ over $V$. We have
+    $$ \Div \bm F = \pdv{x} x^2 + \pdv{y} y^2 + \pdv{z} z^2 = 2x + 2y + 2z. $$
+    Thus, by Gauss's theorem, we have
+    $$ \iint_S \bm F \cdot \dd \bm S = \iiint_V \Div \bm F \dd V = \iiint_{[0,1]^3} 2x + 2y + 2z \dd x \dd y \dd z = 3. $$
+\end{exampleenv}
+\begin{corollaryenv}
+    Let $V(t)$ be the solid sphere of radius $t>0$ centered at a point $\bm a\in \R^3$ and $S(t) = \partial V(t)$ be the boundary of $V(t)$. Suppose $\bm F$ is a continuously differentiable vector field on some open set containing $V(t)$ for all sufficiently small $t>0$. Then
+    $$ \Div \bm F(\bm a) = \lim_{t\to 0^+} \frac{1}{|V(t)|} \iint_{S(t)} \bm F \cdot \dd \bm S,$$
+    where $|V(t)|$ is the volume of $V(t)$. 
+\end{corollaryenv}
+\begin{proofenv}
+    Write $\varphi = \Div \bm F$. Let $\varepsilon > 0$. Then it suffices to show that there exists $\delta > 0$ such that for any $t\in (0,\delta)$, we have
+    $$ \left| \frac{1}{|V(t)|} \iint_{S(t)} \bm F \cdot \dd \bm S - \varphi(\bm a) \right| < \varepsilon. $$
+    Since $\varphi$ is continuous at $\bm a$, there exists $\delta > 0$ such that
+    $$ |\varphi(\bm x) - \varphi(\bm a)| < \frac{\varepsilon}{2},\quad \text{whenever } \| \bm x - \bm a \| < \delta. $$
+    Then, for any $t\in (0,\delta)$, since $\varphi(\bm a)$ is constant, we have
+    $$
+    \varphi(\bm a) |V(t)| = \varphi(\bm a) \iiint_{V(t)} 1 \dd V = \iiint_{V(t)} \varphi(\bm a) \dd V.
+    $$
+    By Gauss's theorem we have
+    $$ \begin{aligned}
+        \iiint_{V(t)} \varphi(\bm a) \dd V
+        =\iiint_{V(t)} \varphi(\bm x) + \iiint_{V(t)} \varphi(\bm a) - \varphi(\bm x) \dd V = \iint_{S(t)} \bm F \cdot \dd \bm S + \iiint_{V(t)} \varphi(\bm a) - \varphi(\bm x) \dd V
+    \end{aligned} $$
+    and thus
+    $$ \left| \varphi(\bm a) |V(t)| - \iint_{S(t)} \bm F \cdot \dd \bm S \right| = \left| \iiint_{V(t)} \varphi(\bm a) - \varphi(\bm x) \dd V \right| \le \iiint_{V(t)} |\varphi(\bm a) - \varphi(\bm x)| \dd V \le |V(t)| \cdot \frac{\varepsilon}{2} < \varepsilon |V(t)|. $$
+    Dividing both sides by $|V(t)|$, we have
+    $$ \left| \frac{1}{|V(t)|} \iint_{S(t)} \bm F \cdot \dd \bm S - \varphi(\bm a) \right| < \varepsilon. $$
+    This completes the proof.
+\end{proofenv}
+\begin{remarkenv}
+    The corollary above gives us a coordinate free formula for the divergence of a vector field at a point. It also suggests the geometric interpretation of divergence: the divergence of a vector field at a point is the infinitesimal net outward flux per unit volume at that point.
+\end{remarkenv}
