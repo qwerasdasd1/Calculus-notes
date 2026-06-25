@@ -45,7 +45,7 @@
     Then the fundamental vector product of $\bm r$ is
     $$ \dfrac{\partial \bm r}{\partial u}\times \dfrac{\partial \bm r}{\partial v} 
     = -\pdv{f}{x}\bm i - \pdv{f}{y}\bm j + \bm k$$
-    for all $(u,v)\in T$. Thus all the regular points are those points $(x,y,z)$ on $S$ such that one of $\displaystyle \pdv{f}{x}(x,y)$ and $\displaystyle \pdv{f}{y}(x,y)$ does not exist.
+    for all $(u,v)\in T$. Thus all the singular points are those points $(x,y,z)$ on $S$ such that one of $\displaystyle \pdv{f}{x}(x,y)$ and $\displaystyle \pdv{f}{y}(x,y)$ does not exist.
 \end{exampleenv}
 \begin{exampleenv}\label{example: regularity depends on parametrization}
     Suppose the hemisphere
@@ -131,9 +131,9 @@
     Let $a>b>0$ and consider the torus $S$ with vector equation
     $$ \bm r(u,v) = (a + b\cos v)\cos u\bm i + (a + b\cos v)\sin u\bm j + b\sin v\bm k,\quad (u,v)\in \R^2,$$
     where $T = \{(u,v): 0\le u < 2\pi, 0\le v < 2\pi\}$. Then the fundamental vector product of $\bm r$ is
-    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = a(R+a\cos v)(\cos v\cos u,\cos v\sin u, \sin v\big).$$
+    $$ \pdv{\bm r}{u}\times \pdv{\bm r}{v} = b(a + b\cos v)(\cos v\cos u,\cos v\sin u, \sin v\big).$$
     Thus the area of $S$ is given by
-    $$ a(S) = \iint_T a(b + a\cos v) \dd u \dd v = b \int_0^{2\pi} \dd u \int_0^{2\pi} (a + b\cos v) \dd v = 4\pi^2 ab. $$
+    $$ a(S) = \iint_T b(a + b\cos v) \dd u \dd v = b \int_0^{2\pi} \dd u \int_0^{2\pi} (a + b\cos v) \dd v = 4\pi^2 ab. $$
 \end{exampleenv}
 
 \section{Surface Integrals}
